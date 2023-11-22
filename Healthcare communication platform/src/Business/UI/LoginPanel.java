@@ -22,13 +22,9 @@ public class LoginPanel extends javax.swing.JPanel {
         this.loginPanel=loginPanel;
     }
     
-    private void hospitalSetLoginScreen() {
-        HospitalLoginPanel ls = new HospitalLoginPanel();
-        loginPanel.add("LoginScreen",ls);
-       CardLayout layout = (CardLayout) loginPanel.getLayout();
-       layout.next(loginPanel);
-
-    }
+    
+    
+    
     
     
     /**
@@ -44,7 +40,12 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        TypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hospital", "BioTech", "MedicalAnalysis", "Medical Supplier" }));
+        TypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hospital", "BioTech", "Medical Analysis", "Medical Supplier","Admin" }));
+        TypeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TypeComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -66,12 +67,12 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jButton1)))
+                .addGap(156, 156, 156)
+                .addComponent(jButton1)
+                .addContainerGap(172, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(TypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -79,9 +80,9 @@ public class LoginPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel3)
-                .addGap(44, 44, 44)
-                .addComponent(TypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
+                .addComponent(TypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
                 .addComponent(jButton1)
                 .addContainerGap(116, Short.MAX_VALUE))
         );
@@ -90,10 +91,48 @@ public class LoginPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String type = (String) TypeComboBox.getSelectedItem();
+
         if(type.equals("Hospital")){
-            hospitalSetLoginScreen();
+            HospitalLoginPanel ls = new HospitalLoginPanel(loginPanel);
+            loginPanel.add("LoginScreen",ls);
+            CardLayout layout = (CardLayout) loginPanel.getLayout();
+            layout.next(loginPanel);
+        }
+        if(type.equals("BioTech")){
+            BioTechLoginPanel ls = new BioTechLoginPanel(loginPanel);
+            loginPanel.add("LoginScreen",ls);
+            CardLayout layout = (CardLayout) loginPanel.getLayout();
+            layout.next(loginPanel);
+        }
+        if(type.equals("Medical Analysis")){
+            MedicalAnalysisLoginPanel ls = new MedicalAnalysisLoginPanel(loginPanel);
+            loginPanel.add("LoginScreen",ls);
+            CardLayout layout = (CardLayout) loginPanel.getLayout();
+            layout.next(loginPanel);
+        }
+        if(type.equals("Medical Supplier")){
+            MedicalSupplierLoginPanel ls = new MedicalSupplierLoginPanel(loginPanel);
+            loginPanel.add("LoginScreen",ls);
+            CardLayout layout = (CardLayout) loginPanel.getLayout();
+            layout.next(loginPanel);
+        }
+        if(type.equals("Delivery")){
+            DeliveryLoginPanel ls = new DeliveryLoginPanel(loginPanel);
+            loginPanel.add("LoginScreen",ls);
+            CardLayout layout = (CardLayout) loginPanel.getLayout();
+            layout.next(loginPanel);
+        }
+        if(type.equals("Admin")){
+            AdminLoginPanel ls = new AdminLoginPanel(loginPanel);
+            loginPanel.add("LoginScreen",ls);
+            CardLayout layout = (CardLayout) loginPanel.getLayout();
+            layout.next(loginPanel);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void TypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TypeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TypeComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
