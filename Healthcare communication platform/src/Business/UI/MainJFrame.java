@@ -46,7 +46,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jSplitPane1.setDividerLocation(130);
+        jSplitPane1.setDividerLocation(370);
 
         LeftPanel.setLayout(new java.awt.CardLayout());
         jSplitPane1.setLeftComponent(LeftPanel);
