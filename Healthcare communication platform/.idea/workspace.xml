@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1518e086-6dbe-437c-a119-7f1868f4aacc" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/Business.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/Business.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Admin/NewJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Admin/NewJPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Biotechnology/NewJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Biotechnology/NewJPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Delivery/NewJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Delivery/NewJPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/NewJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/NewJPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/HospitalLoginPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/HospitalLoginPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/HospitalLoginPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/HospitalLoginPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/HospitalLoginPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/HospitalLoginPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/LoginPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/LoginPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/LoginPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/LoginPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/MainJFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/MainJFrame$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/MainJFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/MainJFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/MedicalAnalysis/NewJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/MedicalAnalysis/NewJPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/MedicalSupplier/NewJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/MedicalSupplier/NewJPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/RegisterJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/RegisterJPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/genfiles.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2YXgWkL5zMmHhAQqahsTujsiQdT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare communication platform&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="MainJFrame" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Business.UI.MainJFrame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Business.UI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Healthcare communication platform" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Healthcare communication platform" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="1518e086-6dbe-437c-a119-7f1868f4aacc" name="更改" comment="" />
+      <created>1700677373314</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700677373314</updated>
+      <workItem from="1700677374441" duration="352000" />
+      <workItem from="1700677734930" duration="24000" />
+      <workItem from="1700677760561" duration="1000" />
+      <workItem from="1700677777127" duration="61000" />
+      <workItem from="1700677841397" duration="214000" />
+      <workItem from="1700678065329" duration="78000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

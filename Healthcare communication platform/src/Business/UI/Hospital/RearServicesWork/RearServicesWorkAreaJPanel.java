@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Business.UI.Hospital;
+package Business.UI.Hospital.RearServicesWork;
 
 /**
  *
- * @author 15469
+ * @author zhangjinming
  */
-public class NewJPanel extends javax.swing.JPanel {
+public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form NewJPanel
+     * Creates new form RearServicesWorkAreaJPanel
      */
-    public NewJPanel() {
+    public RearServicesWorkAreaJPanel() {
         initComponents();
     }
 
