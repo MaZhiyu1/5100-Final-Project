@@ -49,6 +49,8 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane5 = new javax.swing.JScrollPane();
         tblPrescription = new javax.swing.JTable();
 
+        jPanel1.setBackground(java.awt.SystemColor.textHighlight);
+
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel1.setText("Service");
 
@@ -74,6 +76,11 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane8.setViewportView(tipsTextArea);
 
         btnSend.setText("Send");
+        btnSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Supplier:");
 
@@ -229,6 +236,10 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
     private void btnSearchGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchGenreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSearchGenreActionPerformed
+
+    private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSendActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -24,9 +24,9 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnMyProfile1" pref="336" max="32767" attributes="0"/>
-                  <Component id="btnMyProfile" max="32767" attributes="0"/>
-                  <Component id="btnMyProfile2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnAppointment" pref="336" max="32767" attributes="0"/>
+                  <Component id="btnHistory" max="32767" attributes="0"/>
+                  <Component id="btnMyProfile" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="187" max="32767" attributes="0"/>
           </Group>
@@ -36,18 +36,18 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-              <Component id="btnMyProfile1" min="-2" pref="76" max="-2" attributes="0"/>
+              <Component id="btnAppointment" min="-2" pref="76" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Component id="btnMyProfile" min="-2" pref="76" max="-2" attributes="0"/>
+              <Component id="btnHistory" min="-2" pref="76" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Component id="btnMyProfile2" min="-2" pref="76" max="-2" attributes="0"/>
+              <Component id="btnMyProfile" min="-2" pref="76" max="-2" attributes="0"/>
               <EmptySpace pref="196" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnMyProfile">
+    <Component class="javax.swing.JButton" name="btnHistory">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="99" red="ff" type="rgb"/>
@@ -58,10 +58,10 @@
         <Property name="text" type="java.lang.String" value="History"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMyProfileActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHistoryActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnMyProfile1">
+    <Component class="javax.swing.JButton" name="btnAppointment">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="99" red="ff" type="rgb"/>
@@ -72,10 +72,10 @@
         <Property name="text" type="java.lang.String" value="Appointment"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMyProfile1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAppointmentActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnMyProfile2">
+    <Component class="javax.swing.JButton" name="btnMyProfile">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="99" red="ff" type="rgb"/>
@@ -86,7 +86,7 @@
         <Property name="text" type="java.lang.String" value="My Profile"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMyProfile2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMyProfileActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

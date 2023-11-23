@@ -69,6 +69,8 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         jScrollPane8 = new javax.swing.JScrollPane();
         instructionTextArea = new javax.swing.JTextArea();
 
+        jPanel1.setBackground(java.awt.SystemColor.textHighlight);
+
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
         jLabel1.setText("Outpatient Management");
 
@@ -162,8 +164,18 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         jLabel13.setText("Result");
 
         btnRemove.setText("Remove");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
 
         btnFinish.setText("Finish");
+        btnFinish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinishActionPerformed(evt);
+            }
+        });
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -365,6 +377,14 @@ public class OutpatientJPanel extends javax.swing.JPanel {
     private void btnSearchGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchGenreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSearchGenreActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFinishActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

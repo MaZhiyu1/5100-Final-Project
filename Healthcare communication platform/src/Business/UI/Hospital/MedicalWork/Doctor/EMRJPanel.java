@@ -49,12 +49,19 @@ public class EMRJPanel extends javax.swing.JPanel {
         tblPastMedicalRecords = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
 
+        jPanel1.setBackground(java.awt.SystemColor.textHighlight);
+
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
         jLabel1.setText("EMR");
 
         jTextField1.setText("Search Name / ID");
 
         jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -204,6 +211,10 @@ public class EMRJPanel extends javax.swing.JPanel {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 839, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

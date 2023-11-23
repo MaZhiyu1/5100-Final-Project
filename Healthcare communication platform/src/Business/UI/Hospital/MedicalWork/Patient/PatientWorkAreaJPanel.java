@@ -26,36 +26,36 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnHistory = new javax.swing.JButton();
+        btnAppointment = new javax.swing.JButton();
         btnMyProfile = new javax.swing.JButton();
-        btnMyProfile1 = new javax.swing.JButton();
-        btnMyProfile2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 204));
 
+        btnHistory.setBackground(new java.awt.Color(255, 153, 51));
+        btnHistory.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        btnHistory.setText("History");
+        btnHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoryActionPerformed(evt);
+            }
+        });
+
+        btnAppointment.setBackground(new java.awt.Color(255, 153, 51));
+        btnAppointment.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
+        btnAppointment.setText("Appointment");
+        btnAppointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAppointmentActionPerformed(evt);
+            }
+        });
+
         btnMyProfile.setBackground(new java.awt.Color(255, 153, 51));
         btnMyProfile.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
-        btnMyProfile.setText("History");
+        btnMyProfile.setText("My Profile");
         btnMyProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMyProfileActionPerformed(evt);
-            }
-        });
-
-        btnMyProfile1.setBackground(new java.awt.Color(255, 153, 51));
-        btnMyProfile1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
-        btnMyProfile1.setText("Appointment");
-        btnMyProfile1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMyProfile1ActionPerformed(evt);
-            }
-        });
-
-        btnMyProfile2.setBackground(new java.awt.Color(255, 153, 51));
-        btnMyProfile2.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
-        btnMyProfile2.setText("My Profile");
-        btnMyProfile2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMyProfile2ActionPerformed(evt);
             }
         });
 
@@ -66,40 +66,40 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(277, 277, 277)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnMyProfile1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
-                    .addComponent(btnMyProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMyProfile2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAppointment, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                    .addComponent(btnHistory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMyProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(187, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(106, 106, 106)
-                .addComponent(btnMyProfile1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addComponent(btnMyProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(btnMyProfile2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMyProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(196, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHistoryActionPerformed
+
+    private void btnAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointmentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAppointmentActionPerformed
 
     private void btnMyProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyProfileActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMyProfileActionPerformed
 
-    private void btnMyProfile1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyProfile1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMyProfile1ActionPerformed
-
-    private void btnMyProfile2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyProfile2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMyProfile2ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAppointment;
+    private javax.swing.JButton btnHistory;
     private javax.swing.JButton btnMyProfile;
-    private javax.swing.JButton btnMyProfile1;
-    private javax.swing.JButton btnMyProfile2;
     // End of variables declaration//GEN-END:variables
 }

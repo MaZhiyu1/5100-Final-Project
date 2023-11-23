@@ -49,6 +49,8 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         btnRemove = new javax.swing.JButton();
         btnFinish = new javax.swing.JButton();
 
+        jPanel1.setBackground(java.awt.SystemColor.textHighlight);
+
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel1.setText("How can we help? ");
 
@@ -112,8 +114,18 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         jScrollPane8.setViewportView(tipsTextArea);
 
         btnRemove.setText("Remove");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
 
         btnFinish.setText("Finish");
+        btnFinish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinishActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -226,6 +238,14 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFinishActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -49,6 +49,8 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
         txtAllergy7 = new javax.swing.JTextField();
         btnSaveAll = new javax.swing.JButton();
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
+
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel1.setText("My Profile");
 
@@ -73,6 +75,11 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
         txtAllergy7.setText("Strong");
 
         btnSaveAll.setText("Save");
+        btnSaveAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveAllActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -190,6 +197,10 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSaveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAllActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaveAllActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
