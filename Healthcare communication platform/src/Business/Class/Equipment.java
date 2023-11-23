@@ -8,50 +8,21 @@ package Business.Class;
  *
  * @author 15469
  */
-public class Drug {
+public class Equipment {
     String name;
     String id;
-    String description;
     String type;
-    String status;
-    int process;
+    String description;
     int quantity;
-    public Drug(String name, String id, String description, String type) {
+
+    public Equipment(String name, String id, String type, String description) {
         this.name = name;
         this.id = id;
-        this.description = description;
         this.type = type;
-        status = "Processing";
-        process=0;
-        quantity=0;
+        this.description = description;
+        this.quantity = 0;
     }
 
-    public int getQuality() {
-        return quantity;
-    }
-
-    public void setQuality(int quantity) {
-        this.quantity = quantity;
-    }
-
-    
-    public int getProcess() {
-        return process;
-    }
-
-    public void setProcess(int process) {
-        this.process = process;
-    }
-    
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus() {
-        this.status = "completed";
-    }
-
-    
     public String getName() {
         return name;
     }
@@ -68,6 +39,14 @@ public class Drug {
         this.id = id;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -76,13 +55,17 @@ public class Drug {
         this.description = description;
     }
 
-    public String getType() {
-        return type;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
+    
+    
+    
+    
     
     
 }
