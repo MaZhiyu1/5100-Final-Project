@@ -8,7 +8,7 @@ package Business.Class;
  *
  * @author 15469
  */
-public class Drug {
+public class Vaccine {
     String name;
     String id;
     String description;
@@ -16,7 +16,8 @@ public class Drug {
     String status;
     int process;
     int quantity;
-    public Drug(String name, String id, String description, String type) {
+    
+    public Vaccine(String name, String id, String description, String type) {
         this.name = name;
         this.id = id;
         this.description = description;
@@ -26,31 +27,15 @@ public class Drug {
         quantity=0;
     }
 
-    public int getQuality() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuality(int quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
     
-    public int getProcess() {
-        return process;
-    }
-
-    public void setProcess(int process) {
-        this.process = process;
-    }
-    
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus() {
-        this.status = "completed";
-    }
-
     
     public String getName() {
         return name;
@@ -83,6 +68,24 @@ public class Drug {
     public void setType(String type) {
         this.type = type;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus() {
+        this.status = "completed";
+    }
+
+    public int getProcess() {
+        return process;
+    }
+
+    public void setProcess(int process) {
+        this.process = process;
+    }
+    
+    
     
     
 }

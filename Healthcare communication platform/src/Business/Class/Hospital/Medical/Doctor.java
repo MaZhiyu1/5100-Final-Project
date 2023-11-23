@@ -4,6 +4,7 @@
  */
 package Business.Class.Hospital.Medical;
 
+import Business.Class.Drug;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -22,8 +23,13 @@ public class Doctor {
     int avail;
     ImageIcon logoImage;
     ArrayList<Patient> patients;
-    
+    ArrayList<Drug> drugs;
     int enabled;
+    String contact;
+    String department;
+    String specialty;
+    String eductionBackground;
+    
     
     
     public Doctor(int id, String name, String pwd, String hospital) {
