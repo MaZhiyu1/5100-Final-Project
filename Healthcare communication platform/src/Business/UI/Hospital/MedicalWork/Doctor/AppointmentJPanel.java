@@ -63,7 +63,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Sequence", "Name", "Patient ID", "Insurance "
+                "Sequence ID", "Name", "Patient ID", "Insurance "
             }
         ));
         jScrollPane1.setViewportView(tblAppointment);

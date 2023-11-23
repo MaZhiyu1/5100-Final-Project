@@ -62,7 +62,7 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Project Name", "Company", "Type", "Instrction", "Status"
+                "ID", "Project Name", "Company", "Type", "Instruction", "Status"
             }
         ));
         jScrollPane2.setViewportView(jTable1);

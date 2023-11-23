@@ -135,7 +135,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
         txtSearchGenre.setText("Search Name/Type");
 
-        cmbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine", "Vaccine", "Operation", "Transfer" }));
+        cmbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine", "Vaccine", "Equipment", "Operation", "Transfer" }));
 
         tblPrescription.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
