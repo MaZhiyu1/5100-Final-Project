@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1518e086-6dbe-437c-a119-7f1868f4aacc" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/Business.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/Business.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Admin/NewJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Admin/NewJPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Biotechnology/NewJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Biotechnology/NewJPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Delivery/NewJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Delivery/NewJPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/NewJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/NewJPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/HospitalLoginPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/HospitalLoginPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/HospitalLoginPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/HospitalLoginPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/HospitalLoginPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/HospitalLoginPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/LoginPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/LoginPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/LoginPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/LoginPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/MainJFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/MainJFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/MainJFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/MainJFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/MedicalAnalysis/NewJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/MedicalAnalysis/NewJPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/MedicalSupplier/NewJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/MedicalSupplier/NewJPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/RegisterJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/RegisterJPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/genfiles.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/MedicalWork/Patient/PatientWorkAreaJPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/MedicalWork/Patient/PatientWorkAreaJPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/UI/Hospital/MedicalWork/Patient/PatientWorkAreaJPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/UI/Hospital/MedicalWork/Patient/PatientWorkAreaJPanel.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/UI/Hospital/MedicalWork/Patient/PatientWorkAreaJPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/UI/Hospital/MedicalWork/Patient/PatientWorkAreaJPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +89,7 @@
       <workItem from="1700677777127" duration="61000" />
       <workItem from="1700677841397" duration="214000" />
       <workItem from="1700678065329" duration="78000" />
+      <workItem from="1700700014204" duration="619000" />
     </task>
     <servers />
   </component>
