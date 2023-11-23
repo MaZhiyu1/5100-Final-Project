@@ -53,13 +53,13 @@ public class DoctorLabJPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Type", "Status", "Instrction"
+                "ID", "Project Name", "Company", "Type", "Instrction", "Status"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
