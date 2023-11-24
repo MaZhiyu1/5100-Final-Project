@@ -44,6 +44,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         jScrollPane8 = new javax.swing.JScrollPane();
         tipsTextArea = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        btnBack1 = new javax.swing.JButton();
 
         jPanel1.setBackground(java.awt.SystemColor.textHighlight);
 
@@ -96,6 +97,13 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Type就是内科 - Internal Medicine 外科 - Surgery 儿科 - Pediatrics");
 
+        btnBack1.setText("Back");
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -120,7 +128,10 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(22, 22, 22))
-                            .addComponent(btnAdd, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnBack1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAdd))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -166,7 +177,9 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel14)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
-                .addComponent(btnAdd)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBack1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(200, Short.MAX_VALUE))
         );
 
@@ -192,9 +205,14 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddActionPerformed
 
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBack1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnSearchGenre;
     private javax.swing.JComboBox<String> cmbSelectGenre;
     private javax.swing.JLabel jLabel1;

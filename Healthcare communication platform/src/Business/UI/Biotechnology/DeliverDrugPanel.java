@@ -46,18 +46,21 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Delivery");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 38, 694, -1));
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(6, 38, 694, 22);
 
         cmbDeliveryCompany.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "UPS", "USPS"}));
-        jPanel1.add(cmbDeliveryCompany, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 88, 152, -1));
+        jPanel1.add(cmbDeliveryCompany);
+        cmbDeliveryCompany.setBounds(228, 88, 152, 23);
 
         jLabel1.setText("Delivery Company");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 91, -1, -1));
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(115, 91, 107, 17);
 
         tblMedical.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -72,13 +75,16 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblMedical);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 149, 507, 133));
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(115, 149, 507, 133);
 
         cmbHospital.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boston Rehabilitation Center", "Future Medical Institute", "Verdant Health Hospital"}));
-        jPanel1.add(cmbHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 88, 170, -1));
+        jPanel1.add(cmbHospital);
+        cmbHospital.setBounds(452, 88, 170, 23);
 
         jLabel2.setText("Type:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, -1));
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(480, 120, 33, 17);
 
         tblCart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,32 +99,40 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(tblCart);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 342, 507, 133));
+        jPanel1.add(jScrollPane3);
+        jScrollPane3.setBounds(115, 342, 507, 133);
 
         btnAdd.setText("ADD");
-        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, -1, -1));
+        jPanel1.add(btnAdd);
+        btnAdd.setBounds(550, 300, 72, 23);
 
         btnSubmit.setText("Submit");
-        jPanel1.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 493, -1, -1));
+        jPanel1.add(btnSubmit);
+        btnSubmit.setBounds(550, 493, 72, 23);
 
         btnDelete.setText("Delete");
-        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(454, 493, -1, -1));
+        jPanel1.add(btnDelete);
+        btnDelete.setBounds(454, 493, 72, 23);
 
         jLabel4.setText("Quantity");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 303, -1, -1));
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(382, 303, 49, 17);
 
         txtQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtQuantityActionPerformed(evt);
             }
         });
-        jPanel1.add(txtQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 300, 87, -1));
+        jPanel1.add(txtQuantity);
+        txtQuantity.setBounds(457, 300, 87, 23);
 
         cmbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine", "Vaccine", "Equipment", "Operation", "Transfer" }));
-        jPanel1.add(cmbSelectGenre, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
+        jPanel1.add(cmbSelectGenre);
+        cmbSelectGenre.setBounds(520, 120, 98, 23);
 
         jLabel5.setText("Hospital");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 91, -1, -1));
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(386, 91, 48, 17);
 
         jScrollPane1.setViewportView(jPanel1);
 
