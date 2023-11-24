@@ -4,17 +4,21 @@
  */
 package Business.UI.Hospital.MedicalWork.Doctor;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author zhangjinming
  */
 public class AppointmentJPanel extends javax.swing.JPanel {
-
+    JPanel RightPanel;
     /**
      * Creates new form AppointmentJPanel
      */
-    public AppointmentJPanel() {
+    public AppointmentJPanel(JPanel rp) {
         initComponents();
+        this.RightPanel=RightPanel;
     }
 
     /**
@@ -104,6 +108,11 @@ public class AppointmentJPanel extends javax.swing.JPanel {
         jLabel9.setText("Insurance:");
 
         btnBack1.setText("Back");
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -216,6 +225,13 @@ public class AppointmentJPanel extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        // TODO add your handling code here:
+        RightPanel.remove(this);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.previous(RightPanel);
+    }//GEN-LAST:event_btnBack1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

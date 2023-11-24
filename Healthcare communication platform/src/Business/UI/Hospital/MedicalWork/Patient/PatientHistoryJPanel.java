@@ -4,17 +4,21 @@
  */
 package Business.UI.Hospital.MedicalWork.Patient;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author zhangjinming
  */
 public class PatientHistoryJPanel extends javax.swing.JPanel {
-
+        JPanel RightPanel;
     /**
      * Creates new form PatientHistoryJPanel
      */
-    public PatientHistoryJPanel() {
+    public PatientHistoryJPanel(JPanel rp) {
         initComponents();
+        this.RightPanel=RightPanel;
     }
 
     /**
@@ -192,6 +196,9 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
         // TODO add your handling code here:
+        RightPanel.remove(this);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.previous(RightPanel);
     }//GEN-LAST:event_btnBack1ActionPerformed
 
 

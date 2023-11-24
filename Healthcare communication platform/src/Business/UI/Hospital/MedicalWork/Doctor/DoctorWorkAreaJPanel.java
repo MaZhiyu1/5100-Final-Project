@@ -4,17 +4,21 @@
  */
 package Business.UI.Hospital.MedicalWork.Doctor;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author zhangjinming
  */
 public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
-
+    private JPanel RightPanel;
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public DoctorWorkAreaJPanel() {
+    public DoctorWorkAreaJPanel(JPanel RightPanel) {
         initComponents();
+          this.RightPanel=RightPanel;
     }
 
     /**
@@ -163,26 +167,51 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnOutPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutPatientActionPerformed
         // TODO add your handling code here:
+    OutpatientJPanel op = new OutpatientJPanel(RightPanel);
+    RightPanel.add("OutpatientJPanel", op);
+    CardLayout layout = (CardLayout) RightPanel.getLayout();
+    layout.next(RightPanel);
     }//GEN-LAST:event_btnOutPatientActionPerformed
 
     private void btnAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointmentActionPerformed
         // TODO add your handling code here:
+    AppointmentJPanel ap = new AppointmentJPanel(RightPanel);
+    RightPanel.add("AppointmentJPanel", ap);
+    CardLayout layout = (CardLayout) RightPanel.getLayout();
+    layout.next(RightPanel);
     }//GEN-LAST:event_btnAppointmentActionPerformed
 
     private void btnEMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEMRActionPerformed
         // TODO add your handling code here:
+    EMRJPanel emrp = new EMRJPanel(RightPanel);
+    RightPanel.add("EMRJPanel", emrp);
+    CardLayout layout = (CardLayout) RightPanel.getLayout();
+    layout.next(RightPanel);
     }//GEN-LAST:event_btnEMRActionPerformed
 
     private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
         // TODO add your handling code here:
+    DoctorRequestJPanel drp = new DoctorRequestJPanel(RightPanel);
+    RightPanel.add("DoctorRequestJPanel", drp);
+    CardLayout layout = (CardLayout) RightPanel.getLayout();
+    layout.next(RightPanel);
+
     }//GEN-LAST:event_btnRequestActionPerformed
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
+    DoctorProfileJPanel dpp = new DoctorProfileJPanel(RightPanel);
+    RightPanel.add("DoctorProfileJPanel", dpp);
+    CardLayout layout = (CardLayout) RightPanel.getLayout();
+    layout.next(RightPanel);
     }//GEN-LAST:event_btnProfileActionPerformed
 
     private void btnLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLabActionPerformed
         // TODO add your handling code here:
+    DoctorLabJPanel dlp = new DoctorLabJPanel(RightPanel);
+    RightPanel.add("DoctorLabJPanel", dlp);
+    CardLayout layout = (CardLayout) RightPanel.getLayout();
+    layout.next(RightPanel);
     }//GEN-LAST:event_btnLabActionPerformed
 
 
