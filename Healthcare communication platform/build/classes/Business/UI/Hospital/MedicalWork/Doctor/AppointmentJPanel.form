@@ -81,7 +81,7 @@
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Component id="txtName2" min="-2" pref="166" max="-2" attributes="0"/>
+                                                          <Component id="txtPatientAge" min="-2" pref="166" max="-2" attributes="0"/>
                                                           <Group type="102" attributes="0">
                                                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -96,8 +96,8 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="txtInsurance" pref="173" max="32767" attributes="0"/>
-                                                  <Component id="txtName3" max="32767" attributes="0"/>
-                                                  <Component id="txtName1" max="32767" attributes="0"/>
+                                                  <Component id="txtPatientGender" max="32767" attributes="0"/>
+                                                  <Component id="txtPatientId" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -125,14 +125,14 @@
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtName1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPatientId" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtName2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPatientAge" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtName3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPatientGender" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -224,7 +224,7 @@
                 <Property name="text" type="java.lang.String" value="Patient ID:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtName1">
+            <Component class="javax.swing.JTextField" name="txtPatientId">
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane3">
               <AuxValues>
@@ -233,7 +233,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable2">
+                <Component class="javax.swing.JTable" name="tblPastMedicalRecords">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
@@ -294,7 +294,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                <Component class="javax.swing.JTextArea" name="symptomTextArea">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
@@ -307,14 +307,14 @@
                 <Property name="text" type="java.lang.String" value="Age:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtName2">
+            <Component class="javax.swing.JTextField" name="txtPatientAge">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Male/Female:"/>
+                <Property name="text" type="java.lang.String" value="Gender:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtName3">
+            <Component class="javax.swing.JTextField" name="txtPatientGender">
             </Component>
             <Component class="javax.swing.JTextField" name="txtAllergy">
             </Component>
