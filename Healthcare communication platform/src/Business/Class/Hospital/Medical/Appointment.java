@@ -14,17 +14,27 @@ public class Appointment {
     int id;
     Patient patient;
     Doctor doctor;
-    private Date date;
     private String insurance;
     private String allergy;
     private String symptom;
-
+    private int status;
     public Appointment(int id, Patient patient, Doctor doctor) {
         this.id = id;
         this.patient = patient;
         this.doctor = doctor;
+        status=0;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    
+    
     public int getId() {
         return id;
     }
@@ -49,13 +59,7 @@ public class Appointment {
         this.doctor = doctor;
     }
 
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     public String getInsurance() {
         return insurance;

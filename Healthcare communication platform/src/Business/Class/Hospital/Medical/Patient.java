@@ -13,8 +13,6 @@ import javax.swing.ImageIcon;
  */
 public class Patient extends Person{
     
-    String hospital;
-    String doctor;
     ImageIcon logoImage;
     MedicalHistoryList mhl;
     ArrayList<Appointment> appointmentList;
@@ -27,8 +25,17 @@ public class Patient extends Person{
         this.name = name;
         this.pwd = pwd;
         mhl=new MedicalHistoryList(id,name);
+        appointmentList = new ArrayList<>();
+        prescriptionList = new ArrayList<>();
     }
 
+    public void makeAppoinment(Doctor e){
+        Appointment ap = new Appointment(1,this,e);
+        appointmentList.add(ap);
+    }
+    
+    
+    
     public int getId() {
         return id;
     }
@@ -69,21 +76,7 @@ public class Patient extends Person{
         this.gender = gender;
     }
 
-    public String getHospital() {
-        return hospital;
-    }
 
-    public void setHospital(String hospital) {
-        this.hospital = hospital;
-    }
-
-    public String getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(String doctor) {
-        this.doctor = doctor;
-    }
 
     public ImageIcon getLogoImage() {
         return logoImage;

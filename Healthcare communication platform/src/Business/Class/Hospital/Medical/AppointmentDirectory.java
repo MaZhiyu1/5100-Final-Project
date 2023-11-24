@@ -17,4 +17,20 @@ public class AppointmentDirectory {
         appointments = new ArrayList<>();
     }
 
+    public void add(Appointment a){
+        appointments.add(a);
+    }
+    
+    
+    public ArrayList<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(ArrayList<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+    
+    
+    
+
 }
