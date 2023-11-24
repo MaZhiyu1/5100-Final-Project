@@ -10,6 +10,7 @@ import Business.Class.Medicine;
 import Business.Class.MedicineDirectory;
 import Business.Class.Vaccine;
 import Business.Class.VaccineDirectory;
+import java.util.ArrayList;
 
 /**
  *
@@ -30,16 +31,16 @@ public class HospitalInventory {
         return ed;
     }
 
-    public void setEd(EquipmentDirectory ed) {
-        this.ed = ed;
+    public void setEd(ArrayList<Equipment> e) {
+        ed.setEquipments(e);
     }
 
     public VaccineDirectory getVd() {
         return vd;
     }
 
-    public void setVd(VaccineDirectory vd) {
-        this.vd = vd;
+    public void setVd(ArrayList<Vaccine> vaccine) {
+        vd.setVaccines(vaccine);
     }
 
     public void addVaccine(Vaccine e){
@@ -102,8 +103,8 @@ public class HospitalInventory {
         return md;
     }
 
-    public void setMd(MedicineDirectory md) {
-        this.md = md;
+    public void setMd(ArrayList<Medicine> medicines) {
+        md.setDrugs(medicines);
     }
 
     
