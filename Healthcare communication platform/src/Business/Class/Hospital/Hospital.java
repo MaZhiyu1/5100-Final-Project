@@ -5,6 +5,8 @@
 package Business.Class.Hospital;
 
 import Business.Class.Hospital.Medical.Doctor;
+import Business.Class.Hospital.Medical.Patient;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -13,43 +15,36 @@ import java.util.List;
  * @author 15469
  */
 public class Hospital {
-    private String id;
     private String name;
     private String address;
-    private String type;
-    private List<Doctor> doctorList;
+    private ArrayList<Doctor> doctorList;
+    private ArrayList<Patient> patients;
+    private HospitalInventory hi;
+    private HospitalAppoinment ha;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Hospital(String name, String address) {
         this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
         this.address = address;
+        doctorList = new ArrayList<>();
+        patients = new ArrayList<>();
+        hi = new HospitalInventory();
+        ha = new HospitalAppoinment();
     }
+    
+    public void addDoctor(Doctor e){
+        doctorList.add(e);
+    }
+    
+    public void addPatient(Patient e){
+        patients.add(e);
+    }
+ 
 
-    public String getType() {
-        return type;
-    }
+    
+    
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public List<Doctor> getDoctorList() {
-        return doctorList;
-    }
-
-    public void setDoctorList(List<Doctor> doctorList) {
-        this.doctorList = doctorList;
-    }
+    
+    
     
     
     

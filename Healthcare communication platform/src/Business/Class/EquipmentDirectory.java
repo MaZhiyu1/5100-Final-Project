@@ -18,4 +18,19 @@ public class EquipmentDirectory {
     public EquipmentDirectory() {
         equipments=new ArrayList<>();
     }
+
+    public ArrayList<Equipment> getEquipments() {
+        return equipments;
+    }
+
+    public void addEquipment(Equipment e){
+        equipments.add(e);
+    }
+    
+    public void setEquipments(ArrayList<Equipment> equipments) {
+        this.equipments = equipments;
+    }
+    
+    
+    
 }

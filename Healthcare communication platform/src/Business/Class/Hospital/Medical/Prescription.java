@@ -5,6 +5,8 @@
 package Business.Class.Hospital.Medical;
 
 import Business.Class.Medicine;
+import Business.Class.Vaccine;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,11 +17,12 @@ public class Prescription {
     
     private int id;
     
-    private String name;
     
-    private String patientId;
+    private int patientId;
     
-    private List<Medicine> drugList;
+    private ArrayList<Medicine> drugList;
+    private ArrayList<Vaccine> vaccineList;
+    
     
     private Doctor doctor;
     
@@ -27,6 +30,28 @@ public class Prescription {
     
     private String pathema;
 
+    public Prescription(int id, int patientId, Doctor doctor, String hospital, String pathema) {
+        this.id = id;
+        this.patientId = patientId;
+        this.doctor = doctor;
+        this.hospital = hospital;
+        this.pathema = pathema;
+        drugList = new ArrayList<>();
+        vaccineList = new ArrayList<>();
+    }
+
+    public ArrayList<Vaccine> getVaccineList() {
+        return vaccineList;
+    }
+
+    public void setVaccineList(ArrayList<Vaccine> vaccineList) {
+        this.vaccineList = vaccineList;
+    }
+
+    
+    
+    
+    
     public int getId() {
         return id;
     }
@@ -35,19 +60,13 @@ public class Prescription {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getPatientId() {
+    public int getPatientId() {
         return patientId;
     }
 
-    public void setPatientId(String patientId) {
+    public void setPatientId(int patientId) {
         this.patientId = patientId;
     }
 
@@ -55,7 +74,7 @@ public class Prescription {
         return drugList;
     }
 
-    public void setDrugList(List<Medicine> drugList) {
+    public void setDrugList(ArrayList<Medicine> drugList) {
         this.drugList = drugList;
     }
 
