@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Healthcare_communication_platform">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Healthcare communication platform/dist/Healthcare_communication_platform.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

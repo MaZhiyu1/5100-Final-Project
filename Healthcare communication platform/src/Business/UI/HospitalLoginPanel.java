@@ -9,7 +9,8 @@ import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Doctor;
 import Business.Class.Hospital.Medical.Patient;
 import Business.UI.Hospital.MedicalWork.Doctor.DoctorWorkAreaJPanel;
-import Business.UI.Hospital.PatientWork.PatientWorkAreaJPanel;
+import Business.UI.Hospital.MedicalWork.Patient.PatientWorkAreaJPanel;
+
 import Validation.Validation;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -263,13 +264,13 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
             return;
         }
         if(o instanceof Doctor){
-            DoctorWorkAreaJPanel dw = new DoctorWorkAreaJPanel();
+            DoctorWorkAreaJPanel dw = new DoctorWorkAreaJPanel(RightPanel);
             RightPanel.add("LoginScreen",dw);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
         }
         else if(o instanceof Patient){
-            PatientWorkAreaJPanel pw = new PatientWorkAreaJPanel();
+            PatientWorkAreaJPanel pw = new PatientWorkAreaJPanel(RightPanel);
             RightPanel.add("LoginScreen",pw);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
