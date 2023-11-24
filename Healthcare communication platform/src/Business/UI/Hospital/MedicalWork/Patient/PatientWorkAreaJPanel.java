@@ -2,19 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Business.UI.Hospital.PatientWork;
+package Business.UI.Hospital.MedicalWork.Patient;
+
+import Business.UI.Hospital.MedicalWork.Doctor.OutpatientJPanel;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
 
 /**
  *
  * @author zhangjinming
  */
 public class PatientWorkAreaJPanel extends javax.swing.JPanel {
-
+        private JPanel RightPanel;
     /**
      * Creates new form PatientWorkAreaJPanel
      */
-    public PatientWorkAreaJPanel() {
+    public PatientWorkAreaJPanel(JPanel RightPanel) {
         initComponents();
+        this.RightPanel=RightPanel;
     }
 
     /**
@@ -126,14 +131,26 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
         // TODO add your handling code here:
+    PatientHistoryJPanel php = new PatientHistoryJPanel(RightPanel);
+    RightPanel.add("PatientHistoryJPanel", php);
+    CardLayout layout = (CardLayout) RightPanel.getLayout();
+    layout.next(RightPanel);
     }//GEN-LAST:event_btnHistoryActionPerformed
 
     private void btnAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointmentActionPerformed
         // TODO add your handling code here:
+    PatientAppointmentJPanel pap = new PatientAppointmentJPanel(RightPanel);
+    RightPanel.add("PatientAppointmentJPanel", pap);
+    CardLayout layout = (CardLayout) RightPanel.getLayout();
+    layout.next(RightPanel);
     }//GEN-LAST:event_btnAppointmentActionPerformed
 
     private void btnMyProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMyProfileActionPerformed
         // TODO add your handling code here:
+    PatientProfileJPanel ppp = new PatientProfileJPanel(RightPanel);
+    RightPanel.add("PatientProfileJPanel", ppp);
+    CardLayout layout = (CardLayout) RightPanel.getLayout();
+    layout.next(RightPanel);
     }//GEN-LAST:event_btnMyProfileActionPerformed
 
 
