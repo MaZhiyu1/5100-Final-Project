@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Business.Class.Hospital.HSupplier;
+package Business.Class.Hospital.RearServices;
 
 /**
  *
  * @author 15469
  */
-public class HSupplier {
+public class RearServices {
     String name;
     String id;
     String pwd;
@@ -16,7 +16,7 @@ public class HSupplier {
     
     int enabled;
 
-    public HSupplier(String name, String id, String pwd, String hospital) {
+    public RearServices(String name, String id, String pwd, String hospital) {
         this.name = name;
         this.id = id;
         this.pwd = pwd;

@@ -4,8 +4,8 @@
  */
 package Business.Class.Hospital;
 
-import Business.Class.Drug;
-import Business.Class.DrugList;
+import Business.Class.Medicine;
+import Business.Class.MedicineDirectory;
 import Business.Class.Hospital.Medical.Doctor;
 import java.util.List;
 

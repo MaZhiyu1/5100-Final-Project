@@ -4,7 +4,7 @@
  */
 package Business.Class.Hospital.Medical;
 
-import Business.Class.Drug;
+import Business.Class.Medicine;
 import Business.Class.Hospital.Lab;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;

@@ -4,7 +4,7 @@
  */
 package Business.Class.Hospital.Medical;
 
-import Business.Class.Drug;
+import Business.Class.Medicine;
 import java.util.List;
 
 /**
@@ -19,7 +19,7 @@ public class Prescription {
     
     private String patientId;
     
-    private List<Drug> drugList;
+    private List<Medicine> drugList;
     
     private Doctor doctor;
     
@@ -51,11 +51,11 @@ public class Prescription {
         this.patientId = patientId;
     }
 
-    public List<Drug> getDrugList() {
+    public List<Medicine> getDrugList() {
         return drugList;
     }
 
-    public void setDrugList(List<Drug> drugList) {
+    public void setDrugList(List<Medicine> drugList) {
         this.drugList = drugList;
     }
 

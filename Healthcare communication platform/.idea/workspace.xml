@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1518e086-6dbe-437c-a119-7f1868f4aacc" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/MedicalWork/Patient/PatientWorkAreaJPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/MedicalWork/Patient/PatientWorkAreaJPanel.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/PatientWork/PatientWorkAreaJPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/UI/Hospital/MedicalWork/Patient/PatientWorkAreaJPanel.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/UI/Hospital/MedicalWork/Patient/PatientWorkAreaJPanel.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/UI/Hospital/MedicalWork/Patient/PatientWorkAreaJPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/UI/Hospital/MedicalWork/Patient/PatientWorkAreaJPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,13 +61,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Healthcare communication platform" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -90,6 +77,7 @@
       <workItem from="1700677841397" duration="214000" />
       <workItem from="1700678065329" duration="78000" />
       <workItem from="1700700014204" duration="619000" />
+      <workItem from="1700835522084" duration="418000" />
     </task>
     <servers />
   </component>

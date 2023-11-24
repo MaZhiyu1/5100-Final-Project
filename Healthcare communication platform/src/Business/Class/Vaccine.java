@@ -4,7 +4,7 @@
  */
 package Business.Class;
 
-import Business.Class.Hospital.HSupplier.HSupplier;
+import Business.Class.Hospital.RearServices.RearServices;
 
 /**
  *
@@ -19,7 +19,7 @@ public class Vaccine {
     int process;
     int quantity;
     private String factory;
-    private HSupplier supplier;
+    private RearServices supplier;
     
     public Vaccine(String name, String id, String description, String type) {
         this.name = name;

@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author 15469
  */
-public class Drug {
+public class Medicine {
     String name;
     String id;
     String description;
@@ -20,7 +20,7 @@ public class Drug {
     int quantity;
     private Date productionDate;
     private Date expireDate;
-    public Drug(String name, String id, String description, String type) {
+    public Medicine(String name, String id, String description, String type) {
         this.name = name;
         this.id = id;
         this.description = description;

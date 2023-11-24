@@ -10,9 +10,9 @@ package Business.Class;
  */
 public class Request {
     int requestID;
-    DrugList drugs;
-    EquipmentList equipments;
-    VaccineList vaccines;
+    MedicineDirectory medicines;
+    EquipmentDirectory equipments;
+    VaccineDirectory vaccines;
     String type;
     String tips;
     
