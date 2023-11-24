@@ -58,7 +58,7 @@
                                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtProcess" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                                               <Component id="jProgressBar1" min="-2" pref="358" max="-2" attributes="0"/>
                                           </Group>
@@ -71,9 +71,9 @@
                                               </Group>
                                               <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtName" max="32767" attributes="0"/>
-                                                  <Component id="txtId" max="32767" attributes="0"/>
-                                                  <Component id="txtType" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txtProjectName" max="32767" attributes="0"/>
+                                                  <Component id="txtProjectId" max="32767" attributes="0"/>
+                                                  <Component id="txtProjectType" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jScrollPane3" alignment="0" pref="287" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -107,7 +107,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtProcess" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnResearch" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jProgressBar1" min="-2" pref="12" max="-2" attributes="0"/>
@@ -115,16 +115,16 @@
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProjectName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtId" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProjectId" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtType" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtProjectType" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -155,7 +155,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="tblLab">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="6" rowCount="4">
@@ -213,7 +213,7 @@
                 <Property name="text" type="java.lang.String" value="My Project"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="txtProcess">
             </Component>
             <Component class="javax.swing.JProgressBar" name="jProgressBar1">
             </Component>
@@ -230,21 +230,21 @@
                 <Property name="text" type="java.lang.String" value="Name:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtName">
+            <Component class="javax.swing.JTextField" name="txtProjectName">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ID:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtId">
+            <Component class="javax.swing.JTextField" name="txtProjectId">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Type:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtType">
+            <Component class="javax.swing.JTextField" name="txtProjectType">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>

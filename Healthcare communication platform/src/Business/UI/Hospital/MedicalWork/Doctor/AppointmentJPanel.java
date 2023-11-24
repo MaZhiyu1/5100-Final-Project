@@ -34,17 +34,17 @@ public class AppointmentJPanel extends javax.swing.JPanel {
         txtName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtName1 = new javax.swing.JTextField();
+        txtPatientId = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblPastMedicalRecords = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        symptomTextArea = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
-        txtName2 = new javax.swing.JTextField();
+        txtPatientAge = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtName3 = new javax.swing.JTextField();
+        txtPatientGender = new javax.swing.JTextField();
         txtAllergy = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -72,7 +72,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Patient ID:");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblPastMedicalRecords.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -83,20 +83,20 @@ public class AppointmentJPanel extends javax.swing.JPanel {
                 "Sequence", "Name", "Patient ID", "Insurance "
             }
         ));
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(tblPastMedicalRecords);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel4.setText("Past Medical Records");
 
         jLabel5.setText("Symptom description：");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        symptomTextArea.setColumns(20);
+        symptomTextArea.setRows(5);
+        jScrollPane4.setViewportView(symptomTextArea);
 
         jLabel6.setText("Age:");
 
-        jLabel7.setText("Male/Female:");
+        jLabel7.setText("Gender:");
 
         jLabel8.setText("Allergy：");
 
@@ -136,7 +136,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(txtName2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtPatientAge, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addComponent(jLabel8)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -147,8 +147,8 @@ public class AppointmentJPanel extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtInsurance, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                                            .addComponent(txtName3)
-                                            .addComponent(txtName1))))
+                                            .addComponent(txtPatientGender)
+                                            .addComponent(txtPatientId))))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel4)
                                     .addGap(373, 373, 373))))))
@@ -166,13 +166,13 @@ public class AppointmentJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(txtName1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPatientAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(txtName3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPatientGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAllergy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,14 +224,14 @@ public class AppointmentJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea symptomTextArea;
     private javax.swing.JTable tblAppointment;
+    private javax.swing.JTable tblPastMedicalRecords;
     private javax.swing.JTextField txtAllergy;
     private javax.swing.JTextField txtInsurance;
     private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtName1;
-    private javax.swing.JTextField txtName2;
-    private javax.swing.JTextField txtName3;
+    private javax.swing.JTextField txtPatientAge;
+    private javax.swing.JTextField txtPatientGender;
+    private javax.swing.JTextField txtPatientId;
     // End of variables declaration//GEN-END:variables
 }
