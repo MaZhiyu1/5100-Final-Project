@@ -4,6 +4,7 @@
  */
 package Business.UI;
 
+import Business.Business;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -17,9 +18,13 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
      * Creates new form MedicalSupplierLoginPanel
      */
     JPanel leftPanel;
-    public MedicalSupplierLoginPanel(JPanel leftPanel) {
+    JPanel RightPanel;
+    Business bz;
+    public MedicalSupplierLoginPanel(JPanel leftPanel,JPanel RightPanel,Business bz) {
         initComponents();
         this.leftPanel=leftPanel;
+        this.RightPanel= RightPanel;
+        this.bz=bz;
     }
 
     /**

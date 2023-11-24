@@ -4,6 +4,7 @@
  */
 package Business.UI;
 
+import Business.Business;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -22,7 +23,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }
     
     private void setLoginScreen() {
-        LoginPanel ls = new LoginPanel(LeftPanel);
+        Business business = new Business();
+        LoginPanel ls = new LoginPanel(LeftPanel,RightPanel,business);
         LeftPanel.add("LoginScreen",ls);
        CardLayout layout = (CardLayout) LeftPanel.getLayout();
        layout.next(LeftPanel);

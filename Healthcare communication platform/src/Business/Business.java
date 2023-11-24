@@ -18,12 +18,45 @@ import java.util.ArrayList;
  * @author 15469
  */
 public class Business {
+    
     private Hospital h1;
     private Hospital h2;
     private Hospital h3;
-
+    private ArrayList<Hospital> hospital;
+    private ArrayList<Patient> patients;
+    
     public Business() {
+        hospital = new ArrayList<>();
+        patients = new ArrayList<>();
         Hospital1();
+        hospital.add(h1);
+        
+    }
+
+    public ArrayList<Hospital> getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(ArrayList<Hospital> hospital) {
+        this.hospital = hospital;
+    }
+
+    
+    
+    public Hospital getH1() {
+        return h1;
+    }
+
+    public void setH1(Hospital h1) {
+        this.h1 = h1;
+    }
+
+    public ArrayList<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(ArrayList<Patient> patients) {
+        this.patients = patients;
     }
     
     
@@ -118,7 +151,10 @@ public class Business {
         h1.getHi().setMd(M);
         h1.getHi().setVd(V);
         h1.getHi().setEd(E);
-       
+        
+        patients.add(patient1);
+        patients.add(patient2);
+        patients.add(patient3);
     }
     
     

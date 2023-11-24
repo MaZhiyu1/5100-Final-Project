@@ -4,7 +4,15 @@
  */
 package Business.UI;
 
+import Business.Business;
+import Business.Class.Hospital.Hospital;
+import Business.Class.Hospital.Medical.Doctor;
+import Business.Class.Hospital.Medical.Patient;
+import Business.UI.Hospital.MedicalWork.Doctor.DoctorWorkAreaJPanel;
+import Business.UI.Hospital.PatientWork.PatientWorkAreaJPanel;
+import Validation.Validation;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -17,9 +25,19 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
      * Creates new form LoginPanel
      */
     JPanel leftPanel;
-    public HospitalLoginPanel(JPanel leftPanel) {
+    Business bz;
+    JPanel RightPanel;
+    String name;
+    String pwd;
+    String hospital;
+    String type;
+    public HospitalLoginPanel(JPanel leftPanel,JPanel RightPanel,Business bz) {
         initComponents();
         this.leftPanel=leftPanel;
+        this.bz=bz;
+        this.RightPanel= RightPanel;
+
+        type = "";
     }
 
     /**
@@ -44,7 +62,7 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         Back = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        hoCombox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setText("Username:");
@@ -68,20 +86,45 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
         jLabel3.setText("Login Page");
 
         jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Register");
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Patient");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Doctor");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText("Analysis");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jRadioButton4);
         jRadioButton4.setText("Supplier");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
 
         Back.setText("back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -90,7 +133,7 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"", "Boston Rehabilitation Center", "Future Medical Institute", "Verdant Health Hospital" }));
+        hoCombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"", "Boston Rehabilitation Center", "Future Medical Institute", "Verdant Health Hospital" }));
 
         jLabel4.setText("Hospital");
 
@@ -137,7 +180,7 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
                 .addGap(3, 3, 3)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(hoCombox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -147,7 +190,7 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hoCombox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -188,13 +231,58 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
         layout.next(leftPanel);
     }//GEN-LAST:event_BackActionPerformed
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+        type="Patient";
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+        type="Doctor";
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        // TODO add your handling code here:
+        type="Supplier";
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        // TODO add your handling code here:
+        type="Analysis";
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        name = txtuser.getText();
+        pwd = txtpwd.getText();
+        hospital = (String) hoCombox.getSelectedItem();
+        Validation v1 = new Validation(bz);
+        Object o=v1.IsValidationHospital(hospital, name, pwd, type);
+        if(o==null){
+            JOptionPane.showMessageDialog(null, "Please input correct account and password!");
+            return;
+        }
+        if(o instanceof Doctor){
+            DoctorWorkAreaJPanel dw = new DoctorWorkAreaJPanel();
+            RightPanel.add("LoginScreen",dw);
+            CardLayout layout = (CardLayout) RightPanel.getLayout();
+            layout.next(RightPanel);
+        }
+        else if(o instanceof Patient){
+            PatientWorkAreaJPanel pw = new PatientWorkAreaJPanel();
+            RightPanel.add("LoginScreen",pw);
+            CardLayout layout = (CardLayout) RightPanel.getLayout();
+            layout.next(RightPanel);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> hoCombox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

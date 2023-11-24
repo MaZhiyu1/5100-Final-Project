@@ -4,6 +4,7 @@
  */
 package Business.UI;
 
+import Business.Business;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -17,14 +18,14 @@ public class LoginPanel extends javax.swing.JPanel {
      * Creates new form LoginPanel
      */
     JPanel loginPanel;
-    public LoginPanel(JPanel loginPanel) {
+    JPanel RightPanel;
+    Business bz;
+    public LoginPanel(JPanel loginPanel,JPanel RightPanel,Business bz) {
         initComponents();
         this.loginPanel=loginPanel;
+        this.RightPanel=RightPanel;
+        this.bz = bz;
     }
-    
-    
-    
-    
     
     
     /**
@@ -93,37 +94,37 @@ public class LoginPanel extends javax.swing.JPanel {
         String type = (String) TypeComboBox.getSelectedItem();
 
         if(type.equals("Hospital")){
-            HospitalLoginPanel ls = new HospitalLoginPanel(loginPanel);
+            HospitalLoginPanel ls = new HospitalLoginPanel(loginPanel,RightPanel,bz);
             loginPanel.add("LoginScreen",ls);
             CardLayout layout = (CardLayout) loginPanel.getLayout();
             layout.next(loginPanel);
         }
         if(type.equals("BioTech")){
-            BioTechLoginPanel ls = new BioTechLoginPanel(loginPanel);
+            BioTechLoginPanel ls = new BioTechLoginPanel(loginPanel,RightPanel,bz);
             loginPanel.add("LoginScreen",ls);
             CardLayout layout = (CardLayout) loginPanel.getLayout();
             layout.next(loginPanel);
         }
         if(type.equals("Medical Analysis")){
-            MedicalAnalysisLoginPanel ls = new MedicalAnalysisLoginPanel(loginPanel);
+            MedicalAnalysisLoginPanel ls = new MedicalAnalysisLoginPanel(loginPanel,RightPanel,bz);
             loginPanel.add("LoginScreen",ls);
             CardLayout layout = (CardLayout) loginPanel.getLayout();
             layout.next(loginPanel);
         }
         if(type.equals("Medical Supplier")){
-            MedicalSupplierLoginPanel ls = new MedicalSupplierLoginPanel(loginPanel);
+            MedicalSupplierLoginPanel ls = new MedicalSupplierLoginPanel(loginPanel,RightPanel,bz);
             loginPanel.add("LoginScreen",ls);
             CardLayout layout = (CardLayout) loginPanel.getLayout();
             layout.next(loginPanel);
         }
         if(type.equals("Delivery")){
-            DeliveryLoginPanel ls = new DeliveryLoginPanel(loginPanel);
+            DeliveryLoginPanel ls = new DeliveryLoginPanel(loginPanel,RightPanel,bz);
             loginPanel.add("LoginScreen",ls);
             CardLayout layout = (CardLayout) loginPanel.getLayout();
             layout.next(loginPanel);
         }
         if(type.equals("Admin")){
-            AdminLoginPanel ls = new AdminLoginPanel(loginPanel);
+            AdminLoginPanel ls = new AdminLoginPanel(loginPanel,RightPanel,bz);
             loginPanel.add("LoginScreen",ls);
             CardLayout layout = (CardLayout) loginPanel.getLayout();
             layout.next(loginPanel);

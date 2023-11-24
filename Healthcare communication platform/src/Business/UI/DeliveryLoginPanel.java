@@ -4,6 +4,7 @@
  */
 package Business.UI;
 
+import Business.Business;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -17,9 +18,13 @@ public class DeliveryLoginPanel extends javax.swing.JPanel {
      * Creates new form DeliveryLoginPanel
      */
     JPanel leftPanel;
-    public DeliveryLoginPanel(JPanel leftPanel) {
+    JPanel RightPanel;
+    Business bz;
+    public DeliveryLoginPanel(JPanel leftPanel,JPanel RightPanel,Business bz) {
         initComponents();
         this.leftPanel=leftPanel;
+        this.RightPanel= RightPanel;
+        this.bz=bz;
     }
 
     /**
