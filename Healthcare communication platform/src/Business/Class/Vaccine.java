@@ -4,6 +4,8 @@
  */
 package Business.Class;
 
+import Business.Class.Hospital.HSupplier.HSupplier;
+
 /**
  *
  * @author 15469
@@ -16,6 +18,8 @@ public class Vaccine {
     String status;
     int process;
     int quantity;
+    private String factory;
+    private HSupplier supplier;
     
     public Vaccine(String name, String id, String description, String type) {
         this.name = name;

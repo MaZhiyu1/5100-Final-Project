@@ -5,6 +5,7 @@
 package Business.Class.Hospital.Medical;
 
 import Business.Class.Drug;
+import Business.Class.Hospital.Lab;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -12,25 +13,20 @@ import javax.swing.ImageIcon;
  *
  * @author 15469
  */
-public class Doctor {
-    int id;
-    String name;
-    String pwd;
-    String age;
-    String gender;
+public class Doctor extends Person{
+
     String type;
     String hospital;
     int avail;
     ImageIcon logoImage;
-    ArrayList<Patient> patients;
-    ArrayList<Drug> drugs;
+    ArrayList<Appointment> appointmentList;
+
     int enabled;
     String contact;
     String department;
     String specialty;
     String eductionBackground;
-    
-    
+    private Lab lab;
     
     public Doctor(int id, String name, String pwd, String hospital) {
         enabled=0;
@@ -38,48 +34,48 @@ public class Doctor {
         this.name = name;
         this.pwd = pwd;
         this.hospital = hospital;
-        patients = new ArrayList<>();
+        appointmentList = new ArrayList<>();
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public String getPwd() {
+//        return pwd;
+//    }
+//
+//    public void setPwd(String pwd) {
+//        this.pwd = pwd;
+//    }
+//
+//    public String getAge() {
+//        return age;
+//    }
+//
+//    public void setAge(String age) {
+//        this.age = age;
+//    }
+//
+//    public String getGender() {
+//        return gender;
+//    }
+//
+//    public void setGender(String gender) {
+//        this.gender = gender;
+//    }
 
     public String getType() {
         return type;
@@ -113,13 +109,55 @@ public class Doctor {
         this.logoImage = logoImage;
     }
 
-    public ArrayList<Patient> getPatients() {
-        return patients;
+//    public ArrayList<Patient> getPatients() {
+//        return patients;
+//    }
+//
+//    public void setPatients(ArrayList<Patient> patients) {
+//        this.patients = patients;
+//    }
+
+    public ArrayList<Appointment> getAppointmentList() {
+        return appointmentList;
     }
 
-    public void setPatients(ArrayList<Patient> patients) {
-        this.patients = patients;
+    public void setAppointmentList(ArrayList<Appointment> appointmentList) {
+        this.appointmentList = appointmentList;
     }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
+
+    public String getEductionBackground() {
+        return eductionBackground;
+    }
+
+    public void setEductionBackground(String eductionBackground) {
+        this.eductionBackground = eductionBackground;
+    }
+    
+    
 
     public int getEnabled() {
         return enabled;

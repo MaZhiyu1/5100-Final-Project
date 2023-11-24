@@ -4,23 +4,21 @@
  */
 package Business.Class.Hospital.Medical;
 
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author 15469
  */
-public class Patient {
-    int id;
-    String name;
-    String pwd;
-    String age;
-    String gender;
+public class Patient extends Person{
+    
     String hospital;
     String doctor;
     ImageIcon logoImage;
     MedicalHistoryList mhl;
-    
+    ArrayList<Appointment> appointmentList;
+    ArrayList<Prescription> prescriptionList;
     int enabled;
     
     public Patient(int id, String name, String pwd) {

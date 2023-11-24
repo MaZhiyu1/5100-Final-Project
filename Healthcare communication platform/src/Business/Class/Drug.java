@@ -4,6 +4,8 @@
  */
 package Business.Class;
 
+import java.util.Date;
+
 /**
  *
  * @author 15469
@@ -16,6 +18,8 @@ public class Drug {
     String status;
     int process;
     int quantity;
+    private Date productionDate;
+    private Date expireDate;
     public Drug(String name, String id, String description, String type) {
         this.name = name;
         this.id = id;
@@ -83,6 +87,32 @@ public class Drug {
     public void setType(String type) {
         this.type = type;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public Date getProductionDate() {
+        return productionDate;
+    }
+
+    public void setProductionDate(Date productionDate) {
+        this.productionDate = productionDate;
+    }
+
+    public Date getExpireDate() {
+        return expireDate;
+    }
+
+    public void setExpireDate(Date expireDate) {
+        this.expireDate = expireDate;
+    }
+    
+    
     
     
 }
