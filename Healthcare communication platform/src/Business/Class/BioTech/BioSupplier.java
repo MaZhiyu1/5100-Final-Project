@@ -2,34 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Business.Class.Hospital.RearServices;
+package Business.Class.BioTech;
 
 import Business.Class.Delivery.Order;
 import Business.Class.Hospital.Request;
-
 import java.util.ArrayList;
 
 /**
  *
  * @author 15469
  */
-public class RearServices {
+public class BioSupplier {
     String name;
-    String id;
     String pwd;
-    String hospital;
+    String id;
     ArrayList<Request> request;
     ArrayList<Order> orders;
-    int enabled;
 
-    public RearServices(String name, String id, String pwd, String hospital) {
+    public BioSupplier(String name, String pwd, String id) {
         this.name = name;
-        this.id = id;
         this.pwd = pwd;
-        this.hospital = hospital;
-        this.enabled = 0;
+        this.id = id;
         request = new ArrayList<>();
-        orders = new ArrayList<>();
+        orders= new ArrayList<>();
     }
 
     public String getName() {
@@ -40,14 +35,6 @@ public class RearServices {
         this.name = name;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getPwd() {
         return pwd;
     }
@@ -56,20 +43,30 @@ public class RearServices {
         this.pwd = pwd;
     }
 
-    public String getHospital() {
-        return hospital;
+    public String getId() {
+        return id;
     }
 
-    public void setHospital(String hospital) {
-        this.hospital = hospital;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public int getEnabled() {
-        return enabled;
+    public ArrayList<Request> getRequest() {
+        return request;
     }
 
-    public void setEnabled(int enabled) {
-        this.enabled = enabled;
+    public void setRequest(ArrayList<Request> request) {
+        this.request = request;
     }
 
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = orders;
+    }
+    
+    
+    
 }

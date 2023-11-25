@@ -5,6 +5,7 @@
 package Business.Class.Hospital.Development;
 
 import Business.Class.Medicine;
+import Business.Class.Vaccine;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,7 @@ public class HospitalResearch {
     String hospital;
     int id;
     ArrayList<Medicine> medicines;
-
+    ArrayList<Vaccine> vaccines;
     int enabled;
 
     public HospitalResearch(String name, String pwd, String hospital, int id) {
@@ -27,8 +28,17 @@ public class HospitalResearch {
         this.id = id;
         enabled=0;
         medicines = new ArrayList<>();
+        vaccines = new ArrayList<>();
     }
 
+    public void addMedicine(Medicine e){
+        medicines.add(e);
+    }
+    
+    public void addVaccine(Vaccine e){
+        vaccines.add(e);
+    }
+    
     public String getName() {
         return name;
     }

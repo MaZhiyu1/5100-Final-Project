@@ -4,9 +4,11 @@
  */
 package Business.Class.Hospital.Medical;
 
+import Business.Class.BioTech.Lab;
 import Business.Class.Medicine;
-import Business.Class.Hospital.Lab;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.ImageIcon;
 
 /**
@@ -26,7 +28,7 @@ public class Doctor extends Person{
     String department;
     String specialty;
     String eductionBackground;
-    private Lab lab;
+    private HashMap<Lab,String> lab;
     
     public Doctor(int id, String name, String pwd, String hospital) {
         enabled=0;
@@ -35,6 +37,7 @@ public class Doctor extends Person{
         this.pwd = pwd;
         this.hospital = hospital;
         appointmentList = new ArrayList<>();
+        lab = new HashMap<Lab,String>();
     }
 
 //    public int getId() {
