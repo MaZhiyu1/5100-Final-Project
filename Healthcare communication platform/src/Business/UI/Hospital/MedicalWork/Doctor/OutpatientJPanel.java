@@ -138,7 +138,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
             }
         });
 
-        txtSearchGenre.setText("Search Name/Type");
+        txtSearchGenre.setText("Search Name/Department");
 
         cmbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine", "Vaccine", "Equipment", "Operation", "Transfer" }));
 
@@ -150,7 +150,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "ID:", "Name", "Type", "Instruction"
+                "ID:", "Name", "Department", "Instruction"
             }
         ));
         jScrollPane5.setViewportView(tblPrescription);
@@ -162,7 +162,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setText("Name:");
+        jLabel9.setText("Quantity:");
 
         jLabel12.setText("ID:");
 

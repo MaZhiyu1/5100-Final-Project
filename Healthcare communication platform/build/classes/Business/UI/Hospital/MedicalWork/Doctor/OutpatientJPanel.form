@@ -415,7 +415,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtSearchGenre">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Search Name/Type"/>
+                <Property name="text" type="java.lang.String" value="Search Name/Department"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cmbSelectGenre">
@@ -447,7 +447,7 @@
                       <Table columnCount="4" rowCount="4">
                         <Column editable="true" title="ID:" type="java.lang.Object"/>
                         <Column editable="true" title="Name" type="java.lang.Object"/>
-                        <Column editable="true" title="Type" type="java.lang.Object"/>
+                        <Column editable="true" title="Department" type="java.lang.Object"/>
                         <Column editable="true" title="Instruction" type="java.lang.Object"/>
                       </Table>
                     </Property>
@@ -492,7 +492,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Name:"/>
+                <Property name="text" type="java.lang.String" value="Quantity:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtMedicalId">

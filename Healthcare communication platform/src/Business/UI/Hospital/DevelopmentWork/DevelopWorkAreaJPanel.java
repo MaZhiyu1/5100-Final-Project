@@ -58,13 +58,13 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
 
         tblLab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Project Name", "Company", "Type", "Instruction", "Status"
+                "ID", "Project Name", "Company", "Type", "Instruction", "Status", "Doctor"
             }
         ));
         jScrollPane2.setViewportView(tblLab);
