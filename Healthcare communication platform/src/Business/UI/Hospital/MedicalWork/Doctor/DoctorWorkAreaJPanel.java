@@ -4,6 +4,7 @@
  */
 package Business.UI.Hospital.MedicalWork.Doctor;
 
+import Business.Class.Hospital.Medical.Doctor;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -13,12 +14,14 @@ import javax.swing.JPanel;
  */
 public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel RightPanel;
+
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
     public DoctorWorkAreaJPanel(JPanel RightPanel) {
         initComponents();
           this.RightPanel=RightPanel;
+
     }
 
     /**

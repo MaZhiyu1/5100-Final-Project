@@ -16,7 +16,7 @@ public class EMRJPanel extends javax.swing.JPanel {
     /**
      * Creates new form EMRJPanel
      */
-    public EMRJPanel(JPanel rp) {
+    public EMRJPanel(JPanel RightPanel) {
         initComponents();
         this.RightPanel=RightPanel;
     }

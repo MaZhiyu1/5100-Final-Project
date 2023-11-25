@@ -16,7 +16,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorRequestJPanel
      */
-    public DoctorRequestJPanel(JPanel rp) {
+    public DoctorRequestJPanel(JPanel RightPanel) {
         initComponents();
         this.RightPanel=RightPanel;
     }

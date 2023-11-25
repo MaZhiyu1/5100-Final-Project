@@ -59,7 +59,7 @@ public class InventionPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Drug Invention");
+        jLabel1.setText("Medical Invention");
 
         tblLab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

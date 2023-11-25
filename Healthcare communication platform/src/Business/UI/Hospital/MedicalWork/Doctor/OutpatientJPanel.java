@@ -16,7 +16,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
     /**
      * Creates new form OutpatientJPanel
      */
-    public OutpatientJPanel(JPanel rp) {
+    public OutpatientJPanel(JPanel RightPanel) {
         initComponents();
         this.RightPanel=RightPanel;
     }

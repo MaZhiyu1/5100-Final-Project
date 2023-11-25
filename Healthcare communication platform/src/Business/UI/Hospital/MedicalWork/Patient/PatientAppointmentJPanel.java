@@ -12,11 +12,11 @@ import javax.swing.JPanel;
  * @author zhangjinming
  */
 public class PatientAppointmentJPanel extends javax.swing.JPanel {
-    JPanel RightPanel;
+    private JPanel RightPanel;
     /**
      * Creates new form PatientAppointmentJPanel
      */
-    public PatientAppointmentJPanel(JPanel rp) {
+    public PatientAppointmentJPanel(JPanel RightPanel) {
         initComponents();
         this.RightPanel=RightPanel;
     }
