@@ -28,6 +28,7 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
     JPanel leftPanel;
     Business bz;
     JPanel RightPanel;
+
     String name;
     String pwd;
     String hospital;
@@ -37,6 +38,7 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
         this.leftPanel=leftPanel;
         this.bz=bz;
         this.RightPanel= RightPanel;
+
 
         type = "";
     }

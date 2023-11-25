@@ -4,8 +4,18 @@
  */
 package Business.UI.Hospital.MedicalWork.Doctor;
 
+import Business.Class.Hospital.Medical.Doctor;
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -13,12 +23,26 @@ import javax.swing.JPanel;
  */
 public class DoctorProfileJPanel extends javax.swing.JPanel {
     JPanel RightPanel;
+    private final JFileChooser fileChooser = new JFileChooser();
+    ImageIcon logoImage;
     /**
      * Creates new form DoctorProfileJPanel
      */
-    public DoctorProfileJPanel(JPanel rp) {
+    public DoctorProfileJPanel(JPanel RightPanel) {
         initComponents();
         this.RightPanel=RightPanel;
+        FileNameExtensionFilter jpegFilter = new FileNameExtensionFilter("JPEG file","jpg", "jpeg");
+        FileNameExtensionFilter pngFilter = new FileNameExtensionFilter("PNG file", "png", "png");
+
+        fileChooser.addChoosableFileFilter(jpegFilter);
+        fileChooser.addChoosableFileFilter(pngFilter);
+        fileChooser.getFileFilter();
+        
+//        if(doctor.getLogoImage() != null){
+//            imgLogo.setIcon(doctor.getLogoImage());
+//        } else{
+//            imgLogo.setText("No Logo");
+//        }
     }
 
     /**
@@ -45,7 +69,7 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
         txtContact = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtAvail = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        imgLogo = new javax.swing.JLabel();
         btnUpload = new javax.swing.JButton();
         btnSavePhoto = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
@@ -83,8 +107,8 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
 
         jLabel11.setText("Avail:");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel4.setText("Photo Upload");
+        imgLogo.setForeground(new java.awt.Color(0, 0, 204));
+        imgLogo.setText("Photo Upload");
 
         btnUpload.setText("Upload");
         btnUpload.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +180,7 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
                         .addGap(45, 45, 45)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(482, 482, 482)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(642, 642, 642)
                         .addComponent(btnUpload)
@@ -242,7 +266,7 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(imgLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnUpload)
@@ -334,10 +358,27 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
 
     private void btnSavePhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSavePhotoActionPerformed
         // TODO add your handling code here:
+        logoImage = null;
+        imgLogo.setIcon(null);
     }//GEN-LAST:event_btnSavePhotoActionPerformed
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         // TODO add your handling code here:
+                int returnVal = fileChooser.showOpenDialog(this);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION){
+            File file = fileChooser.getSelectedFile();
+            URL url;
+            try {
+                url = file.toURI().toURL();
+                logoImage = new ImageIcon(url);
+                logoImage = new ImageIcon(logoImage.getImage().getScaledInstance(150,150,Image.SCALE_SMOOTH));
+
+                imgLogo.setIcon(logoImage);
+            }catch (MalformedURLException ex){
+                Logger.getLogger(this.getName()).log(Level.SEVERE, null,ex);
+            }
+        }
     }//GEN-LAST:event_btnUploadActionPerformed
 
     private void btnSaveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAllActionPerformed
@@ -358,6 +399,7 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnSavePhoto;
     private javax.swing.JButton btnUpload;
     private javax.swing.JComboBox<String> cmbDepartment;
+    private javax.swing.JLabel imgLogo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -370,7 +412,6 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;

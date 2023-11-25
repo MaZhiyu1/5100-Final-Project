@@ -16,7 +16,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AppointmentJPanel
      */
-    public AppointmentJPanel(JPanel rp) {
+    public AppointmentJPanel(JPanel RightPanel) {
         initComponents();
         this.RightPanel=RightPanel;
     }

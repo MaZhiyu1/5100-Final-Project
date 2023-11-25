@@ -16,7 +16,7 @@ public class DoctorLabJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DoctorLabJPanel
      */
-    public DoctorLabJPanel(JPanel rp) {
+    public DoctorLabJPanel(JPanel RightPanel) {
         initComponents();
         this.RightPanel=RightPanel;
     }

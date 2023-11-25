@@ -16,7 +16,7 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PatientHistoryJPanel
      */
-    public PatientHistoryJPanel(JPanel rp) {
+    public PatientHistoryJPanel(JPanel RightPanel) {
         initComponents();
         this.RightPanel=RightPanel;
     }

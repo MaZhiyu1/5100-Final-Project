@@ -204,7 +204,7 @@
                   <Font name="Microsoft YaHei UI" size="18" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Drug Invention"/>
+                <Property name="text" type="java.lang.String" value="Medical Invention"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
