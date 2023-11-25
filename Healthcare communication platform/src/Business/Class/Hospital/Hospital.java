@@ -4,9 +4,11 @@
  */
 package Business.Class.Hospital;
 
+import Business.Class.Delivery.Order;
 import Business.Class.Hospital.Medical.AppointmentDirectory;
 import Business.Class.Hospital.Medical.Doctor;
 import Business.Class.Hospital.Medical.Patient;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,10 @@ public class Hospital {
     private ArrayList<Patient> patients;
     private HospitalInventory hi;
     private AppointmentDirectory ha;
+    ArrayList<Request> request;
+    ArrayList<Order> orders;
+    
+    
 
     public Hospital(String name, String address) {
         this.name = name;
@@ -30,7 +36,35 @@ public class Hospital {
         patients = new ArrayList<>();
         hi = new HospitalInventory();
         ha = new AppointmentDirectory();
+        request = new ArrayList<>();
+        orders = new ArrayList<>();
     }
+
+    public ArrayList<Request> getRequest() {
+        return request;
+    }
+
+    public void AddRequest(Request e){
+        request.add(e);
+    }
+    
+    public void setRequest(ArrayList<Request> request) {
+        this.request = request;
+    }
+
+    public void addOrders(Order e){
+        orders.add(e);
+    }
+    
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = orders;
+    }
+    
+    
     
     public void addDoctor(Doctor e){
         doctorList.add(e);
