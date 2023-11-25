@@ -9,12 +9,14 @@ import Business.Class.BioTech.BioTechCom;
 import Business.Class.BioTech.Lab;
 import Business.Class.Delivery.Delivery;
 import Business.Class.Equipment;
+import Business.Class.Hospital.Development.HospitalResearch;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Appointment;
 import Business.Class.Hospital.Medical.Doctor;
 import Business.Class.Hospital.Medical.MedicalHistory;
 import Business.Class.Hospital.Medical.MedicalHistoryList;
 import Business.Class.Hospital.Medical.Patient;
+import Business.Class.Hospital.RearServices.RearServices;
 import Business.Class.MedicalSupplier.MedicalSupplier;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
@@ -135,7 +137,7 @@ public class Business {
         Medicine new_m = new Medicine("New Medicine", "Bio", "Heart Disease", "Internal Medicine");
         
         b1 = new BioTechCom("BioGenesis Therapeutics");
-        
+
         Lab lab1 = new Lab("Jack", "", "Internal Medicine", new_m, null);
         
         for(Hospital h : hospital){
@@ -191,6 +193,9 @@ public class Business {
     
     public void Hospital1() {
         h1 = new Hospital("Boston Rehabilitation Center","");
+        
+        RearServices rs = new RearServices("Jin", "BioGen 1", "","Boston Rehabilitation Center" );
+        
         
         Doctor doctor1 = new Doctor(1,"Jim","Aa12345678", "Boston Rehabilitation Center");
         doctor1.setEnabled(1);
@@ -272,7 +277,8 @@ public class Business {
         E.add(e1);
         E.add(e2);
         
-
+        h1.addRearService(rs);
+        
         h1.addDoctor(doctor1);
         h1.addDoctor(doctor2);
         h1.addDoctor(doctor3);

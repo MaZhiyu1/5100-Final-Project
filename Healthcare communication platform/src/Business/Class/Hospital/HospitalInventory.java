@@ -20,7 +20,10 @@ public class HospitalInventory {
     MedicineDirectory md;
     EquipmentDirectory ed;
     VaccineDirectory vd;
-
+    
+    
+    
+    
     public HospitalInventory() {
         md = new MedicineDirectory();
         ed = new EquipmentDirectory();

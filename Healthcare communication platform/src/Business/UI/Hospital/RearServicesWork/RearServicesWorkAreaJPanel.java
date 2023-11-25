@@ -4,6 +4,8 @@
  */
 package Business.UI.Hospital.RearServicesWork;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author zhangjinming
@@ -13,8 +15,10 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form RearServicesWorkAreaJPanel
      */
-    public RearServicesWorkAreaJPanel() {
+    JPanel RightPanel;
+    public RearServicesWorkAreaJPanel(    JPanel RightPanel) {
         initComponents();
+        this.RightPanel = RightPanel;
     }
 
     /**

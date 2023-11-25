@@ -12,6 +12,7 @@ import Business.Class.Delivery.Delivery;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Doctor;
 import Business.Class.Hospital.Medical.Patient;
+import Business.Class.Hospital.RearServices.RearServices;
 import Business.Class.MedicalSupplier.MedicalSupplier;
 
 /**
@@ -119,8 +120,25 @@ public class Validation {
                         }
                     }
                 }
+                else if(type.equals("Supplier")){
+                    for(RearServices p : hospital.getRs()){
+                        if(p.getName().equals(username)){
+                            if(p.getPwd().equals(pwd)){
+                                return p;
+                            }
+                        }
+                    }
+                }
+                else if(type.equals("Analysis")){
+                        if(hospital.getHr().getName().equals(username)){
+                            if(hospital.getHr().getPwd().equals(pwd)){
+                                return hospital.getHr();
+                            }
+                        }
+                    }
+                }            
             }
-        }
+        
         System.out.print("It is null!");
         return null;
     }

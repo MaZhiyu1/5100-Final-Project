@@ -4,6 +4,8 @@
  */
 package Business.UI.Hospital.DevelopmentWork;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author zhangjinming
@@ -13,8 +15,11 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DevelopWorkAreaJPanel
      */
-    public DevelopWorkAreaJPanel() {
+    JPanel RightPanel;
+
+    public DevelopWorkAreaJPanel(JPanel RightPanel) {
         initComponents();
+        this.RightPanel = RightPanel;
     }
 
     /**

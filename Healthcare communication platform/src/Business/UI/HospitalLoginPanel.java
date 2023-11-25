@@ -5,11 +5,15 @@
 package Business.UI;
 
 import Business.Business;
+import Business.Class.Hospital.Development.HospitalResearch;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Doctor;
 import Business.Class.Hospital.Medical.Patient;
+import Business.Class.Hospital.RearServices.RearServices;
+import Business.UI.Hospital.DevelopmentWork.DevelopWorkAreaJPanel;
 import Business.UI.Hospital.MedicalWork.Doctor.DoctorWorkAreaJPanel;
 import Business.UI.Hospital.MedicalWork.Patient.PatientWorkAreaJPanel;
+import Business.UI.Hospital.RearServicesWork.RearServicesWorkAreaJPanel;
 
 import Validation.Validation;
 import java.awt.CardLayout;
@@ -38,8 +42,6 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
         this.leftPanel=leftPanel;
         this.bz=bz;
         this.RightPanel= RightPanel;
-
-
         type = "";
     }
 
@@ -273,6 +275,18 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
         }
         else if(o instanceof Patient){
             PatientWorkAreaJPanel pw = new PatientWorkAreaJPanel(RightPanel);
+            RightPanel.add("LoginScreen",pw);
+            CardLayout layout = (CardLayout) RightPanel.getLayout();
+            layout.next(RightPanel);
+        }
+        else if(o instanceof RearServices){
+            RearServicesWorkAreaJPanel pw = new RearServicesWorkAreaJPanel(RightPanel);
+            RightPanel.add("LoginScreen",pw);
+            CardLayout layout = (CardLayout) RightPanel.getLayout();
+            layout.next(RightPanel);
+        }
+        else if(o instanceof HospitalResearch){
+            DevelopWorkAreaJPanel pw = new DevelopWorkAreaJPanel(RightPanel);
             RightPanel.add("LoginScreen",pw);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
