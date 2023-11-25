@@ -8,6 +8,8 @@ import Business.Class.Equipment;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Appointment;
 import Business.Class.Hospital.Medical.Doctor;
+import Business.Class.Hospital.Medical.MedicalHistory;
+import Business.Class.Hospital.Medical.MedicalHistoryList;
 import Business.Class.Hospital.Medical.Patient;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
@@ -76,8 +78,14 @@ public class Business {
         doctor3.setEnabled(1);
         doctor3.setSpecialty("Internal Medicine");
         
+        MedicalHistory mh1 = new MedicalHistory("Had server fever","keep warm. Don't eat spicy food");
+        MedicalHistory mh2 = new MedicalHistory("Had server headache","keep warm. Don't eat spicy food");
+        MedicalHistoryList mhl1 = new MedicalHistoryList(1,"Oliver");
+        mhl1.addHistory(mh2);
+        mhl1.addHistory(mh1);
         
         Patient patient1 = new Patient(1, "Oliver", "Aa12345678");
+        patient1.setMhl(mhl1);
         patient1.setEnabled(1);
         patient1.setAge("12");
 
