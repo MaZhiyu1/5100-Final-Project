@@ -46,7 +46,7 @@ public class Hospital {
         request = new ArrayList<>();
         orders = new ArrayList<>();
         rs = new ArrayList<>();
-        hr = new HospitalResearch("Err","", name, k);
+        hr = new HospitalResearch("Researcher","Aa12345678", name, k);
         
     }
 

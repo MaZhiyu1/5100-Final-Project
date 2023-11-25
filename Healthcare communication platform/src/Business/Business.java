@@ -194,8 +194,8 @@ public class Business {
     public void Hospital1() {
         h1 = new Hospital("Boston Rehabilitation Center","");
         
-        RearServices rs = new RearServices("Jin", "BioGen 1", "","Boston Rehabilitation Center" );
-        
+        RearServices rs = new RearServices("Jin", "BioGen 1", "Aa12345678","Boston Rehabilitation Center" );
+        //后勤
         
         Doctor doctor1 = new Doctor(1,"Jim","Aa12345678", "Boston Rehabilitation Center");
         doctor1.setEnabled(1);
