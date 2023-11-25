@@ -4,6 +4,8 @@
  */
 package Business.UI.Biotechnology;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author 15469
@@ -13,8 +15,11 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreativeDepartmentPanel
      */
-    public CreativeDepartmentPanel() {
+    JPanel RightPanel;
+    
+    public CreativeDepartmentPanel(JPanel RightPanel) {
         initComponents();
+        this.RightPanel=RightPanel;
     }
 
     /**

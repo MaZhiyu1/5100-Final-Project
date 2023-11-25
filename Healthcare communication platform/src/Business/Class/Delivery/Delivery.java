@@ -10,6 +10,7 @@ import java.util.ArrayList;
  *
  * @author 15469
  */
+
 public class Delivery {
     String company;
     String username;

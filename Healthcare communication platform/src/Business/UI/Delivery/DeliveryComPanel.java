@@ -4,6 +4,8 @@
  */
 package Business.UI.Delivery;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author 15469
@@ -13,8 +15,10 @@ public class DeliveryComPanel extends javax.swing.JPanel {
     /**
      * Creates new form DeliveryComPanel
      */
-    public DeliveryComPanel() {
+    JPanel RightPanel;
+    public DeliveryComPanel(JPanel RightPanel) {
         initComponents();
+        this.RightPanel=  RightPanel;
     }
 
     /**

@@ -5,7 +5,13 @@
 package Business.UI;
 
 import Business.Business;
+import Business.Class.BioTech.BioSupplier;
+import Business.Class.BioTech.Lab;
+import Business.UI.Biotechnology.BioSupplierJPanel;
+import Business.UI.Biotechnology.CreativeDepartmentPanel;
+import Validation.Validation;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -20,6 +26,12 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
     JPanel leftPanel;
     JPanel RightPanel;
     Business bz;
+    
+    String name;
+    String pwd;
+    String bioTech;
+    String type;
+    
     public BioTechLoginPanel(JPanel leftPanel,JPanel RightPanel,Business bz) {
         initComponents();
         this.leftPanel=leftPanel;
@@ -47,7 +59,7 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtpwd = new javax.swing.JTextField();
         Back = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        hoCombox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
@@ -61,6 +73,11 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
         });
 
         jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Register");
 
@@ -71,11 +88,21 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
                 jRadioButton1StateChanged(evt);
             }
         });
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Username:");
 
         buttonGroup1.add(jRadioButton4);
         jRadioButton4.setText("Supplier");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Password:");
 
@@ -92,7 +119,7 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BioGenesis Therapeutics", "VitalEdge Biomedicals"}));
+        hoCombox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BioGenesis Therapeutics", "VitalEdge Biomedicals"}));
 
         jLabel4.setText("Biotech");
 
@@ -117,7 +144,7 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(hoCombox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -147,7 +174,7 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hoCombox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(103, 103, 103)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -193,13 +220,50 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
         layout.next(leftPanel);
     }//GEN-LAST:event_BackActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        name = txtuser.getText();
+        pwd = txtpwd.getText();
+        bioTech = (String) hoCombox.getSelectedItem();
+        Validation v1 = new Validation(bz);
+        Object o=v1.IsValidationBioTech(bioTech, name, pwd, type);
+        if(o==null){
+            JOptionPane.showMessageDialog(null, "Please input correct account and password!");
+            return;
+        }
+        if(o instanceof Lab){
+            CreativeDepartmentPanel dw = new CreativeDepartmentPanel(RightPanel);
+            RightPanel.add("LoginScreen",dw);
+            CardLayout layout = (CardLayout) RightPanel.getLayout();
+            layout.next(RightPanel);
+        }
+        else if(o instanceof BioSupplier){
+            BioSupplierJPanel pw = new BioSupplierJPanel(RightPanel);
+            RightPanel.add("LoginScreen",pw);
+            CardLayout layout = (CardLayout) RightPanel.getLayout();
+            layout.next(RightPanel);
+        }
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+        type="Research";
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        // TODO add your handling code here:
+        type="Supplier";
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> hoCombox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -5,7 +5,10 @@
 package Business.UI;
 
 import Business.Business;
+import Business.UI.Delivery.DeliveryComPanel;
+import Validation.Validation;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -20,6 +23,13 @@ public class DeliveryLoginPanel extends javax.swing.JPanel {
     JPanel leftPanel;
     JPanel RightPanel;
     Business bz;
+    
+    String name;
+    String pwd;
+    String company;
+    String type;
+    
+    
     public DeliveryLoginPanel(JPanel leftPanel,JPanel RightPanel,Business bz) {
         initComponents();
         this.leftPanel=leftPanel;
@@ -67,6 +77,11 @@ public class DeliveryLoginPanel extends javax.swing.JPanel {
         });
 
         jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         Back.setText("back");
         Back.addActionListener(new java.awt.event.ActionListener() {
@@ -159,6 +174,25 @@ public class DeliveryLoginPanel extends javax.swing.JPanel {
         CardLayout layout =  (CardLayout) leftPanel.getLayout();
         layout.next(leftPanel);
     }//GEN-LAST:event_BackActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        name = txtuser.getText();
+        pwd = txtpwd.getText();
+        company = (String) jComboBox1.getSelectedItem();
+        Validation v1 = new Validation(bz);
+        Object o=v1.IsValidationDelievery(company, name, pwd);
+        if(o==null){
+            JOptionPane.showMessageDialog(null, "Please input correct account and password!");
+            return;
+        }
+        DeliveryComPanel pw = new DeliveryComPanel(RightPanel);
+        RightPanel.add("LoginScreen",pw);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
+
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -41,7 +41,7 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        TypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hospital", "BioTech", "Medical Analysis", "Medical Supplier","Admin" }));
+        TypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hospital", "BioTech", "Medical Analysis", "Medical Supplier","Admin","Delivery" }));
         TypeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TypeComboBoxActionPerformed(evt);

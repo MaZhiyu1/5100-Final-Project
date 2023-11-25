@@ -5,7 +5,10 @@
 package Business.UI;
 
 import Business.Business;
+import Business.UI.MedicalSupplier.MedicalSupplierJPanel;
+import Validation.Validation;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -20,6 +23,13 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
     JPanel leftPanel;
     JPanel RightPanel;
     Business bz;
+    
+    String name;
+    String pwd;
+    String medicalSupplier;
+
+    
+    
     public MedicalSupplierLoginPanel(JPanel leftPanel,JPanel RightPanel,Business bz) {
         initComponents();
         this.leftPanel=leftPanel;
@@ -44,7 +54,7 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtpwd = new javax.swing.JTextField();
         Back = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
@@ -58,6 +68,11 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
         });
 
         jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Register");
 
@@ -78,7 +93,7 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MedTech Innovators", "HealGear Manufacturing"}));
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MedTech Innovators", "HealGear Manufacturing"}));
 
         jLabel4.setText("Supplier");
 
@@ -97,7 +112,7 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -127,7 +142,7 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
                 .addComponent(Back)
@@ -165,12 +180,32 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
         layout.next(leftPanel);
     }//GEN-LAST:event_BackActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        name = txtuser.getText();
+        pwd = txtpwd.getText();
+        medicalSupplier = (String) jComboBox.getSelectedItem();
+        Validation v1 = new Validation(bz);
+        Object o=v1.IsValidationMedicalSupplier(medicalSupplier, name, pwd);
+        if(o==null){
+            JOptionPane.showMessageDialog(null, "Please input correct account and password!");
+            return;
+        }
+
+        MedicalSupplierJPanel pw = new MedicalSupplierJPanel(RightPanel);
+        RightPanel.add("LoginScreen",pw);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
+
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -28,7 +28,7 @@ public class Doctor extends Person{
     String department;
     String specialty;
     String eductionBackground;
-    private HashMap<Lab,String> lab;
+    private HashMap<Lab,String> labs;
     
     public Doctor(int id, String name, String pwd, String hospital) {
         enabled=0;
@@ -37,7 +37,11 @@ public class Doctor extends Person{
         this.pwd = pwd;
         this.hospital = hospital;
         appointmentList = new ArrayList<>();
-        lab = new HashMap<Lab,String>();
+        labs = new HashMap<Lab,String>();
+    }
+
+    public HashMap<Lab, String> getLabs() {
+        return labs;
     }
 
 //    public int getId() {
@@ -79,6 +83,9 @@ public class Doctor extends Person{
 //    public void setGender(String gender) {
 //        this.gender = gender;
 //    }
+    public void addLab(Lab lab){
+        labs.put(lab, "Processing");
+    }
 
     public String getType() {
         return type;

@@ -5,9 +5,14 @@
 package Validation;
 
 import Business.Business;
+import Business.Class.BioTech.BioSupplier;
+import Business.Class.BioTech.BioTechCom;
+import Business.Class.BioTech.Lab;
+import Business.Class.Delivery.Delivery;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Doctor;
 import Business.Class.Hospital.Medical.Patient;
+import Business.Class.MedicalSupplier.MedicalSupplier;
 
 /**
  *
@@ -20,8 +25,77 @@ public class Validation {
         this.bz = bz;
     }
 
+    
+    public Object IsValidationMedicalSupplier(String Company,String username,String pwd){
+        for(MedicalSupplier ms : bz.getMedicalSupplier()){
+            if(ms.getName().equals(Company)){
+                for(BioSupplier bs : ms.getBs()){
+                    if(bs.getName().equals(username)){
+                        if(bs.getPwd().equals(pwd)){
+                            return bs;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    
+    
+    
+    public Object IsValidationMedicalAnalysis(String Company,String username,String pwd,String type){
+        
+        return null;
+    }
+    
+    public Object IsValidationDelievery(String Company,String username,String pwd){
+        for(Delivery d : bz.getDeliveries()){
+            if(d.getCompany().equals(Company)){
+                if(d.getUsername().equals(username)){
+                    if(d.getPwd().equals(pwd)){
+                        return d;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+    
+    
+    public Object IsValidationBioTech(String BioTechName,String username,String pwd,String type){
+        for(BioTechCom bt : bz.getBioTech()){
+            if(bt.getName().equals(BioTechName)){
+                if(type.equals("Research")){
+                    for(Lab lab1 : bt.getLabs()){
+                        if(lab1.getName().equals(username)){
+                            if(lab1.getPwd().equals(pwd)){
+                                return lab1;
+                            }
+                        }
+                    }
+                }   //Supplier
+                else if(type.equals("Supplier")){
+                    for(BioSupplier bs : bt.getBioSupplier()){
+                        if(bs.getName().equals(username)){
+                            if(bs.getPwd().equals(pwd)){
+                                return bs;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        System.out.print("It is null!");
+        return null;
+    
+    
+    }
+    
+    
+    
+    
+    
     public Object IsValidationHospital(String hospitalName,String username,String pwd,String type){
-
         if(type.equals("Patient")){
             for(Patient p : bz.getPatients()){
                 if(p.getName().equals(username)){
@@ -50,6 +124,11 @@ public class Validation {
         System.out.print("It is null!");
         return null;
     }
+    
+    
+    
+    
+    
     
     
 }
