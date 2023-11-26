@@ -140,7 +140,7 @@ public class Business {
 
         Lab lab1 = new Lab("Jack", "", "Internal Medicine", new_m, null);
         
-        for(Hospital h : hospital){
+        for(Hospital h : hospitals){
             if(h.getName().equals("Boston Rehabilitation Center")){
                 for(Doctor d : h.getDoctorList()){
                     if(d.getName().equals("Jim")){
