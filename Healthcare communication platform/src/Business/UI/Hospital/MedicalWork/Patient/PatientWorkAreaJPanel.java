@@ -86,22 +86,22 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Songti SC", 1, 14)); // NOI18N
         jLabel1.setText("但愿世间无疾苦，宁可架上药生尘。");
         add(jLabel1);
-        jLabel1.setBounds(601, 527, 231, 35);
+        jLabel1.setBounds(601, 527, 224, 35);
 
         jLabel2.setFont(new java.awt.Font("Songti SC", 1, 14)); // NOI18N
         jLabel2.setText("Wishing for a realm devoid of ailment and woe, where healing potions idle, cloaked in dust's gentle embrace.");
         add(jLabel2);
-        jLabel2.setBounds(203, 568, 763, 19);
+        jLabel2.setBounds(203, 568, 622, 20);
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel3.setText("Hello,");
         add(jLabel3);
-        jLabel3.setBounds(76, 82, 65, 32);
+        jLabel3.setBounds(76, 82, 65, 30);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 3, 24)); // NOI18N
         jLabel4.setText("jLabel4");
         add(jLabel4);
-        jLabel4.setBounds(147, 82, 83, 32);
+        jLabel4.setBounds(147, 82, 82, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
