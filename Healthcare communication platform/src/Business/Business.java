@@ -41,21 +41,21 @@ public class Business {
     private MedicalSupplier ms;
     private MedicalSupplier ms1;
     
-    private ArrayList<BioSupplier> bioSupplier;
+    private ArrayList<BioSupplier> bioSuppliers;
     private ArrayList<BioTechCom> bioTech;
-    private ArrayList<Hospital> hospital;
+    private ArrayList<Hospital> hospitals;
     private ArrayList<Patient> patients;
-    private ArrayList<MedicalSupplier> medicalSupplier;
+    private ArrayList<MedicalSupplier> medicalSuppliers;
     
     private ArrayList<Delivery> deliveries;
     
     public Business() {
-        hospital = new ArrayList<>();
+        hospitals = new ArrayList<>();
         patients = new ArrayList<>();
         bioTech = new ArrayList<>();
-        bioSupplier = new ArrayList<>();
+        bioSuppliers = new ArrayList<>();
         deliveries = new ArrayList<>();
-        medicalSupplier = new ArrayList<>();
+        medicalSuppliers = new ArrayList<>();
         Hospital1();
         BioTechCom1();
         MedicalSupplier1();
@@ -64,11 +64,11 @@ public class Business {
     }
 
     public ArrayList<MedicalSupplier> getMedicalSupplier() {
-        return medicalSupplier;
+        return medicalSuppliers;
     }
 
     public void setMedicalSupplier(ArrayList<MedicalSupplier> medicalSupplier) {
-        this.medicalSupplier = medicalSupplier;
+        this.medicalSuppliers = medicalSupplier;
     }
 
     public ArrayList<Delivery> getDeliveries() {
@@ -81,20 +81,20 @@ public class Business {
 
     
     
-    public ArrayList<Hospital> getHospital() {
-        return hospital;
+    public ArrayList<Hospital> getHospitals() {
+        return hospitals;
     }
 
-    public void setHospital(ArrayList<Hospital> hospital) {
-        this.hospital = hospital;
+    public void setHospital(ArrayList<Hospital> hospitals) {
+        this.hospitals = hospitals;
     }
 
     public ArrayList<BioSupplier> getBioSupplier() {
-        return bioSupplier;
+        return bioSuppliers;
     }
 
     public void setBioSupplier(ArrayList<BioSupplier> bioSupplier) {
-        this.bioSupplier = bioSupplier;
+        this.bioSuppliers = bioSupplier;
     }
 
     public ArrayList<Patient> getPatients() {
@@ -127,7 +127,7 @@ public class Business {
         ms.addBioSupplier(bs);
         ms.addEquipment(e1);
         
-        medicalSupplier.add(ms);
+        medicalSuppliers.add(ms);
     
     }
     
@@ -295,7 +295,7 @@ public class Business {
         patients.add(patient1);
         patients.add(patient2);
         patients.add(patient3);
-        hospital.add(h1);
+        hospitals.add(h1);
     }
     
     

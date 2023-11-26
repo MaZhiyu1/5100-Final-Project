@@ -18,7 +18,10 @@ public class Patient extends Person{
     ArrayList<Appointment> appointmentList;
     ArrayList<Prescription> prescriptionList;
     int enabled;
-    
+
+    private String insurance;
+    private String allergy;
+
     public Patient(int id, String name, String pwd) {
         enabled=0;
         this.id = id;
@@ -101,8 +104,20 @@ public class Patient extends Person{
     public void setEnabled(int enabled) {
         this.enabled = enabled;
     }
-    
-    
-    
-    
+
+    public String getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(String insurance) {
+        this.insurance = insurance;
+    }
+
+    public String getAllergy() {
+        return allergy;
+    }
+
+    public void setAllergy(String allergy) {
+        this.allergy = allergy;
+    }
 }

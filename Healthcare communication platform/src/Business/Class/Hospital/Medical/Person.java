@@ -10,8 +10,8 @@ package Business.Class.Hospital.Medical;
  */
 public class Person {
     int id;
-    String name;
     String pwd;
+    String name;
     String age;
     String gender;
     String contact;

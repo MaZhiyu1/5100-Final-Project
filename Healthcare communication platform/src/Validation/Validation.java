@@ -99,41 +99,36 @@ public class Validation {
     public Object IsValidationHospital(String hospitalName,String username,String pwd,String type){
         if(type.equals("Patient")){
             for(Patient p : bz.getPatients()){
-                if(p.getName().equals(username)){
-                    if(p.getPwd().equals(pwd)){
-                            return p;
-                        }
-                    }
+                if(p.getName().equals(username) && p.getPwd().equals(pwd)){
+                    return p;
                 }
             }
-        for(Hospital hospital : bz.getHospital()){
+        }
+        for(Hospital hospital : bz.getHospitals()){
             System.out.println(hospital.getName());
             if(hospital.getName().equals(hospitalName)){
 
                 if(type.equals("Doctor")){
                     for(Doctor p : hospital.getDoctorList()){
                         System.out.println(p.getName());
-                        if(p.getName().equals(username)){
-                            if(p.getPwd().equals(pwd)){
-                                return p;
-                            }
+                        if(p.getName().equals(username)  && p.getPwd().equals(pwd)){
+
+                            return p;
                         }
                     }
                 }
                 else if(type.equals("Supplier")){
                     for(RearServices p : hospital.getRs()){
-                        if(p.getName().equals(username)){
-                            if(p.getPwd().equals(pwd)){
-                                return p;
-                            }
+                        if(p.getName().equals(username) && p.getPwd().equals(pwd)){
+
+                            return p;
                         }
                     }
                 }
                 else if(type.equals("Analysis")){
-                        if(hospital.getHr().getName().equals(username)){
-                            if(hospital.getHr().getPwd().equals(pwd)){
-                                return hospital.getHr();
-                            }
+                        if(hospital.getHr().getName().equals(username) && hospital.getHr().getPwd().equals(pwd)){
+
+                            return hospital.getHr();
                         }
                     }
                 }            

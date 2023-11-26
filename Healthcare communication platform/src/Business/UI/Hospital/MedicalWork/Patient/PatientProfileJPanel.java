@@ -4,6 +4,8 @@
  */
 package Business.UI.Hospital.MedicalWork.Patient;
 
+import Business.Class.Hospital.Medical.Patient;
+
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -13,11 +15,15 @@ import javax.swing.JPanel;
  */
 public class PatientProfileJPanel extends javax.swing.JPanel {
     JPanel RightPanel;
+
+    private Patient patient;
+    
     /**
      * Creates new form PatientProfileJPanel
      */
-    public PatientProfileJPanel(JPanel RightPanel) {
+    public PatientProfileJPanel(JPanel RightPanel, Patient patient) {
         initComponents();
+        this.patient = patient;
         this.RightPanel=RightPanel;
     }
 
@@ -63,6 +69,8 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
 
         jLabel3.setText("Parient ID:");
 
+        txtPatientId.setEnabled(false);
+
         jLabel6.setText("Age:");
 
         txtAge.addActionListener(new java.awt.event.ActionListener() {
@@ -81,9 +89,15 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
 
         jLabel19.setText("UserName:");
 
+        txtUsername.setEnabled(false);
+
         jLabel20.setText("Password");
 
-        txtPassword.setText("Strong");
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
         btnSaveAll.setText("Save");
         btnSaveAll.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +118,7 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -213,7 +227,7 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,6 +239,13 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
 
     private void btnSaveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAllActionPerformed
         // TODO add your handling code here:
+        this.patient.setName(txtName.getText());
+        this.patient.setAge(txtAge.getText());
+        this.patient.setContact(txtContact.getText());
+        this.patient.setGender(txtGender.getText());
+        this.patient.setInsurance(txtInsurance.getText());
+        this.patient.setAllergy(txtAllergy.getText());
+        this.patient.setPwd(txtPassword.getText());
     }//GEN-LAST:event_btnSaveAllActionPerformed
 
     private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
@@ -236,7 +257,14 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
         RightPanel.remove(this);
         CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.previous(RightPanel);
+        
+        
+        
     }//GEN-LAST:event_btnBack1ActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -24,10 +24,10 @@ public class MainJFrame extends javax.swing.JFrame {
     
     private void setLoginScreen() {
         Business business = new Business();
-        LoginPanel ls = new LoginPanel(LeftPanel,RightPanel,business);
-        LeftPanel.add("LoginScreen",ls);
-       CardLayout layout = (CardLayout) LeftPanel.getLayout();
-       layout.next(LeftPanel);
+        LoginPanel ls = new LoginPanel(leftPanel,rightPanel,business);
+        leftPanel.add("LoginScreen",ls);
+       CardLayout layout = (CardLayout) leftPanel.getLayout();
+       layout.next(leftPanel);
 
     }
     
@@ -43,18 +43,18 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jSplitPane1 = new javax.swing.JSplitPane();
-        LeftPanel = new javax.swing.JPanel();
-        RightPanel = new javax.swing.JPanel();
+        leftPanel = new javax.swing.JPanel();
+        rightPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jSplitPane1.setDividerLocation(370);
 
-        LeftPanel.setLayout(new java.awt.CardLayout());
-        jSplitPane1.setLeftComponent(LeftPanel);
+        leftPanel.setLayout(new java.awt.CardLayout());
+        jSplitPane1.setLeftComponent(leftPanel);
 
-        RightPanel.setLayout(new java.awt.CardLayout());
-        jSplitPane1.setRightComponent(RightPanel);
+        rightPanel.setLayout(new java.awt.CardLayout());
+        jSplitPane1.setRightComponent(rightPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,8 +106,8 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel LeftPanel;
-    private javax.swing.JPanel RightPanel;
+    private javax.swing.JPanel leftPanel;
+    private javax.swing.JPanel rightPanel;
     private javax.swing.JSplitPane jSplitPane1;
     // End of variables declaration//GEN-END:variables
 }
