@@ -7,7 +7,7 @@ package Business.UI.Hospital.MedicalWork.Patient;
 import Business.Class.Hospital.Medical.Patient;
 
 import java.awt.CardLayout;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -25,6 +25,23 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
         initComponents();
         this.patient = patient;
         this.RightPanel=RightPanel;
+        showProfile();
+    }
+
+    /**
+     * 显示数据
+     * */
+    public void showProfile(){
+        txtName.setText(patient.getName());
+        txtAge.setText(patient.getAge());
+        txtContact.setText(patient.getContact());
+        txtGender.setText(patient.getGender());
+        txtInsurance.setText(patient.getInsurance());
+        txtAllergy.setText(patient.getAllergy());
+        txtPatientId.setText(String.valueOf(patient.getId()));
+        txtUsername.setText(patient.getName());
+        txtPassword.setText(patient.getPwd());
+        txtPatientId.setText(String.valueOf(patient.getId()));
     }
 
     /**
@@ -246,6 +263,8 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
         this.patient.setInsurance(txtInsurance.getText());
         this.patient.setAllergy(txtAllergy.getText());
         this.patient.setPwd(txtPassword.getText());
+        JOptionPane.showMessageDialog(null, "Save Successfully!");
+        btnBack1ActionPerformed(evt);
     }//GEN-LAST:event_btnSaveAllActionPerformed
 
     private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
@@ -257,9 +276,7 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
         RightPanel.remove(this);
         CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.previous(RightPanel);
-        
-        
-        
+
     }//GEN-LAST:event_btnBack1ActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed

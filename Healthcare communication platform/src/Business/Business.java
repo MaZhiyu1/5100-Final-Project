@@ -138,14 +138,14 @@ public class Business {
         
         b1 = new BioTechCom("BioGenesis Therapeutics");
 
-        Lab lab1 = new Lab("Jack", "", "Internal Medicine", new_m, null);
+        Lab lab1 = new Lab("Jack", "Internal Medicine", "VICC Project", new_m, null);
         
         for(Hospital h : hospitals){
             if(h.getName().equals("Boston Rehabilitation Center")){
                 for(Doctor d : h.getDoctorList()){
                     if(d.getName().equals("Jim")){
                         lab1.setDoctor(d);
-                        d.addLab(lab1);
+                        d.getLabs().add(lab1);
                         break;
                     }
                 }
@@ -197,17 +197,32 @@ public class Business {
         RearServices rs = new RearServices("Jin", "BioGen 1", "Aa12345678","Boston Rehabilitation Center" );
         //后勤
         
-        Doctor doctor1 = new Doctor(1,"Jim","Aa12345678", "Boston Rehabilitation Center");
+        Doctor doctor1 = new Doctor(1,"Jim","Aa12345678", "male","Boston Rehabilitation Center");
         doctor1.setEnabled(1);
         doctor1.setSpecialty("Surgery");
+        doctor1.setType("Surgery");
+        doctor1.setAvail(5);
+        doctor1.setAge("30");
+        doctor1.setEductionBackground("doctor");
+        doctor1.setContact("6666666");
         
-        Doctor doctor2 = new Doctor(2,"Alex","Aa12345678", "Boston Rehabilitation Center");
+        Doctor doctor2 = new Doctor(2,"Alex","Aa12345678", "female", "Boston Rehabilitation Center");
         doctor2.setEnabled(1);
         doctor2.setSpecialty("Pediatrics");
+        doctor2.setType("Pediatrics");
+        doctor2.setAvail(12);
+        doctor2.setAge("33");
+        doctor2.setEductionBackground("master");
+        doctor2.setContact("7777777");
         
-        Doctor doctor3 = new Doctor(3,"Frank","Aa12345678", "Boston Rehabilitation Center");
+        Doctor doctor3 = new Doctor(3,"Frank","Aa12345678", "male","Boston Rehabilitation Center");
         doctor3.setEnabled(1);
         doctor3.setSpecialty("Internal Medicine");
+        doctor3.setType("Internal Medicine");
+        doctor3.setAvail(10);
+        doctor3.setAge("50");
+        doctor3.setEductionBackground("tutor");
+        doctor3.setContact("8888888");
         
         MedicalHistory mh1 = new MedicalHistory("Had server fever","keep warm. Don't eat spicy food");
         MedicalHistory mh2 = new MedicalHistory("Had server headache","keep warm. Don't eat spicy food");
@@ -229,9 +244,9 @@ public class Business {
         patient3.setAge("42");
         
         
-        Appointment a = new Appointment(1,patient1,doctor1);
-        Appointment a1 = new Appointment(1,patient2,doctor2);
-        Appointment a2 = new Appointment(1,patient3,doctor3);
+        Appointment a = new Appointment(patient1,doctor1);
+        Appointment a1 = new Appointment(patient2,doctor2);
+        Appointment a2 = new Appointment(patient3,doctor3);
         ArrayList<Appointment> APPO = new ArrayList<>();
         APPO.add(a);
         APPO.add(a1);

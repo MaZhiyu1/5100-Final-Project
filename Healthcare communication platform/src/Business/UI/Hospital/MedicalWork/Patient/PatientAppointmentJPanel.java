@@ -12,7 +12,7 @@ import Business.Class.Hospital.Medical.Patient;
 
 import java.awt.CardLayout;
 import java.util.ArrayList;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,6 +24,8 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
     private Patient patient;
     private Business bz;
     private Hospital selectedHospital;
+
+    private Doctor selectedDoctor;
 
     /**
      * Creates new form PatientAppointmentJPanel
@@ -43,13 +45,30 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
 
                 if(row != -1) { // 如果行已被选择
 
-                    Doctor selectedDoctor = (Doctor) model.getValueAt(row, 3); // 获取所选行的第1列值
+                    String doctorName = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
 
                     for (Doctor doctor : selectedHospital.getDoctorList()){
-                        if (doctor.getId() == selectedDoctor.getId()){
-                            txtName.setText(selectedDoctor.getName());
-                            txtSpecialty.setText(selectedDoctor.getSpecialty());
-                            txtDepartment.setText(selectedDoctor.getDepartment());
+
+                        if (doctorName.equals(doctor.getName())){
+                            selectedDoctor = doctor;
+
+                            txtName.setText(doctor.getName());
+                            txtSpecialty.setText(doctor.getSpecialty());
+                            txtDepartment.setText(doctor.getDepartment());
+
+                            if(doctor.getAvail() == 0){
+                                btnSubmit.setEnabled(false);
+                                textAreaAllergy.setEnabled(false);
+                                textAreaSymptom.setEnabled(false);
+                            }else {
+                                btnSubmit.setEnabled(true);
+                                textAreaAllergy.setEnabled(true);
+                                textAreaSymptom.setEnabled(true);
+                            }
+
+                            txtName.setEnabled(false);
+                            txtSpecialty.setEnabled(false);
+                            txtDepartment.setEnabled(false);
                         }
                     }
                 }
@@ -64,20 +83,7 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
     }
 
 
-    private void popularTable(Hospital hospital){
-        selectedHospital = hospital;
 
-        DefaultTableModel dtm = (DefaultTableModel) tblAppointment.getModel();
-        dtm.setRowCount(0);
-        for (Doctor doctor : hospital.getDoctorList()) {
-            Object[] row = new Object[4];
-            row[0] = doctor.getName();
-            row[1] = doctor.getType();
-            row[2] = doctor.getAvail();
-            row[3] = doctor;
-            dtm.addRow(row);
-        }
-    }
 
 
     /**
@@ -105,11 +111,11 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
         txtName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        symptomTextArea = new javax.swing.JTextArea();
+        textAreaAllergy = new javax.swing.JTextArea();
         btnBack1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        symptomTextArea1 = new javax.swing.JTextArea();
+        textAreaSymptom = new javax.swing.JTextArea();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -153,11 +159,11 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
 
         jLabel16.setText("Name:");
 
-        jLabel5.setText("Symptom description：");
+        jLabel5.setText("Allergy:");
 
-        symptomTextArea.setColumns(20);
-        symptomTextArea.setRows(5);
-        jScrollPane4.setViewportView(symptomTextArea);
+        textAreaAllergy.setColumns(20);
+        textAreaAllergy.setRows(5);
+        jScrollPane4.setViewportView(textAreaAllergy);
 
         btnBack1.setText("Back");
         btnBack1.addActionListener(new java.awt.event.ActionListener() {
@@ -168,9 +174,9 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Symptom description：");
 
-        symptomTextArea1.setColumns(20);
-        symptomTextArea1.setRows(5);
-        jScrollPane5.setViewportView(symptomTextArea1);
+        textAreaSymptom.setColumns(20);
+        textAreaSymptom.setRows(5);
+        jScrollPane5.setViewportView(textAreaSymptom);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -276,7 +282,19 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        // TODO add your handling code here:
+        // submit appointment
+        if(selectedDoctor == null){
+            JOptionPane.showMessageDialog(null, "Please select a doctor!");
+            return;
+        }
+        Appointment appointment = new Appointment(patient, selectedDoctor);
+        appointment.setAllergy(textAreaAllergy.getText());
+        appointment.setSymptom(textAreaSymptom.getText());
+        appointment.setStatus(0);
+        selectedDoctor.setAvail(selectedDoctor.getAvail()-1);
+        JOptionPane.showMessageDialog(null, "Appointment has been submitted successfully!");
+        btnBack1ActionPerformed(evt);
+
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
@@ -298,6 +316,23 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cmbHospitalActionPerformed
 
 
+    /**
+     * 初始化表格
+     * */
+    private void popularTable(Hospital hospital){
+        selectedHospital = hospital;
+
+        DefaultTableModel dtm = (DefaultTableModel) tblAppointment.getModel();
+        dtm.setRowCount(0);
+        for (Doctor doctor : hospital.getDoctorList()) {
+            Object[] row = new Object[4];
+            row[0] = doctor.getName();
+            row[1] = doctor.getType();
+            row[2] = doctor.getAvail();
+            row[3] = doctor;
+            dtm.addRow(row);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnSubmit;
@@ -314,9 +349,9 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextArea symptomTextArea;
-    private javax.swing.JTextArea symptomTextArea1;
     private javax.swing.JTable tblAppointment;
+    private javax.swing.JTextArea textAreaAllergy;
+    private javax.swing.JTextArea textAreaSymptom;
     private javax.swing.JTextField txtDepartment;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtSpecialty;

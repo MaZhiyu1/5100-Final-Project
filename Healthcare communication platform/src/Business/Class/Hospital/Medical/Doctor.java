@@ -5,10 +5,10 @@
 package Business.Class.Hospital.Medical;
 
 import Business.Class.BioTech.Lab;
-import Business.Class.Medicine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import javax.swing.ImageIcon;
 
 /**
@@ -28,64 +28,27 @@ public class Doctor extends Person{
     String department;
     String specialty;
     String eductionBackground;
-    private HashMap<Lab,String> labs;
-    
-    public Doctor(int id, String name, String pwd, String hospital) {
+//    private HashMap<Lab,String> labs;
+    private List<Lab> labs;
+
+    public Doctor(int id, String name, String pwd, String gender,String hospital) {
+        super(id, name, pwd, gender);
         enabled=0;
         this.id = id;
         this.name = name;
         this.pwd = pwd;
         this.hospital = hospital;
         appointmentList = new ArrayList<>();
-        labs = new HashMap<Lab,String>();
+        labs = new ArrayList<>();
     }
 
-    public HashMap<Lab, String> getLabs() {
+    public List<Lab> getLabs() {
         return labs;
     }
-
-//    public int getId() {
-//        return id;
-//    }
 //
-//    public void setId(int id) {
-//        this.id = id;
+//    public void addLab(Lab lab){
+//        labs.put(lab, "Processing");
 //    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getPwd() {
-//        return pwd;
-//    }
-//
-//    public void setPwd(String pwd) {
-//        this.pwd = pwd;
-//    }
-//
-//    public String getAge() {
-//        return age;
-//    }
-//
-//    public void setAge(String age) {
-//        this.age = age;
-//    }
-//
-//    public String getGender() {
-//        return gender;
-//    }
-//
-//    public void setGender(String gender) {
-//        this.gender = gender;
-//    }
-    public void addLab(Lab lab){
-        labs.put(lab, "Processing");
-    }
 
     public String getType() {
         return type;
@@ -119,13 +82,7 @@ public class Doctor extends Person{
         this.logoImage = logoImage;
     }
 
-//    public ArrayList<Patient> getPatients() {
-//        return patients;
-//    }
-//
-//    public void setPatients(ArrayList<Patient> patients) {
-//        this.patients = patients;
-//    }
+
 
     public ArrayList<Appointment> getAppointmentList() {
         return appointmentList;

@@ -4,8 +4,12 @@
  */
 package Business.UI.Hospital.MedicalWork.Doctor;
 
+import Business.Class.Hospital.Medical.Appointment;
+import Business.Class.Hospital.Medical.Doctor;
+
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,12 +17,57 @@ import javax.swing.JPanel;
  */
 public class AppointmentJPanel extends javax.swing.JPanel {
     JPanel RightPanel;
+    private Doctor doctor;
+
+    private Appointment selectedAppointment;
     /**
      * Creates new form AppointmentJPanel
      */
-    public AppointmentJPanel(JPanel RightPanel) {
+    public AppointmentJPanel(JPanel RightPanel, Doctor doctor) {
         initComponents();
+        this.doctor = doctor;
         this.RightPanel=RightPanel;
+
+        tblAppointment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = tblAppointment.getSelectedRow(); // 获取所点选行的索引
+                DefaultTableModel model = (DefaultTableModel) tblAppointment.getModel(); //Have the access to the table;
+
+                if(row != -1) { // 如果行已被选择
+                    String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
+
+                    for (Appointment appointment : doctor.getAppointmentList()){
+
+                        if (id.equals(appointment.getId())){
+                            selectedAppointment = appointment;
+
+                            txtName.setText(appointment.getPatient().getName());
+                            txtPatientId.setText(String.valueOf(appointment.getPatient().getId()));
+                            txtPatientAge.setText(appointment.getPatient().getAge());
+                            txtPatientGender.setText(appointment.getPatient().getGender());
+                            txtAllergy.setText(appointment.getPatient().getAllergy());
+                            txtInsurance.setText(appointment.getPatient().getInsurance());
+                            symptomTextArea.setText(appointment.getSymptom());
+                        }
+                    }
+                }
+            }
+        });
+
+    }
+
+    public void initTable(){
+        DefaultTableModel dtm = (DefaultTableModel) tblAppointment.getModel();
+        dtm.setRowCount(0);
+
+        for (Appointment appointment : doctor.getAppointmentList()) {
+            Object[] row = new Object[4];
+            row[0] = appointment.getId();
+            row[1] = appointment.getPatient().getName();
+            row[2] = appointment.getPatient().getId();
+            row[3] = appointment.getPatient().getInsurance();
+            dtm.addRow(row);
+        }
     }
 
     /**

@@ -16,6 +16,18 @@ public class Person {
     String gender;
     String contact;
 
+    public Person(){
+
+    }
+
+    public Person(int id, String name, String pwd, String gender){
+        this.id = id;
+        this.name = name;
+        this.pwd = pwd;
+        this.gender = gender;
+    }
+
+
     public int getId() {
         return id;
     }

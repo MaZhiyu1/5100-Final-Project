@@ -15,13 +15,15 @@ import javax.swing.JPanel;
 public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel RightPanel;
 
+    private Doctor doctor;
+
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public DoctorWorkAreaJPanel(JPanel RightPanel) {
+    public DoctorWorkAreaJPanel(JPanel RightPanel, Doctor doctor) {
         initComponents();
-          this.RightPanel=RightPanel;
-
+        this.RightPanel=RightPanel;
+        this.doctor = doctor;
     }
 
     /**
@@ -178,7 +180,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAppointmentActionPerformed
         // TODO add your handling code here:
-    AppointmentJPanel ap = new AppointmentJPanel(RightPanel);
+    AppointmentJPanel ap = new AppointmentJPanel(RightPanel, doctor);
     RightPanel.add("AppointmentJPanel", ap);
     CardLayout layout = (CardLayout) RightPanel.getLayout();
     layout.next(RightPanel);
@@ -203,7 +205,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
         // TODO add your handling code here:
-    DoctorProfileJPanel dpp = new DoctorProfileJPanel(RightPanel);
+    DoctorProfileJPanel dpp = new DoctorProfileJPanel(RightPanel, doctor);
     RightPanel.add("DoctorProfileJPanel", dpp);
     CardLayout layout = (CardLayout) RightPanel.getLayout();
     layout.next(RightPanel);

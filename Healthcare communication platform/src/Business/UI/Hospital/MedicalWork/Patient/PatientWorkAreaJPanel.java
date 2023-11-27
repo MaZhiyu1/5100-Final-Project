@@ -27,7 +27,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         this.patient = patient;
         this.bz = bz;
         this.RightPanel=RightPanel;
-
+        jLabel4.setText(patient.getName());
     }
 
     /**

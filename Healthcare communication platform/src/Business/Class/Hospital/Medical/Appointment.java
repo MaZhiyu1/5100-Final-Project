@@ -5,21 +5,21 @@
 package Business.Class.Hospital.Medical;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  *
  * @author 15469
  */
 public class Appointment {
-    int id;
+    private String id;
     Patient patient;
     Doctor doctor;
-    private String insurance;
     private String allergy;
     private String symptom;
     private int status;
-    public Appointment(int id, Patient patient, Doctor doctor) {
-        this.id = id;
+    public Appointment(Patient patient, Doctor doctor) {
+        this.id = UUID.randomUUID().toString();
         this.patient = patient;
         this.doctor = doctor;
         status=0;
@@ -33,13 +33,11 @@ public class Appointment {
         this.status = status;
     }
 
-    
-    
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -59,15 +57,6 @@ public class Appointment {
         this.doctor = doctor;
     }
 
-
-
-    public String getInsurance() {
-        return insurance;
-    }
-
-    public void setInsurance(String insurance) {
-        this.insurance = insurance;
-    }
 
     public String getAllergy() {
         return allergy;

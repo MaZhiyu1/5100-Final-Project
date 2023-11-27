@@ -4,6 +4,7 @@
  */
 package Business.UI.Hospital.MedicalWork.Doctor;
 
+import Business.Class.BioTech.Lab;
 import Business.Class.Hospital.Medical.Doctor;
 import java.awt.CardLayout;
 import java.awt.Image;
@@ -12,10 +13,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,10 +25,12 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
     JPanel RightPanel;
     private final JFileChooser fileChooser = new JFileChooser();
     ImageIcon logoImage;
+
+    private Doctor doctor;
     /**
      * Creates new form DoctorProfileJPanel
      */
-    public DoctorProfileJPanel(JPanel RightPanel) {
+    public DoctorProfileJPanel(JPanel RightPanel, Doctor doctor) {
         initComponents();
         this.RightPanel=RightPanel;
         FileNameExtensionFilter jpegFilter = new FileNameExtensionFilter("JPEG file","jpg", "jpeg");
@@ -37,13 +39,47 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
         fileChooser.addChoosableFileFilter(jpegFilter);
         fileChooser.addChoosableFileFilter(pngFilter);
         fileChooser.getFileFilter();
-        
-//        if(doctor.getLogoImage() != null){
-//            imgLogo.setIcon(doctor.getLogoImage());
-//        } else{
-//            imgLogo.setText("No Logo");
-//        }
+        initDoctorProfile(doctor);
+
     }
+
+    public void initDoctorProfile(Doctor doctor ){
+        txtId.setEnabled(false);
+        txtUsername.setEnabled(false);
+
+        txtName.setText(doctor.getName());
+        txtAge.setText(doctor.getAge());
+        txtId.setText(String.valueOf(doctor.getId()));
+        txtGender.setText(doctor.getGender());
+        txtContact.setText(doctor.getContact());
+        txtAvail.setText(String.valueOf(doctor.getAvail()));
+        txtHospital.setText(doctor.getHospital());
+        txtSpecialty.setText(doctor.getSpecialty());
+        txtEduBackground.setText(doctor.getEductionBackground());
+        txtUsername.setText(doctor.getName());
+        txtPassword.setText(doctor.getPwd());
+        cmbDepartment.setSelectedItem(doctor.getDepartment());
+        if(doctor.getLogoImage() != null){
+            imgLogo.setIcon(doctor.getLogoImage());
+        } else{
+            imgLogo.setText("No Logo");
+        }
+
+        initLabTable(doctor);
+    }
+
+    private void initLabTable(Doctor doctor) {
+        DefaultTableModel model = (DefaultTableModel) tblLab.getModel();
+        model.setRowCount(0);
+        for (Lab lab : doctor.getLabs()) {
+            Object[] row = new Object[3];
+            row[0] = lab.getProjectName();
+            row[1] = lab.getGroup();
+            row[2] = lab.getStatus();
+            model.addRow(row);
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -256,8 +292,7 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
 
     private void btnSavePhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSavePhotoActionPerformed
         // TODO add your handling code here:
-        logoImage = null;
-        imgLogo.setIcon(null);
+        doctor.setLogoImage(logoImage);
     }//GEN-LAST:event_btnSavePhotoActionPerformed
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
@@ -281,6 +316,19 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
 
     private void btnSaveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAllActionPerformed
         // TODO add your handling code here:
+        txtName.setText(doctor.getName());
+        txtAge.setText(doctor.getAge());
+//        txtId.setText(doctor.getId());
+        txtGender.setText(doctor.getGender());
+        txtContact.setText(doctor.getContact());
+        txtAvail.setText(String.valueOf(doctor.getAvail()));
+        txtHospital.setText(doctor.getHospital());
+        txtSpecialty.setText(doctor.getSpecialty());
+        txtEduBackground.setText(doctor.getEductionBackground());
+//        txtUsername.setText(doctor.getName());
+        txtPassword.setText(doctor.getPwd());
+        JOptionPane.showMessageDialog(null, "Save Successfully!");
+        btnBack1ActionPerformed(evt);
     }//GEN-LAST:event_btnSaveAllActionPerformed
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed

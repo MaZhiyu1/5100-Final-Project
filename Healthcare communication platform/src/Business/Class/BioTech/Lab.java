@@ -14,21 +14,28 @@ import java.util.ArrayList;
  * @author 15469
  */
 public class Lab {
+
     private String name;
-    private String pwd;
+//    private String pwd;
     private String group;
     
     private Doctor doctor;
     private Medicine medicine;
     private Vaccine vaccine;
 
-    public Lab(String name, String pwd, String group, Medicine medicine, Vaccine vaccine) {
+    private String projectName;
+
+    private String status;
+
+    public Lab(String name, String group, String projectName,Medicine medicine, Vaccine vaccine) {
         this.name = name;
-        this.pwd = pwd;
+//        this.pwd = pwd;
         this.group = group;
         this.medicine = medicine;
         this.vaccine = vaccine;
-    }
+        this.projectName = projectName;
+        this.status = "Processing";
+     }
 
     public String getName() {
         return name;
@@ -38,13 +45,13 @@ public class Lab {
         this.name = name;
     }
 
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
+//    public String getPwd() {
+//        return pwd;
+//    }
+//
+//    public void setPwd(String pwd) {
+//        this.pwd = pwd;
+//    }
 
     public String getGroup() {
         return group;
@@ -77,11 +84,21 @@ public class Lab {
     public void setVaccine(Vaccine vaccine) {
         this.vaccine = vaccine;
     }
-    
-    
 
-    
-    
-    
-    
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

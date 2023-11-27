@@ -268,7 +268,7 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
             return;
         }
         if(o instanceof Doctor){
-            DoctorWorkAreaJPanel dw = new DoctorWorkAreaJPanel(RightPanel);
+            DoctorWorkAreaJPanel dw = new DoctorWorkAreaJPanel(RightPanel, (Doctor) o);
             RightPanel.add("LoginScreen",dw);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);

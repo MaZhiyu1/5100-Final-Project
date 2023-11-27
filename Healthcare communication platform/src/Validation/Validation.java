@@ -69,9 +69,10 @@ public class Validation {
                 if(type.equals("Research")){
                     for(Lab lab1 : bt.getLabs()){
                         if(lab1.getName().equals(username)){
-                            if(lab1.getPwd().equals(pwd)){
-                                return lab1;
-                            }
+                            return lab1;
+//                            if(lab1.getPwd().equals(pwd)){
+//                                return lab1;
+//                            }
                         }
                     }
                 }   //Supplier

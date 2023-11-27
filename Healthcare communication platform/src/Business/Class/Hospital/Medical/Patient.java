@@ -32,13 +32,13 @@ public class Patient extends Person{
         prescriptionList = new ArrayList<>();
     }
 
-    public void makeAppoinment(Doctor e){
-        Appointment ap = new Appointment(1,this,e);
+    public Appointment makeAppoinment(Doctor doctor){
+        Appointment ap = new Appointment(this, doctor);
         appointmentList.add(ap);
+        doctor.getAppointmentList().add(ap);
+        return ap;
     }
-    
-    
-    
+
     public int getId() {
         return id;
     }
@@ -78,8 +78,6 @@ public class Patient extends Person{
     public void setGender(String gender) {
         this.gender = gender;
     }
-
-
 
     public ImageIcon getLogoImage() {
         return logoImage;
