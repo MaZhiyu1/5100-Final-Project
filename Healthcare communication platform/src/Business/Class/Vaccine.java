@@ -39,6 +39,11 @@ public class Vaccine {
         this.quantity = quantity;
     }
 
+    @Override
+    public String toString() {
+        return  id;
+    }
+
     
     
     public String getName() {

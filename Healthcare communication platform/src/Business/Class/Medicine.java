@@ -38,6 +38,13 @@ public class Medicine {
         this.quantity = quantity;
     }
 
+    @Override
+    public String toString() {
+        return id;
+    }
+
+    
+    
     
     public int getProcess() {
         return process;
