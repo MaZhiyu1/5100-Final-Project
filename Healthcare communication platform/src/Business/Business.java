@@ -164,11 +164,11 @@ public class Business {
         M.add(m1);
         M.add(m2);
         
-        Vaccine v = new Vaccine("A1", "1", "For Child", "Pediatrics");
+        Vaccine v = new Vaccine("V A1", "1", "For Child", "Pediatrics");
         v.setQuantity(10);
-        Vaccine v1 = new Vaccine("B1", "2", "For Internal", "Internal Medicine");
+        Vaccine v1 = new Vaccine("V B1", "2", "For Internal", "Internal Medicine");
         v1.setQuantity(10);
-        Vaccine v2 = new Vaccine("C1", "3", "Surgery", "Surgery");
+        Vaccine v2 = new Vaccine("V C1", "3", "Surgery", "Surgery");
         v2.setQuantity(10);
         ArrayList<Vaccine> V = new ArrayList<>();
         

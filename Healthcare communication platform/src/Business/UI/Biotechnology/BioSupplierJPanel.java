@@ -133,6 +133,10 @@ public class BioSupplierJPanel extends javax.swing.JPanel {
 
     private void btnDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliveryActionPerformed
         // TODO add your handling code here:
+        DeliverDrugPanel dd = new DeliverDrugPanel(bz,bioTech,bs);
+        RightPanel.add("LoginScreen",dd);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
     }//GEN-LAST:event_btnDeliveryActionPerformed
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
