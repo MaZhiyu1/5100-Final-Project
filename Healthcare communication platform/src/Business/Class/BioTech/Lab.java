@@ -17,23 +17,37 @@ public class Lab {
 
     private String name;
 //    private String pwd;
-    private String group;
-    
+    private String department;
+    private String instruction;
     private Doctor doctor;
     private Medicine medicine;
     private Vaccine vaccine;
-
     private String projectName;
-
+    private int progress;
     private String status;
-
+    private String type;
+    
+    
     public Lab(String name, String group, String projectName,Medicine medicine, Vaccine vaccine) {
         this.name = name;
 //        this.pwd = pwd;
-        this.group = group;
+        this.department = group;
         this.medicine = medicine;
         this.vaccine = vaccine;
         this.projectName = projectName;
+        progress=0;
+        this.status = "Processing";
+     }
+    
+    
+    public Lab(String name, String group, String projectName,String type,String instruction) {
+        this.name = name;
+//        this.pwd = pwd;
+        this.department = group;
+        this.projectName = projectName;
+        progress=0;
+        this.type=type;
+        this.instruction = instruction;
         this.status = "Processing";
      }
 
@@ -41,6 +55,35 @@ public class Lab {
         return name;
     }
 
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
+
+    
+    
+    
+    public int getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    
+    
     public void setName(String name) {
         this.name = name;
     }
@@ -53,12 +96,12 @@ public class Lab {
 //        this.pwd = pwd;
 //    }
 
-    public String getGroup() {
-        return group;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public Doctor getDoctor() {

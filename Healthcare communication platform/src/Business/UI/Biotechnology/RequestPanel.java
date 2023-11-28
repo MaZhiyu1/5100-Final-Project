@@ -6,8 +6,12 @@ package Business.UI.Biotechnology;
 
 import Business.Business;
 import Business.Class.BioTech.BioSupplier;
+import Business.Class.Delivery.Order;
 import Business.Class.Hospital.Request;
+import Business.Class.Medicine;
+import Business.Class.Vaccine;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,12 +26,15 @@ public class RequestPanel extends javax.swing.JPanel {
     Business bz;
     String bioTech;
     BioSupplier bs;
-    public RequestPanel(Business bz,String bioTech,BioSupplier bs) {
+    JPanel RightPanel;
+    public RequestPanel(JPanel RightPanel,Business bz,String bioTech,BioSupplier bs) {
         initComponents();
         this.bz=bz;
         this.bioTech=bioTech;
         this.bs=bs;
+        this.RightPanel= RightPanel;
         refreshTable();
+        refreshTable1();
     }
     
     public void refreshTable() {
@@ -44,6 +51,50 @@ public class RequestPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
+    
+    public void refreshTable1() {
+        DefaultTableModel model = (DefaultTableModel)tblOrder.getModel();
+        model.setRowCount(0);
+        if(bs.getOrders()==null) return;
+        for(Order s : bs.getOrders()) {
+            Object row[] = new Object[4];
+            row[0] = s;
+            row[1] = s.getDelivery();
+            row[2] = s.getAddress();
+            row[3] = s.getStatus();
+           // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
+            model.addRow(row);
+        }
+    }
+    
+    public void refreshTable2(Order selected) {
+        DefaultTableModel model = (DefaultTableModel)tblMedicine.getModel();
+        model.setRowCount(0);
+        if(selected.getMedicines()==null) return;
+        for(Medicine s : selected.getMedicines()) {
+            Object row1[] = new Object[3];
+            row1[0] = s;
+            row1[1] = s.getType();
+            row1[2] = s.getQuality();
+           // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
+            model.addRow(row1);
+        }
+    }
+    
+    public void refreshTable3(Order selected) {
+        DefaultTableModel model = (DefaultTableModel)tblVaccine.getModel();
+        model.setRowCount(0);
+        if(selected.getVaccines()==null) return;
+        for(Vaccine s : selected.getVaccines()) {
+            Object row1[] = new Object[3];
+            row1[0] = s;
+            row1[1] = s.getType();
+            row1[2] = s.getQuantity();
+           // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
+            model.addRow(row1);
+        }
+    }
+    
     
 
     /**
@@ -64,6 +115,15 @@ public class RequestPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         DescriptionTextArea = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblOrder = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblMedicine = new javax.swing.JTable();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblVaccine = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -88,6 +148,9 @@ public class RequestPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane2.setViewportView(tblRequest);
+        if (tblRequest.getColumnModel().getColumnCount() > 0) {
+            tblRequest.getColumnModel().getColumn(3).setHeaderValue("Status");
+        }
 
         btnComplete.setText("Complete");
         btnComplete.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +166,71 @@ public class RequestPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Description");
 
+        tblOrder.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Delivery", "Address", "Status"
+            }
+        ));
+        tblOrder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblOrderMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblOrder);
+        if (tblOrder.getColumnModel().getColumnCount() > 0) {
+            tblOrder.getColumnModel().getColumn(3).setHeaderValue("Status");
+        }
+
+        jLabel2.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Orders");
+
+        tblMedicine.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Type", "Quantity"
+            }
+        ));
+        tblMedicine.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMedicineMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tblMedicine);
+
+        tblVaccine.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Type", "Quantity"
+            }
+        ));
+        tblVaccine.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblVaccineMouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(tblVaccine);
+
+        jLabel4.setText("Medicine");
+
+        jLabel5.setText("Vaccine");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -113,19 +241,34 @@ public class RequestPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 698, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGap(80, 80, 80)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnComplete, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(127, 127, 127))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -134,14 +277,32 @@ public class RequestPanel extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnComplete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addGap(13, 13, 13)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(73, 73, 73))))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -157,7 +318,7 @@ public class RequestPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -186,16 +347,44 @@ public class RequestPanel extends javax.swing.JPanel {
         DescriptionTextArea.setText(selected.getInstruction());
     }//GEN-LAST:event_tblRequestMouseClicked
 
+    private void tblOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblOrderMouseClicked
+        // TODO add your handling code here:
+        int row = tblOrder.getSelectedRow();
+        if(row<0){
+            return;
+        }
+        Order selected = (Order) tblOrder.getValueAt(row, 0);
+        refreshTable2(selected);
+        refreshTable3( selected);
+    }//GEN-LAST:event_tblOrderMouseClicked
+
+    private void tblMedicineMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicineMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblMedicineMouseClicked
+
+    private void tblVaccineMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVaccineMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblVaccineMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea DescriptionTextArea;
     private javax.swing.JButton btnComplete;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTable tblMedicine;
+    private javax.swing.JTable tblOrder;
     private javax.swing.JTable tblRequest;
+    private javax.swing.JTable tblVaccine;
     // End of variables declaration//GEN-END:variables
 }

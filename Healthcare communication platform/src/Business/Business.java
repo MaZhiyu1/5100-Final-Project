@@ -4,6 +4,7 @@
  */
 package Business;
 
+import Business.Class.BioTech.BioResaercher;
 import Business.Class.BioTech.BioSupplier;
 import Business.Class.BioTech.BioTechCom;
 import Business.Class.BioTech.Lab;
@@ -138,9 +139,12 @@ public class Business {
         Medicine new_m = new Medicine("New Medicine", "Bio", "Heart Disease", "Internal Medicine");
         
         b1 = new BioTechCom("BioGenesis Therapeutics");
-
-        Lab lab1 = new Lab("Jack", "Internal Medicine", "VICC Project", new_m, null);
         
+        BioResaercher br = new BioResaercher("Jack", "", "1", "BioGenesis Therapeutics");
+        b1.addBioResaecher(br);
+        Lab lab1 = new Lab("Jack", "Internal Medicine", "VICC Project", new_m, null);
+        Lab lab2 = new Lab("BioGenesis Project 1", "Group 1", "VICC Project","Internal Medicine","");
+        br.addLab(lab2);
         for(Hospital h : hospitals){
             if(h.getName().equals("Boston Rehabilitation Center")){
                 for(Doctor d : h.getDoctorList()){

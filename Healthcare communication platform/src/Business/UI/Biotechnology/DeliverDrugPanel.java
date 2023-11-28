@@ -7,11 +7,14 @@ package Business.UI.Biotechnology;
 import Business.Business;
 import Business.Class.BioTech.BioSupplier;
 import Business.Class.BioTech.BioTechCom;
+import Business.Class.Delivery.Order;
 import Business.Class.Equipment;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,11 +33,13 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
     int number;
     ArrayList<Vaccine> vaccines= new ArrayList<>();
     BioTechCom btc;
-    public DeliverDrugPanel(Business bz,String bioTech,BioSupplier bs) {
+    JPanel RightPanel;
+    public DeliverDrugPanel(JPanel RightPanel,Business bz,String bioTech,BioSupplier bs) {
         initComponents();
         this.bz=bz;
         this.bioTech=bioTech;
         this.bs=bs;
+        this.RightPanel=RightPanel;
         number=0;
         for(BioTechCom bt : bz.getBioTech()){
             if(bt.getName().equals(bioTech)){
@@ -167,7 +172,7 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Type", "Instruction", "Quantity"
+                "ID", "Name", "Type", "Quantity", "Status"
             }
         ));
         jScrollPane3.setViewportView(tblCart);
@@ -354,8 +359,30 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        
-        
+    DefaultTableModel model1 = (DefaultTableModel)tblCart.getModel();
+    int s=1;
+    if(bs.getOrders()!=null){
+        s = bs.getOrders().size()+1;
+    }
+    if(model1.getRowCount()<0){
+        JOptionPane.showMessageDialog(null,"Please enter to cart", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+    }
+    Order order1 = new Order(String.valueOf(s),(String)cmbDeliveryCompany.getSelectedItem(),bioTech,(String)cmbHospital.getSelectedItem(),"Processing");
+        for (int count = 0; count < model1.getRowCount(); count++){
+        if(model1.getValueAt(count, 0) instanceof Vaccine){
+            order1.addVaccine((Vaccine)model1.getValueAt(count, 0));
+        }
+        else if(model1.getValueAt(count, 0) instanceof Medicine){
+            order1.addMedicine((Medicine)model1.getValueAt(count, 0));
+        }
+    }
+        bs.getOrders().add(order1);
+        JOptionPane.showMessageDialog(null,"Successfully submit!");
+        RightPanel.remove(this);
+        CardLayout layout =  (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
+
     }//GEN-LAST:event_btnSubmitActionPerformed
 
 

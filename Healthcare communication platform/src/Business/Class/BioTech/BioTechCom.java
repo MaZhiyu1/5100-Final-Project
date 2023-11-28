@@ -19,11 +19,13 @@ public class BioTechCom {
     private String name;
     ArrayList<Request> request;
     ArrayList<Order> orders;
+    ArrayList<BioResaercher> br;
     private HospitalInventory hi;
     
     public BioTechCom(String name) {
         this.name = name;
         labs = new ArrayList<>();
+        br = new ArrayList<>();
         request = new ArrayList<>();
         orders= new ArrayList<>();
         bioSupplier = new ArrayList<>();
@@ -34,6 +36,22 @@ public class BioTechCom {
         return hi;
     }
 
+    public void addBioResaecher(BioResaercher e){
+        br.add(e);
+    }
+    
+    
+    public ArrayList<BioResaercher> getBr() {
+        return br;
+    }
+
+    public void setBr(ArrayList<BioResaercher> br) {
+        this.br = br;
+    }
+
+    
+    
+    
     public void setHi(HospitalInventory hi) {
         this.hi = hi;
     }

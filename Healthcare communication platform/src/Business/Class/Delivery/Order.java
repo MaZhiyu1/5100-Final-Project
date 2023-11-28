@@ -18,15 +18,17 @@ public class Order {
     String location;
     String address;
     String status;
+    String delivery;
     ArrayList<Medicine> medicines;
     ArrayList<Equipment> equipments;
     ArrayList<Vaccine> vaccines;
 
-    public Order(String id, String location, String address, String status) {
+    public Order(String id, String delivery,String location, String address, String status) {
         this.id = id;
         this.location = location;
         this.address = address;
         this.status = status;
+        this.delivery=delivery;
         medicines = new ArrayList<>();
         equipments = new ArrayList<>();
         vaccines = new ArrayList<>();
@@ -42,6 +44,19 @@ public class Order {
     
     public void addVaccine(Vaccine e){
         vaccines.add(e);
+    }
+
+    @Override
+    public String toString() {
+        return  id ;
+    }
+
+    public String getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(String delivery) {
+        this.delivery = delivery;
     }
     
     

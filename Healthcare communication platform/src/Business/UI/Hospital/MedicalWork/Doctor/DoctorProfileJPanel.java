@@ -74,7 +74,7 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
         for (Lab lab : doctor.getLabs()) {
             Object[] row = new Object[3];
             row[0] = lab.getProjectName();
-            row[1] = lab.getGroup();
+            row[1] = lab.getDepartment();
             row[2] = lab.getStatus();
             model.addRow(row);
         }

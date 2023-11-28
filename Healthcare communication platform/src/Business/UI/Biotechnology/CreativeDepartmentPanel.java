@@ -5,6 +5,7 @@
 package Business.UI.Biotechnology;
 
 import Business.Business;
+import Business.Class.BioTech.BioResaercher;
 import Business.Class.BioTech.Lab;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -21,14 +22,14 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
     JPanel RightPanel;
     Business bz;
     String bioTech;
-    Lab lab;
-    public CreativeDepartmentPanel(JPanel RightPanel,Business bz,String bioTech,Lab lab) {
+    BioResaercher br;
+    public CreativeDepartmentPanel(JPanel RightPanel,Business bz,String bioTech,BioResaercher lab) {
         initComponents();
         this.RightPanel=RightPanel;
         this.bz=bz;
         this.bioTech=bioTech;
-        this.lab=lab;
-        lblGroup.setText(lab.getGroup());
+        this.br=lab;
+        
     }
 
     /**
@@ -129,7 +130,7 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
 
     private void btnDevelopmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevelopmentActionPerformed
         // TODO add your handling code here:
-        InventionPanel ip = new InventionPanel( RightPanel, bz, bioTech, lab);
+        InventionPanel ip = new InventionPanel( RightPanel, bz, bioTech, br);
             RightPanel.add("LoginScreen",ip);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);

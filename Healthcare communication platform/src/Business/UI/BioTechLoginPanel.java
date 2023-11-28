@@ -5,6 +5,7 @@
 package Business.UI;
 
 import Business.Business;
+import Business.Class.BioTech.BioResaercher;
 import Business.Class.BioTech.BioSupplier;
 import Business.Class.BioTech.Lab;
 import Business.UI.Biotechnology.BioSupplierJPanel;
@@ -231,8 +232,8 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please input correct account and password!");
             return;
         }
-        if(o instanceof Lab){
-            CreativeDepartmentPanel dw = new CreativeDepartmentPanel(RightPanel,bz,bioTech,(Lab)o);
+        if(o instanceof BioResaercher){
+            CreativeDepartmentPanel dw = new CreativeDepartmentPanel(RightPanel,bz,bioTech,(BioResaercher)o);
             RightPanel.add("LoginScreen",dw);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
