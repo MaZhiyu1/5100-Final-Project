@@ -9,7 +9,6 @@ import Business.Class.BioTech.BioTechCom;
 import Business.Class.BioTech.Lab;
 import Business.Class.Delivery.Delivery;
 import Business.Class.Equipment;
-import Business.Class.Hospital.Development.HospitalResearch;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Appointment;
 import Business.Class.Hospital.Medical.Doctor;
@@ -154,11 +153,11 @@ public class Business {
         }
         b1.addLab(lab1);
         Medicine m = new Medicine("A1", "1", "For Child", "Pediatrics");
-        m.setQuality(10);
+        m.setQuantity(10);
         Medicine m1 = new Medicine("B1", "2", "For Internal", "Internal Medicine");
-        m1.setQuality(10);
+        m1.setQuantity(10);
         Medicine m2 = new Medicine("C1", "3", "Surgery", "Surgery");
-        m2.setQuality(10);
+        m2.setQuantity(10);
         ArrayList<Medicine> M = new ArrayList<>();
         
         M.add(m);
@@ -212,6 +211,7 @@ public class Business {
         doctor1.setAge("30");
         doctor1.setEductionBackground("doctor");
         doctor1.setContact("6666666");
+        doctor1.setDepartment("Surgery");
         
         Doctor doctor2 = new Doctor(2,"Alex","Aa12345678", "female", "Boston Rehabilitation Center");
         doctor2.setEnabled(1);
@@ -221,6 +221,7 @@ public class Business {
         doctor2.setAge("33");
         doctor2.setEductionBackground("master");
         doctor2.setContact("7777777");
+        doctor2.setDepartment("Pediatrics");
         
         Doctor doctor3 = new Doctor(3,"Frank","Aa12345678", "male","Boston Rehabilitation Center");
         doctor3.setEnabled(1);
@@ -230,6 +231,7 @@ public class Business {
         doctor3.setAge("50");
         doctor3.setEductionBackground("tutor");
         doctor3.setContact("8888888");
+        doctor3.setDepartment("Internal Medicine");
         
         MedicalHistory mh1 = new MedicalHistory("Had server fever","keep warm. Don't eat spicy food");
         MedicalHistory mh2 = new MedicalHistory("Had server headache","keep warm. Don't eat spicy food");
@@ -264,11 +266,11 @@ public class Business {
         patient3.makeAppoinment(doctor3);
         
         Medicine m = new Medicine("A1", "1", "For Child", "Pediatrics");
-        m.setQuality(10);
+        m.setQuantity(10);
         Medicine m1 = new Medicine("B1", "2", "For Internal", "Internal Medicine");
-        m1.setQuality(10);
+        m1.setQuantity(10);
         Medicine m2 = new Medicine("C1", "3", "Surgery", "Surgery");
-        m2.setQuality(10);
+        m2.setQuantity(10);
         ArrayList<Medicine> M = new ArrayList<>();
         
         M.add(m);

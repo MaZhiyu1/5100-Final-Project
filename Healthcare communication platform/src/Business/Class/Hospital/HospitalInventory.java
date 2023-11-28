@@ -58,8 +58,8 @@ public class HospitalInventory {
     
     public void addMedicine(Medicine e){
         for(Medicine m : md.getDrugs()){
-            if(m.getId()==e.getId()&&m.getType().equals(e.getType())){
-                m.setQuantity(m.getQuality()+e.getQuality());
+            if(m.getId().equals(e.getId()) && m.getType().equals(e.getType())){
+                m.setQuantity(m.getQuantity() + e.getQuantity());
                 return;
             }
         }
@@ -92,7 +92,7 @@ public class HospitalInventory {
         for(Medicine m : md.getDrugs()){
             if(m.getId()==e.getId()&&m.getType().equals(e.getType())){
                  if(m.getQuantity()-e.getQuantity()<0) return -1;
-                m.setQuantity(m.getQuality()-e.getQuality());
+                m.setQuantity(m.getQuantity()-e.getQuantity());
                 return 1;
             }
         }

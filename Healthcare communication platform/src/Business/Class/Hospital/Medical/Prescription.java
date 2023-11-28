@@ -4,6 +4,7 @@
  */
 package Business.Class.Hospital.Medical;
 
+import Business.Class.Drug;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
 import java.util.ArrayList;
@@ -16,41 +17,28 @@ import java.util.List;
 public class Prescription {
     
     private int id;
-    
-    
-    private int patientId;
-    
-    private ArrayList<Medicine> drugList;
-    private ArrayList<Vaccine> vaccineList;
+
+    private Patient patient;
+
+    private ArrayList<Drug> drugList;
     
     
     private Doctor doctor;
     
     private String hospital;
-    
+
     private String pathema;
 
-    public Prescription(int id, int patientId, Doctor doctor, String hospital, String pathema) {
+    public Prescription(int id, Patient patient, Doctor doctor, String hospital, String pathema) {
         this.id = id;
-        this.patientId = patientId;
+        this.patient = patient;
         this.doctor = doctor;
         this.hospital = hospital;
         this.pathema = pathema;
         drugList = new ArrayList<>();
-        vaccineList = new ArrayList<>();
     }
 
-    public ArrayList<Vaccine> getVaccineList() {
-        return vaccineList;
-    }
 
-    public void setVaccineList(ArrayList<Vaccine> vaccineList) {
-        this.vaccineList = vaccineList;
-    }
-
-    
-    
-    
     
     public int getId() {
         return id;
@@ -61,20 +49,19 @@ public class Prescription {
     }
 
 
-
-    public int getPatientId() {
-        return patientId;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
-    public List<Medicine> getDrugList() {
+    public List<Drug> getDrugList() {
         return drugList;
     }
 
-    public void setDrugList(ArrayList<Medicine> drugList) {
+    public void setDrugList(ArrayList<Drug> drugList) {
         this.drugList = drugList;
     }
 
@@ -101,11 +88,6 @@ public class Prescription {
     public void setPathema(String pathema) {
         this.pathema = pathema;
     }
-    
-    
-    
-    
-    
-    
+
     
 }
