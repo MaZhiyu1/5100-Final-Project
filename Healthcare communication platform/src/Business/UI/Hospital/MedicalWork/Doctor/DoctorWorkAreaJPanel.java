@@ -172,7 +172,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnOutPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutPatientActionPerformed
         // TODO add your handling code here:
-    OutpatientJPanel op = new OutpatientJPanel(RightPanel);
+    OutpatientJPanel op = new OutpatientJPanel(RightPanel, doctor);
     RightPanel.add("OutpatientJPanel", op);
     CardLayout layout = (CardLayout) RightPanel.getLayout();
     layout.next(RightPanel);

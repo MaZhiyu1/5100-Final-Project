@@ -17,7 +17,12 @@ public class Appointment {
     Doctor doctor;
     private String allergy;
     private String symptom;
+
+    private String instruction;
     private int status;
+
+    private Prescription prescription;
+
     public Appointment(Patient patient, Doctor doctor) {
         this.id = UUID.randomUUID().toString();
         this.patient = patient;
@@ -73,7 +78,20 @@ public class Appointment {
     public void setSymptom(String symptom) {
         this.symptom = symptom;
     }
-    
-    
-    
+
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
+
+    public Prescription getPrescription() {
+        return prescription;
+    }
+
+    public void setPrescription(Prescription prescription) {
+        this.prescription = prescription;
+    }
 }

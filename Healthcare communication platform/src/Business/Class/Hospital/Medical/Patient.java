@@ -118,4 +118,20 @@ public class Patient extends Person{
     public void setAllergy(String allergy) {
         this.allergy = allergy;
     }
+
+    public ArrayList<Appointment> getAppointmentList() {
+        return appointmentList;
+    }
+
+    public void setAppointmentList(ArrayList<Appointment> appointmentList) {
+        this.appointmentList = appointmentList;
+    }
+
+    public ArrayList<Prescription> getPrescriptionList() {
+        return prescriptionList;
+    }
+
+    public void setPrescriptionList(ArrayList<Prescription> prescriptionList) {
+        this.prescriptionList = prescriptionList;
+    }
 }

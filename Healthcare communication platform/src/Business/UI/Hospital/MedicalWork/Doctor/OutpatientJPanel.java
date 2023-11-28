@@ -4,8 +4,16 @@
  */
 package Business.UI.Hospital.MedicalWork.Doctor;
 
+import Business.Class.Drug;
+import Business.Class.Hospital.Medical.Appointment;
+import Business.Class.Hospital.Medical.Doctor;
+import Business.Class.Hospital.Medical.Patient;
+
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,12 +21,111 @@ import javax.swing.JPanel;
  */
 public class OutpatientJPanel extends javax.swing.JPanel {
     JPanel RightPanel;
+    private Doctor doctor;
+
+    private Appointment selectedAppointment;
+
+    private Patient selectedPatient;
+
     /**
      * Creates new form OutpatientJPanel
      */
-    public OutpatientJPanel(JPanel RightPanel) {
+    public OutpatientJPanel(JPanel RightPanel, Doctor doctor) {
         initComponents();
         this.RightPanel=RightPanel;
+        this.doctor = doctor;
+
+        tblAppointment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            int row = tblAppointment.getSelectedRow(); // 获取所点选行的索引
+            DefaultTableModel model = (DefaultTableModel) tblAppointment.getModel(); //Have the access to the table;
+
+            if(row != -1) { // 如果行已被选择
+                String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
+
+                for (Appointment appointment : doctor.getAppointmentList()){
+
+                    if (id.equals(appointment.getId())){
+                        selectedAppointment = appointment;
+
+                        txtName.setText(appointment.getPatient().getName());
+                        txtPatientId.setText(String.valueOf(appointment.getPatient().getId()));
+                        txtAge.setText(appointment.getPatient().getAge());
+                        txtGender.setText(appointment.getPatient().getGender());
+                        txtAllergy.setText(appointment.getPatient().getAllergy());
+                        txtInsurance.setText(appointment.getPatient().getInsurance());
+                        symptomTextArea.setText(appointment.getSymptom());
+
+                        ((DefaultTableModel) tblPastMedicalRecords.getModel()).setRowCount(0);
+                        ((DefaultTableModel) tblPrescription.getModel()).setRowCount(0);
+                        ((DefaultTableModel) tblResult.getModel()).setRowCount(0);
+
+                        //someone's medical history
+                        populateMedicalRecords(appointment.getPatient().getAppointmentList());
+                    }
+                }
+            }
+            }
+        });
+
+        tblPastMedicalRecords.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            int row = tblPastMedicalRecords.getSelectedRow(); // 获取所点选行的索引
+            DefaultTableModel model = (DefaultTableModel) tblPastMedicalRecords.getModel(); //Have the access to the table;
+
+            if(row != -1) { // 如果行已被选择
+                populatePrescription( selectedAppointment.getPrescription().getDrugList());
+            }
+            }
+        });
+    }
+
+
+    private void initTable(){
+        DefaultTableModel dtm = (DefaultTableModel) tblAppointment.getModel();
+        dtm.setRowCount(0);
+
+        for (Appointment appointment : doctor.getAppointmentList()) {
+            Object[] row = new Object[4];
+            row[0] = appointment.getId();
+            row[1] = appointment.getPatient().getName();
+            row[2] = appointment.getPatient().getId();
+            row[3] = appointment.getPatient().getInsurance();
+            dtm.addRow(row);
+        }
+    }
+
+
+    /**
+     * populate the medical records table
+     * */
+    private void populateMedicalRecords(List<Appointment> appointmentList){
+        ((DefaultTableModel) tblPastMedicalRecords.getModel()).setRowCount(0);
+
+        appointmentList.forEach(appointment1 -> {
+            Object[] row1 = new Object[4];
+            row1[0] = appointment1.getId();
+            row1[1] = appointment1.getSymptom();
+            row1[2] = appointment1.getInstruction();
+            row1[3] = appointment1.getDoctor().getDepartment();
+            ((DefaultTableModel) tblPastMedicalRecords.getModel()).addRow(row1);
+        });
+    }
+
+    /**
+     * populate the prescription table
+     * */
+    private void populatePrescription(List<Drug> drugList){
+        ((DefaultTableModel) tblPrescription.getModel()).setRowCount(0);
+        drugList.forEach(drug -> {
+            Object[] row1 = new Object[5];
+            row1[0] = drug.getId();
+            row1[1] = drug.getName();
+            row1[2] = drug.getType();
+            row1[3] = drug.getQuantity();
+            row1[4] = drug.getInstruction();
+            ((DefaultTableModel) tblPrescription.getModel()).addRow(row1);
+        });
     }
 
     /**
@@ -45,7 +152,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        SymptomTextArea = new javax.swing.JTextArea();
+        symptomTextArea = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblPastMedicalRecords = new javax.swing.JTable();
@@ -102,24 +209,32 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Symptom description：");
 
-        SymptomTextArea.setColumns(20);
-        SymptomTextArea.setRows(5);
-        jScrollPane4.setViewportView(SymptomTextArea);
+        symptomTextArea.setColumns(20);
+        symptomTextArea.setRows(5);
+        jScrollPane4.setViewportView(symptomTextArea);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel4.setText("Past Medical Records");
 
         tblPastMedicalRecords.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Name", "Symptom", "Instructions "
+                "id", "Symptom", "Instructions ", "department"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tblPastMedicalRecords);
 
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
@@ -144,15 +259,23 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
         tblPrescription.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID:", "Name", "Department", "Instruction"
+                "ID:", "Name", "type", "amount", "Instruction"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane5.setViewportView(tblPrescription);
 
         btnAdd.setText("ADD");
@@ -415,7 +538,6 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea SymptomTextArea;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnFinish;
@@ -445,6 +567,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JTextArea symptomTextArea;
     private javax.swing.JTable tblAppointment;
     private javax.swing.JTable tblPastMedicalRecords;
     private javax.swing.JTable tblPrescription;
