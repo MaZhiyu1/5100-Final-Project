@@ -232,13 +232,13 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
             return;
         }
         if(o instanceof Lab){
-            CreativeDepartmentPanel dw = new CreativeDepartmentPanel(RightPanel);
+            CreativeDepartmentPanel dw = new CreativeDepartmentPanel(RightPanel,bz,bioTech,(Lab)o);
             RightPanel.add("LoginScreen",dw);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
         }
         else if(o instanceof BioSupplier){
-            BioSupplierJPanel pw = new BioSupplierJPanel(RightPanel);
+            BioSupplierJPanel pw = new BioSupplierJPanel(RightPanel,bz,bioTech,(BioSupplier)o);
             RightPanel.add("LoginScreen",pw);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);

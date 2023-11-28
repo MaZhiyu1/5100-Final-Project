@@ -5,6 +5,7 @@
 package Business.UI;
 
 import Business.Business;
+import Business.Class.BioTech.BioSupplier;
 import Business.UI.MedicalSupplier.MedicalSupplierJPanel;
 import Validation.Validation;
 import java.awt.CardLayout;
@@ -192,7 +193,7 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
             return;
         }
 
-        MedicalSupplierJPanel pw = new MedicalSupplierJPanel(RightPanel);
+        MedicalSupplierJPanel pw = new MedicalSupplierJPanel(RightPanel,bz,(BioSupplier)o);
         RightPanel.add("LoginScreen",pw);
         CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.next(RightPanel);

@@ -5,6 +5,7 @@
 package Business.UI;
 
 import Business.Business;
+import Business.Class.Delivery.Delivery;
 import Business.UI.Delivery.DeliveryComPanel;
 import Validation.Validation;
 import java.awt.CardLayout;
@@ -186,7 +187,7 @@ public class DeliveryLoginPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please input correct account and password!");
             return;
         }
-        DeliveryComPanel pw = new DeliveryComPanel(RightPanel);
+        DeliveryComPanel pw = new DeliveryComPanel(RightPanel,(Delivery)o,bz);
         RightPanel.add("LoginScreen",pw);
         CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.next(RightPanel);

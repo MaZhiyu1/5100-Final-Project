@@ -4,6 +4,8 @@
  */
 package Business.UI.Delivery;
 
+import Business.Business;
+import Business.Class.Delivery.Delivery;
 import javax.swing.JPanel;
 
 /**
@@ -16,9 +18,13 @@ public class DeliveryComPanel extends javax.swing.JPanel {
      * Creates new form DeliveryComPanel
      */
     JPanel RightPanel;
-    public DeliveryComPanel(JPanel RightPanel) {
+    Delivery d;
+    Business b;
+    public DeliveryComPanel(JPanel RightPanel,Delivery d,Business b) {
         initComponents();
         this.RightPanel=  RightPanel;
+        this.d=d;
+        this.b=b;
     }
 
     /**

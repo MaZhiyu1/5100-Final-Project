@@ -4,6 +4,8 @@
  */
 package Business.UI.MedicalSupplier;
 
+import Business.Business;
+import Business.Class.BioTech.BioSupplier;
 import javax.swing.JPanel;
 
 /**
@@ -16,9 +18,14 @@ public class MedicalSupplierJPanel extends javax.swing.JPanel {
      * Creates new form MedicalSupplierJPanel
      */
     JPanel RightPanel;
-    public MedicalSupplierJPanel(JPanel RightPanel) {
+    Business b;
+    BioSupplier bs;
+    public MedicalSupplierJPanel(JPanel RightPanel,Business b,BioSupplier bs) {
         initComponents();
         this.RightPanel=  RightPanel;
+        this.b=b;
+        this.bs = bs;
+        
     }
 
     /**

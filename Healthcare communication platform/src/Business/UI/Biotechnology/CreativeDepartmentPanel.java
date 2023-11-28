@@ -4,6 +4,8 @@
  */
 package Business.UI.Biotechnology;
 
+import Business.Business;
+import Business.Class.BioTech.Lab;
 import javax.swing.JPanel;
 
 /**
@@ -16,10 +18,15 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
      * Creates new form CreativeDepartmentPanel
      */
     JPanel RightPanel;
-    
-    public CreativeDepartmentPanel(JPanel RightPanel) {
+    Business bz;
+    String bioTech;
+    Lab lab;
+    public CreativeDepartmentPanel(JPanel RightPanel,Business bz,String bioTech,Lab lab) {
         initComponents();
         this.RightPanel=RightPanel;
+        this.bz=bz;
+        this.bioTech=bioTech;
+        this.lab=lab;
     }
 
     /**
