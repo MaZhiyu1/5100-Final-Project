@@ -4,6 +4,12 @@
  */
 package Business.UI.Biotechnology;
 
+import Business.Business;
+import Business.Class.BioTech.BioSupplier;
+import Business.Class.Hospital.Request;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author 15469
@@ -13,9 +19,32 @@ public class RequestPanel extends javax.swing.JPanel {
     /**
      * Creates new form RequestPanel
      */
-    public RequestPanel() {
+    Business bz;
+    String bioTech;
+    BioSupplier bs;
+    public RequestPanel(Business bz,String bioTech,BioSupplier bs) {
         initComponents();
+        this.bz=bz;
+        this.bioTech=bioTech;
+        this.bs=bs;
+        refreshTable();
     }
+    
+    public void refreshTable() {
+        DefaultTableModel model = (DefaultTableModel)tblRequest.getModel();
+        model.setRowCount(0);
+        if(bs.getRequest()==null) return;
+        for(Request s : bs.getRequest()) {
+            Object row[] = new Object[4];
+            row[0] = s;
+            row[1] = s.getType();
+            row[2] = s.getInstruction();
+            row[3] = s.getStatus();
+           // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
+            model.addRow(row);
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,9 +82,19 @@ public class RequestPanel extends javax.swing.JPanel {
                 "ID", "Type", "Description", "Status"
             }
         ));
+        tblRequest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblRequestMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblRequest);
 
         btnComplete.setText("Complete");
+        btnComplete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompleteActionPerformed(evt);
+            }
+        });
 
         DescriptionTextArea.setColumns(20);
         DescriptionTextArea.setRows(5);
@@ -122,6 +161,30 @@ public class RequestPanel extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompleteActionPerformed
+        // TODO add your handling code here:
+        int row = tblRequest.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table first", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Request selected = (Request) tblRequest.getValueAt(row, 0);
+        selected.setStatus("Completed");
+        refreshTable();
+        DescriptionTextArea.setText("");
+    }//GEN-LAST:event_btnCompleteActionPerformed
+
+    private void tblRequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRequestMouseClicked
+        // TODO add your handling code here:
+        int row = tblRequest.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table first", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Request selected = (Request) tblRequest.getValueAt(row, 0);
+        DescriptionTextArea.setText(selected.getInstruction());
+    }//GEN-LAST:event_tblRequestMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -17,18 +17,33 @@ public class Request {
     String id;
     String instruction;
     String status;
-    ArrayList<Medicine> medicines;
-    ArrayList<Equipment> equipments;
-    ArrayList<Vaccine> vaccines;
-
-    public Request(String id) {
+    Medicine medicines;
+    Equipment equipments;
+    Vaccine vaccines;
+    String type;
+    public Request(String id,String type,String instruction) {
         this.id = id;
         this.status = "Processing";
-        medicines = new ArrayList<>();
-        equipments = new ArrayList<>();
-        vaccines = new ArrayList<>();
+        this.type=type;
+        this.instruction= instruction;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return id ;
+    }
+
+    
+    
+    
     public String getId() {
         return id;
     }
@@ -53,29 +68,31 @@ public class Request {
         this.status = status;
     }
 
-    public ArrayList<Medicine> getMedicines() {
+    public Medicine getMedicines() {
         return medicines;
     }
 
-    public void setMedicines(ArrayList<Medicine> medicines) {
+    public void setMedicines(Medicine medicines) {
         this.medicines = medicines;
     }
 
-    public ArrayList<Equipment> getEquipments() {
+    public Equipment getEquipments() {
         return equipments;
     }
 
-    public void setEquipments(ArrayList<Equipment> equipments) {
+    public void setEquipments(Equipment equipments) {
         this.equipments = equipments;
     }
 
-    public ArrayList<Vaccine> getVaccines() {
+    public Vaccine getVaccines() {
         return vaccines;
     }
 
-    public void setVaccines(ArrayList<Vaccine> vaccines) {
+    public void setVaccines(Vaccine vaccines) {
         this.vaccines = vaccines;
     }
+
+    
     
     
     

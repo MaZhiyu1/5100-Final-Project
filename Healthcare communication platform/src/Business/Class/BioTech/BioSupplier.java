@@ -51,6 +51,10 @@ public class BioSupplier {
         this.id = id;
     }
 
+    public void addRequest(Request e){
+        request.add(e);
+    }
+    
     public ArrayList<Request> getRequest() {
         return request;
     }

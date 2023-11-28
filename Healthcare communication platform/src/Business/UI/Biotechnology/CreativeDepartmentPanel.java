@@ -6,6 +6,7 @@ package Business.UI.Biotechnology;
 
 import Business.Business;
 import Business.Class.BioTech.Lab;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -27,6 +28,7 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
         this.bz=bz;
         this.bioTech=bioTech;
         this.lab=lab;
+        lblGroup.setText(lab.getGroup());
     }
 
     /**
@@ -42,7 +44,7 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnDevelopment = new javax.swing.JButton();
         btnViewRequest = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        lblGroup = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -64,8 +66,8 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel4.setText("jLabel2");
+        lblGroup.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        lblGroup.setText("jLabel2");
 
         jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -91,7 +93,7 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
                                 .addComponent(btnDevelopment, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(59, 59, 59)
                                 .addComponent(btnViewRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4))
+                            .addComponent(lblGroup))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(14, 14, 14))
         );
@@ -103,7 +105,7 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel4))
+                    .addComponent(lblGroup))
                 .addGap(116, 116, 116)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDevelopment, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,20 +129,26 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
 
     private void btnDevelopmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevelopmentActionPerformed
         // TODO add your handling code here:
+        InventionPanel ip = new InventionPanel( RightPanel, bz, bioTech, lab);
+            RightPanel.add("LoginScreen",ip);
+            CardLayout layout = (CardLayout) RightPanel.getLayout();
+            layout.next(RightPanel);
+        
     }//GEN-LAST:event_btnDevelopmentActionPerformed
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDevelopment;
     private javax.swing.JButton btnViewRequest;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblGroup;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@ package Business.UI.Biotechnology;
 
 import Business.Business;
 import Business.Class.BioTech.BioSupplier;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -136,6 +137,11 @@ public class BioSupplierJPanel extends javax.swing.JPanel {
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
         // TODO add your handling code here:
+        RequestPanel rq = new RequestPanel(bz,bioTech,bs);
+        
+        RightPanel.add("LoginScreen",rq);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
 

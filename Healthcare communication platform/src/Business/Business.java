@@ -17,6 +17,7 @@ import Business.Class.Hospital.Medical.MedicalHistory;
 import Business.Class.Hospital.Medical.MedicalHistoryList;
 import Business.Class.Hospital.Medical.Patient;
 import Business.Class.Hospital.RearServices.RearServices;
+import Business.Class.Hospital.Request;
 import Business.Class.MedicalSupplier.MedicalSupplier;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
@@ -176,7 +177,13 @@ public class Business {
         V.add(v1);
         V.add(v2);
         
+        Request r = new Request("medicine 1","medicine","For heart disease");
+        r.setMedicines(m);
+        
         BioSupplier bs1_ = new BioSupplier("Mike", "", "BioSupplier 1");
+        bs1_.addRequest(r);
+        
+        
         BioSupplier bs2_ = new BioSupplier("Jackson", "", "BioSupplier 1");
         
         //set inventory
