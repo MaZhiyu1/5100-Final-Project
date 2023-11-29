@@ -4,6 +4,7 @@
  */
 package Business.UI.Hospital.MedicalWork.Doctor;
 
+import Business.Business;
 import Business.Class.Hospital.Medical.Doctor;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -17,13 +18,16 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private Doctor doctor;
 
+    private Business bz;
+
     /**
      * Creates new form DoctorWorkAreaJPanel
      */
-    public DoctorWorkAreaJPanel(JPanel RightPanel, Doctor doctor) {
+    public DoctorWorkAreaJPanel(JPanel RightPanel, Doctor doctor, Business bz) {
         initComponents();
         this.RightPanel=RightPanel;
         this.doctor = doctor;
+        this.bz = bz;
     }
 
     /**
@@ -172,7 +176,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnOutPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutPatientActionPerformed
         // TODO add your handling code here:
-    OutpatientJPanel op = new OutpatientJPanel(RightPanel, doctor);
+    OutpatientJPanel op = new OutpatientJPanel(RightPanel, doctor, bz);
     RightPanel.add("OutpatientJPanel", op);
     CardLayout layout = (CardLayout) RightPanel.getLayout();
     layout.next(RightPanel);

@@ -8,6 +8,7 @@ import Business.Class.Hospital.Medical.Doctor;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  *
@@ -15,6 +16,7 @@ import java.util.ArrayList;
  */
 public class Lab {
 
+    private String id;
     private String name;
 //    private String pwd;
     private String department;
@@ -26,9 +28,12 @@ public class Lab {
     private int progress;
     private String status;
     private String type;
-    
+
+    private String company;
+
     
     public Lab(String name, String group, String projectName,Medicine medicine, Vaccine vaccine) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
 //        this.pwd = pwd;
         this.department = group;
@@ -41,6 +46,7 @@ public class Lab {
     
     
     public Lab(String name, String group, String projectName,String type,String instruction) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
 //        this.pwd = pwd;
         this.department = group;
@@ -82,8 +88,14 @@ public class Lab {
         this.type = type;
     }
 
-    
-    
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -143,5 +155,13 @@ public class Lab {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 }

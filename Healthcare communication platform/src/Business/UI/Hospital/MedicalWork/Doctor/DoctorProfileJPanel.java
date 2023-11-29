@@ -53,7 +53,7 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
         txtGender.setText(doctor.getGender());
         txtContact.setText(doctor.getContact());
         txtAvail.setText(String.valueOf(doctor.getAvail()));
-        txtHospital.setText(doctor.getHospital());
+        txtHospital.setText(doctor.getHospital().getName());
         txtSpecialty.setText(doctor.getSpecialty());
         txtEduBackground.setText(doctor.getEductionBackground());
         txtUsername.setText(doctor.getName());
@@ -322,7 +322,7 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
         txtGender.setText(doctor.getGender());
         txtContact.setText(doctor.getContact());
         txtAvail.setText(String.valueOf(doctor.getAvail()));
-        txtHospital.setText(doctor.getHospital());
+        txtHospital.setText(doctor.getHospital().getName());
         txtSpecialty.setText(doctor.getSpecialty());
         txtEduBackground.setText(doctor.getEductionBackground());
 //        txtUsername.setText(doctor.getName());

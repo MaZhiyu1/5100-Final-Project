@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class Patient extends Person{
     
     ImageIcon logoImage;
-    MedicalHistoryList mhl;
+    MedicalHistoryList medicalHistoryList;
     ArrayList<Appointment> appointmentList;
     ArrayList<Prescription> prescriptionList;
     int enabled;
@@ -27,7 +27,7 @@ public class Patient extends Person{
         this.id = id;
         this.name = name;
         this.pwd = pwd;
-        mhl=new MedicalHistoryList(id,name);
+        medicalHistoryList = new MedicalHistoryList(id,name);
         appointmentList = new ArrayList<>();
         prescriptionList = new ArrayList<>();
     }
@@ -87,12 +87,12 @@ public class Patient extends Person{
         this.logoImage = logoImage;
     }
 
-    public MedicalHistoryList getMhl() {
-        return mhl;
+    public MedicalHistoryList getMedicalHistoryList() {
+        return medicalHistoryList;
     }
 
-    public void setMhl(MedicalHistoryList mhl) {
-        this.mhl = mhl;
+    public void setMedicalHistoryList(MedicalHistoryList mhl) {
+        this.medicalHistoryList = mhl;
     }
 
     public int getEnabled() {
@@ -134,4 +134,5 @@ public class Patient extends Person{
     public void setPrescriptionList(ArrayList<Prescription> prescriptionList) {
         this.prescriptionList = prescriptionList;
     }
+
 }

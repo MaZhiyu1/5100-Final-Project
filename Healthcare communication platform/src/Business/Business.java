@@ -47,7 +47,9 @@ public class Business {
     private ArrayList<Hospital> hospitals;
     private ArrayList<Patient> patients;
     private ArrayList<MedicalSupplier> medicalSuppliers;
-    
+//    private List<Medicine> medicineList;
+//    private List<Vaccine> vaccineList;
+
     private ArrayList<Delivery> deliveries;
     
     public Business() {
@@ -57,6 +59,8 @@ public class Business {
         bioSuppliers = new ArrayList<>();
         deliveries = new ArrayList<>();
         medicalSuppliers = new ArrayList<>();
+//        medicineList = new ArrayList<>();
+//        medicalSuppliers = new ArrayList<>();
         Hospital1();
         BioTechCom1();
         MedicalSupplier1();
@@ -208,7 +212,7 @@ public class Business {
         RearServices rs = new RearServices("Jin", "BioGen 1", "Aa12345678","Boston Rehabilitation Center" );
         //后勤
         
-        Doctor doctor1 = new Doctor(1,"Jim","Aa12345678", "male","Boston Rehabilitation Center");
+        Doctor doctor1 = new Doctor(1,"Jim","Aa12345678", "male",h1);
         doctor1.setEnabled(1);
         doctor1.setSpecialty("Surgery");
         doctor1.setType("Surgery");
@@ -218,7 +222,7 @@ public class Business {
         doctor1.setContact("6666666");
         doctor1.setDepartment("Surgery");
         
-        Doctor doctor2 = new Doctor(2,"Alex","Aa12345678", "female", "Boston Rehabilitation Center");
+        Doctor doctor2 = new Doctor(2,"Alex","Aa12345678", "female", h1);
         doctor2.setEnabled(1);
         doctor2.setSpecialty("Pediatrics");
         doctor2.setType("Pediatrics");
@@ -228,7 +232,7 @@ public class Business {
         doctor2.setContact("7777777");
         doctor2.setDepartment("Pediatrics");
         
-        Doctor doctor3 = new Doctor(3,"Frank","Aa12345678", "male","Boston Rehabilitation Center");
+        Doctor doctor3 = new Doctor(3,"Frank","Aa12345678", "male",h1);
         doctor3.setEnabled(1);
         doctor3.setSpecialty("Internal Medicine");
         doctor3.setType("Internal Medicine");
@@ -243,9 +247,11 @@ public class Business {
         MedicalHistoryList mhl1 = new MedicalHistoryList(1,"Oliver");
         mhl1.addHistory(mh2);
         mhl1.addHistory(mh1);
+        mh1.setDoctor(doctor1);
+        mh2.setDoctor(doctor2);
         
         Patient patient1 = new Patient(1, "Oliver", "Aa12345678");
-        patient1.setMhl(mhl1);
+        patient1.setMedicalHistoryList(mhl1);
         patient1.setEnabled(1);
         patient1.setAge("12");
 
@@ -277,7 +283,7 @@ public class Business {
         Medicine m2 = new Medicine("C1", "3", "Surgery", "Surgery");
         m2.setQuantity(10);
         ArrayList<Medicine> M = new ArrayList<>();
-        
+
         M.add(m);
         M.add(m1);
         M.add(m2);
@@ -289,7 +295,7 @@ public class Business {
         Vaccine v2 = new Vaccine("C1", "3", "Surgery", "Surgery");
         v2.setQuantity(10);
         ArrayList<Vaccine> V = new ArrayList<>();
-        
+
         V.add(v);
         V.add(v1);
         V.add(v2);

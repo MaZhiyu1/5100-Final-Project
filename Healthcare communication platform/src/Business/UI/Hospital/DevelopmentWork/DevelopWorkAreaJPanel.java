@@ -4,6 +4,8 @@
  */
 package Business.UI.Hospital.DevelopmentWork;
 
+import Business.Business;
+
 import javax.swing.JPanel;
 
 /**
@@ -17,10 +19,49 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
      */
     JPanel RightPanel;
 
-    public DevelopWorkAreaJPanel(JPanel RightPanel) {
+    Business bz;
+
+    public DevelopWorkAreaJPanel(JPanel RightPanel, Business bz) {
         initComponents();
         this.RightPanel = RightPanel;
+        this.bz = bz;
+        initLabTable();
+
+        tblLab.getSelectionModel().addListSelectionListener(event -> {
+            if (tblLab.getSelectedRow() >= 0) {
+                txtId.setText(tblLab.getValueAt(tblLab.getSelectedRow(), 0).toString());
+                txtProjectName.setText(tblLab.getValueAt(tblLab.getSelectedRow(), 1).toString());
+                txtCompany.setText(tblLab.getValueAt(tblLab.getSelectedRow(), 2).toString());
+                txtType.setText(tblLab.getValueAt(tblLab.getSelectedRow(), 3).toString());
+                instructionTextArea.setText(tblLab.getValueAt(tblLab.getSelectedRow(), 4).toString());
+                txtStatus.setText(tblLab.getValueAt(tblLab.getSelectedRow(), 5).toString());
+                txtDepartment.setText(tblLab.getValueAt(tblLab.getSelectedRow(), 6).toString());
+            }
+        });
     }
+
+    private void initLabTable(){
+        // TODO add your handling code here:
+        int rowCount = tblLab.getRowCount();
+
+
+        bz.getHospitals().stream().flatMap(vo -> vo.getDoctorList().stream().flatMap(doctor -> doctor.getLabs().stream())).forEach(vo -> {
+            Object row[] = new Object[7];
+            row[0] = vo.getId();
+            row[1] = vo.getProjectName();
+            row[2] = vo.getCompany();
+            row[3] = vo.getType();
+            row[4] = vo.getInstruction();
+            row[5] = vo.getStatus();
+            row[6] = vo.getDoctor();
+            ((javax.swing.table.DefaultTableModel) tblLab.getModel()).addRow(row);
+        });
+
+
+    }
+
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +80,7 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
         tblLab = new javax.swing.JTable();
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel3 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
+        txtProjectName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -118,7 +159,7 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtName)
+                                            .addComponent(txtProjectName)
                                             .addComponent(txtCompany)
                                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
                                             .addComponent(txtType, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -153,7 +194,7 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtProjectName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCompany, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,7 +253,7 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtCompany;
     private javax.swing.JTextField txtDepartment;
     private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtProjectName;
     private javax.swing.JTextField txtStatus;
     private javax.swing.JTextField txtType;
     // End of variables declaration//GEN-END:variables

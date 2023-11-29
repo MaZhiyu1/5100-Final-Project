@@ -35,7 +35,7 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
         this.patient = patient;
         this.bz = bz;
         this.RightPanel=RightPanel;
-        initHospital();
+        initAppointment();
 
 
         tblAppointment.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,15 +75,17 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
             }
         });
     }
-    private void initHospital(){
+    private void initAppointment(){
         cmbHospital.removeAllItems();
         for (Hospital h : bz.getHospitals()) {
             cmbHospital.addItem(h.getName());
         }
+
+        textAreaAllergy.setText(patient.getAllergy());
+        txtName.setEnabled(false);
+        txtSpecialty.setEnabled(false);
+        txtDepartment.setEnabled(false);
     }
-
-
-
 
 
     /**

@@ -268,7 +268,7 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
             return;
         }
         if(o instanceof Doctor){
-            DoctorWorkAreaJPanel dw = new DoctorWorkAreaJPanel(RightPanel, (Doctor) o);
+            DoctorWorkAreaJPanel dw = new DoctorWorkAreaJPanel(RightPanel, (Doctor) o, bz);
             RightPanel.add("LoginScreen",dw);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
@@ -286,7 +286,7 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
             layout.next(RightPanel);
         }
         else if(o instanceof HospitalResearch){
-            DevelopWorkAreaJPanel pw = new DevelopWorkAreaJPanel(RightPanel);
+            DevelopWorkAreaJPanel pw = new DevelopWorkAreaJPanel(RightPanel, bz);
             RightPanel.add("LoginScreen",pw);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);

@@ -27,6 +27,8 @@ public class Appointment {
         this.id = UUID.randomUUID().toString();
         this.patient = patient;
         this.doctor = doctor;
+        patient.getAppointmentList().add(this);
+        doctor.getAppointmentList().add(this);
         status=0;
     }
 
