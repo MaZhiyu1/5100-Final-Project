@@ -67,7 +67,7 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
             row[0] = s;
             row[1] = s.getName();
             row[2] = s.getType();
-            row[3] = s.getQuality();
+            row[3] = s.getQuantity();
             row[4] = s.getStatus();
             model.addRow(row);
         }
@@ -285,7 +285,7 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null,"Please input a vaild value");
                 return;
             }
-            selected.setQuality(selected.getQuantity()-number);
+            selected.setQuantity(selected.getQuantity()-number);
             DefaultTableModel model1 = (DefaultTableModel)tblCart.getModel();
             Object row1[] = new Object[5];
             row1[0] = selected;

@@ -45,6 +45,16 @@ public class Doctor extends Person{
     public List<Lab> getLabs() {
         return labs;
     }
+    
+    public void addLab(Lab lab){
+        labs.add(lab);
+    }
+    
+    public void deleteLab(Lab lab){
+        labs.remove(lab);
+    }
+    
+    
 //
 //    public void addLab(Lab lab){
 //        labs.put(lab, "Processing");

@@ -75,7 +75,7 @@ public class RequestPanel extends javax.swing.JPanel {
             Object row1[] = new Object[3];
             row1[0] = s;
             row1[1] = s.getType();
-            row1[2] = s.getQuality();
+            row1[2] = s.getQuantity();
            // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
             model.addRow(row1);
         }

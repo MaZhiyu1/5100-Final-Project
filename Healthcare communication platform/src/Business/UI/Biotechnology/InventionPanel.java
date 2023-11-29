@@ -11,6 +11,7 @@ import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Doctor;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,6 +28,10 @@ public class InventionPanel extends javax.swing.JPanel {
     Business bz;
     String bioTech;
     BioResaercher br;
+    
+    
+    
+    
     public InventionPanel(JPanel RightPanel,Business bz,String bioTech,BioResaercher br) {
         initComponents();
         this.RightPanel=RightPanel;
@@ -34,6 +39,18 @@ public class InventionPanel extends javax.swing.JPanel {
         this.bioTech=bioTech;
         this.br=br;
         refreshTable1();
+        String hospital = (String) cmbHospital.getSelectedItem();
+        Hospital h1=null;
+        DefaultTableModel model = (DefaultTableModel)tblDoctor.getModel();
+        model.setRowCount(0);
+        for(Hospital h : bz.getHospitals()){
+            if(h.getName().equals(hospital)){
+                h1=h;
+            }
+        }
+        if(h1==null) return;
+        refreshTable(h1);
+        
     }
 
     
@@ -113,6 +130,8 @@ public class InventionPanel extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         cmbDepartment = new javax.swing.JComboBox<>();
         cmbType = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        txtGroup = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -128,14 +147,29 @@ public class InventionPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Type", "Department", "Status", "Instruction", "Doctor", "Hospital"
+                "ID", "Project Name", "Type", "Department", "Status", "Instruction", "Doctor", "Hospital"
             }
         ));
+        tblLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblLabMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblLab);
 
         btnAdd.setText("ADD");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnModify.setText("Modify");
 
@@ -146,6 +180,11 @@ public class InventionPanel extends javax.swing.JPanel {
         });
 
         btnResearch.setText("Research: %");
+        btnResearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResearchActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Name:");
 
@@ -195,6 +234,8 @@ public class InventionPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setText("Group:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -203,41 +244,18 @@ public class InventionPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnResearch)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(79, 79, 79)
-                                .addComponent(btnAdd)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnDelete)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnModify)
-                                .addGap(128, 128, 128))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(31, 31, 31)
-                                .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtName)
-                                    .addComponent(cmbDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(39, 39, 39))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnResearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(79, 79, 79)
+                        .addComponent(btnAdd)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelete)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnModify))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addComponent(jLabel6)
@@ -249,11 +267,41 @@ public class InventionPanel extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
-                                .addComponent(cmbHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cmbHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(85, 85, 85)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 575, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(24, 24, 24)
+                                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cmbDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,25 +320,23 @@ public class InventionPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cmbDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(cmbDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(53, 53, 53)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(48, 48, 48))
+                    .addComponent(jLabel6)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -346,6 +392,60 @@ public class InventionPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_cmbHospitalActionPerformed
 
+    private void btnResearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResearchActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnResearchActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        String project =txtName.getText();
+        String group =txtGroup.getText();
+        String type = (String)cmbType.getSelectedItem();
+        String department = (String)cmbDepartment.getSelectedItem();
+        String instruction = txtInstruction.getText();
+        if(project.equals("")||group.equals("")||type.equals("")||department.equals("")||instruction.equals("")){
+            JOptionPane.showMessageDialog(null,"Please enter all information");
+        }
+        Lab lab2 = new Lab("", department, project,type,instruction);
+        int row = tblDoctor.getSelectedRow();
+        if(row>0){
+            Doctor selected = (Doctor) tblDoctor.getValueAt(row, 0);
+            lab2.setDoctor(selected);
+            selected.addLab(lab2);
+            br.addLab(lab2);
+        }
+        else{
+            br.addLab(lab2);
+        }
+        
+        refreshTable1();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int row = tblLab.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null,"Please select a row to delete");
+            return;
+        }
+        Lab selected = (Lab) tblLab.getValueAt(row, 0);
+        if(selected.getDoctor()!=null){
+            selected.getDoctor().deleteLab(selected);
+        }
+        br.deleteLab(selected);
+        JOptionPane.showMessageDialog(null,"delete Successfully!");
+        refreshTable1();
+
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void tblLabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLabMouseClicked
+        // TODO add your handling code here:
+        int row = tblLab.getSelectedRow();
+        Lab selected = (Lab) tblLab.getValueAt(row, 0);
+        jProgressBar1.setValue(selected.getProgress());
+    }//GEN-LAST:event_tblLabMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -356,6 +456,7 @@ public class InventionPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmbHospital;
     private javax.swing.JComboBox<String> cmbType;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -369,6 +470,7 @@ public class InventionPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tblDoctor;
     private javax.swing.JTable tblLab;
+    private javax.swing.JTextField txtGroup;
     private javax.swing.JTextArea txtInstruction;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtProcess;

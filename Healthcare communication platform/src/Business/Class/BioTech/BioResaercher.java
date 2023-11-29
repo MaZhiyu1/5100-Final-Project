@@ -34,7 +34,9 @@ public class BioResaercher {
         return id ;
     }
     
-    
+    public void deleteLab(Lab b){
+        labs.remove(b);
+    }
     
     public ArrayList<Lab> getLabs() {
         return labs;
