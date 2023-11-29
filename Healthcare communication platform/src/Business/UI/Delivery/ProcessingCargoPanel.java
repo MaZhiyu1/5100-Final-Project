@@ -4,6 +4,14 @@
  */
 package Business.UI.Delivery;
 
+import Business.Business;
+import Business.Class.Delivery.Delivery;
+import Business.Class.Delivery.Order;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author 15469
@@ -13,8 +21,38 @@ public class ProcessingCargoPanel extends javax.swing.JPanel {
     /**
      * Creates new form ProcessingCargoPanel
      */
-    public ProcessingCargoPanel() {
+    JPanel RightPanel;
+    Delivery d;
+    Business b;
+    public ProcessingCargoPanel(JPanel RightPanel,Delivery d,Business b) {
         initComponents();
+        this.RightPanel=  RightPanel;
+        this.d=d;
+        this.b=b;
+        ArrayList <Order> oi = new ArrayList<>();
+        String status="";
+        status=((String)jComboBox1.getSelectedItem());
+        for(Order s : d.getOrders()) {
+                if(s.getStatus().equals(status)){
+                    oi.add(s);
+                    }
+        }
+        refreshTable1(oi);
+    }
+    
+    public void refreshTable1(ArrayList<Order> oi){
+        DefaultTableModel model = (DefaultTableModel)btnCargo.getModel();
+        model.setRowCount(0);
+
+        if(oi==null) return;
+        for(Order s : oi) {
+            Object row[] = new Object[4];
+            row[0] = s;
+            row[1] = s.getLocation();
+            row[2] = s.getAddress();
+            row[3] = s.getStatus();
+            model.addRow(row);
+        }
     }
 
     /**
@@ -34,6 +72,7 @@ public class ProcessingCargoPanel extends javax.swing.JPanel {
         btnDelivery = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -53,13 +92,30 @@ public class ProcessingCargoPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(btnCargo);
 
         btnDelivery.setText("Delivery");
+        btnDelivery.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeliveryActionPerformed(evt);
+            }
+        });
 
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Processing", "Completed", "Cancelled" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
             }
         });
 
@@ -72,13 +128,15 @@ public class ProcessingCargoPanel extends javax.swing.JPanel {
                 .addComponent(btnBack))
             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(433, 433, 433)
                 .addComponent(btnCancel)
                 .addGap(12, 12, 12)
                 .addComponent(btnDelivery))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,12 +147,14 @@ public class ProcessingCargoPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(jLabel3)))
-                .addGap(18, 18, 18)
+                .addGap(7, 7, 7)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCancel)
-                    .addComponent(btnDelivery)))
+                .addGap(45, 45, 45)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDelivery)
+                    .addComponent(btnCancel)))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -119,12 +179,75 @@ public class ProcessingCargoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliveryActionPerformed
+        // TODO add your handling code here:
+        int row = btnCargo.getSelectedRow();
+        if(row<0){
+           JOptionPane.showMessageDialog(null,"Please select a row from the table first");
+            return;
+        }
+        Order selected = (Order) btnCargo.getValueAt(row, 0);
+        selected.setStatus("Completed");
+                ArrayList <Order> oi = new ArrayList<>();
+        String status="";
+        status=((String)jComboBox1.getSelectedItem());
+        for(Order s : d.getOrders()) {
+                if(s.getStatus().equals(status)){
+                    oi.add(s);
+                    }
+        }
+        refreshTable1(oi);
+    }//GEN-LAST:event_btnDeliveryActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        ArrayList <Order> oi = new ArrayList<>();
+        String status="";
+        status=((String)jComboBox1.getSelectedItem());
+        if(status.equals("Completed")||status.equals("Cancelled")){
+            btnCancel.setEnabled(false);
+            btnDelivery.setEnabled(false);
+        }
+        else{
+            btnCancel.setEnabled(true);
+            btnDelivery.setEnabled(true);
+        }
+        for(Order s : d.getOrders()) {
+                if(s.getStatus().equals(status)){
+                    oi.add(s);
+                    }
+        }
+        refreshTable1(oi);
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        int row = btnCargo.getSelectedRow();
+        if(row<0){
+           JOptionPane.showMessageDialog(null,"Please select a row from the table first");
+            return;
+        }
+        Order selected = (Order) btnCargo.getValueAt(row, 0);
+        selected.setStatus("Cancelled");
+                ArrayList <Order> oi = new ArrayList<>();
+        String status="";
+        status=((String)jComboBox1.getSelectedItem());
+        for(Order s : d.getOrders()) {
+                if(s.getStatus().equals(status)){
+                    oi.add(s);
+                    }
+        }
+        refreshTable1(oi);
+    }//GEN-LAST:event_btnCancelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCancel;
     private javax.swing.JTable btnCargo;
     private javax.swing.JButton btnDelivery;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

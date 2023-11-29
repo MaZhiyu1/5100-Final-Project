@@ -6,6 +6,7 @@ package Business.UI.Delivery;
 
 import Business.Business;
 import Business.Class.Delivery.Delivery;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -25,6 +26,7 @@ public class DeliveryComPanel extends javax.swing.JPanel {
         this.RightPanel=  RightPanel;
         this.d=d;
         this.b=b;
+        Company.setText(d.getCompany());
     }
 
     /**
@@ -42,20 +44,30 @@ public class DeliveryComPanel extends javax.swing.JPanel {
         btnProcessing = new javax.swing.JButton();
         btnSubmitted = new javax.swing.JButton();
         btnCancelled = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        Company = new javax.swing.JLabel();
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Delivery");
 
         btnProcessing.setText("Processing Cargo");
+        btnProcessing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcessingActionPerformed(evt);
+            }
+        });
 
         btnSubmitted.setText("Submitted Cargo");
+        btnSubmitted.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmittedActionPerformed(evt);
+            }
+        });
 
         btnCancelled.setText("Cancelled Cargo");
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jLabel2.setText("UPS");
+        Company.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        Company.setText("UPS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -79,13 +91,13 @@ public class DeliveryComPanel extends javax.swing.JPanel {
                                         .addComponent(btnSubmitted, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(79, 79, 79))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Company, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Company, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addGap(100, 100, 100)
@@ -115,12 +127,28 @@ public class DeliveryComPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnProcessingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessingActionPerformed
+        // TODO add your handling code here:
+        ProcessingCargoPanel pc =new ProcessingCargoPanel( RightPanel, d, b);
+        RightPanel.add("LoginScreen",pc);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
+    }//GEN-LAST:event_btnProcessingActionPerformed
+
+    private void btnSubmittedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmittedActionPerformed
+        // TODO add your handling code here:
+        SubmittedCargoPanel pc =new SubmittedCargoPanel( RightPanel, d, b);
+        RightPanel.add("LoginScreen",pc);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
+    }//GEN-LAST:event_btnSubmittedActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Company;
     private javax.swing.JButton btnCancelled;
     private javax.swing.JButton btnProcessing;
     private javax.swing.JButton btnSubmitted;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

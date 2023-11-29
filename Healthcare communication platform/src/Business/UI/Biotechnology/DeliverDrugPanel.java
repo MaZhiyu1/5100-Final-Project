@@ -7,6 +7,7 @@ package Business.UI.Biotechnology;
 import Business.Business;
 import Business.Class.BioTech.BioSupplier;
 import Business.Class.BioTech.BioTechCom;
+import Business.Class.Delivery.Delivery;
 import Business.Class.Delivery.Order;
 import Business.Class.Equipment;
 import Business.Class.Medicine;
@@ -378,6 +379,12 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
         }
     }
         bs.getOrders().add(order1);
+
+        for(Delivery d : bz.getDeliveries()){
+            if(d.getCompany().equals(order1.getDelivery())){
+                d.addOrder(order1);
+            }
+        }
         JOptionPane.showMessageDialog(null,"Successfully submit!");
         RightPanel.remove(this);
         CardLayout layout =  (CardLayout) RightPanel.getLayout();

@@ -52,6 +52,10 @@ public class Delivery {
         return orders;
     }
 
+    public void addOrder(Order o){
+        orders.add(o);
+    }
+    
     public void setOrders(ArrayList<Order> orders) {
         this.orders = orders;
     }

@@ -116,8 +116,9 @@ public class Business {
     
     public void Delivery1(){
         Delivery d = new Delivery("USPS", "Hibanna", "");
+        Delivery d1 = new Delivery("UPS", "Hibanna", "");
         deliveries.add(d);
-    
+        deliveries.add(d1);
     }
     
     

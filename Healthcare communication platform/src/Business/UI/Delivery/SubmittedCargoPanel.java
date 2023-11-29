@@ -4,16 +4,22 @@
  */
 package Business.UI.Delivery;
 
+import Business.Business;
+import Business.Class.Delivery.Delivery;
+import javax.swing.JPanel;
+
 /**
  *
  * @author 15469
  */
+
+
 public class SubmittedCargoPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form SubmittedCargoPanel
      */
-    public SubmittedCargoPanel() {
+    public SubmittedCargoPanel(JPanel RightPanel,Delivery d,Business b) {
         initComponents();
     }
 
