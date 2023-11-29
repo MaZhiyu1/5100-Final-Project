@@ -372,10 +372,14 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
     Order order1 = new Order(String.valueOf(s),(String)cmbDeliveryCompany.getSelectedItem(),bioTech,(String)cmbHospital.getSelectedItem(),"Processing");
         for (int count = 0; count < model1.getRowCount(); count++){
         if(model1.getValueAt(count, 0) instanceof Vaccine){
-            order1.addVaccine((Vaccine)model1.getValueAt(count, 0));
+            Vaccine v = (Vaccine)model1.getValueAt(count, 0);
+            v.setQuantity((int)model1.getValueAt(count, 3));
+            order1.addVaccine(v);
         }
         else if(model1.getValueAt(count, 0) instanceof Medicine){
-            order1.addMedicine((Medicine)model1.getValueAt(count, 0));
+            Medicine v = (Medicine)model1.getValueAt(count, 0);
+            v.setQuantity((int)model1.getValueAt(count, 3));
+            order1.addMedicine(v);
         }
     }
         bs.getOrders().add(order1);

@@ -5,8 +5,12 @@
 package Business.UI.Delivery;
 
 import Business.Business;
+import Business.Class.BioTech.BioTechCom;
 import Business.Class.Delivery.Delivery;
 import Business.Class.Delivery.Order;
+import Business.Class.Hospital.Hospital;
+import Business.Class.Medicine;
+import Business.Class.Vaccine;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -187,8 +191,20 @@ public class ProcessingCargoPanel extends javax.swing.JPanel {
             return;
         }
         Order selected = (Order) btnCargo.getValueAt(row, 0);
+        for(Hospital h : b.getHospitals()){
+            if(h.getName().equals(selected.getAddress())){
+                System.out.print("Yes!!!");
+                if(selected.getMedicines()!=null){
+                    h.DeliveryAddMedicine(selected.getMedicines());
+                }
+                if(selected.getVaccines()!=null){
+                    h.DeliveryAddVaccine(selected.getVaccines());
+                }
+            }
+        
+        }
         selected.setStatus("Completed");
-                ArrayList <Order> oi = new ArrayList<>();
+        ArrayList <Order> oi = new ArrayList<>();
         String status="";
         status=((String)jComboBox1.getSelectedItem());
         for(Order s : d.getOrders()) {
@@ -230,7 +246,21 @@ public class ProcessingCargoPanel extends javax.swing.JPanel {
         }
         Order selected = (Order) btnCargo.getValueAt(row, 0);
         selected.setStatus("Cancelled");
-                ArrayList <Order> oi = new ArrayList<>();
+        for(BioTechCom h : b.getBioTech()){
+            if(h.getName().equals(selected.getLocation())){
+                System.out.print("Yes!!!");
+                if(selected.getMedicines()!=null){
+                    System.out.print("Yes!!!");
+                    h.DeliveryAddMedicine(selected.getMedicines());
+                }
+                if(selected.getVaccines()!=null){
+                    System.out.print("Yes!!!");
+                    h.DeliveryAddVaccine(selected.getVaccines());
+                }
+            }
+        
+        }
+        ArrayList <Order> oi = new ArrayList<>();
         String status="";
         status=((String)jComboBox1.getSelectedItem());
         for(Order s : d.getOrders()) {

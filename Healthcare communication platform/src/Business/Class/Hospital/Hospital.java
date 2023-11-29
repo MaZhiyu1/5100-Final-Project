@@ -10,6 +10,8 @@ import Business.Class.Hospital.Medical.AppointmentDirectory;
 import Business.Class.Hospital.Medical.Doctor;
 import Business.Class.Hospital.Medical.Patient;
 import Business.Class.Hospital.RearServices.RearServices;
+import Business.Class.Medicine;
+import Business.Class.Vaccine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +52,50 @@ public class Hospital {
         
     }
 
+public void DeliveryAddMedicine(ArrayList<Medicine> v) {
+    ArrayList<Medicine> medicinesToAdd = new ArrayList<>();
     
+    for (Medicine v1 : v) {
+        int k=0;
+        for (Medicine vs : hi.getMd().getDrugs()) {
+            if (vs.getName().equals(v1.getName())&&vs.getId().equals(v1.getId())) {
+                vs.setQuantity(v1.getQuantity() + vs.getQuantity());
+                k=1;
+            }
+
+        }
+        if(k==0){
+            medicinesToAdd.add(v1);
+        }
+    }
+    // Add new medicines after the iteration is complete
+    for(Medicine m : medicinesToAdd){
+         hi.getMd().addDrugs(m );
+    }
+}
+    
+    
+    public void DeliveryAddVaccine(ArrayList<Vaccine> v){
+    ArrayList<Vaccine> vaccineToAdd = new ArrayList<>();
+    
+    for (Vaccine v1 : v) {
+        int k=0;
+        for (Vaccine vs : hi.getVd().getVaccines()) {
+            if (vs.getName().equals(v1.getName())) {
+                vs.setQuantity(v1.getQuantity() + vs.getQuantity());
+                k=1;
+            }
+        }
+        if(k==0){
+            vaccineToAdd.add(v1);
+        }
+    }
+    
+    // Add new medicines after the iteration is complete
+    for(Vaccine m : vaccineToAdd){
+         hi.getVd().addVaccine(m );
+    }
+}
     
     public HospitalResearch getHr() {
         return hr;
