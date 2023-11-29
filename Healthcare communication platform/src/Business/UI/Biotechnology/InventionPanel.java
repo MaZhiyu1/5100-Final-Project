@@ -113,7 +113,6 @@ public class InventionPanel extends javax.swing.JPanel {
         tblLab = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        btnModify = new javax.swing.JButton();
         txtProcess = new javax.swing.JTextField();
         btnResearch = new javax.swing.JButton();
         txtName = new javax.swing.JTextField();
@@ -170,8 +169,6 @@ public class InventionPanel extends javax.swing.JPanel {
                 btnDeleteActionPerformed(evt);
             }
         });
-
-        btnModify.setText("Modify");
 
         txtProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,9 +250,7 @@ public class InventionPanel extends javax.swing.JPanel {
                         .addGap(79, 79, 79)
                         .addComponent(btnAdd)
                         .addGap(18, 18, 18)
-                        .addComponent(btnDelete)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModify))
+                        .addComponent(btnDelete))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addComponent(jLabel6)
@@ -315,17 +310,17 @@ public class InventionPanel extends javax.swing.JPanel {
                     .addComponent(txtProcess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnResearch)
                     .addComponent(btnAdd)
-                    .addComponent(btnDelete)
-                    .addComponent(btnModify))
+                    .addComponent(btnDelete))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(txtGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
@@ -394,7 +389,27 @@ public class InventionPanel extends javax.swing.JPanel {
 
     private void btnResearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResearchActionPerformed
         // TODO add your handling code here:
+        int row = tblLab.getSelectedRow();
+        if(row <0 ){
+            JOptionPane.showMessageDialog(null,"Please select a row!");
+            return;
+        }
+        int i=0;
+        try{
+            i = Integer.parseInt(txtProcess.getText());
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Please enter a num!");
+        }
         
+        Lab selected = (Lab) tblLab.getValueAt(row, 0);
+        selected.setProgress(selected.getProgress()+i);
+        if(selected.getProgress()>=100){
+            selected.setStatus("Completed");
+            JOptionPane.showMessageDialog(null,"Project completed!");
+            refreshTable1();
+        }
+        jProgressBar1.setValue(selected.getProgress());
     }//GEN-LAST:event_btnResearchActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -450,7 +465,6 @@ public class InventionPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnModify;
     private javax.swing.JButton btnResearch;
     private javax.swing.JComboBox<String> cmbDepartment;
     private javax.swing.JComboBox<String> cmbHospital;
