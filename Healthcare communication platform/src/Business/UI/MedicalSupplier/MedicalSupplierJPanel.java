@@ -6,6 +6,7 @@ package Business.UI.MedicalSupplier;
 
 import Business.Business;
 import Business.Class.BioTech.BioSupplier;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -20,11 +21,13 @@ public class MedicalSupplierJPanel extends javax.swing.JPanel {
     JPanel RightPanel;
     Business b;
     BioSupplier bs;
-    public MedicalSupplierJPanel(JPanel RightPanel,Business b,BioSupplier bs) {
+    String company;
+    public MedicalSupplierJPanel(JPanel RightPanel,Business b,BioSupplier bs,String company) {
         initComponents();
         this.RightPanel=  RightPanel;
         this.b=b;
         this.bs = bs;
+        this.company=company;
         
     }
 
@@ -131,10 +134,18 @@ public class MedicalSupplierJPanel extends javax.swing.JPanel {
 
     private void btnViewRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewRequestActionPerformed
         // TODO add your handling code here:
+        ViewRequestSupplierPanel ms =new ViewRequestSupplierPanel( RightPanel, b, bs, company);
+        RightPanel.add("LoginScreen",ms);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
     }//GEN-LAST:event_btnViewRequestActionPerformed
 
     private void btnDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliveryActionPerformed
         // TODO add your handling code here:
+        EquipmentDeliveryPanel ms =new EquipmentDeliveryPanel( RightPanel, b, bs, company);
+        RightPanel.add("LoginScreen",ms);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
     }//GEN-LAST:event_btnDeliveryActionPerformed
 
 

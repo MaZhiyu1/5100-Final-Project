@@ -193,7 +193,7 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
             return;
         }
 
-        MedicalSupplierJPanel pw = new MedicalSupplierJPanel(RightPanel,bz,(BioSupplier)o);
+        MedicalSupplierJPanel pw = new MedicalSupplierJPanel(RightPanel,bz,(BioSupplier)o,medicalSupplier);
         RightPanel.add("LoginScreen",pw);
         CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.next(RightPanel);

@@ -4,6 +4,21 @@
  */
 package Business.UI.MedicalSupplier;
 
+import Business.Business;
+import Business.Class.BioTech.BioSupplier;
+import Business.Class.BioTech.BioTechCom;
+import Business.Class.Delivery.Delivery;
+import Business.Class.Delivery.Order;
+import Business.Class.Equipment;
+import Business.Class.MedicalSupplier.MedicalSupplier;
+import Business.Class.Medicine;
+import Business.Class.Vaccine;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author 15469
@@ -13,10 +28,48 @@ public class EquipmentDeliveryPanel extends javax.swing.JPanel {
     /**
      * Creates new form EquipmentDeliveryPanel
      */
-    public EquipmentDeliveryPanel() {
+    
+    Business bz;
+    BioSupplier bs;
+
+    int number;
+    ArrayList<Equipment> equipments= new ArrayList<>();
+    MedicalSupplier btc;
+    JPanel RightPanel;
+    String company;
+    public EquipmentDeliveryPanel(JPanel RightPanel,Business bz,BioSupplier bs,String company) {
         initComponents();
+        this.bz=bz;
+        this.bs=bs;
+        this.RightPanel=RightPanel;
+        this.company=company;
+        number=0;
+        for(MedicalSupplier bt : bz.getMedicalSupplier()){
+            if(bt.getName().equals(company)){
+                btc = bt;
+                equipments=btc.getEquipments();
+            }
+        }
+        
     }
 
+    public void refreshTable() {
+        
+        DefaultTableModel model = (DefaultTableModel)tblEquipment.getModel();
+        model.setRowCount(0);
+        if(equipments==null) return;
+        for(Equipment s : equipments) {
+            Object row[] = new Object[4];
+            row[0] = s;
+            row[1] = s.getName();
+            row[2] = s.getType();
+            row[3] = s.getDescription();
+            model.addRow(row);
+        }
+
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,8 +91,6 @@ public class EquipmentDeliveryPanel extends javax.swing.JPanel {
         btnAdd = new javax.swing.JButton();
         btnSubmit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        txtQuantity = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblEquipment = new javax.swing.JTable();
         btnBack1 = new javax.swing.JButton();
@@ -58,13 +109,13 @@ public class EquipmentDeliveryPanel extends javax.swing.JPanel {
 
         tblCart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Type", "Instruction", "Quantity"
+                "ID", "Name", "Type", "Instruction"
             }
         ));
         jScrollPane3.setViewportView(tblCart);
@@ -72,16 +123,23 @@ public class EquipmentDeliveryPanel extends javax.swing.JPanel {
         jLabel1.setText("Delivery Company");
 
         btnAdd.setText("ADD");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
-
-        jLabel4.setText("Quantity");
-
-        txtQuantity.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtQuantityActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -133,12 +191,7 @@ public class EquipmentDeliveryPanel extends javax.swing.JPanel {
                         .addComponent(btnDelete)
                         .addGap(27, 27, 27)
                         .addComponent(btnSubmit))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAdd)))
+                    .addComponent(btnAdd, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(90, 90, 90))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
@@ -161,10 +214,7 @@ public class EquipmentDeliveryPanel extends javax.swing.JPanel {
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(9, 9, 9)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdd))
+                .addComponent(btnAdd)
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -188,13 +238,74 @@ public class EquipmentDeliveryPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtQuantityActionPerformed
-
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBack1ActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+
+        int row = tblEquipment.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table first", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+            Equipment selected = (Equipment) tblEquipment.getValueAt(row, 0);
+            DefaultTableModel model1 = (DefaultTableModel)tblCart.getModel();
+            Object row1[] = new Object[4];
+            row1[0] = selected;
+            row1[1] = selected.getName();
+            row1[2] = selected.getType();
+            row1[3] = selected.getDescription();
+            model1.addRow(row1);
+
+
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int row = tblCart.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table first", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        DefaultTableModel model1 = (DefaultTableModel)tblCart.getModel();
+        model1.removeRow(row);
+        
+
+
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+    DefaultTableModel model1 = (DefaultTableModel)tblCart.getModel();
+    int s=1;
+    if(bs.getOrders()!=null){
+        s = bs.getOrders().size()+1;
+    }
+    if(model1.getRowCount()<0){
+        JOptionPane.showMessageDialog(null,"Please enter to cart", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+    }
+    Order order1 = new Order(String.valueOf(s),(String)cmbDelivery.getSelectedItem(),company,(String)cmbHospital.getSelectedItem(),"Processing");
+        for (int count = 0; count < model1.getRowCount(); count++){
+            Equipment e = (Equipment) model1.getValueAt(count, 0);
+            order1.addEquipment(e);
+        }
+        bs.getOrders().add(order1);
+        for(Delivery d : bz.getDeliveries()){
+            if(d.getCompany().equals(order1.getDelivery())){
+                d.addOrder(order1);
+            }
+        }
+        JOptionPane.showMessageDialog(null,"Successfully submit!");
+        RightPanel.remove(this);
+        CardLayout layout =  (CardLayout) RightPanel.getLayout();
+        layout.next(RightPanel);
+
+        
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -207,13 +318,11 @@ public class EquipmentDeliveryPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tblCart;
     private javax.swing.JTable tblEquipment;
-    private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
 }
