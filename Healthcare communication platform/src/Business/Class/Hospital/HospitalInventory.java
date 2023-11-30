@@ -4,12 +4,8 @@
  */
 package Business.Class.Hospital;
 
-import Business.Class.Equipment;
-import Business.Class.EquipmentDirectory;
-import Business.Class.Medicine;
-import Business.Class.MedicineDirectory;
-import Business.Class.Vaccine;
-import Business.Class.VaccineDirectory;
+import Business.Class.*;
+
 import java.util.ArrayList;
 
 /**
@@ -17,68 +13,72 @@ import java.util.ArrayList;
  * @author 15469
  */
 public class HospitalInventory {
-    MedicineDirectory md;
-    EquipmentDirectory ed;
-    VaccineDirectory vd;
-    
-    
-    
+    MedicineDirectory medicineDirectory;
+    EquipmentDirectory equipmentDirectory;
+    VaccineDirectory vaccineDirectory;
+
+    OperationDirectory operationDirectory;
+
+    TransferDirectory transferDirectory;
     
     public HospitalInventory() {
-        md = new MedicineDirectory();
-        ed = new EquipmentDirectory();
-        vd = new VaccineDirectory();
+        medicineDirectory = new MedicineDirectory();
+        equipmentDirectory = new EquipmentDirectory();
+        vaccineDirectory = new VaccineDirectory();
+        operationDirectory = new OperationDirectory();
+        transferDirectory = new TransferDirectory();
+        
     }
 
-    public EquipmentDirectory getEd() {
-        return ed;
+    public EquipmentDirectory getEquipmentDirectory() {
+        return equipmentDirectory;
     }
 
     public void setEd(ArrayList<Equipment> e) {
-        ed.setEquipments(e);
+        equipmentDirectory.setEquipments(e);
     }
 
-    public VaccineDirectory getVd() {
-        return vd;
+    public VaccineDirectory getVaccineDirectory() {
+        return vaccineDirectory;
     }
 
-    public void setVd(ArrayList<Vaccine> vaccine) {
-        vd.setVaccines(vaccine);
+    public void setVaccineDirectory(ArrayList<Vaccine> vaccine) {
+        vaccineDirectory.setVaccines(vaccine);
     }
 
     public void addVaccine(Vaccine e){
-        for(Vaccine m : vd.getVaccines()){
+        for(Vaccine m : vaccineDirectory.getVaccines()){
             if(m.getId()==e.getId()&&m.getType().equals(e.getType())){
                 m.setQuantity(m.getQuantity()+e.getQuantity());
                 return;
             }
         }
-        vd.addVaccine(e);
+        vaccineDirectory.addVaccine(e);
     }
     
     public void addMedicine(Medicine e){
-        for(Medicine m : md.getDrugs()){
+        for(Medicine m : medicineDirectory.getDrugs()){
             if(m.getId().equals(e.getId()) && m.getType().equals(e.getType())){
                 m.setQuantity(m.getQuantity() + e.getQuantity());
                 return;
             }
         }
-        md.addDrugs(e);
+        medicineDirectory.addDrugs(e);
     }
     
     public void addEquipment(Equipment e){
-        for(Equipment m : ed.getEquipments()){
+        for(Equipment m : equipmentDirectory.getEquipments()){
             if(m.getId()==e.getId()&&m.getType().equals(e.getType())){
                 return;
             }
         }
-        ed.addEquipment(e);
+        equipmentDirectory.addEquipment(e);
         
     }
     
     
     public int deleteVaccine(Vaccine e){
-        for(Vaccine m : vd.getVaccines()){
+        for(Vaccine m : vaccineDirectory.getVaccines()){
             if(m.getId()==e.getId()&&m.getType().equals(e.getType())){
                 if(m.getQuantity()-e.getQuantity()<0) return -1;
                 m.setQuantity(m.getQuantity()-e.getQuantity());
@@ -89,7 +89,7 @@ public class HospitalInventory {
     }
     
     public int deleteMedicine(Medicine e){
-        for(Medicine m : md.getDrugs()){
+        for(Medicine m : medicineDirectory.getDrugs()){
             if(m.getId()==e.getId()&&m.getType().equals(e.getType())){
                  if(m.getQuantity()-e.getQuantity()<0) return -1;
                 m.setQuantity(m.getQuantity()-e.getQuantity());
@@ -98,19 +98,29 @@ public class HospitalInventory {
         }
         return 0;  //no in the hospital
     }
-    
-    
-    
-    
-    public MedicineDirectory getMd() {
-        return md;
+
+    public MedicineDirectory getMedicineDirectory() {
+        return medicineDirectory;
     }
 
-    public void setMd(ArrayList<Medicine> medicines) {
-        md.setDrugs(medicines);
+    public void setMedicineDirectory(ArrayList<Medicine> medicines) {
+        medicineDirectory.setDrugs(medicines);
+    }
+    
+
+    public OperationDirectory getOperationDirectory() {
+        return operationDirectory;
     }
 
-    
-    
-    
+    public void setOperationDirectory(OperationDirectory operationDirectory) {
+        this.operationDirectory = operationDirectory;
+    }
+
+    public TransferDirectory getTransferDirectory() {
+        return transferDirectory;
+    }
+
+    public void setTransferDirectory(TransferDirectory transferDirectory) {
+        this.transferDirectory = transferDirectory;
+    }
 }

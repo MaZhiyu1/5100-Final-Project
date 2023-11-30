@@ -20,5 +20,6 @@ public class Medicine extends Drug{
 
     public Medicine(String name, String id, String description, String category) {
         super(id, name, description, category);
+        setType("Medicine");
     }
 }

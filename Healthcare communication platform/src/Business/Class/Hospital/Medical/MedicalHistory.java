@@ -4,6 +4,8 @@
  */
 package Business.Class.Hospital.Medical;
 
+import java.util.UUID;
+
 /**
  *
  * @author 15469
@@ -26,12 +28,14 @@ public class MedicalHistory {
     private Prescription prescription;
 
     public MedicalHistory(String symptom, String instruction) {
+        this.id = UUID.randomUUID().toString();
         this.symptom = symptom;
         this.instruction = instruction;
         status="processing";
     }
 
     public MedicalHistory(Patient patient, Doctor doctor, String symptom, String instruction) {
+        this.id = UUID.randomUUID().toString();
         this.doctor = doctor;
         this.patient = patient;
         this.symptom = symptom;

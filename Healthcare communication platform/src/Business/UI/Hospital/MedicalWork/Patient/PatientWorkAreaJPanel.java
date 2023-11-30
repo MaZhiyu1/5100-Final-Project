@@ -106,7 +106,7 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
         // TODO add your handling code here:
-    PatientHistoryJPanel php = new PatientHistoryJPanel(RightPanel);
+    PatientHistoryJPanel php = new PatientHistoryJPanel(RightPanel,patient);
     RightPanel.add("PatientHistoryJPanel", php);
     CardLayout layout = (CardLayout) RightPanel.getLayout();
     layout.next(RightPanel);

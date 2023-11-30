@@ -5,19 +5,13 @@
 package Business.UI.Hospital.MedicalWork.Doctor;
 
 import Business.Business;
-import Business.Class.Drug;
-import Business.Class.Equipment;
-import Business.Class.Hospital.Medical.Appointment;
-import Business.Class.Hospital.Medical.Doctor;
-import Business.Class.Hospital.Medical.MedicalHistory;
-import Business.Class.Hospital.Medical.Patient;
-import Business.Class.Medicine;
-import Business.Class.Vaccine;
+import Business.Class.*;
+import Business.Class.Hospital.Medical.*;
 
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,7 +26,13 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
     private Patient selectedPatient;
 
+    private List<Drug> selectedDrugList;
+
+    private Drug selectedDrug;
+
     Business bz;
+
+    private List<Drug> drugList;
 
     /**
      * Creates new form OutpatientJPanel
@@ -42,6 +42,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         this.RightPanel=RightPanel;
         this.doctor = doctor;
         this.bz = bz;
+        selectedDrugList = new ArrayList<>();
         initTable();
 
         tblAppointment.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -56,7 +57,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
                     if (id.equals(appointment.getId())){
                         selectedAppointment = appointment;
-
+                        selectedPatient = appointment.getPatient();
                         txtName.setText(appointment.getPatient().getName());
                         txtPatientId.setText(String.valueOf(appointment.getPatient().getId()));
                         txtAge.setText(appointment.getPatient().getAge());
@@ -85,6 +86,22 @@ public class OutpatientJPanel extends javax.swing.JPanel {
             if(row != -1) { // 如果行已被选择
 //                populatePrescription( selectedAppointment.getPrescription().getDrugList());
             }
+            }
+        });
+
+        tblPrescription.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = tblPrescription.getSelectedRow(); // 获取所点选行的索引
+                DefaultTableModel model = (DefaultTableModel) tblPrescription.getModel(); //Have the access to the table;
+
+                if(row != -1) { // 如果行已被选择
+                    String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
+
+                    selectedDrug = drugList.stream().filter(drug -> drug.getId().equals(id)).findFirst().get();
+
+                    txtMedicalId.setText(id);
+                    txtMedicalQuantity.setText("1");
+                }
             }
         });
     }
@@ -121,37 +138,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         });
     }
 
-    /**
-     * populate the prescription table
-     * */
-    private void populatePrescription(List<Medicine> drugList){
-        ((DefaultTableModel) tblPrescription.getModel()).setRowCount(0);
-        drugList.forEach(drug -> {
-            Object[] row1 = new Object[5];
-            row1[0] = drug.getId();
-            row1[1] = drug.getName();
-            row1[2] = drug.getType();
-            row1[3] = drug.getQuantity();
-            row1[4] = drug.getInstruction();
-            ((DefaultTableModel) tblPrescription.getModel()).addRow(row1);
-        });
-    }
 
-    /**
-     * populate the prescription table
-     * */
-//    private void populatePrescription(List<Vaccine> drugList){
-//        ((DefaultTableModel) tblPrescription.getModel()).setRowCount(0);
-//        drugList.forEach(drug -> {
-//            Object[] row1 = new Object[5];
-//            row1[0] = drug.getId();
-//            row1[1] = drug.getName();
-//            row1[2] = drug.getType();
-//            row1[3] = drug.getQuantity();
-//            row1[4] = drug.getInstruction();
-//            ((DefaultTableModel) tblPrescription.getModel()).addRow(row1);
-//        });
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -195,7 +182,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         txtMedicalId = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtMedicalName = new javax.swing.JTextField();
+        txtMedicalQuantity = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         btnRemove = new javax.swing.JButton();
         btnFinish = new javax.swing.JButton();
@@ -290,7 +277,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID:", "Name", "type", "amount", "Instruction"
+                "ID:", "Name", "type", "quantity", "Instruction"
             }
         ) {
             Class[] types = new Class [] {
@@ -332,13 +319,13 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
         tblResult.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID:", "Name", "Type", "Instruction"
+                "ID:", "Name", "Type", "Instruction", "quantity"
             }
         ));
         jScrollPane7.setViewportView(tblResult);
@@ -437,7 +424,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
                                         .addGap(95, 95, 95)
                                         .addComponent(jLabel9)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtMedicalName, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtMedicalQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(22, 22, 22))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(122, 122, 122)
@@ -503,7 +490,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel9)
                     .addComponent(txtMedicalId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
-                    .addComponent(txtMedicalName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMedicalQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -540,7 +527,29 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        selectedDrug.setQuantity(Integer.parseInt(txtMedicalQuantity.getText()));
+        selectedDrugList.add(selectedDrug);
+        populateTblResult(selectedDrugList);
+
     }//GEN-LAST:event_btnAddActionPerformed
+
+
+    /**
+     * show the result table
+     * */
+    private void populateTblResult(List<Drug> selectedDrugList) {
+        //清空表格
+        ((DefaultTableModel) tblResult.getModel()).setRowCount(0);
+        selectedDrugList.forEach(drug -> {
+            Object[] row = new Object[5];
+            row[0] = drug.getId();
+            row[1] = drug.getName();
+            row[2] = drug.getType();
+            row[3] = drug.getInstruction();
+            row[4] = txtMedicalQuantity.getText();
+            ((DefaultTableModel) tblResult.getModel()).addRow(row);
+        });
+    }
 
     private void btnSearchGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchGenreActionPerformed
         // search medicine
@@ -548,7 +557,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         String name = txtSearchGenre.getText();
 
         if(type.equals("Medicine")){
-            ArrayList<Medicine> allList = doctor.getHospital().getHi().getMd().getDrugs();
+            ArrayList<Medicine> allList = doctor.getHospital().getHospitalInventory().getMedicineDirectory().getDrugs();
 
             ArrayList<Medicine> medicineArrayList = new ArrayList<>();
             
@@ -557,16 +566,16 @@ public class OutpatientJPanel extends javax.swing.JPanel {
             }
             else{
                 for(Medicine drug : allList){
-                    if(drug.getName().equals(name)){
+                    if(drug.getName().contains(name)){
                         medicineArrayList.add(drug);
                     }
                 }
             }
-            
-            populatePrescription_madicine(medicineArrayList);
+
+            populatePrescription(medicineArrayList);
         }
         else if(type.equals("Vaccine")){
-            ArrayList<Vaccine> allList = doctor.getHospital().getHi().getVd().getVaccines();
+            ArrayList<Vaccine> allList = doctor.getHospital().getHospitalInventory().getVaccineDirectory().getVaccines();
 
             ArrayList<Vaccine> vaccineList = new ArrayList<>();
 
@@ -575,15 +584,15 @@ public class OutpatientJPanel extends javax.swing.JPanel {
             }
             else{
                 for(Vaccine drug : allList){
-                    if(drug.getName().equals(name)){
+                    if(drug.getName().contains(name)){
                         vaccineList.add(drug);
                     }
                 }
             }
-            populatePrescription_vaccine(vaccineList);
+            populatePrescription(vaccineList);
         }
         else if(type.equals("Equipment")){
-            ArrayList<Equipment> allList = doctor.getHospital().getHi().getEd().getEquipments();
+            ArrayList<Equipment> allList = doctor.getHospital().getHospitalInventory().getEquipmentDirectory().getEquipments();
 
             ArrayList<Equipment> equipmentList = new ArrayList<>();
 
@@ -592,76 +601,91 @@ public class OutpatientJPanel extends javax.swing.JPanel {
             }
             else{
                 for(Equipment drug : allList){
-                    if(drug.getName().equals(name)){
+                    if(drug.getName().contains(name)){
                         equipmentList.add(drug);
                     }
                 }
             }
 
-            populatePrescription_equipment(equipmentList);
+            populatePrescription(equipmentList);
         }
         else if(type.equals("Operation")){
-//            ArrayList<Drug> allList = doctor.getHospital().getHi().getOp().getOperations();
-//            ArrayList<Medicine> medicineArrayList = new ArrayList<>();
-//
-//            if(name == null || name.isEmpty()){
-//                medicineArrayList = allList;
-//            }
-//            else{
-//                for(Medicine drug : allList){
-//                    if(drug.getName().equals(name)){
-//                        medicineArrayList.add(drug);
-//                    }
-//                }
-//            }
-//
-//            populatePrescription_madicine(medicineArrayList);
+            ArrayList<Operation> allList = doctor.getHospital().getHospitalInventory().getOperationDirectory().getOperations();
+            ArrayList<Operation> operationArrayList = new ArrayList<>();
+
+            if(name == null || name.isEmpty()){
+                operationArrayList = allList;
+            }
+            else{
+                for(Operation operation : allList){
+                    if(operation.getName().contains(name)){
+                        operationArrayList.add(operation);
+                    }
+                }
+            }
+
+            populatePrescription(operationArrayList);
         }
         else if(type.equals("Transfer")){
-//            ArrayList<Drug> allList = doctor.getHospital().getHi().getTr().getTransfers();
-//            ArrayList<Medicine> medicineArrayList = new ArrayList<>();
-//
-//            if(name == null || name.isEmpty()){
-//                medicineArrayList = allList;
-//            }
-//            else{
-//                for(Medicine drug : allList){
-//                    if(drug.getName().equals(name)){
-//                        medicineArrayList.add(drug);
-//                    }
-//                }
-//            }
-//
-//            populatePrescription_madicine(medicineArrayList);
+            ArrayList<Transfer> allList = doctor.getHospital().getHospitalInventory().getTransferDirectory().getTransfers();
+            ArrayList<Transfer> transferArrayList = new ArrayList<>();
+
+            if(name == null || name.isEmpty()){
+                transferArrayList = allList;
+            }
+            else{
+                for(Transfer drug : allList){
+                    if(drug.getName().contains(name)){
+                        transferArrayList.add(drug);
+                    }
+                }
+            }
+            populatePrescription(transferArrayList);
         }
-
-
-
-
-
-
 
     }//GEN-LAST:event_btnSearchGenreActionPerformed
 
-    private void populatePrescription_equipment(ArrayList<Equipment> equipmentList) {
-    }
+    /**
+     * populate the prescription table
+     * */
+    private <T extends Drug> void populatePrescription(List<T> drugList) {
 
-    private void populatePrescription_vaccine(ArrayList<Vaccine> vaccineList) {
-    }
+        this.drugList = (List<Drug>) drugList;
 
-    private void populatePrescription_madicine(ArrayList<Medicine> medicineArrayList) {
-    }
-
-    private void populatePrescription(ArrayList<Drug> drugs1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ((DefaultTableModel) tblPrescription.getModel()).setRowCount(0);
+        drugList.forEach(drug -> {
+            Object[] row1 = new Object[5];
+            row1[0] = drug.getId();
+            row1[1] = drug.getName();
+            row1[2] = drug.getType();
+            row1[3] = drug.getQuantity();
+            row1[4] = drug.getInstruction();
+            ((DefaultTableModel) tblPrescription.getModel()).addRow(row1);
+        });
     }
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         // TODO add your handling code here:
+        int row = tblResult.getSelectedRow(); // 获取所点选行的索引
+        DefaultTableModel model = (DefaultTableModel) tblResult.getModel(); //Have the access to the table;
+        String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
+
+        selectedDrugList.removeIf(drug -> drug.getId().equals(id));
+
+        populateTblResult(selectedDrugList);
     }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
-        // TODO add your handling code here:
+        //
+        Prescription prescription = new Prescription(selectedPatient, doctor);
+        prescription.setDrugList(selectedDrugList);
+        MedicalHistory medicalHistory = new MedicalHistory(selectedAppointment.getSymptom(), instructionTextArea.getText());
+        medicalHistory.setPrescription(prescription);
+        selectedPatient.getMedicalHistoryList().getMh().add(medicalHistory);
+
+        JOptionPane.showMessageDialog(null, "Finish!");
+
+        btnBack1ActionPerformed(evt);
     }//GEN-LAST:event_btnFinishActionPerformed
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
@@ -712,7 +736,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtInsurance;
     private javax.swing.JTextField txtMedicalId;
-    private javax.swing.JTextField txtMedicalName;
+    private javax.swing.JTextField txtMedicalQuantity;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPatientId;
     private javax.swing.JTextField txtSearchGenre;

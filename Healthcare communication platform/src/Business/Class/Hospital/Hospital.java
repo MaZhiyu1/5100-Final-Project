@@ -52,27 +52,27 @@ public class Hospital {
         
     }
 
-public void DeliveryAddMedicine(ArrayList<Medicine> v) {
-    ArrayList<Medicine> medicinesToAdd = new ArrayList<>();
-    
-    for (Medicine v1 : v) {
-        int k=0;
-        for (Medicine vs : hi.getMd().getDrugs()) {
-            if (vs.getName().equals(v1.getName())&&vs.getId().equals(v1.getId())) {
-                vs.setQuantity(v1.getQuantity() + vs.getQuantity());
-                k=1;
-            }
+    public void DeliveryAddMedicine(ArrayList<Medicine> v) {
+        ArrayList<Medicine> medicinesToAdd = new ArrayList<>();
 
+        for (Medicine v1 : v) {
+            int k=0;
+            for (Medicine vs : hi.getMedicineDirectory().getDrugs()) {
+                if (vs.getName().equals(v1.getName())&&vs.getId().equals(v1.getId())) {
+                    vs.setQuantity(v1.getQuantity() + vs.getQuantity());
+                    k=1;
+                }
+
+            }
+            if(k==0){
+                medicinesToAdd.add(v1);
+            }
         }
-        if(k==0){
-            medicinesToAdd.add(v1);
+        // Add new medicines after the iteration is complete
+        for(Medicine m : medicinesToAdd){
+             hi.getMedicineDirectory().addDrugs(m );
         }
     }
-    // Add new medicines after the iteration is complete
-    for(Medicine m : medicinesToAdd){
-         hi.getMd().addDrugs(m );
-    }
-}
     
     
     public void DeliveryAddVaccine(ArrayList<Vaccine> v){
@@ -80,7 +80,7 @@ public void DeliveryAddMedicine(ArrayList<Medicine> v) {
     
     for (Vaccine v1 : v) {
         int k=0;
-        for (Vaccine vs : hi.getVd().getVaccines()) {
+        for (Vaccine vs : hi.getVaccineDirectory().getVaccines()) {
             if (vs.getName().equals(v1.getName())) {
                 vs.setQuantity(v1.getQuantity() + vs.getQuantity());
                 k=1;
@@ -93,7 +93,7 @@ public void DeliveryAddMedicine(ArrayList<Medicine> v) {
     
     // Add new medicines after the iteration is complete
     for(Vaccine m : vaccineToAdd){
-         hi.getVd().addVaccine(m );
+         hi.getVaccineDirectory().addVaccine(m );
     }
 }
     
@@ -105,9 +105,7 @@ public void DeliveryAddMedicine(ArrayList<Medicine> v) {
         this.hr = hr;
     }
 
-    
-    
-    
+
     public ArrayList<Request> getRequest() {
         return request;
     }
@@ -128,8 +126,6 @@ public void DeliveryAddMedicine(ArrayList<Medicine> v) {
         this.rs = rs;
     }
 
-    
-    
     public void addRearService(RearServices e){
         rs.add(e);
     }
@@ -180,7 +176,7 @@ public void DeliveryAddMedicine(ArrayList<Medicine> v) {
         this.patients = patients;
     }
 
-    public HospitalInventory getHi() {
+    public HospitalInventory getHospitalInventory() {
         return hi;
     }
 

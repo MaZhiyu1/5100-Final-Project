@@ -128,7 +128,7 @@ public class Business {
     
     public void MedicalSupplier1(){
         ms = new  MedicalSupplier("MedTech Innovators");
-        Equipment e1 = new Equipment("Anti-Heart Disease", "MedTech 1", "Internal Medicine", "For Use");
+        Equipment e1 = new Equipment("Anti-Heart Disease", "MedTech 1", "For Use", "Internal Medicine");
         BioSupplier bs = new BioSupplier( "Finka","", "MedTech Supplier");
         ms.addBioSupplier(bs);
         ms.addEquipment(e1);
@@ -161,17 +161,18 @@ public class Business {
             }
         }
         b1.addLab(lab1);
-        Medicine m = new Medicine("A1", "1", "For Child", "Pediatrics");
-        m.setQuantity(10);
-        Medicine m1 = new Medicine("B1", "2", "For Internal", "Internal Medicine");
-        m1.setQuantity(10);
-        Medicine m2 = new Medicine("C1", "3", "Surgery", "Surgery");
-        m2.setQuantity(10);
-        ArrayList<Medicine> M = new ArrayList<>();
-        
-        M.add(m);
-        M.add(m1);
-        M.add(m2);
+
+        Medicine medicine = new Medicine("A1", "1", "For Child", "Pediatrics");
+        medicine.setQuantity(10);
+        Medicine medicine1 = new Medicine("B1", "2", "For Internal", "Internal Medicine");
+        medicine1.setQuantity(10);
+        Medicine medicine2 = new Medicine("C1", "3", "Surgery", "Surgery");
+        medicine2.setQuantity(10);
+        ArrayList<Medicine> medicineDirectory = new ArrayList<>();
+
+        medicineDirectory.add(medicine);
+        medicineDirectory.add(medicine1);
+        medicineDirectory.add(medicine2);
         
         Vaccine v = new Vaccine("V A1", "1", "For Child", "Pediatrics");
         v.setQuantity(10);
@@ -186,7 +187,7 @@ public class Business {
         V.add(v2);
         
         Request r = new Request("medicine 1","medicine","For heart disease");
-        r.setMedicines(m);
+        r.setMedicines(medicine);
         
         BioSupplier bs1_ = new BioSupplier("Mike", "", "BioSupplier 1");
         bs1_.addRequest(r);
@@ -195,8 +196,8 @@ public class Business {
         BioSupplier bs2_ = new BioSupplier("Jackson", "", "BioSupplier 1");
         
         //set inventory
-        b1.getHi().setMd(M);
-        b1.getHi().setVd(V);
+        b1.getHi().setMedicineDirectory(medicineDirectory);
+        b1.getHi().setVaccineDirectory(V);
         
         //set supplier
         b1.addSupplier(bs1_);
@@ -271,46 +272,48 @@ public class Business {
         APPO.add(a);
         APPO.add(a1);
         APPO.add(a2);
-        
-        patient1.makeAppoinment(doctor1);
-        patient2.makeAppoinment(doctor2);
-        patient3.makeAppoinment(doctor3);
-        
-        Medicine m = new Medicine("A1", "1", "For Child", "Pediatrics");
-        m.setQuantity(10);
-        Medicine m1 = new Medicine("B1", "2", "For Internal", "Internal Medicine");
-        m1.setQuantity(10);
-        Medicine m2 = new Medicine("C1", "3", "Surgery", "Surgery");
-        m2.setQuantity(10);
-        ArrayList<Medicine> M = new ArrayList<>();
 
-        M.add(m);
-        M.add(m1);
-        M.add(m2);
-        
-        Vaccine v = new Vaccine("A1", "1", "For Child", "Pediatrics");
-        v.setQuantity(10);
-        Vaccine v1 = new Vaccine("B1", "2", "For Internal", "Internal Medicine");
-        v1.setQuantity(10);
-        Vaccine v2 = new Vaccine("C1", "3", "Surgery", "Surgery");
-        v2.setQuantity(10);
-        ArrayList<Vaccine> V = new ArrayList<>();
+        Medicine medicine = new Medicine("M-A1", "1", "For Child", "Pediatrics");
+        medicine.setQuantity(10);
+        medicine.setInstruction("Take 2 pills per day");
+        Medicine medicine1 = new Medicine("M-B1", "2", "For Internal", "Internal Medicine");
+        medicine1.setQuantity(10);
+        medicine1.setInstruction("Take 3 pills per day");
+        Medicine medicine2 = new Medicine("M-C1", "3", "Surgery", "Surgery");
+        medicine2.setQuantity(10);
+        medicine2.setInstruction("Take 1 pill per day");
+        ArrayList<Medicine> medicineDirectory = new ArrayList<>();
 
-        V.add(v);
-        V.add(v1);
-        V.add(v2);
+        medicineDirectory.add(medicine);
+        medicineDirectory.add(medicine1);
+        medicineDirectory.add(medicine2);
         
-        Equipment e = new Equipment("A1", "1", "For Child", "Pediatrics");
-        e.setQuantity(10);
-        Equipment e1 = new Equipment("B1", "2", "For Internal", "Internal Medicine");
-        e1.setQuantity(10);
-        Equipment e2 = new Equipment("C1", "3", "Surgery", "Surgery");
-        e2.setQuantity(10);
-        ArrayList<Equipment> E = new ArrayList<>();
+        Vaccine vaccine = new Vaccine("V-A1", "1", "For Child", "Pediatrics");
+        vaccine.setQuantity(10);
+        vaccine.setInstruction("only for child");
+        Vaccine vaccine1 = new Vaccine("V-B1", "2", "For Internal", "Internal Medicine");
+        vaccine1.setQuantity(10);
+        vaccine1.setInstruction("For Internal");
+        Vaccine vaccine2 = new Vaccine("V-C1", "3", "Surgery", "Surgery");
+        vaccine2.setQuantity(10);
+        vaccine2.setInstruction("For Surgery");
+        ArrayList<Vaccine> vaccineDirectory = new ArrayList<>();
+
+        vaccineDirectory.add(vaccine);
+        vaccineDirectory.add(vaccine1);
+        vaccineDirectory.add(vaccine2);
         
-        E.add(e);
-        E.add(e1);
-        E.add(e2);
+        Equipment equipment = new Equipment("E-A1", "1", "Pediatrics", "For Child");
+        equipment.setQuantity(10);
+        Equipment equipment1 = new Equipment("E-B1", "2", "Internal Medicine","For Internal" );
+        equipment1.setQuantity(10);
+        Equipment equipment2 = new Equipment("E-C1", "3", "Surgery", "Surgery");
+        equipment2.setQuantity(10);
+        ArrayList<Equipment> equipmentDirectory = new ArrayList<>();
+
+        equipmentDirectory.add(equipment);
+        equipmentDirectory.add(equipment1);
+        equipmentDirectory.add(equipment2);
         
         h1.addRearService(rs);
         
@@ -323,9 +326,9 @@ public class Business {
         h1.addPatient(patient3);
         
         h1.getHa().setAppointments(APPO);
-        h1.getHi().setMd(M);
-        h1.getHi().setVd(V);
-        h1.getHi().setEd(E);
+        h1.getHospitalInventory().setMedicineDirectory(medicineDirectory);
+        h1.getHospitalInventory().setVaccineDirectory(vaccineDirectory);
+        h1.getHospitalInventory().setEd(equipmentDirectory);
         
         patients.add(patient1);
         patients.add(patient2);

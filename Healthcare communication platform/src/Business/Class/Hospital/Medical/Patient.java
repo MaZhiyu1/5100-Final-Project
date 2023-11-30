@@ -34,8 +34,6 @@ public class Patient extends Person{
 
     public Appointment makeAppoinment(Doctor doctor){
         Appointment ap = new Appointment(this, doctor);
-        appointmentList.add(ap);
-        doctor.getAppointmentList().add(ap);
         return ap;
     }
 

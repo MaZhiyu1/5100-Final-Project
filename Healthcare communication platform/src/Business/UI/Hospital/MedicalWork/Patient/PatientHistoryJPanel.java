@@ -4,8 +4,11 @@
  */
 package Business.UI.Hospital.MedicalWork.Patient;
 
+import Business.Class.Hospital.Medical.Patient;
+
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,12 +16,50 @@ import javax.swing.JPanel;
  */
 public class PatientHistoryJPanel extends javax.swing.JPanel {
         JPanel RightPanel;
+        private Patient patient;
     /**
      * Creates new form PatientHistoryJPanel
      */
-    public PatientHistoryJPanel(JPanel RightPanel) {
+    public PatientHistoryJPanel(JPanel RightPanel, Patient patient) {
         initComponents();
         this.RightPanel=RightPanel;
+        this.patient = patient;
+        initTableMedicalRecords();
+
+        tblPastMedicalRecords.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = tblPastMedicalRecords.getSelectedRow(); // 获取所点选行的索引
+                DefaultTableModel model = (DefaultTableModel) tblPastMedicalRecords.getModel(); //Have the access to the table;
+
+                if(row != -1) { // 如果行已被选择
+                    String doctorName = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
+                    String symptom = (String) model.getValueAt(row, 1); // 获取所选行的第1列值
+                    String instruction = (String) model.getValueAt(row, 2); // 获取所选行的第1列值
+                    String prescription = (String) model.getValueAt(row, 4); // 获取所选行的第5列值
+
+                    txtName.setText(doctorName);
+                    txtPrescription.setText(prescription);
+                    SymptomTextArea.setText(symptom);
+                    instructionTextArea.setText(instruction);
+
+                }
+            }
+        });
+    }
+
+    private void initTableMedicalRecords() {
+
+      this.patient.getMedicalHistoryList().getMh().forEach((mh) -> {
+          Object[] row = new Object[5];
+          row[0] = mh.getDoctor().getName();
+          row[1] = mh.getSymptom();
+          row[2] = mh.getInstruction();
+          row[3] = mh.getStatus();
+          row[4] = mh.getPrescription().getName();
+          ((javax.swing.table.DefaultTableModel) tblPastMedicalRecords.getModel()).addRow(row);
+        });
+
+
     }
 
     /**

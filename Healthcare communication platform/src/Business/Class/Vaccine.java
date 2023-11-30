@@ -19,5 +19,7 @@ public class Vaccine extends Drug{
 
     public Vaccine(String name, String id, String description, String category) {
         super(id, name, description, category);
+        setType("Vaccine");
     }
+
 }

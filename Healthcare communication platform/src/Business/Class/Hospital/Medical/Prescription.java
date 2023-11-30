@@ -9,6 +9,7 @@ import Business.Class.Medicine;
 import Business.Class.Vaccine;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -16,35 +17,29 @@ import java.util.List;
  */
 public class Prescription {
     
-    private int id;
+    private String id;
+    private String name;
 
     private Patient patient;
 
-    private ArrayList<Drug> drugList;
-    
-    
+    private List<Drug> drugList;
+
     private Doctor doctor;
-    
-    private String hospital;
 
-    private String pathema;
-
-    public Prescription(int id, Patient patient, Doctor doctor, String hospital, String pathema) {
-        this.id = id;
+    public Prescription(Patient patient, Doctor doctor) {
+        this.id = UUID.randomUUID().toString();
         this.patient = patient;
         this.doctor = doctor;
-        this.hospital = hospital;
-        this.pathema = pathema;
         drugList = new ArrayList<>();
     }
 
 
     
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -61,7 +56,7 @@ public class Prescription {
         return drugList;
     }
 
-    public void setDrugList(ArrayList<Drug> drugList) {
+    public void setDrugList(List<Drug> drugList) {
         this.drugList = drugList;
     }
 
@@ -73,21 +68,11 @@ public class Prescription {
         this.doctor = doctor;
     }
 
-    public String getHospital() {
-        return hospital;
+    public String getName() {
+        return name;
     }
 
-    public void setHospital(String hospital) {
-        this.hospital = hospital;
+    public void setName(String name) {
+        this.name = name;
     }
-
-    public String getPathema() {
-        return pathema;
-    }
-
-    public void setPathema(String pathema) {
-        this.pathema = pathema;
-    }
-
-    
 }
