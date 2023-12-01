@@ -26,14 +26,16 @@ public class Hospital {
     private String address;
     private ArrayList<Doctor> doctorList;
     private ArrayList<Patient> patients;
-    private ArrayList<RearServices> rs;
+
+    private RearServices rearServices;
+
     private HospitalResearch hr;
     int k=1;
     
     private HospitalInventory hi;
 
     private AppointmentDirectory ha;
-    ArrayList<Request> request;
+    ArrayList<Request> requestList;
     ArrayList<Order> orders;
     
     
@@ -45,9 +47,9 @@ public class Hospital {
         patients = new ArrayList<>();
         hi = new HospitalInventory();
         ha = new AppointmentDirectory();
-        request = new ArrayList<>();
+        requestList = new ArrayList<>();
         orders = new ArrayList<>();
-        rs = new ArrayList<>();
+//        rs = new ArrayList<>();
         hr = new HospitalResearch("Researcher","Aa12345678", name, k);
         
     }
@@ -106,28 +108,40 @@ public class Hospital {
     }
 
 
-    public ArrayList<Request> getRequest() {
-        return request;
+    public void addRequest(Request e){
+        requestList.add(e);
+    }
+    public ArrayList<Request> getRequestList() {
+        return requestList;
     }
 
-    public void AddRequest(Request e){
-        request.add(e);
-    }
-    
-    public void setRequest(ArrayList<Request> request) {
-        this.request = request;
+    public void setRequestList(ArrayList<Request> requestList) {
+        this.requestList = requestList;
     }
 
-    public ArrayList<RearServices> getRs() {
-        return rs;
+
+    public String getAddress() {
+        return address;
     }
 
-    public void setRs(ArrayList<RearServices> rs) {
-        this.rs = rs;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public void addRearService(RearServices e){
-        rs.add(e);
+    public RearServices getRearServices() {
+        return rearServices;
+    }
+
+    public void setRearServices(RearServices rearServices) {
+        this.rearServices = rearServices;
+    }
+
+    public HospitalInventory getHi() {
+        return hi;
+    }
+
+    public void addRearService(RearServices rearServices){
+        this.rearServices = rearServices;
     }
     
     public void addOrders(Order e){

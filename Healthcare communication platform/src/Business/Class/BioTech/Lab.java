@@ -29,7 +29,7 @@ public class Lab {
     private String status;
     private String type;
 
-    private String company;
+    private BioTechCom company;
 
     
     public Lab(String name, String group, String projectName,Medicine medicine, Vaccine vaccine) {
@@ -157,11 +157,11 @@ public class Lab {
         this.status = status;
     }
 
-    public String getCompany() {
+    public BioTechCom getCompany() {
         return company;
     }
 
-    public void setCompany(String company) {
+    public void setCompany(BioTechCom company) {
         this.company = company;
     }
 }

@@ -71,7 +71,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
                         ((DefaultTableModel) tblResult.getModel()).setRowCount(0);
 
                         //someone's medical history
-                        populateMedicalRecords(appointment.getPatient().getMedicalHistoryList().getMh());
+                        populateMedicalRecords(appointment.getPatient().getMedicalHistoryDirectory().getMh());
                     }
                 }
             }
@@ -681,7 +681,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         prescription.setDrugList(selectedDrugList);
         MedicalHistory medicalHistory = new MedicalHistory(selectedAppointment.getSymptom(), instructionTextArea.getText());
         medicalHistory.setPrescription(prescription);
-        selectedPatient.getMedicalHistoryList().getMh().add(medicalHistory);
+        selectedPatient.getMedicalHistoryDirectory().getMh().add(medicalHistory);
 
         JOptionPane.showMessageDialog(null, "Finish!");
 

@@ -121,6 +121,7 @@ public class BioTechCom {
 
     public void addLab(Lab e){
         labs.add(e);
+        e.setCompany(this);
     }
     
     public ArrayList<Lab> getLabs() {
@@ -154,7 +155,5 @@ public class BioTechCom {
     public void setOrders(ArrayList<Order> orders) {
         this.orders = orders;
     }
-    
-    
-    
+
 }

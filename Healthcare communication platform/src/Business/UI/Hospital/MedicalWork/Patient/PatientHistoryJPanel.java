@@ -49,7 +49,7 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
 
     private void initTableMedicalRecords() {
 
-      this.patient.getMedicalHistoryList().getMh().forEach((mh) -> {
+      this.patient.getMedicalHistoryDirectory().getMh().forEach((mh) -> {
           Object[] row = new Object[5];
           row[0] = mh.getDoctor().getName();
           row[1] = mh.getSymptom();

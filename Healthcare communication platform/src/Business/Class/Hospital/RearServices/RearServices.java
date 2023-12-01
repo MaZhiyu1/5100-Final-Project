@@ -5,6 +5,7 @@
 package Business.Class.Hospital.RearServices;
 
 import Business.Class.Delivery.Order;
+import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Request;
 
 import java.util.ArrayList;
@@ -17,12 +18,12 @@ public class RearServices {
     String name;
     String id;
     String pwd;
-    String hospital;
+    Hospital hospital;
     ArrayList<Request> request;
     ArrayList<Order> orders;
     int enabled;
 
-    public RearServices(String name, String id, String pwd, String hospital) {
+    public RearServices(String name, String id, String pwd, Hospital hospital) {
         this.name = name;
         this.id = id;
         this.pwd = pwd;
@@ -56,11 +57,11 @@ public class RearServices {
         this.pwd = pwd;
     }
 
-    public String getHospital() {
+    public Hospital getHospital() {
         return hospital;
     }
 
-    public void setHospital(String hospital) {
+    public void setHospital(Hospital hospital) {
         this.hospital = hospital;
     }
 
@@ -72,4 +73,19 @@ public class RearServices {
         this.enabled = enabled;
     }
 
+    public ArrayList<Request> getRequest() {
+        return request;
+    }
+
+    public void setRequest(ArrayList<Request> request) {
+        this.request = request;
+    }
+
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = orders;
+    }
 }

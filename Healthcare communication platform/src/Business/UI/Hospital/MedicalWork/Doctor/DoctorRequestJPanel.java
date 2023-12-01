@@ -4,8 +4,16 @@
  */
 package Business.UI.Hospital.MedicalWork.Doctor;
 
+import Business.Class.*;
+import Business.Class.Hospital.Medical.Doctor;
+import Business.Class.Hospital.Request;
+
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,12 +21,35 @@ import javax.swing.JPanel;
  */
 public class DoctorRequestJPanel extends javax.swing.JPanel {
     JPanel RightPanel;
+    private Doctor doctor;
+
+    private List<Drug> drugList;
+
+    private Drug selectedDrug;
     /**
      * Creates new form DoctorRequestJPanel
      */
-    public DoctorRequestJPanel(JPanel RightPanel) {
+    public DoctorRequestJPanel(JPanel RightPanel, Doctor doctor) {
         initComponents();
+        this.doctor = doctor;
         this.RightPanel=RightPanel;
+
+
+        tblPrescription.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = tblPrescription.getSelectedRow(); // 获取所点选行的索引
+                DefaultTableModel model = (DefaultTableModel) tblPrescription.getModel(); //Have the access to the table;
+
+                if(row != -1) { // 如果行已被选择
+                    String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
+
+                    selectedDrug = drugList.stream().filter(drug -> drug.getId().equals(id)).findFirst().get();
+
+                    txtName.setText(selectedDrug.getName());
+                    txtQuantity.setText("1");
+                }
+            }
+        });
     }
 
     /**
@@ -60,7 +91,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
 
         cmbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine", "Vaccine", "Equipment" }));
 
-        txtSearchGenre.setText("Search Name/Type");
+        txtSearchGenre.setText("Search Name");
 
         btnSearchGenre.setText("Search");
         btnSearchGenre.addActionListener(new java.awt.event.ActionListener() {
@@ -202,11 +233,127 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchGenreActionPerformed
-        // TODO add your handling code here:
+
+        // search medicine
+        String  type = (String)cmbSelectGenre.getSelectedItem();
+        String name = txtSearchGenre.getText();
+
+        if(type.equals("Medicine")){
+            ArrayList<Medicine> allList = doctor.getHospital().getHospitalInventory().getMedicineDirectory().getDrugs();
+
+            ArrayList<Medicine> medicineArrayList = new ArrayList<>();
+
+            if(name == null || name.isEmpty()){
+                medicineArrayList = allList;
+            }
+            else{
+                for(Medicine drug : allList){
+                    if(drug.getName().contains(name)){
+                        medicineArrayList.add(drug);
+                    }
+                }
+            }
+
+            populatePrescription(medicineArrayList);
+        }
+        else if(type.equals("Vaccine")){
+            ArrayList<Vaccine> allList = doctor.getHospital().getHospitalInventory().getVaccineDirectory().getVaccines();
+
+            ArrayList<Vaccine> vaccineList = new ArrayList<>();
+
+            if(name == null || name.isEmpty()){
+                vaccineList = allList;
+            }
+            else{
+                for(Vaccine drug : allList){
+                    if(drug.getName().contains(name)){
+                        vaccineList.add(drug);
+                    }
+                }
+            }
+            populatePrescription(vaccineList);
+        }
+        else if(type.equals("Equipment")){
+            ArrayList<Equipment> allList = doctor.getHospital().getHospitalInventory().getEquipmentDirectory().getEquipments();
+
+            ArrayList<Equipment> equipmentList = new ArrayList<>();
+
+            if(name == null || name.isEmpty()){
+                equipmentList = allList;
+            }
+            else{
+                for(Equipment drug : allList){
+                    if(drug.getName().contains(name)){
+                        equipmentList.add(drug);
+                    }
+                }
+            }
+
+            populatePrescription(equipmentList);
+        }
+        else if(type.equals("Operation")){
+            ArrayList<Operation> allList = doctor.getHospital().getHospitalInventory().getOperationDirectory().getOperations();
+            ArrayList<Operation> operationArrayList = new ArrayList<>();
+
+            if(name == null || name.isEmpty()){
+                operationArrayList = allList;
+            }
+            else{
+                for(Operation operation : allList){
+                    if(operation.getName().contains(name)){
+                        operationArrayList.add(operation);
+                    }
+                }
+            }
+
+            populatePrescription(operationArrayList);
+        }
+        else if(type.equals("Transfer")){
+            ArrayList<Transfer> allList = doctor.getHospital().getHospitalInventory().getTransferDirectory().getTransfers();
+            ArrayList<Transfer> transferArrayList = new ArrayList<>();
+
+            if(name == null || name.isEmpty()){
+                transferArrayList = allList;
+            }
+            else{
+                for(Transfer drug : allList){
+                    if(drug.getName().contains(name)){
+                        transferArrayList.add(drug);
+                    }
+                }
+            }
+            populatePrescription(transferArrayList);
+        }
     }//GEN-LAST:event_btnSearchGenreActionPerformed
+
+
+    /**
+     * populate the prescription table
+     * */
+    private <T extends Drug> void populatePrescription(List<T> drugList) {
+
+        this.drugList = (List<Drug>) drugList;
+
+        ((DefaultTableModel) tblPrescription.getModel()).setRowCount(0);
+        drugList.forEach(drug -> {
+            Object[] row1 = new Object[5];
+            row1[0] = drug.getId();
+            row1[1] = drug.getName();
+            row1[2] = drug.getType();
+            row1[3] = drug.getQuantity();
+            row1[4] = drug.getInstruction();
+            ((DefaultTableModel) tblPrescription.getModel()).addRow(row1);
+        });
+    }
+
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        Request request = new Request(selectedDrug.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
+        doctor.getHospital().addRequest(request);
+
+
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed

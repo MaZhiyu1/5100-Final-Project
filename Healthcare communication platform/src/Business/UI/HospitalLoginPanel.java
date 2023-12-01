@@ -280,7 +280,7 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
             layout.next(RightPanel);
         }
         else if(o instanceof RearServices){
-            RearServicesWorkAreaJPanel pw = new RearServicesWorkAreaJPanel(RightPanel);
+            RearServicesWorkAreaJPanel pw = new RearServicesWorkAreaJPanel(RightPanel,(RearServices) o);
             RightPanel.add("LoginScreen",pw);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);

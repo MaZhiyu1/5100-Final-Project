@@ -4,6 +4,8 @@
  */
 package Business.UI.Hospital.RearServicesWork;
 
+import Business.Class.Hospital.RearServices.RearServices;
+
 import javax.swing.JPanel;
 
 /**
@@ -12,14 +14,40 @@ import javax.swing.JPanel;
  */
 public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
 
+    private RearServices rearServices;
+
     /**
      * Creates new form RearServicesWorkAreaJPanel
      */
     JPanel RightPanel;
-    public RearServicesWorkAreaJPanel(    JPanel RightPanel) {
+    public RearServicesWorkAreaJPanel(JPanel RightPanel, RearServices rearServices) {
         initComponents();
         this.RightPanel = RightPanel;
+        this.rearServices = rearServices;
+
+        initTblRequest(rearServices);
+
+
+
+
     }
+
+    private void initTblRequest(RearServices rearServices) {
+        rearServices.getRequest().stream().forEach((request) -> {
+
+            Object[] row = new Object[6];
+            row[0] = request.getId();
+            row[1] = request.getName();
+            row[2] = request.getType();
+            row[3] = request.getQuantity();
+            row[4] = request.getStatus();
+            ((javax.swing.table.DefaultTableModel) tblRequest.getModel()).addRow(row);
+
+        });
+
+
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,13 +90,13 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Request ID", "ID", "Name", "Type", "Quantity", "Status"
+                "ID", "Name", "Type", "Quantity", "Status"
             }
         ));
         jScrollPane7.setViewportView(tblRequest);

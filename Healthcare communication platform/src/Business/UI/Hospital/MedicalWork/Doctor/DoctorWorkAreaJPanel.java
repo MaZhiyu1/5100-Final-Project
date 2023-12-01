@@ -192,7 +192,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnEMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEMRActionPerformed
         // TODO add your handling code here:
-    EMRJPanel emrp = new EMRJPanel(RightPanel);
+    EMRJPanel emrp = new EMRJPanel(RightPanel, doctor);
     RightPanel.add("EMRJPanel", emrp);
     CardLayout layout = (CardLayout) RightPanel.getLayout();
     layout.next(RightPanel);
@@ -200,7 +200,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
         // TODO add your handling code here:
-    DoctorRequestJPanel drp = new DoctorRequestJPanel(RightPanel);
+    DoctorRequestJPanel drp = new DoctorRequestJPanel(RightPanel, doctor);
     RightPanel.add("DoctorRequestJPanel", drp);
     CardLayout layout = (CardLayout) RightPanel.getLayout();
     layout.next(RightPanel);
@@ -217,7 +217,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLabActionPerformed
         // TODO add your handling code here:
-    DoctorLabJPanel dlp = new DoctorLabJPanel(RightPanel);
+    DoctorLabJPanel dlp = new DoctorLabJPanel(RightPanel, doctor);
     RightPanel.add("DoctorLabJPanel", dlp);
     CardLayout layout = (CardLayout) RightPanel.getLayout();
     layout.next(RightPanel);

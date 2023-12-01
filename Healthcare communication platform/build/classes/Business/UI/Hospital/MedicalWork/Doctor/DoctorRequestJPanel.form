@@ -167,7 +167,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtSearchGenre">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Search Name/Type"/>
+                <Property name="text" type="java.lang.String" value="Search Name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnSearchGenre">

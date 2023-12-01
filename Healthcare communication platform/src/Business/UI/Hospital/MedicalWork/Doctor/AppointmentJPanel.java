@@ -66,7 +66,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) tblPastMedicalRecords.getModel();
         dtm.setRowCount(0);
 
-        for (MedicalHistory medicalHistory : patient.getMedicalHistoryList().getMh()) {
+        for (MedicalHistory medicalHistory : patient.getMedicalHistoryDirectory().getMh()) {
             Object[] row = new Object[4];
             row[0] = medicalHistory.getName();
             row[1] = medicalHistory.getSymptom();

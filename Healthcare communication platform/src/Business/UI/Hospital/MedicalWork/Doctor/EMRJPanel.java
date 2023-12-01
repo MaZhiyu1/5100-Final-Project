@@ -4,8 +4,15 @@
  */
 package Business.UI.Hospital.MedicalWork.Doctor;
 
+import Business.Class.Hospital.Medical.Doctor;
+import Business.Class.Hospital.Medical.Patient;
+
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,12 +20,64 @@ import javax.swing.JPanel;
  */
 public class EMRJPanel extends javax.swing.JPanel {
     JPanel RightPanel;
+
+    private Doctor doctor;
     /**
      * Creates new form EMRJPanel
      */
-    public EMRJPanel(JPanel RightPanel) {
+    public EMRJPanel(JPanel RightPanel,Doctor doctor) {
         initComponents();
+        this.doctor = doctor;
         this.RightPanel=RightPanel;
+        initTblEMR(doctor.getHospital().getPatients());
+
+        tblEMR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = tblEMR.getSelectedRow(); // 获取所点选行的索引
+                DefaultTableModel model = (DefaultTableModel) tblEMR.getModel(); //Have the access to the table;
+
+                if(row != -1) { // 如果行已被选择
+
+                    int id = (int) model.getValueAt(row, 0); // 获取所选行的第1列值
+
+                    Patient patient = doctor.getHospital().getPatients().stream().filter(p -> p.getId() == id).findFirst().get();
+
+                    txtName.setText(patient.getName());
+                    txtAge.setText(patient.getAge());
+                    txtPatientId.setText(String.valueOf(patient.getId()));
+                    txtGender.setText(patient.getGender());
+                    txtAllergy.setText(patient.getAllergy());
+                    txtInsurance.setText(patient.getInsurance());
+                    //init Past Medical Records
+                    initTblPastMedicalRecords(patient);
+                }
+            }
+        });
+
+
+    }
+
+    private void initTblPastMedicalRecords(Patient patient) {
+
+        ((javax.swing.table.DefaultTableModel) tblPastMedicalRecords.getModel()).setRowCount(0);
+
+        patient.getMedicalHistoryDirectory().getMh().forEach(mh -> {
+            Object[] row = new Object[3];
+            row[0] = mh.getName();
+            row[1] = mh.getSymptom();
+            row[2] = mh.getInstruction();
+            ((javax.swing.table.DefaultTableModel) tblPastMedicalRecords.getModel()).addRow(row);
+        });
+    }
+
+    private void initTblEMR(List<Patient> patients) {
+        patients.forEach(p -> {
+                Object[] row = new Object[3];
+                row[0] = p.getId();
+                row[1] = p.getName();
+                row[2] = p.getAge();
+                ((javax.swing.table.DefaultTableModel) tblEMR.getModel()).addRow(row);
+        });
     }
 
     /**
@@ -76,7 +135,7 @@ public class EMRJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Name", "ID", "Status"
+                "ID", "Name", "Status"
             }
         ));
         jScrollPane1.setViewportView(tblEMR);
@@ -239,6 +298,10 @@ public class EMRJPanel extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        List<Patient> patientList = doctor.getHospital().getPatients().stream().filter(p -> p.getName().equals(txtSearch.getText()) || String.valueOf(p.getId()).equals(txtSearch.getText()))
+                .collect(Collectors.toList());
+
+        initTblEMR(patientList);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed

@@ -14,7 +14,7 @@ import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Appointment;
 import Business.Class.Hospital.Medical.Doctor;
 import Business.Class.Hospital.Medical.MedicalHistory;
-import Business.Class.Hospital.Medical.MedicalHistoryList;
+import Business.Class.Hospital.Medical.MedicalHistoryDirectory;
 import Business.Class.Hospital.Medical.Patient;
 import Business.Class.Hospital.RearServices.RearServices;
 import Business.Class.Hospital.Request;
@@ -43,7 +43,7 @@ public class Business {
     private MedicalSupplier ms1;
     
     private ArrayList<BioSupplier> bioSuppliers;
-    private ArrayList<BioTechCom> bioTech;
+    private ArrayList<BioTechCom> bioTechList;
     private ArrayList<Hospital> hospitals;
     private ArrayList<Patient> patients;
     private ArrayList<MedicalSupplier> medicalSuppliers;
@@ -55,7 +55,7 @@ public class Business {
     public Business() {
         hospitals = new ArrayList<>();
         patients = new ArrayList<>();
-        bioTech = new ArrayList<>();
+        bioTechList = new ArrayList<>();
         bioSuppliers = new ArrayList<>();
         deliveries = new ArrayList<>();
         medicalSuppliers = new ArrayList<>();
@@ -111,11 +111,11 @@ public class Business {
     }
 
     public ArrayList<BioTechCom> getBioTech() {
-        return bioTech;
+        return bioTechList;
     }
 
     public void setBioTech(ArrayList<BioTechCom> bioTech) {
-        this.bioTech = bioTech;
+        this.bioTechList = bioTech;
     }
     
     public void Delivery1(){
@@ -134,11 +134,9 @@ public class Business {
         ms.addEquipment(e1);
         
         medicalSuppliers.add(ms);
-    
     }
     
-    
-    
+
     public void BioTechCom1(){
         Medicine new_m = new Medicine("New Medicine", "Bio", "Heart Disease", "Internal Medicine");
         
@@ -191,8 +189,7 @@ public class Business {
         
         BioSupplier bs1_ = new BioSupplier("Mike", "", "BioSupplier 1");
         bs1_.addRequest(r);
-        
-        
+
         BioSupplier bs2_ = new BioSupplier("Jackson", "", "BioSupplier 1");
         
         //set inventory
@@ -202,7 +199,7 @@ public class Business {
         //set supplier
         b1.addSupplier(bs1_);
         b1.addSupplier(bs2_);
-        bioTech.add(b1);
+        bioTechList.add(b1);
     }
     
     
@@ -210,10 +207,10 @@ public class Business {
     public void Hospital1() {
         h1 = new Hospital("Boston Rehabilitation Center","");
         
-        RearServices rs = new RearServices("Jin", "BioGen 1", "Aa12345678","Boston Rehabilitation Center" );
+        RearServices rs = new RearServices("Jin", "BioGen 1", "Aa12345678", h1 );
         //后勤
         
-        Doctor doctor1 = new Doctor(1,"Jim","Aa12345678", "male",h1);
+        Doctor doctor1 = new Doctor(1,"Jim","Aa12345678", "male", h1);
         doctor1.setEnabled(1);
         doctor1.setSpecialty("Surgery");
         doctor1.setType("Surgery");
@@ -245,14 +242,14 @@ public class Business {
         
         MedicalHistory mh1 = new MedicalHistory("Had server fever","keep warm. Don't eat spicy food");
         MedicalHistory mh2 = new MedicalHistory("Had server headache","keep warm. Don't eat spicy food");
-        MedicalHistoryList mhl1 = new MedicalHistoryList(1,"Oliver");
+        MedicalHistoryDirectory mhl1 = new MedicalHistoryDirectory(1,"Oliver");
         mhl1.addHistory(mh2);
         mhl1.addHistory(mh1);
         mh1.setDoctor(doctor1);
         mh2.setDoctor(doctor2);
         
         Patient patient1 = new Patient(1, "Oliver", "Aa12345678");
-        patient1.setMedicalHistoryList(mhl1);
+        patient1.setMedicalHistoryDirectory(mhl1);
         patient1.setEnabled(1);
         patient1.setAge("12");
 
