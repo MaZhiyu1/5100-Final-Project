@@ -4,9 +4,11 @@
  */
 package Business.UI.Hospital.MedicalWork.Patient;
 
+import Business.Class.Hospital.Medical.MedicalHistory;
 import Business.Class.Hospital.Medical.Patient;
 
 import java.awt.CardLayout;
+import java.util.stream.Collectors;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class PatientHistoryJPanel extends javax.swing.JPanel {
         JPanel RightPanel;
         private Patient patient;
+    private MedicalHistory selectedMedicalRecords;
     /**
      * Creates new form PatientHistoryJPanel
      */
@@ -31,17 +34,24 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
                 int row = tblPastMedicalRecords.getSelectedRow(); // 获取所点选行的索引
                 DefaultTableModel model = (DefaultTableModel) tblPastMedicalRecords.getModel(); //Have the access to the table;
 
+
                 if(row != -1) { // 如果行已被选择
-                    String doctorName = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
-                    String symptom = (String) model.getValueAt(row, 1); // 获取所选行的第1列值
-                    String instruction = (String) model.getValueAt(row, 2); // 获取所选行的第1列值
+
+                    String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
+                    String doctorName = (String) model.getValueAt(row, 1); // 获取所选行的第1列值
+                    String symptom = (String) model.getValueAt(row, 2); // 获取所选行的第1列值
+                    String instruction = (String) model.getValueAt(row, 3); // 获取所选行的第1列值
                     String prescription = (String) model.getValueAt(row, 4); // 获取所选行的第5列值
+
+                    MedicalHistory selectedMedicalRecords = patient.getMedicalHistoryDirectory().getMh().stream()
+                            .filter(mh -> mh.getId().equals(id) ).toList().get(0);
 
                     txtName.setText(doctorName);
                     txtPrescription.setText(prescription);
                     SymptomTextArea.setText(symptom);
                     instructionTextArea.setText(instruction);
 
+                    txtRecoverDays.setText(String.valueOf(selectedMedicalRecords.getRecoverDays()));
                 }
             }
         });
@@ -49,13 +59,18 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
 
     private void initTableMedicalRecords() {
 
+        // TODO add your handling code here:
+        ((javax.swing.table.DefaultTableModel) tblPastMedicalRecords.getModel()).setRowCount(0);
+
       this.patient.getMedicalHistoryDirectory().getMh().forEach((mh) -> {
-          Object[] row = new Object[5];
-          row[0] = mh.getDoctor().getName();
-          row[1] = mh.getSymptom();
-          row[2] = mh.getInstruction();
-          row[3] = mh.getStatus();
-          row[4] = mh.getPrescription().getName();
+          Object[] row = new Object[6];
+
+          row[0] = mh.getId();
+          row[1] = mh.getDoctor().getName();
+          row[2] = mh.getSymptom();
+          row[3] = mh.getInstruction();
+          row[4] = mh.getStatus();
+          row[5] = mh.getPrescription().toString();
           ((javax.swing.table.DefaultTableModel) tblPastMedicalRecords.getModel()).addRow(row);
         });
 
@@ -100,17 +115,17 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
 
         tblPastMedicalRecords.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Doctor Name", "Symptom", "Instructions ", "Status", "处方Prescription"
+                "id", "Doctor Name", "Symptom", "Instructions ", "Status", "处方Prescription"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -119,7 +134,7 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tblPastMedicalRecords);
 
-        jLabel12.setText("Name:");
+        jLabel12.setText("Doctor Name:");
 
         jLabel19.setText("Symptom");
 

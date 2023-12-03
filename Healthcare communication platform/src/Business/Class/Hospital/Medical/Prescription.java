@@ -26,15 +26,23 @@ public class Prescription {
 
     private Doctor doctor;
 
-    public Prescription(Patient patient, Doctor doctor) {
+    public Prescription(String name) {
+        this.name = name;
         this.id = UUID.randomUUID().toString();
-        this.patient = patient;
-        this.doctor = doctor;
         drugList = new ArrayList<>();
     }
 
+    public Prescription(String name,List<Drug> drugList) {
+        this.name = name;
+        this.id = UUID.randomUUID().toString();
+        this.drugList = drugList;
+    }
 
-    
+    @Override
+    public String toString() {
+        return name;
+    }
+
     public String getId() {
         return id;
     }

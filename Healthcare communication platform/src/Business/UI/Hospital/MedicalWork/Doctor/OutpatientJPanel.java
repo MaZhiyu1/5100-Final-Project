@@ -677,7 +677,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
         //
-        Prescription prescription = new Prescription(selectedPatient, doctor);
+        Prescription prescription = new Prescription("");
         prescription.setDrugList(selectedDrugList);
         MedicalHistory medicalHistory = new MedicalHistory(selectedAppointment.getSymptom(), instructionTextArea.getText());
         medicalHistory.setPrescription(prescription);

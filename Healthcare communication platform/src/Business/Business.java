@@ -11,17 +11,14 @@ import Business.Class.BioTech.Lab;
 import Business.Class.Delivery.Delivery;
 import Business.Class.Equipment;
 import Business.Class.Hospital.Hospital;
-import Business.Class.Hospital.Medical.Appointment;
-import Business.Class.Hospital.Medical.Doctor;
-import Business.Class.Hospital.Medical.MedicalHistory;
-import Business.Class.Hospital.Medical.MedicalHistoryDirectory;
-import Business.Class.Hospital.Medical.Patient;
+import Business.Class.Hospital.Medical.*;
 import Business.Class.Hospital.RearServices.RearServices;
 import Business.Class.Hospital.Request;
 import Business.Class.MedicalSupplier.MedicalSupplier;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -242,6 +239,10 @@ public class Business {
         
         MedicalHistory mh1 = new MedicalHistory("Had server fever","keep warm. Don't eat spicy food");
         MedicalHistory mh2 = new MedicalHistory("Had server headache","keep warm. Don't eat spicy food");
+        mh1.setRecoverDays(5);
+        mh2.setRecoverDays(3);
+
+
         MedicalHistoryDirectory mhl1 = new MedicalHistoryDirectory(1,"Oliver");
         mhl1.addHistory(mh2);
         mhl1.addHistory(mh1);
@@ -311,7 +312,13 @@ public class Business {
         equipmentDirectory.add(equipment);
         equipmentDirectory.add(equipment1);
         equipmentDirectory.add(equipment2);
-        
+
+        Prescription prescription = new Prescription("prescription for server fever",Arrays.asList(medicine, vaccine, equipment));
+        mh1.setPrescription(prescription);
+
+        Prescription prescription1 = new Prescription("prescription for server headache",Arrays.asList(medicine1, vaccine1, equipment1));
+        mh2.setPrescription(prescription1);
+
         h1.addRearService(rs);
         
         h1.addDoctor(doctor1);

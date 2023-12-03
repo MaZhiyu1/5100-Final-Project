@@ -5,6 +5,8 @@
 package Business.Class.Hospital.Medical;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 
 /**
@@ -16,7 +18,6 @@ public class Patient extends Person{
     ImageIcon logoImage;
     MedicalHistoryDirectory medicalHistoryDirectory;
     ArrayList<Appointment> appointmentList;
-    ArrayList<Prescription> prescriptionList;
     int enabled;
 
     private String insurance;
@@ -29,7 +30,6 @@ public class Patient extends Person{
         this.pwd = pwd;
         medicalHistoryDirectory = new MedicalHistoryDirectory(id,name);
         appointmentList = new ArrayList<>();
-        prescriptionList = new ArrayList<>();
     }
 
     public Appointment makeAppoinment(Doctor doctor){
@@ -91,6 +91,7 @@ public class Patient extends Person{
 
     public void setMedicalHistoryDirectory(MedicalHistoryDirectory medicalHistoryDirectory) {
         this.medicalHistoryDirectory = medicalHistoryDirectory;
+        medicalHistoryDirectory.getMh().forEach(md -> md.setPatient(this));
     }
 
     public int getEnabled() {
@@ -125,12 +126,9 @@ public class Patient extends Person{
         this.appointmentList = appointmentList;
     }
 
-    public ArrayList<Prescription> getPrescriptionList() {
-        return prescriptionList;
+    public List<Prescription> getPrescriptionList() {
+        return this.getMedicalHistoryDirectory().getMh().stream().map(MedicalHistory::getPrescription).collect(Collectors.toList());
     }
 
-    public void setPrescriptionList(ArrayList<Prescription> prescriptionList) {
-        this.prescriptionList = prescriptionList;
-    }
 
 }

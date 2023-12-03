@@ -37,8 +37,6 @@ public class Hospital {
     private AppointmentDirectory ha;
     ArrayList<Request> requestList;
     ArrayList<Order> orders;
-    
-    
 
     public Hospital(String name, String address) {
         this.name = name;
@@ -205,19 +203,5 @@ public class Hospital {
     public void setHa(AppointmentDirectory ha) {
         this.ha = ha;
     }
-    
-    
-    
- 
 
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
 }

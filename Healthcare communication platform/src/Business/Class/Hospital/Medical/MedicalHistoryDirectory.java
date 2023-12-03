@@ -49,8 +49,4 @@ public class MedicalHistoryDirectory {
         this.username = username;
     }
     
-    
-    
-    
-    
 }

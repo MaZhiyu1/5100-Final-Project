@@ -27,6 +27,8 @@ public class MedicalHistory {
     //处方
     private Prescription prescription;
 
+    private int recoverDays;
+
     public MedicalHistory(String symptom, String instruction) {
         this.id = UUID.randomUUID().toString();
         this.symptom = symptom;
@@ -110,5 +112,17 @@ public class MedicalHistory {
 
     public void setPrescription(Prescription prescription) {
         this.prescription = prescription;
+        if(prescription!=null){
+            this.prescription.setDoctor(doctor);
+            this.prescription.setPatient(patient);
+        }
+    }
+
+    public int getRecoverDays() {
+        return recoverDays;
+    }
+
+    public void setRecoverDays(int recoverDays) {
+        this.recoverDays = recoverDays;
     }
 }
