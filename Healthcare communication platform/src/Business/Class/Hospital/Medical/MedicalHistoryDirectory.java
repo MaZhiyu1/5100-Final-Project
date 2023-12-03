@@ -10,12 +10,12 @@ import java.util.ArrayList;
  *
  * @author 15469
  */
-public class MedicalHistoryList {
+public class MedicalHistoryDirectory {
     ArrayList<MedicalHistory> mh;
     int id;
     String username;
 
-    public MedicalHistoryList(int id, String username) {
+    public MedicalHistoryDirectory(int id, String username) {
         this.id = id;
         this.username = username;
         mh = new ArrayList<>();
@@ -48,9 +48,5 @@ public class MedicalHistoryList {
     public void setUsername(String username) {
         this.username = username;
     }
-    
-    
-    
-    
     
 }

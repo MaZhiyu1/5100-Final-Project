@@ -131,12 +131,12 @@ public class Validation {
                     }
                 }
                 else if(type.equals("Supplier")){
-                    for(RearServices p : hospital.getRs()){
-                        if(p.getName().equals(username) && p.getPwd().equals(pwd)){
+                    RearServices rs = hospital.getRearServices();
+                        if(rs.getName().equals(username) && rs.getPwd().equals(pwd)){
 
-                            return p;
+                            return hospital.getRearServices();
                         }
-                    }
+
                 }
                 else if(type.equals("Analysis")){
                         if(hospital.getHr().getName().equals(username) && hospital.getHr().getPwd().equals(pwd)){

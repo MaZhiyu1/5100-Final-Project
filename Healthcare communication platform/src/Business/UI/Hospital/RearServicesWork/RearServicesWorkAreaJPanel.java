@@ -4,7 +4,13 @@
  */
 package Business.UI.Hospital.RearServicesWork;
 
+import Business.Class.Hospital.RearServices.RearServices;
+import Business.Class.Medicine;
+import Business.Class.Vaccine;
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,15 +18,77 @@ import javax.swing.JPanel;
  */
 public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
 
+    private RearServices rearServices;
+    ArrayList<Medicine> medicines = new ArrayList<>();
+    int number;
+    ArrayList<Vaccine> vaccines= new ArrayList<>();
+
     /**
      * Creates new form RearServicesWorkAreaJPanel
      */
     JPanel RightPanel;
-    public RearServicesWorkAreaJPanel(    JPanel RightPanel) {
+    public RearServicesWorkAreaJPanel(JPanel RightPanel, RearServices rearServices) {
         initComponents();
         this.RightPanel = RightPanel;
+        this.rearServices = rearServices;
+
+        initTblRequest(rearServices);
+        refreshTable(0);
+        
+
+
+
     }
 
+    private void initTblRequest(RearServices rearServices) {
+        rearServices.getRequest().stream().forEach((request) -> {
+
+            Object[] row = new Object[6];
+            row[0] = request.getId();
+            row[1] = request.getName();
+            row[2] = request.getType();
+            row[3] = request.getQuantity();
+            row[4] = request.getStatus();
+            ((javax.swing.table.DefaultTableModel) tblRequest.getModel()).addRow(row);
+
+        });
+
+
+    }
+
+public void refreshTable(int k) {
+        
+        DefaultTableModel model = (DefaultTableModel)tblStock.getModel();
+        model.setRowCount(0);
+        if(k==0){
+        if(medicines==null) return;
+        for(Medicine s : medicines) {
+            Object row[] = new Object[5];
+            row[0] = s;
+            row[1] = s.getName();
+            row[2] = s.getType();
+            row[3] = s.getQuantity();
+            row[4] = s.getStatus();
+            model.addRow(row);
+        }
+        }
+        
+
+        if(k==1){
+        if(vaccines==null) return;
+        for(Vaccine s : vaccines) {
+            Object row[] = new Object[5];
+            row[0] = s;
+            row[1] = s.getName();
+            row[2] = s.getType();
+            row[3] = s.getQuantity();
+            row[4] = s.getStatus();
+            model.addRow(row);
+        }
+        }
+        
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,13 +130,13 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Request ID", "ID", "Name", "Type", "Quantity", "Status"
+                "ID", "Name", "Type", "Quantity", "Status"
             }
         ));
         jScrollPane7.setViewportView(tblRequest);
@@ -112,6 +180,11 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
         jLabel8.setText("Stock");
 
         cmbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine", "Vaccine", "Operation", "Transfer" }));
+        cmbSelectGenre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSelectGenreActionPerformed(evt);
+            }
+        });
 
         txtSearchGenre.setText("Search Name/Type");
 
@@ -180,7 +253,7 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))))
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel3)
@@ -244,6 +317,17 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSendActionPerformed
+
+    private void cmbSelectGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectGenreActionPerformed
+        // TODO add your handling code here:
+        String type = (String)cmbSelectGenre.getSelectedItem();
+        if(type.equals("Medicine")){
+            refreshTable(0);
+        }
+        else if(type.equals("Vaccine")){
+            refreshTable(1);
+        }
+    }//GEN-LAST:event_cmbSelectGenreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

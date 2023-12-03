@@ -7,7 +7,8 @@ package Business.Class.Hospital;
 import Business.Class.Equipment;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
-import java.util.ArrayList;
+
+import java.util.UUID;
 
 /**
  *
@@ -15,17 +16,32 @@ import java.util.ArrayList;
  */
 public class Request {
     String id;
+    String name;
+
     String instruction;
     String status;
     Medicine medicines;
     Equipment equipments;
     Vaccine vaccines;
     String type;
-    public Request(String id,String type,String instruction) {
-        this.id = id;
+
+    int quantity;
+
+    public Request(String name,String type,String instruction) {
+        this.name = name;
+        this.id = UUID.randomUUID().toString();
         this.status = "Processing";
-        this.type=type;
+        this.type = type;
         this.instruction= instruction;
+    }
+
+    public Request(String type,String instruction, int quantity) {
+        this.name = "";
+        this.id = UUID.randomUUID().toString();
+        this.status = "Processing";
+        this.type = type;
+        this.instruction= instruction;
+        this.quantity = quantity;
     }
 
     public String getType() {
@@ -41,9 +57,7 @@ public class Request {
         return id ;
     }
 
-    
-    
-    
+
     public String getId() {
         return id;
     }
@@ -92,11 +106,19 @@ public class Request {
         this.vaccines = vaccines;
     }
 
-    
-    
-    
-    
-    
-    
-    
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

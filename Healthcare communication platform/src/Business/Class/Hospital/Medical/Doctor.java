@@ -5,6 +5,7 @@
 package Business.Class.Hospital.Medical;
 
 import Business.Class.BioTech.Lab;
+import Business.Class.Hospital.Hospital;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +19,7 @@ import javax.swing.ImageIcon;
 public class Doctor extends Person{
 
     String type;
-    String hospital;
+    Hospital hospital;
     int avail;
     ImageIcon logoImage;
     ArrayList<Appointment> appointmentList;
@@ -31,7 +32,7 @@ public class Doctor extends Person{
 //    private HashMap<Lab,String> labs;
     private List<Lab> labs;
 
-    public Doctor(int id, String name, String pwd, String gender,String hospital) {
+    public Doctor(int id, String name, String pwd, String gender,Hospital hospital) {
         super(id, name, pwd, gender);
         enabled=0;
         this.id = id;
@@ -68,11 +69,11 @@ public class Doctor extends Person{
         this.type = type;
     }
 
-    public String getHospital() {
+    public Hospital getHospital() {
         return hospital;
     }
 
-    public void setHospital(String hospital) {
+    public void setHospital(Hospital hospital) {
         this.hospital = hospital;
     }
 

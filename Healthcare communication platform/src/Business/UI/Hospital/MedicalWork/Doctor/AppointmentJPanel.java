@@ -6,6 +6,8 @@ package Business.UI.Hospital.MedicalWork.Doctor;
 
 import Business.Class.Hospital.Medical.Appointment;
 import Business.Class.Hospital.Medical.Doctor;
+import Business.Class.Hospital.Medical.MedicalHistory;
+import Business.Class.Hospital.Medical.Patient;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -27,6 +29,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
         initComponents();
         this.doctor = doctor;
         this.RightPanel=RightPanel;
+        initAppointmentTable();
 
         tblAppointment.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -48,6 +51,8 @@ public class AppointmentJPanel extends javax.swing.JPanel {
                             txtAllergy.setText(appointment.getPatient().getAllergy());
                             txtInsurance.setText(appointment.getPatient().getInsurance());
                             symptomTextArea.setText(appointment.getSymptom());
+
+                            populateMedicalRecordTable(appointment.getPatient());
                         }
                     }
                 }
@@ -56,7 +61,22 @@ public class AppointmentJPanel extends javax.swing.JPanel {
 
     }
 
-    public void initTable(){
+    private void populateMedicalRecordTable(Patient patient) {
+
+        DefaultTableModel dtm = (DefaultTableModel) tblPastMedicalRecords.getModel();
+        dtm.setRowCount(0);
+
+        for (MedicalHistory medicalHistory : patient.getMedicalHistoryDirectory().getMh()) {
+            Object[] row = new Object[4];
+            row[0] = medicalHistory.getName();
+            row[1] = medicalHistory.getSymptom();
+            row[2] = medicalHistory.getInstruction();
+            row[3] = medicalHistory.getStatus();
+            dtm.addRow(row);
+        }
+    }
+
+    public void initAppointmentTable(){
         DefaultTableModel dtm = (DefaultTableModel) tblAppointment.getModel();
         dtm.setRowCount(0);
 

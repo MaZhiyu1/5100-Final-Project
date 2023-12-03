@@ -9,7 +9,6 @@ import Business.Class.BioTech.BioSupplier;
 import Business.Class.BioTech.BioTechCom;
 import Business.Class.Delivery.Delivery;
 import Business.Class.Delivery.Order;
-import Business.Class.Equipment;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
 import java.awt.CardLayout;
@@ -45,9 +44,9 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
         for(BioTechCom bt : bz.getBioTech()){
             if(bt.getName().equals(bioTech)){
                 btc = bt;
-                if(bt.getHi().getMd().getDrugs()!=null) medicines=bt.getHi().getMd().getDrugs();
+                if(bt.getHi().getMedicineDirectory().getDrugs()!=null) medicines=bt.getHi().getMedicineDirectory().getDrugs();
                 
-                if(bt.getHi().getVd().getVaccines()!=null) vaccines=bt.getHi().getVd().getVaccines();
+                if(bt.getHi().getVaccineDirectory().getVaccines()!=null) vaccines=bt.getHi().getVaccineDirectory().getVaccines();
             }
         }
         refreshTable(0);

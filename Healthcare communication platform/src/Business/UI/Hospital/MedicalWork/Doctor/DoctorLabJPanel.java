@@ -4,8 +4,13 @@
  */
 package Business.UI.Hospital.MedicalWork.Doctor;
 
+import Business.Class.BioTech.Lab;
+import Business.Class.Hospital.Medical.Doctor;
+import Business.Class.Hospital.Medical.Patient;
+
 import java.awt.CardLayout;
-import javax.swing.JPanel;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,13 +18,52 @@ import javax.swing.JPanel;
  */
 public class DoctorLabJPanel extends javax.swing.JPanel {
     JPanel RightPanel;
+
+    private Doctor doctor;
+
+    private Lab selectedLab;
     /**
      * Creates new form DoctorLabJPanel
      */
-    public DoctorLabJPanel(JPanel RightPanel) {
+    public DoctorLabJPanel(JPanel RightPanel, Doctor doctor) {
         initComponents();
         this.RightPanel=RightPanel;
+        this.doctor = doctor;
+        initTableLab(doctor);
+
+        tblLab.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = tblLab.getSelectedRow(); // 获取所点选行的索引
+                DefaultTableModel model = (DefaultTableModel) tblLab.getModel(); //Have the access to the table;
+
+                if(row != -1) { // 如果行已被选择
+
+                    String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
+                    selectedLab = doctor.getLabs().stream().filter(lab -> lab.getId().equals(id)).findFirst().get();
+                    txtProjectName.setText(model.getValueAt(row, 1).toString());
+                    txtProjectId.setText(model.getValueAt(row, 0).toString());
+                    txtProjectType.setText(model.getValueAt(row, 3).toString());
+                    instructionTextArea.setText(model.getValueAt(row, 4).toString());
+                    txtProcess.setText(String.valueOf(selectedLab.getProgress()));
+                }
+            }
+        });
     }
+
+    private void initTableLab(Doctor doctor) {
+
+        doctor.getLabs().forEach(lab -> {
+            Object[] row = new Object[6];
+            row[0] = lab.getId();
+            row[1] = lab.getProjectName();
+            row[2] = lab.getCompany();
+            row[3] = lab.getType();
+            row[4] = lab.getInstruction();
+            row[5] = lab.getStatus();
+            ((javax.swing.table.DefaultTableModel) tblLab.getModel()).addRow(row);
+        });
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -210,6 +254,15 @@ public class DoctorLabJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+
+        selectedLab.setInstruction(instructionTextArea.getText());
+        selectedLab.setProjectName(txtProjectName.getText());
+        selectedLab.setType(txtProjectType.getText());
+        selectedLab.setProgress(Integer.parseInt(txtProcess.getText()));
+
+        JOptionPane.showMessageDialog(null, "Save successfully!");
+
+        btnBack1ActionPerformed(evt);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed

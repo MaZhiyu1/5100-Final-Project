@@ -26,17 +26,17 @@ public class Hospital {
     private String address;
     private ArrayList<Doctor> doctorList;
     private ArrayList<Patient> patients;
-    private ArrayList<RearServices> rs;
+
+    private RearServices rearServices;
+
     private HospitalResearch hr;
     int k=1;
     
     private HospitalInventory hi;
 
     private AppointmentDirectory ha;
-    ArrayList<Request> request;
+    ArrayList<Request> requestList;
     ArrayList<Order> orders;
-    
-    
 
     public Hospital(String name, String address) {
         this.name = name;
@@ -45,34 +45,34 @@ public class Hospital {
         patients = new ArrayList<>();
         hi = new HospitalInventory();
         ha = new AppointmentDirectory();
-        request = new ArrayList<>();
+        requestList = new ArrayList<>();
         orders = new ArrayList<>();
-        rs = new ArrayList<>();
+//        rs = new ArrayList<>();
         hr = new HospitalResearch("Researcher","Aa12345678", name, k);
         
     }
 
-public void DeliveryAddMedicine(ArrayList<Medicine> v) {
-    ArrayList<Medicine> medicinesToAdd = new ArrayList<>();
-    
-    for (Medicine v1 : v) {
-        int k=0;
-        for (Medicine vs : hi.getMd().getDrugs()) {
-            if (vs.getName().equals(v1.getName())&&vs.getId().equals(v1.getId())) {
-                vs.setQuantity(v1.getQuantity() + vs.getQuantity());
-                k=1;
-            }
+    public void DeliveryAddMedicine(ArrayList<Medicine> v) {
+        ArrayList<Medicine> medicinesToAdd = new ArrayList<>();
 
+        for (Medicine v1 : v) {
+            int k=0;
+            for (Medicine vs : hi.getMedicineDirectory().getDrugs()) {
+                if (vs.getName().equals(v1.getName())&&vs.getId().equals(v1.getId())) {
+                    vs.setQuantity(v1.getQuantity() + vs.getQuantity());
+                    k=1;
+                }
+
+            }
+            if(k==0){
+                medicinesToAdd.add(v1);
+            }
         }
-        if(k==0){
-            medicinesToAdd.add(v1);
+        // Add new medicines after the iteration is complete
+        for(Medicine m : medicinesToAdd){
+             hi.getMedicineDirectory().addDrugs(m );
         }
     }
-    // Add new medicines after the iteration is complete
-    for(Medicine m : medicinesToAdd){
-         hi.getMd().addDrugs(m );
-    }
-}
     
     
     public void DeliveryAddVaccine(ArrayList<Vaccine> v){
@@ -80,7 +80,7 @@ public void DeliveryAddMedicine(ArrayList<Medicine> v) {
     
     for (Vaccine v1 : v) {
         int k=0;
-        for (Vaccine vs : hi.getVd().getVaccines()) {
+        for (Vaccine vs : hi.getVaccineDirectory().getVaccines()) {
             if (vs.getName().equals(v1.getName())) {
                 vs.setQuantity(v1.getQuantity() + vs.getQuantity());
                 k=1;
@@ -93,7 +93,7 @@ public void DeliveryAddMedicine(ArrayList<Medicine> v) {
     
     // Add new medicines after the iteration is complete
     for(Vaccine m : vaccineToAdd){
-         hi.getVd().addVaccine(m );
+         hi.getVaccineDirectory().addVaccine(m );
     }
 }
     
@@ -105,33 +105,41 @@ public void DeliveryAddMedicine(ArrayList<Medicine> v) {
         this.hr = hr;
     }
 
-    
-    
-    
-    public ArrayList<Request> getRequest() {
-        return request;
+
+    public void addRequest(Request e){
+        requestList.add(e);
+    }
+    public ArrayList<Request> getRequestList() {
+        return requestList;
     }
 
-    public void AddRequest(Request e){
-        request.add(e);
-    }
-    
-    public void setRequest(ArrayList<Request> request) {
-        this.request = request;
+    public void setRequestList(ArrayList<Request> requestList) {
+        this.requestList = requestList;
     }
 
-    public ArrayList<RearServices> getRs() {
-        return rs;
+
+    public String getAddress() {
+        return address;
     }
 
-    public void setRs(ArrayList<RearServices> rs) {
-        this.rs = rs;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    
-    
-    public void addRearService(RearServices e){
-        rs.add(e);
+    public RearServices getRearServices() {
+        return rearServices;
+    }
+
+    public void setRearServices(RearServices rearServices) {
+        this.rearServices = rearServices;
+    }
+
+    public HospitalInventory getHi() {
+        return hi;
+    }
+
+    public void addRearService(RearServices rearServices){
+        this.rearServices = rearServices;
     }
     
     public void addOrders(Order e){
@@ -180,7 +188,7 @@ public void DeliveryAddMedicine(ArrayList<Medicine> v) {
         this.patients = patients;
     }
 
-    public HospitalInventory getHi() {
+    public HospitalInventory getHospitalInventory() {
         return hi;
     }
 
@@ -195,19 +203,5 @@ public void DeliveryAddMedicine(ArrayList<Medicine> v) {
     public void setHa(AppointmentDirectory ha) {
         this.ha = ha;
     }
-    
-    
-    
- 
 
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
 }

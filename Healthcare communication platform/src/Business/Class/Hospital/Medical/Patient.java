@@ -5,6 +5,8 @@
 package Business.Class.Hospital.Medical;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 
 /**
@@ -14,9 +16,8 @@ import javax.swing.ImageIcon;
 public class Patient extends Person{
     
     ImageIcon logoImage;
-    MedicalHistoryList mhl;
+    MedicalHistoryDirectory medicalHistoryDirectory;
     ArrayList<Appointment> appointmentList;
-    ArrayList<Prescription> prescriptionList;
     int enabled;
 
     private String insurance;
@@ -27,15 +28,12 @@ public class Patient extends Person{
         this.id = id;
         this.name = name;
         this.pwd = pwd;
-        mhl=new MedicalHistoryList(id,name);
+        medicalHistoryDirectory = new MedicalHistoryDirectory(id,name);
         appointmentList = new ArrayList<>();
-        prescriptionList = new ArrayList<>();
     }
 
     public Appointment makeAppoinment(Doctor doctor){
         Appointment ap = new Appointment(this, doctor);
-        appointmentList.add(ap);
-        doctor.getAppointmentList().add(ap);
         return ap;
     }
 
@@ -87,12 +85,13 @@ public class Patient extends Person{
         this.logoImage = logoImage;
     }
 
-    public MedicalHistoryList getMhl() {
-        return mhl;
+    public MedicalHistoryDirectory getMedicalHistoryDirectory() {
+        return medicalHistoryDirectory;
     }
 
-    public void setMhl(MedicalHistoryList mhl) {
-        this.mhl = mhl;
+    public void setMedicalHistoryDirectory(MedicalHistoryDirectory medicalHistoryDirectory) {
+        this.medicalHistoryDirectory = medicalHistoryDirectory;
+        medicalHistoryDirectory.getMh().forEach(md -> md.setPatient(this));
     }
 
     public int getEnabled() {
@@ -127,11 +126,9 @@ public class Patient extends Person{
         this.appointmentList = appointmentList;
     }
 
-    public ArrayList<Prescription> getPrescriptionList() {
-        return prescriptionList;
+    public List<Prescription> getPrescriptionList() {
+        return this.getMedicalHistoryDirectory().getMh().stream().map(MedicalHistory::getPrescription).collect(Collectors.toList());
     }
 
-    public void setPrescriptionList(ArrayList<Prescription> prescriptionList) {
-        this.prescriptionList = prescriptionList;
-    }
+
 }

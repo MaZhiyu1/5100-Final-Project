@@ -8,64 +8,16 @@ package Business.Class;
  *
  * @author 15469
  */
-public class Equipment {
-    String name;
-    String id;
-    String type;
-    String description;
-    int quantity;
+public class Equipment  extends Drug{
 
-    public Equipment(String name, String id, String type, String description) {
-        this.name = name;
-        this.id = id;
-        this.type = type;
-        this.description = description;
-        this.quantity = 0;
+    public Equipment(String name, int quantity) {
+        super(name, quantity);
+        setType("Equipment");
     }
 
-    public String getName() {
-        return name;
+    public Equipment(String name, String id, String description, String category) {
+        super(id, name, description, category);
+        setType("Equipment");
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-    
-    
-    
-    
-    
-    
 }
