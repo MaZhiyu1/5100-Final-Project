@@ -50,7 +50,9 @@ public class EquipmentDeliveryPanel extends javax.swing.JPanel {
                 equipments=btc.getEquipments();
             }
         }
-        
+        refreshTable();
+        DefaultTableModel model = (DefaultTableModel)tblCart.getModel();
+        model.setRowCount(0);
     }
 
     public void refreshTable() {
