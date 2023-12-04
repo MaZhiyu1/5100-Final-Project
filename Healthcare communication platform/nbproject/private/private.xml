@@ -3,16 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel.java</file>
+            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/BioTechLoginPanel.java</file>
+            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/DeliveryLoginPanel.java</file>
             <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Business.java</file>
-            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/MedicalWork/Doctor/DoctorRequestJPanel.java</file>
-            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/MainJFrame.java</file>
-            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/DevelopmentWork/DevelopWorkAreaJPanel.java</file>
             <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/HospitalLoginPanel.java</file>
-            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/MedicalWork/Doctor/OutpatientJPanel.java</file>
-            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/MedicalWork/Doctor/EMRJPanel.java</file>
-            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/MedicalSupplier/EquipmentDeliveryPanel.java</file>
-            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/MedicalWork/Doctor/DoctorLabJPanel.java</file>
+            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/MedicalSupplierLoginPanel.java</file>
+            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/MedicalAnalysisLoginPanel.java</file>
+            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Biotechnology/BioSupplierJPanel.java</file>
         </group>
     </open-files>
 </project-private>

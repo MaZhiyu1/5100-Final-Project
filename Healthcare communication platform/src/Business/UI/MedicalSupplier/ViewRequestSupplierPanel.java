@@ -34,6 +34,10 @@ public class ViewRequestSupplierPanel extends javax.swing.JPanel {
         this.b=b;
         this.bs = bs;
         this.company=company;
+        refreshTable();
+        refreshTable1();
+        DefaultTableModel model = (DefaultTableModel)tblEquipment.getModel();
+        model.setRowCount(0);
     }
     
     public void refreshTable() {
@@ -276,7 +280,7 @@ public class ViewRequestSupplierPanel extends javax.swing.JPanel {
         Order selected = (Order) tblOrder.getValueAt(row, 0);
         ArrayList<Equipment> e = selected.getEquipments();
         if(e!=null){
-            
+            refreshTable2(e);
         }
 
     }//GEN-LAST:event_tblOrderMouseClicked
