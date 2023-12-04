@@ -33,6 +33,10 @@ public class OutpatientJPanel extends javax.swing.JPanel {
     Business bz;
 
     private List<Drug> drugList;
+    
+    ArrayList<Medicine> medicines = new ArrayList<>();
+    int number;
+    ArrayList<Vaccine> vaccines= new ArrayList<>();
 
     /**
      * Creates new form OutpatientJPanel
@@ -137,7 +141,40 @@ public class OutpatientJPanel extends javax.swing.JPanel {
             ((DefaultTableModel) tblPastMedicalRecords.getModel()).addRow(row1);
         });
     }
+    
+    public void refreshTable(int k) {
+        
+        DefaultTableModel model = (DefaultTableModel)tblPrescription.getModel();
+        model.setRowCount(0);
+        if(k==0){
+        if(medicines==null) return;
+        for(Medicine s : medicines) {
+            Object row[] = new Object[5];
+            row[0] = s;
+            row[1] = s.getName();
+            row[2] = s.getType();
+            row[3] = s.getQuantity();
+            row[4] = s.getStatus();
+            model.addRow(row);
+        }
+        }
+        
 
+        if(k==1){
+        if(vaccines==null) return;
+        for(Vaccine s : vaccines) {
+            Object row[] = new Object[5];
+            row[0] = s;
+            row[1] = s.getName();
+            row[2] = s.getType();
+            row[3] = s.getQuantity();
+            row[4] = s.getStatus();
+            model.addRow(row);
+        }
+        }
+        
+        
+    }
 
 
     /**
@@ -268,6 +305,11 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         txtSearchGenre.setText("Search Name/Department");
 
         cmbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine", "Vaccine", "Equipment", "Operation", "Transfer" }));
+        cmbSelectGenre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSelectGenreActionPerformed(evt);
+            }
+        });
 
         tblPrescription.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -694,6 +736,17 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.previous(RightPanel);
     }//GEN-LAST:event_btnBack1ActionPerformed
+
+    private void cmbSelectGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectGenreActionPerformed
+        // TODO add your handling code here:
+        String type = (String)cmbSelectGenre.getSelectedItem();
+        if(type.equals("Medicine")){
+            refreshTable(0);
+        }
+        else if(type.equals("Vaccine")){
+            refreshTable(1);
+        }
+    }//GEN-LAST:event_cmbSelectGenreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
