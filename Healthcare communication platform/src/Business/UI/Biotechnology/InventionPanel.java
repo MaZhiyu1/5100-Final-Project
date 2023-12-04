@@ -5,12 +5,11 @@
 package Business.UI.Biotechnology;
 
 import Business.Business;
-import Business.Class.BioTech.BioResaercher;
+import Business.Class.BioTech.BioResearcher;
 import Business.Class.BioTech.Lab;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Doctor;
-import Business.Class.Medicine;
-import Business.Class.Vaccine;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -27,12 +26,12 @@ public class InventionPanel extends javax.swing.JPanel {
     JPanel RightPanel;
     Business bz;
     String bioTech;
-    BioResaercher br;
+    BioResearcher br;
     
     
     
     
-    public InventionPanel(JPanel RightPanel,Business bz,String bioTech,BioResaercher br) {
+    public InventionPanel(JPanel RightPanel, Business bz, String bioTech, BioResearcher br) {
         initComponents();
         this.RightPanel=RightPanel;
         this.bz=bz;
@@ -422,7 +421,7 @@ public class InventionPanel extends javax.swing.JPanel {
         if(project.equals("")||group.equals("")||type.equals("")||department.equals("")||instruction.equals("")){
             JOptionPane.showMessageDialog(null,"Please enter all information");
         }
-        Lab lab2 = new Lab("", department, project,type,instruction);
+        Lab lab2 = new Lab(br.getMaster(), department, project,type,instruction);
         int row = tblDoctor.getSelectedRow();
         if(row>0){
             Doctor selected = (Doctor) tblDoctor.getValueAt(row, 0);

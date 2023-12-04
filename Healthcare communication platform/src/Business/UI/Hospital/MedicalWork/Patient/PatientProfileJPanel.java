@@ -33,7 +33,7 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
      * */
     public void showProfile(){
         txtName.setText(patient.getName());
-        txtAge.setText(patient.getAge());
+        txtAge.setText(String.valueOf(patient.getAge()));
         txtContact.setText(patient.getContact());
         txtGender.setText(patient.getGender());
         txtInsurance.setText(patient.getInsurance());
@@ -257,7 +257,7 @@ public class PatientProfileJPanel extends javax.swing.JPanel {
     private void btnSaveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAllActionPerformed
         // TODO add your handling code here:
         this.patient.setName(txtName.getText());
-        this.patient.setAge(txtAge.getText());
+        this.patient.setAge(Integer.parseInt(txtAge.getText()));
         this.patient.setContact(txtContact.getText());
         this.patient.setGender(txtGender.getText());
         this.patient.setInsurance(txtInsurance.getText());

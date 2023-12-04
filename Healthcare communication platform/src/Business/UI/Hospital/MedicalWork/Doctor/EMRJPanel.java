@@ -43,7 +43,7 @@ public class EMRJPanel extends javax.swing.JPanel {
                     Patient patient = doctor.getHospital().getPatients().stream().filter(p -> p.getId() == id).findFirst().get();
 
                     txtName.setText(patient.getName());
-                    txtAge.setText(patient.getAge());
+                    txtAge.setText(String.valueOf(patient.getAge()));
                     txtPatientId.setText(String.valueOf(patient.getId()));
                     txtGender.setText(patient.getGender());
                     txtAllergy.setText(patient.getAllergy());

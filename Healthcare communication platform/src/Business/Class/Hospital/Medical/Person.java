@@ -12,7 +12,7 @@ public class Person {
     int id;
     String pwd;
     String name;
-    String age;
+    int age;
     String gender;
     String contact;
 
@@ -26,6 +26,14 @@ public class Person {
         this.pwd = pwd;
         this.gender = gender;
     }
+
+    public Person(int id, String name, String gender, int age){
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+    }
+
 
 
     public int getId() {
@@ -52,11 +60,11 @@ public class Person {
         this.pwd = pwd;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

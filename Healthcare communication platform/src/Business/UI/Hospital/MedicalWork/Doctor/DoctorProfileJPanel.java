@@ -50,7 +50,7 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
         txtUsername.setEnabled(false);
 
         txtName.setText(doctor.getName());
-        txtAge.setText(doctor.getAge());
+        txtAge.setText(String.valueOf(doctor.getAge()));
         txtId.setText(String.valueOf(doctor.getId()));
         txtGender.setText(doctor.getGender());
         txtContact.setText(doctor.getContact());
@@ -320,7 +320,7 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
     private void btnSaveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAllActionPerformed
         // TODO add your handling code here:
         doctor.setName(txtName.getText());
-        doctor.setAge(txtAge.getText());
+        doctor.setAge(Integer.parseInt(txtAge.getText()));
         doctor.setGender(txtGender.getText());
         doctor.setContact(txtContact.getText());
         doctor.setAvail(Integer.parseInt(txtAvail.getText()));

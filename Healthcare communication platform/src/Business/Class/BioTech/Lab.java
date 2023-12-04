@@ -5,6 +5,7 @@
 package Business.Class.BioTech;
 
 import Business.Class.Hospital.Medical.Doctor;
+import Business.Class.Hospital.Medical.Person;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.UUID;
 public class Lab {
 
     private String id;
-    private String name;
+    private Person master;
 //    private String pwd;
     private String department;
     private String instruction;
@@ -32,9 +33,9 @@ public class Lab {
     private BioTechCom company;
 
     
-    public Lab(String name, String group, String projectName,Medicine medicine, Vaccine vaccine) {
+    public Lab(Person name, String group, String projectName, Medicine medicine, Vaccine vaccine) {
         this.id = UUID.randomUUID().toString();
-        this.name = name;
+        this.master = name;
 //        this.pwd = pwd;
         this.department = group;
         this.medicine = medicine;
@@ -45,9 +46,9 @@ public class Lab {
      }
     
     
-    public Lab(String name, String group, String projectName,String type,String instruction) {
+    public Lab(Person name, String group, String projectName,String type,String instruction) {
         this.id = UUID.randomUUID().toString();
-        this.name = name;
+        this.master = name;
 //        this.pwd = pwd;
         this.department = group;
         this.projectName = projectName;
@@ -57,9 +58,6 @@ public class Lab {
         this.status = "Processing";
      }
 
-    public String getName() {
-        return name;
-    }
 
     public String getInstruction() {
         return instruction;
@@ -69,9 +67,14 @@ public class Lab {
         this.instruction = instruction;
     }
 
-    
-    
-    
+    public Person getMaster() {
+        return master;
+    }
+
+    public void setMaster(Person master) {
+        this.master = master;
+    }
+
     public int getProgress() {
         return progress;
     }
@@ -96,9 +99,6 @@ public class Lab {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
 //    public String getPwd() {
 //        return pwd;

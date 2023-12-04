@@ -21,7 +21,7 @@ public class BioTechCom {
     private String name;
     ArrayList<Request> request;
     ArrayList<Order> orders;
-    ArrayList<BioResaercher> br;
+    ArrayList<BioResearcher> br;
     private HospitalInventory hi;
     
     public BioTechCom(String name) {
@@ -86,16 +86,16 @@ public class BioTechCom {
 }
     
     
-    public void addBioResaecher(BioResaercher e){
+    public void addBioResaecher(BioResearcher e){
         br.add(e);
     }
     
     
-    public ArrayList<BioResaercher> getBr() {
+    public ArrayList<BioResearcher> getBr() {
         return br;
     }
 
-    public void setBr(ArrayList<BioResaercher> br) {
+    public void setBr(ArrayList<BioResearcher> br) {
         this.br = br;
     }
 

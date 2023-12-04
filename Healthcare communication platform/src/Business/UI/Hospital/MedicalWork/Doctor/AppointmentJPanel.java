@@ -43,7 +43,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
 
                     txtName.setText(appointment.getPatient().getName());
                     txtPatientId.setText(String.valueOf(appointment.getPatient().getId()));
-                    txtPatientAge.setText(appointment.getPatient().getAge());
+                    txtPatientAge.setText(String.valueOf(appointment.getPatient().getAge()));
                     txtPatientGender.setText(appointment.getPatient().getGender());
                     txtAllergy.setText(appointment.getPatient().getAllergy());
                     txtInsurance.setText(appointment.getPatient().getInsurance());

@@ -5,8 +5,8 @@
 package Business.UI.Biotechnology;
 
 import Business.Business;
-import Business.Class.BioTech.BioResaercher;
-import Business.Class.BioTech.Lab;
+import Business.Class.BioTech.BioResearcher;
+
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -22,8 +22,8 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
     JPanel RightPanel;
     Business bz;
     String bioTech;
-    BioResaercher br;
-    public CreativeDepartmentPanel(JPanel RightPanel,Business bz,String bioTech,BioResaercher lab) {
+    BioResearcher br;
+    public CreativeDepartmentPanel(JPanel RightPanel, Business bz, String bioTech, BioResearcher lab) {
         initComponents();
         this.RightPanel=RightPanel;
         this.bz=bz;

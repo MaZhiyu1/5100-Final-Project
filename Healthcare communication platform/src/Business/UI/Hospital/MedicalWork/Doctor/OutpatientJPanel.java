@@ -60,7 +60,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
                     selectedPatient = appointment.getPatient();
                     txtName.setText(appointment.getPatient().getName());
                     txtPatientId.setText(String.valueOf(appointment.getPatient().getId()));
-                    txtAge.setText(appointment.getPatient().getAge());
+                    txtAge.setText(String.valueOf(appointment.getPatient().getAge()));
                     txtGender.setText(appointment.getPatient().getGender());
                     txtAllergy.setText(appointment.getPatient().getAllergy());
                     txtInsurance.setText(appointment.getPatient().getInsurance());

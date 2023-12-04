@@ -5,7 +5,7 @@
 package Validation;
 
 import Business.Business;
-import Business.Class.BioTech.BioResaercher;
+import Business.Class.BioTech.BioResearcher;
 import Business.Class.BioTech.BioSupplier;
 import Business.Class.BioTech.BioTechCom;
 import Business.Class.BioTech.Lab;
@@ -68,8 +68,8 @@ public class Validation {
         for(BioTechCom bt : bz.getBioTech()){
             if(bt.getName().equals(BioTechName)){
                 if(type.equals("Research")){
-                    for(BioResaercher br :  bt.getBr()){
-                        if(br.getName().equals(username)){
+                    for(BioResearcher br :  bt.getBr()){
+                        if(br.getMaster().getName().equals(username)){
                             if(br.getPwd().equals(pwd)){
                                 return br;
                             }
@@ -80,7 +80,7 @@ public class Validation {
 
                 if(type.equals("Research")){
                     for(Lab lab1 : bt.getLabs()){
-                        if(lab1.getName().equals(username)){
+                        if(lab1.getMaster().getName().equals(username)){
                             return lab1;
 //                            if(lab1.getPwd().equals(pwd)){
 //                                return lab1;

@@ -4,21 +4,23 @@
  */
 package Business.Class.BioTech;
 
+import Business.Class.Hospital.Medical.Person;
+
 import java.util.ArrayList;
 
 /**
  *
  * @author 15469
  */
-public class BioResaercher {
+public class BioResearcher {
     private ArrayList<Lab> labs;
-    private String name;
+    private Person master;
     private String pwd;
     private String id;
     private String BioTech;
 
-    public BioResaercher(String name, String pwd, String id, String BioTech) {
-        this.name = name;
+    public BioResearcher(Person person, String pwd, String id, String BioTech) {
+        this.master = person;
         this.pwd = pwd;
         this.id = id;
         this.BioTech = BioTech;
@@ -46,12 +48,12 @@ public class BioResaercher {
         this.labs = labs;
     }
 
-    public String getName() {
-        return name;
+    public Person getMaster() {
+        return master;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMaster(Person master) {
+        this.master = master;
     }
 
     public String getPwd() {
