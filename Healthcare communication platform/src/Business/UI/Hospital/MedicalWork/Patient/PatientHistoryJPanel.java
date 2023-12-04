@@ -267,6 +267,9 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
 
     private void btnRecoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecoverActionPerformed
         // TODO add your handling code here:
+
+
+
     }//GEN-LAST:event_btnRecoverActionPerformed
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed

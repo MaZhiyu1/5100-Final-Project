@@ -303,8 +303,18 @@ public class EMRJPanel extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        List<Patient> patientList = doctor.getHospital().getPatients().stream().filter(p -> p.getName().equals(txtSearch.getText()) || String.valueOf(p.getId()).equals(txtSearch.getText()))
-                .collect(Collectors.toList());
+        String searchText = txtSearch.getText();
+
+        List<Patient> patientList = null;
+
+        if (searchText.isEmpty()) {
+
+            patientList = doctor.getHospital().getPatients();
+        } else {
+
+            patientList = doctor.getHospital().getPatients().stream().filter(p -> p.getName().equals(txtSearch.getText()) || String.valueOf(p.getId()).equals(txtSearch.getText()))
+                    .collect(Collectors.toList());
+        }
 
         initTblEMR(patientList);
     }//GEN-LAST:event_btnSearchActionPerformed
