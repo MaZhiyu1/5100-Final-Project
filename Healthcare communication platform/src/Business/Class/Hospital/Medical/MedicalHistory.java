@@ -29,7 +29,8 @@ public class MedicalHistory {
 
     private int recoverDays;
 
-    public MedicalHistory(String symptom, String instruction) {
+    public MedicalHistory(String name ,String symptom, String instruction) {
+        this.name = name;
         this.id = UUID.randomUUID().toString();
         this.symptom = symptom;
         this.instruction = instruction;

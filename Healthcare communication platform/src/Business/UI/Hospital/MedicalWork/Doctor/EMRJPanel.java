@@ -71,6 +71,8 @@ public class EMRJPanel extends javax.swing.JPanel {
     }
 
     private void initTblEMR(List<Patient> patients) {
+
+        ((javax.swing.table.DefaultTableModel) tblEMR.getModel()).setRowCount(0);
         patients.forEach(p -> {
                 Object[] row = new Object[3];
                 row[0] = p.getId();

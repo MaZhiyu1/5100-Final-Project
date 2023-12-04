@@ -721,9 +721,13 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         //
         Prescription prescription = new Prescription("");
         prescription.setDrugList(selectedDrugList);
-        MedicalHistory medicalHistory = new MedicalHistory(selectedAppointment.getSymptom(), instructionTextArea.getText());
+        MedicalHistory medicalHistory = new MedicalHistory(this.selectedPatient + "'s Medical History",selectedAppointment.getSymptom(), instructionTextArea.getText());
         medicalHistory.setPrescription(prescription);
         selectedPatient.getMedicalHistoryDirectory().getMh().add(medicalHistory);
+
+        //delete appointment record
+        doctor.getAppointmentList().remove(selectedAppointment);
+        selectedPatient.getAppointmentList().remove(selectedAppointment);
 
         JOptionPane.showMessageDialog(null, "Finish!");
 
