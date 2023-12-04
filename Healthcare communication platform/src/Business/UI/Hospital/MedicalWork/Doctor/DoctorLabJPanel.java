@@ -274,6 +274,22 @@ public class DoctorLabJPanel extends javax.swing.JPanel {
         if(selected.getProgress()>=100){
             selected.setStatus("Completed");
             JOptionPane.showMessageDialog(null,"Project completed!");
+            if(selected.getVaccine()!=null){
+                selected.getVaccine().setQuantity(10);
+                selectedLab.getCompany().getHi().addVaccine(selected.getVaccine());
+            }
+            if(selected.getMedicine()!=null){
+                selected.getMedicine().setQuantity(10);
+                selectedLab.getCompany().getHi().addMedicine(selected.getMedicine());
+            }
+            if(selected.getVaccine()!=null){
+                selected.getVaccine().setQuantity(10);
+                doctor.getHospital().getHi().addVaccine(selected.getVaccine());
+            }
+            if(selected.getMedicine()!=null){
+                selected.getMedicine().setQuantity(10);
+                doctor.getHospital().getHi().addMedicine(selected.getMedicine());
+            }
             initTableLab( doctor);
         }
         jProgressBar1.setValue(selected.getProgress());

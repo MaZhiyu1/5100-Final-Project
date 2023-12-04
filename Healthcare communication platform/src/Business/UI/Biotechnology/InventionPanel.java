@@ -10,6 +10,8 @@ import Business.Class.BioTech.BioTechCom;
 import Business.Class.BioTech.Lab;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Doctor;
+import Business.Class.Medicine;
+import Business.Class.Vaccine;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -410,6 +412,14 @@ public class InventionPanel extends javax.swing.JPanel {
         if(selected.getProgress()>=100){
             selected.setStatus("Completed");
             JOptionPane.showMessageDialog(null,"Project completed!");
+            if(selected.getVaccine()!=null){
+                selected.getVaccine().setQuantity(10);
+                bs1.getHi().addVaccine(selected.getVaccine());
+            }
+            if(selected.getMedicine()!=null){
+                selected.getMedicine().setQuantity(10);
+                bs1.getHi().addMedicine(selected.getMedicine());
+            }
             refreshTable1();
         }
         jProgressBar1.setValue(selected.getProgress());
@@ -426,7 +436,16 @@ public class InventionPanel extends javax.swing.JPanel {
         if(project.equals("")||group.equals("")||type.equals("")||department.equals("")||instruction.equals("")){
             JOptionPane.showMessageDialog(null,"Please enter all information");
         }
+        
         Lab lab2 = new Lab(br.getMaster(), department, project,type,instruction);
+        if(type.equals("Medicine")){
+            Medicine me = new Medicine(project,project+"-invention" ,  instruction,department);
+            lab2.setMedicine(me);
+        }
+        if(type.equals("Vaccine")){
+            Vaccine va = new Vaccine(project,project+"-invention" ,  instruction,department);
+            lab2.setVaccine(va);
+        }
         lab2.setCompany(bs1);
         int row = tblDoctor.getSelectedRow();
         if(row>0){
