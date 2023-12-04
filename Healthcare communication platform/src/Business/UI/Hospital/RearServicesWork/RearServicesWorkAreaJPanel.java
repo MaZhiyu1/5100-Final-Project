@@ -4,10 +4,14 @@
  */
 package Business.UI.Hospital.RearServicesWork;
 
+import Business.Business;
+import Business.Class.BioTech.BioTechCom;
 import Business.Class.Hospital.RearServices.RearServices;
+import Business.Class.Hospital.Request;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -23,37 +27,48 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
     int number;
     ArrayList<Vaccine> vaccines= new ArrayList<>();
 
+    Business bz;
+    Request selectedRequest;
+
     /**
      * Creates new form RearServicesWorkAreaJPanel
      */
     JPanel RightPanel;
-    public RearServicesWorkAreaJPanel(JPanel RightPanel, RearServices rearServices) {
+    public RearServicesWorkAreaJPanel(JPanel RightPanel, RearServices rearServices, Business bz) {
         initComponents();
         this.RightPanel = RightPanel;
         this.rearServices = rearServices;
-
+        this.bz = bz;
         initTblRequest(rearServices);
         refreshTable(0);
-        
 
+        tblRequest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            int row = tblRequest.getSelectedRow(); // 获取所点选行的索引
+            DefaultTableModel model = (DefaultTableModel) tblRequest.getModel(); //Have the access to the table;
 
+            if(row != -1) { // 如果行已被选择
+                Request request = (Request) model.getValueAt(row, 0); // 获取所选行的第1列值
+                selectedRequest = request;
+                tipsTextArea.setText(request.getTips());
+            }
+            }
+        });
 
     }
 
     private void initTblRequest(RearServices rearServices) {
-        rearServices.getRequest().stream().forEach((request) -> {
+        ((javax.swing.table.DefaultTableModel) tblRequest.getModel()).setRowCount(0);
 
+        rearServices.getRequest().stream().filter(request -> "Processing".equals(request.getStatus())).forEach((request) -> {
             Object[] row = new Object[6];
-            row[0] = request.getId();
+            row[0] = request;
             row[1] = request.getName();
             row[2] = request.getType();
             row[3] = request.getQuantity();
             row[4] = request.getStatus();
             ((javax.swing.table.DefaultTableModel) tblRequest.getModel()).addRow(row);
-
         });
-
-
     }
 
 public void refreshTable(int k) {
@@ -61,30 +76,32 @@ public void refreshTable(int k) {
         DefaultTableModel model = (DefaultTableModel)tblStock.getModel();
         model.setRowCount(0);
         if(k==0){
-        if(medicines==null) return;
-        for(Medicine s : medicines) {
-            Object row[] = new Object[5];
-            row[0] = s;
-            row[1] = s.getName();
-            row[2] = s.getType();
-            row[3] = s.getQuantity();
-            row[4] = s.getStatus();
-            model.addRow(row);
-        }
+            if(medicines==null){return;}
+
+            for(Medicine s : medicines) {
+                Object row[] = new Object[5];
+                row[0] = s;
+                row[1] = s.getName();
+                row[2] = s.getType();
+                row[3] = s.getQuantity();
+                row[4] = s.getStatus();
+                model.addRow(row);
+            }
         }
         
 
         if(k==1){
-        if(vaccines==null) return;
-        for(Vaccine s : vaccines) {
-            Object row[] = new Object[5];
-            row[0] = s;
-            row[1] = s.getName();
-            row[2] = s.getType();
-            row[3] = s.getQuantity();
-            row[4] = s.getStatus();
-            model.addRow(row);
-        }
+            if(vaccines==null){return;}
+
+            for(Vaccine s : vaccines) {
+                Object row[] = new Object[5];
+                row[0] = s;
+                row[1] = s.getName();
+                row[2] = s.getType();
+                row[3] = s.getQuantity();
+                row[4] = s.getStatus();
+                model.addRow(row);
+            }
         }
         
         
@@ -324,6 +341,20 @@ public void refreshTable(int k) {
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         // TODO add your handling code here:
+
+        String techCom = (String)cmbSupplier.getSelectedItem();
+
+        if(selectedRequest == null || techCom == null){
+            return;
+        }
+
+        Optional<BioTechCom> bioTechCom = bz.getBioTech().stream().filter(com -> techCom.equals(com.getName())).findFirst();
+
+        bioTechCom.get().getRequest().add(selectedRequest);
+
+        rearServices.getRequest().remove(selectedRequest);
+        initTblRequest(rearServices);
+
     }//GEN-LAST:event_btnSendActionPerformed
 
     private void cmbSelectGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectGenreActionPerformed

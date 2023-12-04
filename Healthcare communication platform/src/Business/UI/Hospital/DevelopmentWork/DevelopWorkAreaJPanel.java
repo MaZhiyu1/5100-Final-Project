@@ -7,6 +7,7 @@ package Business.UI.Hospital.DevelopmentWork;
 import Business.Business;
 
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -42,8 +43,8 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
 
     private void initLabTable(){
         // TODO add your handling code here:
-        int rowCount = tblLab.getRowCount();
-
+        DefaultTableModel model = (DefaultTableModel)tblLab.getModel();
+        model.setRowCount(0);
 
         bz.getHospitals().stream().flatMap(vo -> vo.getDoctorList().stream().flatMap(doctor -> doctor.getLabs().stream())).forEach(vo -> {
             Object row[] = new Object[7];

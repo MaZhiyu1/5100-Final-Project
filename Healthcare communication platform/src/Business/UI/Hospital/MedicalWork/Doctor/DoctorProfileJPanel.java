@@ -32,18 +32,20 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
      */
     public DoctorProfileJPanel(JPanel RightPanel, Doctor doctor) {
         initComponents();
-        this.RightPanel=RightPanel;
+        this.RightPanel = RightPanel;
+        this.doctor = doctor;
+
         FileNameExtensionFilter jpegFilter = new FileNameExtensionFilter("JPEG file","jpg", "jpeg");
         FileNameExtensionFilter pngFilter = new FileNameExtensionFilter("PNG file", "png", "png");
 
         fileChooser.addChoosableFileFilter(jpegFilter);
         fileChooser.addChoosableFileFilter(pngFilter);
         fileChooser.getFileFilter();
-        initDoctorProfile(doctor);
+        initDoctorProfile();
 
     }
 
-    public void initDoctorProfile(Doctor doctor ){
+    public void initDoctorProfile(){
         txtId.setEnabled(false);
         txtUsername.setEnabled(false);
 
@@ -293,6 +295,7 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
     private void btnSavePhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSavePhotoActionPerformed
         // TODO add your handling code here:
         doctor.setLogoImage(logoImage);
+        JOptionPane.showMessageDialog(null, "LogoImage Save Successfully!");
     }//GEN-LAST:event_btnSavePhotoActionPerformed
 
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
@@ -316,17 +319,17 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
 
     private void btnSaveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAllActionPerformed
         // TODO add your handling code here:
-        txtName.setText(doctor.getName());
-        txtAge.setText(doctor.getAge());
-//        txtId.setText(doctor.getId());
-        txtGender.setText(doctor.getGender());
-        txtContact.setText(doctor.getContact());
-        txtAvail.setText(String.valueOf(doctor.getAvail()));
-        txtHospital.setText(doctor.getHospital().getName());
-        txtSpecialty.setText(doctor.getSpecialty());
-        txtEduBackground.setText(doctor.getEductionBackground());
-//        txtUsername.setText(doctor.getName());
-        txtPassword.setText(doctor.getPwd());
+        doctor.setName(txtName.getText());
+        doctor.setAge(txtAge.getText());
+        doctor.setGender(txtGender.getText());
+        doctor.setContact(txtContact.getText());
+        doctor.setAvail(Integer.parseInt(txtAvail.getText()));
+        doctor.getHospital().setName(txtHospital.getText());
+        doctor.setSpecialty(txtSpecialty.getText());
+        doctor.setEductionBackground(txtEduBackground.getText());
+        doctor.setPwd(txtPassword.getText());
+        doctor.setDepartment(cmbDepartment.getSelectedItem().toString());
+
         JOptionPane.showMessageDialog(null, "Save Successfully!");
         btnBack1ActionPerformed(evt);
     }//GEN-LAST:event_btnSaveAllActionPerformed

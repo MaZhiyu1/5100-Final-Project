@@ -181,13 +181,13 @@ public class Business {
         V.add(v1);
         V.add(v2);
         
-        Request r = new Request("medicine 1","medicine","For heart disease");
-        r.setMedicines(medicine);
+        Request request = new Request("medicine 1","medicine","For heart disease");
+        request.setMedicines(medicine);
         
         BioSupplier bs1_ = new BioSupplier("Mike", "", "BioSupplier 1");
-        bs1_.addRequest(r);
+        bs1_.addRequest(request);
 
-        BioSupplier bs2_ = new BioSupplier("Jackson", "", "BioSupplier 1");
+        BioSupplier bs2_ = new BioSupplier("Jackson", "", "BioSupplier 2");
         
         //set inventory
         b1.getHi().setMedicineDirectory(medicineDirectory);
@@ -237,8 +237,8 @@ public class Business {
         doctor3.setContact("8888888");
         doctor3.setDepartment("Internal Medicine");
         
-        MedicalHistory mh1 = new MedicalHistory("Had server fever","keep warm. Don't eat spicy food");
-        MedicalHistory mh2 = new MedicalHistory("Had server headache","keep warm. Don't eat spicy food");
+        MedicalHistory mh1 = new MedicalHistory("Oliver‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
+        MedicalHistory mh2 = new MedicalHistory("Oliver‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
         mh1.setRecoverDays(5);
         mh2.setRecoverDays(3);
 

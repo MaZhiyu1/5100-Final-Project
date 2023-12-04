@@ -32,6 +32,11 @@ public class Appointment {
         status=0;
     }
 
+    @Override
+    public String toString() {
+        return id ;
+    }
+
     public int getStatus() {
         return status;
     }

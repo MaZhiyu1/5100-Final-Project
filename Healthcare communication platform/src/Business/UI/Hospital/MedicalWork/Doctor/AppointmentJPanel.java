@@ -37,24 +37,19 @@ public class AppointmentJPanel extends javax.swing.JPanel {
                 DefaultTableModel model = (DefaultTableModel) tblAppointment.getModel(); //Have the access to the table;
 
                 if(row != -1) { // 如果行已被选择
-                    String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
+                    Appointment appointment = (Appointment) model.getValueAt(row, 0); // 获取所选行的第1列值
 
-                    for (Appointment appointment : doctor.getAppointmentList()){
+                    selectedAppointment = appointment;
 
-                        if (id.equals(appointment.getId())){
-                            selectedAppointment = appointment;
+                    txtName.setText(appointment.getPatient().getName());
+                    txtPatientId.setText(String.valueOf(appointment.getPatient().getId()));
+                    txtPatientAge.setText(appointment.getPatient().getAge());
+                    txtPatientGender.setText(appointment.getPatient().getGender());
+                    txtAllergy.setText(appointment.getPatient().getAllergy());
+                    txtInsurance.setText(appointment.getPatient().getInsurance());
+                    symptomTextArea.setText(appointment.getSymptom());
 
-                            txtName.setText(appointment.getPatient().getName());
-                            txtPatientId.setText(String.valueOf(appointment.getPatient().getId()));
-                            txtPatientAge.setText(appointment.getPatient().getAge());
-                            txtPatientGender.setText(appointment.getPatient().getGender());
-                            txtAllergy.setText(appointment.getPatient().getAllergy());
-                            txtInsurance.setText(appointment.getPatient().getInsurance());
-                            symptomTextArea.setText(appointment.getSymptom());
-
-                            populateMedicalRecordTable(appointment.getPatient());
-                        }
-                    }
+                    populateMedicalRecordTable(appointment.getPatient());
                 }
             }
         });
@@ -82,7 +77,7 @@ public class AppointmentJPanel extends javax.swing.JPanel {
 
         for (Appointment appointment : doctor.getAppointmentList()) {
             Object[] row = new Object[4];
-            row[0] = appointment.getId();
+            row[0] = appointment;
             row[1] = appointment.getPatient().getName();
             row[2] = appointment.getPatient().getId();
             row[3] = appointment.getPatient().getInsurance();

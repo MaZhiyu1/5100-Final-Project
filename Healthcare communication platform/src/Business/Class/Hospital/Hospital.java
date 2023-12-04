@@ -47,7 +47,6 @@ public class Hospital {
         ha = new AppointmentDirectory();
         requestList = new ArrayList<>();
         orders = new ArrayList<>();
-//        rs = new ArrayList<>();
         hr = new HospitalResearch("Researcher","Aa12345678", name, k);
         
     }
@@ -140,6 +139,7 @@ public class Hospital {
 
     public void addRearService(RearServices rearServices){
         this.rearServices = rearServices;
+        rearServices.setHospital(this);
     }
     
     public void addOrders(Order e){
