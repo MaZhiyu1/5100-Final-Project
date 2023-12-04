@@ -53,11 +53,15 @@ public class Lab {
         this.department = group;
         this.projectName = projectName;
         progress=0;
-        this.type=type;
+        this.type = type;
         this.instruction = instruction;
         this.status = "Processing";
      }
 
+    @Override
+    public String toString() {
+        return id;
+    }
 
     public String getInstruction() {
         return instruction;
@@ -98,15 +102,6 @@ public class Lab {
     public void setId(String id) {
         this.id = id;
     }
-
-
-//    public String getPwd() {
-//        return pwd;
-//    }
-//
-//    public void setPwd(String pwd) {
-//        this.pwd = pwd;
-//    }
 
     public String getDepartment() {
         return department;

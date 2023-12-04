@@ -33,28 +33,32 @@ public class DoctorLabJPanel extends javax.swing.JPanel {
 
         tblLab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                int row = tblLab.getSelectedRow(); // 获取所点选行的索引
-                DefaultTableModel model = (DefaultTableModel) tblLab.getModel(); //Have the access to the table;
+            int row = tblLab.getSelectedRow(); // 获取所点选行的索引
+            DefaultTableModel model = (DefaultTableModel) tblLab.getModel(); //Have the access to the table;
 
-                if(row != -1) { // 如果行已被选择
+            if(row != -1) { // 如果行已被选择
 
-                    String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
-                    selectedLab = doctor.getLabs().stream().filter(lab -> lab.getId().equals(id)).findFirst().get();
-                    txtProjectName.setText(model.getValueAt(row, 1).toString());
-                    txtProjectId.setText(model.getValueAt(row, 0).toString());
-                    txtProjectType.setText(model.getValueAt(row, 3).toString());
-                    instructionTextArea.setText(model.getValueAt(row, 4).toString());
-                    txtProcess.setText(String.valueOf(selectedLab.getProgress()));
-                }
+                Lab lab = (Lab) model.getValueAt(row, 0); // 获取所选行的第1列值
+                selectedLab = lab;
+                txtProjectName.setText(lab.getProjectName());
+                txtProjectId.setText(lab.getId());
+                txtProjectType.setText(lab.getType());
+                instructionTextArea.setText(lab.getInstruction());
+                txtProcess.setText(lab.getProgress() + "");
+                jProgressBar1.setValue(lab.getProgress());
+            }
             }
         });
     }
 
     private void initTableLab(Doctor doctor) {
 
+        DefaultTableModel model = (DefaultTableModel)tblLab.getModel();
+        model.setRowCount(0);
+
         doctor.getLabs().forEach(lab -> {
             Object[] row = new Object[6];
-            row[0] = lab.getId();
+            row[0] = lab;
             row[1] = lab.getProjectName();
             row[2] = lab.getCompany();
             row[3] = lab.getType();
