@@ -3,13 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/MedicalSupplier/ViewRequestSupplierPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Biotechnology/DeliverDrugPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Validation/Validation.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/MedicalSupplier/EquipmentDeliveryPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/MedicalSupplier/MedicalSupplier.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/MedicalSupplier/MedicalSupplierJPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Biotechnology/RequestPanel.java</file>
+            <file>file:/E:/project-code/小歌科技/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Admin/HospitalManage/HospitalPatientPanel.java</file>
+            <file>file:/E:/project-code/小歌科技/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/MedicalWork/Doctor/AppointmentJPanel.java</file>
+            <file>file:/E:/project-code/小歌科技/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/MedicalWork/Doctor/DoctorLabJPanel.java</file>
+            <file>file:/E:/project-code/小歌科技/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/MedicalWork/Doctor/OutpatientJPanel.java</file>
+            <file>file:/E:/project-code/小歌科技/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/MedicalWork/Doctor/DoctorProfileJPanel.java</file>
+            <file>file:/E:/project-code/小歌科技/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Admin/HospitalManage/HospitalMainPanel.java</file>
+            <file>file:/E:/project-code/小歌科技/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/MedicalWork/Patient/PatientAppointmentJPanel.java</file>
+            <file>file:/E:/project-code/小歌科技/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/MedicalWork/Doctor/DoctorRequestJPanel.java</file>
+            <file>file:/E:/project-code/小歌科技/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/MedicalWork/Doctor/DoctorWorkAreaJPanel.java</file>
+            <file>file:/E:/project-code/小歌科技/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/MedicalWork/Doctor/EMRJPanel.java</file>
         </group>
     </open-files>
 </project-private>
