@@ -43,6 +43,11 @@ public class Doctor extends Person{
         labs = new ArrayList<>();
     }
 
+    @Override
+    public String toString() {
+        return getId() + " ";
+    }
+
     public List<Lab> getLabs() {
         return labs;
     }

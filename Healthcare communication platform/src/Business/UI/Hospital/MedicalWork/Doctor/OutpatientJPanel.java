@@ -589,7 +589,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
             row[1] = drug.getName();
             row[2] = drug.getType();
             row[3] = drug.getInstruction();
-            row[4] = txtMedicalQuantity.getText();
+            row[4] = drug.getQuantity();
             ((DefaultTableModel) tblResult.getModel()).addRow(row);
         });
     }
@@ -720,20 +720,32 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
     private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
         //
-        Prescription prescription = new Prescription("");
+        savePatientInfo();
+
+        Prescription prescription = new Prescription("Prescription for " + symptomTextArea.getText());
         prescription.setDrugList(selectedDrugList);
-        MedicalHistory medicalHistory = new MedicalHistory(this.selectedPatient + "'s Medical History",selectedAppointment.getSymptom(), instructionTextArea.getText());
+        MedicalHistory medicalHistory = new MedicalHistory(this.selectedPatient, doctor,this.selectedPatient + "'s Medical History", selectedAppointment.getSymptom(), instructionTextArea.getText());
         medicalHistory.setPrescription(prescription);
+        medicalHistory.setSymptom(symptomTextArea.getText());
+        medicalHistory.setStatus("Completed");
         selectedPatient.getMedicalHistoryDirectory().getMh().add(medicalHistory);
 
         //delete appointment record
         doctor.getAppointmentList().remove(selectedAppointment);
         selectedPatient.getAppointmentList().remove(selectedAppointment);
+        selectedAppointment.setStatus(1);//"completed"
 
         JOptionPane.showMessageDialog(null, "Finish!");
 
         btnBack1ActionPerformed(evt);
     }//GEN-LAST:event_btnFinishActionPerformed
+
+    private void savePatientInfo() {
+        this.selectedPatient.setAge(Integer.parseInt(txtAge.getText()));
+        this.selectedPatient.setGender(txtGender.getText());
+        this.selectedPatient.setAllergy(txtAllergy.getText());
+        this.selectedPatient.setInsurance(txtInsurance.getText());
+    }
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
         // TODO add your handling code here:

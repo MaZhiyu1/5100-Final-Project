@@ -45,32 +45,27 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
 
                 if(row != -1) { // 如果行已被选择
 
-                    String doctorName = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
+                    Doctor doctor = (Doctor) model.getValueAt(row, 0); // 获取所选行的第1列值
 
-                    for (Doctor doctor : selectedHospital.getDoctorList()){
+                    selectedDoctor = doctor;
 
-                        if (doctorName.equals(doctor.getName())){
-                            selectedDoctor = doctor;
+                    txtName.setText(doctor.getName());
+                    txtSpecialty.setText(doctor.getSpecialty());
+                    txtDepartment.setText(doctor.getDepartment());
 
-                            txtName.setText(doctor.getName());
-                            txtSpecialty.setText(doctor.getSpecialty());
-                            txtDepartment.setText(doctor.getDepartment());
-
-                            if(doctor.getAvail() == 0){
-                                btnSubmit.setEnabled(false);
-                                textAreaAllergy.setEnabled(false);
-                                textAreaSymptom.setEnabled(false);
-                            }else {
-                                btnSubmit.setEnabled(true);
-                                textAreaAllergy.setEnabled(true);
-                                textAreaSymptom.setEnabled(true);
-                            }
-
-                            txtName.setEnabled(false);
-                            txtSpecialty.setEnabled(false);
-                            txtDepartment.setEnabled(false);
-                        }
+                    if(doctor.getAvail() == 0){
+                        btnSubmit.setEnabled(false);
+                        textAreaAllergy.setEnabled(false);
+                        textAreaSymptom.setEnabled(false);
+                    }else {
+                        btnSubmit.setEnabled(true);
+                        textAreaAllergy.setEnabled(true);
+                        textAreaSymptom.setEnabled(true);
                     }
+
+                    txtName.setEnabled(false);
+                    txtSpecialty.setEnabled(false);
+                    txtDepartment.setEnabled(false);
                 }
             }
         });
@@ -141,16 +136,27 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
 
         tblAppointment.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Doctor", "Type", "Avail"
+                "Doctor Id", "Doctor Name", "Type", "Avail"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tblAppointment);
+        if (tblAppointment.getColumnModel().getColumnCount() > 0) {
+            tblAppointment.getColumnModel().getColumn(0).setResizable(false);
+        }
 
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -326,12 +332,14 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
 
         DefaultTableModel dtm = (DefaultTableModel) tblAppointment.getModel();
         dtm.setRowCount(0);
+
         for (Doctor doctor : hospital.getDoctorList()) {
             Object[] row = new Object[4];
-            row[0] = doctor.getName();
-            row[1] = doctor.getType();
-            row[2] = doctor.getAvail();
-            row[3] = doctor;
+            row[0] = doctor;
+            row[1] = doctor.getName();
+            row[2] = doctor.getType();
+            row[3] = doctor.getAvail();
+
             dtm.addRow(row);
         }
     }

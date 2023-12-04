@@ -29,6 +29,8 @@ public class MedicalHistory {
 
     private int recoverDays;
 
+    private int feedbackRate;
+
     public MedicalHistory(String name ,String symptom, String instruction) {
         this.name = name;
         this.id = UUID.randomUUID().toString();
@@ -37,9 +39,10 @@ public class MedicalHistory {
         status="processing";
     }
 
-    public MedicalHistory(Patient patient, Doctor doctor, String symptom, String instruction) {
+    public MedicalHistory(Patient patient, Doctor doctor, String name , String symptom, String instruction) {
         this.id = UUID.randomUUID().toString();
         this.doctor = doctor;
+        this.name = name;
         this.patient = patient;
         this.symptom = symptom;
         this.instruction = instruction;
@@ -129,5 +132,13 @@ public class MedicalHistory {
 
     public void setRecoverDays(int recoverDays) {
         this.recoverDays = recoverDays;
+    }
+
+    public int getFeedbackRate() {
+        return feedbackRate;
+    }
+
+    public void setFeedbackRate(int feedbackRate) {
+        this.feedbackRate = feedbackRate;
     }
 }

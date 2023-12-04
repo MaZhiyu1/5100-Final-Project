@@ -9,7 +9,7 @@ import Business.Class.Hospital.Medical.Patient;
 
 import java.awt.CardLayout;
 import java.util.stream.Collectors;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,8 +17,8 @@ import javax.swing.table.DefaultTableModel;
  * @author zhangjinming
  */
 public class PatientHistoryJPanel extends javax.swing.JPanel {
-        JPanel RightPanel;
-        private Patient patient;
+    JPanel RightPanel;
+    private Patient patient;
     private MedicalHistory selectedMedicalRecords;
     /**
      * Creates new form PatientHistoryJPanel
@@ -38,12 +38,14 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
                 if(row != -1) { // 如果行已被选择
 
                     MedicalHistory medicalHistory = (MedicalHistory) model.getValueAt(row, 0); // 获取所选行的第1列值
-
+                    selectedMedicalRecords = medicalHistory;
                     txtName.setText(medicalHistory.getDoctor().getName());
                     txtPrescription.setText(medicalHistory.getPrescription().getName());
                     txtRecoverDays.setText(String.valueOf(medicalHistory.getRecoverDays()));
                     SymptomTextArea.setText(medicalHistory.getSymptom());
                     instructionTextArea.setText(medicalHistory.getInstruction());
+                    jTextField1.setText(medicalHistory.getRecoverDays() +"");
+                    jTextField2.setText(medicalHistory.getFeedbackRate() + "");
                 }
             }
         });
@@ -280,9 +282,19 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
 
     private void btnRecoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecoverActionPerformed
         // TODO add your handling code here:
+//
+//        MedicalHistory medicalRecords = patient.getMedicalHistoryDirectory().getMh().stream().filter(mh -> mh.getId().equals(selectedMedicalRecords.getId())).findFirst().get();
 
+        for(MedicalHistory medicalRecords : patient.getMedicalHistoryDirectory().getMh()){
+            if( medicalRecords.getId().equals(selectedMedicalRecords.getId())){
+                medicalRecords.setRecoverDays(Integer.parseInt(jTextField1.getText()));
+                medicalRecords.setFeedbackRate(Integer.parseInt(jTextField2.getText()));
+            }
+        }
 
+        initTableMedicalRecords();
 
+        JOptionPane.showMessageDialog(null, "Recover successfully!");
     }//GEN-LAST:event_btnRecoverActionPerformed
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
