@@ -138,6 +138,8 @@ public class Business {
 
     public void BioTechCom1(){
         Medicine new_m = new Medicine("New Medicine", "Bio", "Heart Disease", "Internal Medicine");
+
+        Vaccine vxx = new Vaccine("Vxx A1", "1", "For Child", "Pediatrics");
         
         b1 = new BioTechCom("BioGenesis Therapeutics");
 
@@ -145,12 +147,14 @@ public class Business {
         
         BioResearcher br = new BioResearcher(jack, "", "1", "BioGenesis Therapeutics");
         b1.addBioResaecher(br);
-        Lab lab1 = new Lab(jack, "Internal Medicine", "VICC Project", new_m, null);
-
+        Lab lab1 = new Lab(jack, "Internal Medicine", "VICC Project", new_m, vxx);
+        lab1.setType("Internal Medicine");
+        lab1.setInstruction("it is for VICC Project");
+        lab1.setProgress(69);
 
         Optional<Doctor> first = h1.getDoctorList().stream().filter(doctor -> "Jim".equals(doctor.getName())).toList().stream().findFirst();
 
-        Lab lab2 = new Lab(first.get(), "Group 1", "VICC Project","Internal Medicine","");
+        Lab lab2 = new Lab(first.get(), "Group 1", "VICC Project","Internal Medicine","it is for Internal Medicine");
 
         br.addLab(lab2);
         for(Hospital h : hospitals){

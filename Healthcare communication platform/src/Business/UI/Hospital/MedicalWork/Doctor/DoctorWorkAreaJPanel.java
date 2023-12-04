@@ -28,6 +28,13 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         this.RightPanel=RightPanel;
         this.doctor = doctor;
         this.bz = bz;
+        initWorkArea();
+    }
+
+    private void initWorkArea() {
+
+        jLabel3.setText(doctor.getName());
+        jLabel1.setText(doctor.getDepartment());
     }
 
     /**
