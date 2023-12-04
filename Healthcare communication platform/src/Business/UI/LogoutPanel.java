@@ -4,6 +4,7 @@
  */
 package Business.UI;
 
+import Business.Business;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -17,9 +18,13 @@ public class LogoutPanel extends javax.swing.JPanel {
      * Creates new form LogoutPanel
      */
     JPanel leftPanel;
-    public LogoutPanel(JPanel leftPanel) {
+    JPanel rightPanel;
+    Business bz;
+    public LogoutPanel(JPanel leftPanel,JPanel rightPanel,Business bz) {
         initComponents();
         this.leftPanel=leftPanel;
+        this.rightPanel=rightPanel;
+        this.bz=bz;
     }
 
     /**
@@ -60,9 +65,14 @@ public class LogoutPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        leftPanel.remove(this);
+        leftPanel.removeAll();
+        rightPanel.removeAll();
+        LoginPanel o = new LoginPanel(leftPanel,rightPanel, bz);
+        leftPanel.add(o);
+//        CardLayout layout1 =  (CardLayout) rightPanel.getLayout();
+//        layout1.next(rightPanel);
         CardLayout layout =  (CardLayout) leftPanel.getLayout();
-        layout.next(leftPanel);
+        layout.next(o);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

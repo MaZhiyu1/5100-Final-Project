@@ -267,25 +267,42 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
         }
         if(o instanceof Doctor){
             DoctorWorkAreaJPanel dw = new DoctorWorkAreaJPanel(RightPanel, (Doctor) o, bz);
+
             RightPanel.add("LoginScreen",dw);
+            LogoutPanel lo = new LogoutPanel( leftPanel, RightPanel, bz);
+            leftPanel.add("logout",lo);
+            CardLayout layout1 = (CardLayout) leftPanel.getLayout();
+            layout1.next(leftPanel);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
         }
         else if(o instanceof Patient){
             PatientWorkAreaJPanel pw = new PatientWorkAreaJPanel(RightPanel, bz,(Patient) o);
+            LogoutPanel lo = new LogoutPanel( leftPanel, RightPanel, bz);
             RightPanel.add("LoginScreen",pw);
+            leftPanel.add("logout",lo);
+            CardLayout layout1 = (CardLayout) leftPanel.getLayout();
+            layout1.next(leftPanel);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
         }
         else if(o instanceof RearServices){
             RearServicesWorkAreaJPanel pw = new RearServicesWorkAreaJPanel(RightPanel,(RearServices) o, bz);
             RightPanel.add("LoginScreen",pw);
+            LogoutPanel lo = new LogoutPanel( leftPanel, RightPanel, bz);
+            leftPanel.add("logout",lo);
+            CardLayout layout1 = (CardLayout) leftPanel.getLayout();
+            layout1.next(leftPanel);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
         }
         else if(o instanceof HospitalResearch){
             DevelopWorkAreaJPanel pw = new DevelopWorkAreaJPanel(RightPanel, bz);
             RightPanel.add("LoginScreen",pw);
+            LogoutPanel lo = new LogoutPanel( leftPanel, RightPanel, bz);
+            leftPanel.add("logout",lo);
+            CardLayout layout1 = (CardLayout) leftPanel.getLayout();
+            layout1.next(leftPanel);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
         }

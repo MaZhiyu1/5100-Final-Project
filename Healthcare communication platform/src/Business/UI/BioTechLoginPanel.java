@@ -231,12 +231,20 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
         if(o instanceof BioResearcher){
             CreativeDepartmentPanel dw = new CreativeDepartmentPanel(RightPanel,bz,bioTech,(BioResearcher)o);
             RightPanel.add("LoginScreen",dw);
+            LogoutPanel lo = new LogoutPanel( leftPanel, RightPanel, bz);
+            leftPanel.add("logout",lo);
+            CardLayout layout1 = (CardLayout) leftPanel.getLayout();
+            layout1.next(leftPanel);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
         }
         else if(o instanceof BioSupplier){
             BioSupplierJPanel pw = new BioSupplierJPanel(RightPanel,bz,bioTech,(BioSupplier)o);
             RightPanel.add("LoginScreen",pw);
+            LogoutPanel lo = new LogoutPanel( leftPanel, RightPanel, bz);
+            leftPanel.add("logout",lo);
+            CardLayout layout1 = (CardLayout) leftPanel.getLayout();
+            layout1.next(leftPanel);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
         }

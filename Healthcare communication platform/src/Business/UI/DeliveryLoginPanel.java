@@ -189,6 +189,10 @@ public class DeliveryLoginPanel extends javax.swing.JPanel {
         }
         DeliveryComPanel pw = new DeliveryComPanel(RightPanel,(Delivery)o,bz);
         RightPanel.add("LoginScreen",pw);
+            LogoutPanel lo = new LogoutPanel( leftPanel, RightPanel, bz);
+            leftPanel.add("logout",lo);
+            CardLayout layout1 = (CardLayout) leftPanel.getLayout();
+            layout1.next(leftPanel);
         CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.next(RightPanel);
 

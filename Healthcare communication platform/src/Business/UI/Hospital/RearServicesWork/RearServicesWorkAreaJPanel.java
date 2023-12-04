@@ -7,6 +7,7 @@ package Business.UI.Hospital.RearServicesWork;
 import Business.Business;
 import Business.Class.*;
 import Business.Class.BioTech.BioTechCom;
+import Business.Class.Delivery.Order;
 import Business.Class.Hospital.RearServices.RearServices;
 import Business.Class.Hospital.Request;
 
