@@ -26,6 +26,10 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
     private List<Medicine> drugList;
 
     private Medicine selectedDrug;
+    
+    private List<Vaccine> vaccineList;
+
+    private Vaccine selectedVaccine;
     /**
      * Creates new form DoctorRequestJPanel
      */
@@ -33,7 +37,8 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         initComponents();
         this.doctor = doctor;
         this.RightPanel=RightPanel;
-
+        vaccineList = doctor.getHospital().getHi().getVaccineDirectory().getVaccines();
+        drugList = doctor.getHospital().getHi().getMedicineDirectory().getDrugs();
 
         tblPrescription.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -91,6 +96,11 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         jLabel8.setText("I Need");
 
         cmbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine", "Vaccine", "Equipment" }));
+        cmbSelectGenre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSelectGenreActionPerformed(evt);
+            }
+        });
 
         btnSearchGenre.setText("Search");
         btnSearchGenre.addActionListener(new java.awt.event.ActionListener() {
@@ -351,16 +361,85 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         });
     }
 
+    public void refreshTable(int k) {
+        
+        DefaultTableModel model = (DefaultTableModel)tblPrescription.getModel();
+        model.setRowCount(0);
+        if(k==0){
+        if(drugList==null) return;
+        for(Medicine s : drugList) {
+            Object row[] = new Object[5];
+            row[0] = s;
+            row[1] = s.getName();
+            row[2] = s.getType();
+            row[3] = s.getQuantity();
+            row[4] = s.getStatus();
+            model.addRow(row);
+        }
+        }
+        
+
+        if(k==1){
+        if(vaccineList==null) return;
+        for(Vaccine s : vaccineList) {
+            Object row[] = new Object[5];
+            row[0] = s;
+            row[1] = s.getName();
+            row[2] = s.getType();
+            row[3] = s.getQuantity();
+            row[4] = s.getStatus();
+            model.addRow(row);
+        }
+        }
+        
+        
+    }
+    
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        Request request = new Request(selectedDrug.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
-        request.setTips(tipsTextArea.getText());
-        request.setMedicines(selectedDrug);
-        doctor.getHospital().addRequest(request);
-        tipsTextArea.setText("");
-        JOptionPane.showMessageDialog(null, "Request added successfully!");
+        if(txtQuantity.getText()==null){
+            JOptionPane.showMessageDialog(null, "Please input number!");
+            return;
+        }
+        int number=0;
+        try{
+            number = Integer.parseInt(txtQuantity.getText());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Please input number!");
+            return;
+        }
+        int row = tblPrescription.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table first", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(((String)cmbSelectGenre.getSelectedItem()).equals("Medicine")){
+            Medicine selected = (Medicine) tblPrescription.getValueAt(row, 0);
+            selected.setQuantity(number);
+            Request request = new Request(selected.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
+            request.setTips(tipsTextArea.getText());
+            request.setMedicines(selected);
+            doctor.getHospital().addRequest(request);
+            tipsTextArea.setText("");
+            JOptionPane.showMessageDialog(null, "Request added successfully!");
+        }
+        if(((String)cmbSelectGenre.getSelectedItem()).equals("Vaccine")){
+            Vaccine selected = (Vaccine) tblPrescription.getValueAt(row, 0);
+            selected.setQuantity(number);
+            Request request = new Request(selected.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
+            request.setTips(tipsTextArea.getText());
+            request.setVaccines(selected);
+            doctor.getHospital().addRequest(request);
+            tipsTextArea.setText("");
+            JOptionPane.showMessageDialog(null, "Request added successfully!");
+        }
+        
+        
+        
+        
 
+                                  
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
@@ -369,6 +448,17 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.previous(RightPanel);
     }//GEN-LAST:event_btnBack1ActionPerformed
+
+    private void cmbSelectGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectGenreActionPerformed
+        // TODO add your handling code here:
+        String type = (String)cmbSelectGenre.getSelectedItem();
+        if(type.equals("Medicine")){
+            refreshTable(0);
+        }
+        else if(type.equals("Vaccine")){
+            refreshTable(1);
+        }
+    }//GEN-LAST:event_cmbSelectGenreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
