@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1518e086-6dbe-437c-a119-7f1868f4aacc" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/Business.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Business.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +110,7 @@
       <workItem from="1701275263943" duration="13456000" />
       <workItem from="1701334596166" duration="25568000" />
       <workItem from="1701425111546" duration="18690000" />
-      <workItem from="1701623195868" duration="48573000" />
+      <workItem from="1701623195868" duration="49914000" />
     </task>
     <servers />
   </component>
