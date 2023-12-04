@@ -6,6 +6,7 @@ package Business.UI.Hospital.MedicalWork.Doctor;
 
 import Business.Business;
 import Business.Class.*;
+import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.*;
 
 import java.awt.CardLayout;
@@ -48,7 +49,9 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         this.bz = bz;
         selectedDrugList = new ArrayList<>();
         initTable();
-
+        Hospital h = doctor.getHospital();
+        medicines = h.getHi().getMedicineDirectory().getDrugs();
+        vaccines = h.getHi().getVaccineDirectory().getVaccines();
         tblAppointment.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int row = tblAppointment.getSelectedRow(); // 获取所点选行的索引
@@ -570,9 +573,58 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        selectedDrug.setQuantity(Integer.parseInt(txtMedicalQuantity.getText()));
-        selectedDrugList.add(selectedDrug);
-        populateTblResult(selectedDrugList);
+        if(txtMedicalQuantity.getText()==null){
+            JOptionPane.showMessageDialog(null, "Please input number!");
+            return;
+        }
+        number=0;
+        try{
+            number = Integer.parseInt(txtMedicalQuantity.getText());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Please input number!");
+            return;
+        }
+        int row = tblPrescription.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table first", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(((String)cmbSelectGenre.getSelectedItem()).equals("Medicine")){
+            Medicine selected = (Medicine) tblPrescription.getValueAt(row, 0);
+            if((selected.getQuantity()-number<0)||number<=0){
+                JOptionPane.showMessageDialog(null,"Please input a vaild value");
+                return;
+            }
+            selected.setQuantity(selected.getQuantity()-number);
+            DefaultTableModel model1 = (DefaultTableModel)tblResult.getModel();
+            Object row1[] = new Object[5];
+            row1[0] = selected;
+            row1[1] = selected.getName();
+            row1[2] = selected.getType();
+            row1[3] = number;
+            row1[4] = selected.getStatus();
+            model1.addRow(row1);
+            refreshTable(0);
+        }
+        if(((String)cmbSelectGenre.getSelectedItem()).equals("Vaccine")){
+            Vaccine selected = (Vaccine) tblPrescription.getValueAt(row, 0);
+            if((selected.getQuantity()-number<0)||number<=0){
+                JOptionPane.showMessageDialog(null,"Please input a vaild value");
+                return;
+            }
+            selected.setQuantity(selected.getQuantity()-number);
+            DefaultTableModel model1 = (DefaultTableModel)tblResult.getModel();
+            Object row1[] = new Object[5];
+            row1[0] = selected;
+            row1[1] = selected.getName();
+            row1[2] = selected.getType();
+            row1[3] = number;
+            row1[4] = selected.getStatus();
+            model1.addRow(row1);
+            refreshTable(1);
+        }
+        
+        
 
     }//GEN-LAST:event_btnAddActionPerformed
 

@@ -23,9 +23,9 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
     JPanel RightPanel;
     private Doctor doctor;
 
-    private List<Drug> drugList;
+    private List<Medicine> drugList;
 
-    private Drug selectedDrug;
+    private Medicine selectedDrug;
     /**
      * Creates new form DoctorRequestJPanel
      */
@@ -337,7 +337,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
      * */
     private <T extends Drug> void populatePrescription(List<T> drugList) {
 
-        this.drugList = (List<Drug>) drugList;
+        this.drugList = (List<Medicine>) drugList;
 
         ((DefaultTableModel) tblPrescription.getModel()).setRowCount(0);
         drugList.forEach(drug -> {
@@ -356,6 +356,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Request request = new Request(selectedDrug.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
         request.setTips(tipsTextArea.getText());
+        request.setMedicines(selectedDrug);
         doctor.getHospital().addRequest(request);
         tipsTextArea.setText("");
         JOptionPane.showMessageDialog(null, "Request added successfully!");

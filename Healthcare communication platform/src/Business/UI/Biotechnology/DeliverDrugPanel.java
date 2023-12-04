@@ -9,6 +9,7 @@ import Business.Class.BioTech.BioSupplier;
 import Business.Class.BioTech.BioTechCom;
 import Business.Class.Delivery.Delivery;
 import Business.Class.Delivery.Order;
+import Business.Class.Hospital.Hospital;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
 import java.awt.CardLayout;
@@ -361,6 +362,7 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     DefaultTableModel model1 = (DefaultTableModel)tblCart.getModel();
     int s=1;
+    String ho = (String)cmbHospital.getSelectedItem();
     if(bs.getOrders()!=null){
         s = bs.getOrders().size()+1;
     }
@@ -382,7 +384,11 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
         }
     }
         bs.getOrders().add(order1);
-
+        for(Hospital h : bz.getHospitals()){
+            if(h.getName().equals(ho)){
+                h.getOrders().add(order1);
+            }
+        }
         for(Delivery d : bz.getDeliveries()){
             if(d.getCompany().equals(order1.getDelivery())){
                 d.addOrder(order1);

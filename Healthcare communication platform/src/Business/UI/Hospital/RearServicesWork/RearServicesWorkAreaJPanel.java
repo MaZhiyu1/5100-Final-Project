@@ -8,6 +8,7 @@ import Business.Business;
 import Business.Class.*;
 import Business.Class.BioTech.BioTechCom;
 import Business.Class.Delivery.Order;
+import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.RearServices.RearServices;
 import Business.Class.Hospital.Request;
 
@@ -33,7 +34,6 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
 
     Business bz;
     Request selectedRequest;
-
     /**
      * Creates new form RearServicesWorkAreaJPanel
      */
@@ -46,7 +46,7 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
         initTblRequest(rearServices);
 //        refreshTable(0);
         initTblStock(rearServices);
-
+        refreshTable();
         tblRequest.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
             int row = tblRequest.getSelectedRow(); // 获取所点选行的索引
@@ -61,6 +61,25 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
         });
 
     }
+    
+    private void refreshTable(){
+        DefaultTableModel model = (DefaultTableModel)tblDelivery.getModel();
+        model.setRowCount(0);
+        if(rearServices.getHospital().getOrders()==null) return;
+        for(Order s : rearServices.getHospital().getOrders()) {
+            Object row[] = new Object[4];
+            row[0] = s;
+            row[1] = s.getDelivery();
+            row[2] = s.getAddress();
+            row[3] = s.getStatus();
+           // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
+            model.addRow(row);
+        }
+        
+    }
+    
+    
+    
 
     private void initTblStock(RearServices rearServices) {
         // search medicine
@@ -465,9 +484,13 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
             return;
         }
 
-        Optional<BioTechCom> bioTechCom = bz.getBioTech().stream().filter(com -> techCom.equals(com.getName())).findFirst();
-
-        bioTechCom.get().getRequest().add(selectedRequest);
+//        Optional<BioTechCom> bioTechCom = bz.getBioTech().stream().filter(com -> techCom.equals(com.getName())).findFirst();
+        for(BioTechCom b : bz.getBioTech()){
+            if(b.getName().equals(techCom)){
+                b.getRequest().add(selectedRequest);
+            }
+        }
+        //bioTechCom.get().getRequest().add(selectedRequest);
 
         rearServices.getRequest().remove(selectedRequest);
         initTblRequest(rearServices);

@@ -6,6 +6,7 @@ package Business.UI.Biotechnology;
 
 import Business.Business;
 import Business.Class.BioTech.BioResearcher;
+import Business.Class.BioTech.BioTechCom;
 import Business.Class.BioTech.Lab;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Doctor;
@@ -28,7 +29,7 @@ public class InventionPanel extends javax.swing.JPanel {
     String bioTech;
     BioResearcher br;
     
-    
+    BioTechCom bs1=null;
     
     
     public InventionPanel(JPanel RightPanel, Business bz, String bioTech, BioResearcher br) {
@@ -40,6 +41,9 @@ public class InventionPanel extends javax.swing.JPanel {
         refreshTable1();
         String hospital = (String) cmbHospital.getSelectedItem();
         Hospital h1=null;
+        for(BioTechCom b : bz.getBioTech()){
+            if(b.getName().equals(bioTech)) bs1=b;
+        }
         DefaultTableModel model = (DefaultTableModel)tblDoctor.getModel();
         model.setRowCount(0);
         for(Hospital h : bz.getHospitals()){
@@ -418,10 +422,12 @@ public class InventionPanel extends javax.swing.JPanel {
         String type = (String)cmbType.getSelectedItem();
         String department = (String)cmbDepartment.getSelectedItem();
         String instruction = txtInstruction.getText();
+
         if(project.equals("")||group.equals("")||type.equals("")||department.equals("")||instruction.equals("")){
             JOptionPane.showMessageDialog(null,"Please enter all information");
         }
         Lab lab2 = new Lab(br.getMaster(), department, project,type,instruction);
+        lab2.setCompany(bs1);
         int row = tblDoctor.getSelectedRow();
         if(row>0){
             Doctor selected = (Doctor) tblDoctor.getValueAt(row, 0);

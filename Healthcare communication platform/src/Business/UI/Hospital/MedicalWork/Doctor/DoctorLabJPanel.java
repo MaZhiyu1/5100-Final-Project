@@ -165,26 +165,23 @@ public class DoctorLabJPanel extends javax.swing.JPanel {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnResearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(txtProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7))
-                                        .addGap(70, 70, 70)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtProjectName)
-                                            .addComponent(txtProjectId)
-                                            .addComponent(txtProjectType)
-                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtProcess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtProjectName)
+                                        .addComponent(txtProjectId)
+                                        .addComponent(txtProjectType)
+                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
@@ -259,6 +256,27 @@ public class DoctorLabJPanel extends javax.swing.JPanel {
 
     private void btnResearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResearchActionPerformed
         // TODO add your handling code here:
+        int row = tblLab.getSelectedRow();
+        if(row <0 ){
+            JOptionPane.showMessageDialog(null,"Please select a row!");
+            return;
+        }
+        int i=0;
+        try{
+            i = Integer.parseInt(txtProcess.getText());
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Please enter a num!");
+        }
+        
+        Lab selected = (Lab) tblLab.getValueAt(row, 0);
+        selected.setProgress(selected.getProgress()+i);
+        if(selected.getProgress()>=100){
+            selected.setStatus("Completed");
+            JOptionPane.showMessageDialog(null,"Project completed!");
+            initTableLab( doctor);
+        }
+        jProgressBar1.setValue(selected.getProgress());
     }//GEN-LAST:event_btnResearchActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed

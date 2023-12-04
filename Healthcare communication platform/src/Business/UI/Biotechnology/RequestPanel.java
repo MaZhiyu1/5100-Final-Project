@@ -6,6 +6,7 @@ package Business.UI.Biotechnology;
 
 import Business.Business;
 import Business.Class.BioTech.BioSupplier;
+import Business.Class.BioTech.BioTechCom;
 import Business.Class.Delivery.Order;
 import Business.Class.Hospital.Request;
 import Business.Class.Medicine;
@@ -27,12 +28,16 @@ public class RequestPanel extends javax.swing.JPanel {
     String bioTech;
     BioSupplier bs;
     JPanel RightPanel;
+    BioTechCom b;
     public RequestPanel(JPanel RightPanel,Business bz,String bioTech,BioSupplier bs) {
         initComponents();
         this.bz=bz;
         this.bioTech=bioTech;
         this.bs=bs;
         this.RightPanel= RightPanel;
+        for(BioTechCom b : bz.getBioTech()){
+            if(bioTech.equals(b.getName())) this.b=b;
+        }
         refreshTable();
         refreshTable1();
 
@@ -41,8 +46,8 @@ public class RequestPanel extends javax.swing.JPanel {
     public void refreshTable() {
         DefaultTableModel model = (DefaultTableModel)tblRequest.getModel();
         model.setRowCount(0);
-        if(bs.getRequest()==null) return;
-        for(Request s : bs.getRequest()) {
+        if(b.getRequest()==null) return;
+        for(Request s : b.getRequest()) {
             Object row[] = new Object[4];
             row[0] = s;
             row[1] = s.getType();
@@ -96,6 +101,34 @@ public class RequestPanel extends javax.swing.JPanel {
         }
     }
     
+    
+    public void refreshTable2(Request selected) {
+        DefaultTableModel model = (DefaultTableModel)tblMedicine.getModel();
+        model.setRowCount(0);
+        if(selected.getMedicines()==null) return;
+ 
+            Object row1[] = new Object[3];
+            row1[0] = selected.getMedicines();
+            row1[1] = selected.getMedicines().getType();
+            row1[2] = selected.getMedicines().getQuantity();
+           // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
+            model.addRow(row1);
+        
+    }
+    
+    public void refreshTable3(Request selected) {
+        DefaultTableModel model = (DefaultTableModel)tblVaccine.getModel();
+        model.setRowCount(0);
+        if(selected.getType()==null) return;
+
+            Object row1[] = new Object[3];
+            row1[0] = selected.getVaccines();
+            row1[1] = selected.getVaccines().getType();
+            row1[2] = selected.getVaccines().getQuantity();
+           // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
+            model.addRow(row1);
+        
+    }
     
 
     /**
@@ -345,6 +378,8 @@ public class RequestPanel extends javax.swing.JPanel {
             return;
         }
         Request selected = (Request) tblRequest.getValueAt(row, 0);
+        refreshTable2(selected);
+        refreshTable3( selected);
         DescriptionTextArea.setText(selected.getTips());
     }//GEN-LAST:event_tblRequestMouseClicked
 
