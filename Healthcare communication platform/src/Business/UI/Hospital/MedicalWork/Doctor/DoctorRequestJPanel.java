@@ -12,7 +12,7 @@ import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -355,9 +355,10 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         Request request = new Request(selectedDrug.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
+        request.setTips(tipsTextArea.getText());
         doctor.getHospital().addRequest(request);
-
-
+        tipsTextArea.setText("");
+        JOptionPane.showMessageDialog(null, "Request added successfully!");
 
     }//GEN-LAST:event_btnAddActionPerformed
 

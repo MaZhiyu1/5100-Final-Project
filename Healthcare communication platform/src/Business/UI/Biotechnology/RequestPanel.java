@@ -35,6 +35,7 @@ public class RequestPanel extends javax.swing.JPanel {
         this.RightPanel= RightPanel;
         refreshTable();
         refreshTable1();
+
     }
     
     public void refreshTable() {
@@ -45,7 +46,7 @@ public class RequestPanel extends javax.swing.JPanel {
             Object row[] = new Object[4];
             row[0] = s;
             row[1] = s.getType();
-            row[2] = s.getInstruction();
+            row[2] = s.getTips();
             row[3] = s.getStatus();
            // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
             model.addRow(row);
@@ -344,7 +345,7 @@ public class RequestPanel extends javax.swing.JPanel {
             return;
         }
         Request selected = (Request) tblRequest.getValueAt(row, 0);
-        DescriptionTextArea.setText(selected.getInstruction());
+        DescriptionTextArea.setText(selected.getTips());
     }//GEN-LAST:event_tblRequestMouseClicked
 
     private void tblOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblOrderMouseClicked

@@ -37,21 +37,13 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
 
                 if(row != -1) { // 如果行已被选择
 
-                    String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
-                    String doctorName = (String) model.getValueAt(row, 1); // 获取所选行的第1列值
-                    String symptom = (String) model.getValueAt(row, 2); // 获取所选行的第1列值
-                    String instruction = (String) model.getValueAt(row, 3); // 获取所选行的第1列值
-                    String prescription = (String) model.getValueAt(row, 4); // 获取所选行的第5列值
+                    MedicalHistory medicalHistory = (MedicalHistory) model.getValueAt(row, 0); // 获取所选行的第1列值
 
-                    MedicalHistory selectedMedicalRecords = patient.getMedicalHistoryDirectory().getMh().stream()
-                            .filter(mh -> mh.getId().equals(id) ).toList().get(0);
-
-                    txtName.setText(doctorName);
-                    txtPrescription.setText(prescription);
-                    SymptomTextArea.setText(symptom);
-                    instructionTextArea.setText(instruction);
-
-                    txtRecoverDays.setText(String.valueOf(selectedMedicalRecords.getRecoverDays()));
+                    txtName.setText(medicalHistory.getDoctor().getName());
+                    txtPrescription.setText(medicalHistory.getPrescription().getName());
+                    txtRecoverDays.setText(String.valueOf(medicalHistory.getRecoverDays()));
+                    SymptomTextArea.setText(medicalHistory.getSymptom());
+                    instructionTextArea.setText(medicalHistory.getInstruction());
                 }
             }
         });
@@ -65,7 +57,7 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
       this.patient.getMedicalHistoryDirectory().getMh().forEach((mh) -> {
           Object[] row = new Object[6];
 
-          row[0] = mh.getId();
+          row[0] = mh;
           row[1] = mh.getDoctor().getName();
           row[2] = mh.getSymptom();
           row[3] = mh.getInstruction();
@@ -125,7 +117,7 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

@@ -51,45 +51,39 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
         tblAppointment.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-            int row = tblAppointment.getSelectedRow(); // 获取所点选行的索引
-            DefaultTableModel model = (DefaultTableModel) tblAppointment.getModel(); //Have the access to the table;
+                int row = tblAppointment.getSelectedRow(); // 获取所点选行的索引
+                DefaultTableModel model = (DefaultTableModel) tblAppointment.getModel(); //Have the access to the table;
 
-            if(row != -1) { // 如果行已被选择
-                String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
+                if(row != -1) { // 如果行已被选择
+                    Appointment appointment = (Appointment) model.getValueAt(row, 0); // 获取所选行的第1列值
+                    selectedAppointment = appointment;
+                    selectedPatient = appointment.getPatient();
+                    txtName.setText(appointment.getPatient().getName());
+                    txtPatientId.setText(String.valueOf(appointment.getPatient().getId()));
+                    txtAge.setText(appointment.getPatient().getAge());
+                    txtGender.setText(appointment.getPatient().getGender());
+                    txtAllergy.setText(appointment.getPatient().getAllergy());
+                    txtInsurance.setText(appointment.getPatient().getInsurance());
+                    symptomTextArea.setText(appointment.getSymptom());
 
-                for (Appointment appointment : doctor.getAppointmentList()){
+                    ((DefaultTableModel) tblPastMedicalRecords.getModel()).setRowCount(0);
+                    ((DefaultTableModel) tblPrescription.getModel()).setRowCount(0);
+                    ((DefaultTableModel) tblResult.getModel()).setRowCount(0);
 
-                    if (id.equals(appointment.getId())){
-                        selectedAppointment = appointment;
-                        selectedPatient = appointment.getPatient();
-                        txtName.setText(appointment.getPatient().getName());
-                        txtPatientId.setText(String.valueOf(appointment.getPatient().getId()));
-                        txtAge.setText(appointment.getPatient().getAge());
-                        txtGender.setText(appointment.getPatient().getGender());
-                        txtAllergy.setText(appointment.getPatient().getAllergy());
-                        txtInsurance.setText(appointment.getPatient().getInsurance());
-                        symptomTextArea.setText(appointment.getSymptom());
-
-                        ((DefaultTableModel) tblPastMedicalRecords.getModel()).setRowCount(0);
-                        ((DefaultTableModel) tblPrescription.getModel()).setRowCount(0);
-                        ((DefaultTableModel) tblResult.getModel()).setRowCount(0);
-
-                        //someone's medical history
-                        populateMedicalRecords(appointment.getPatient().getMedicalHistoryDirectory().getMh());
-                    }
+                    //someone's medical history
+                    populateMedicalRecords(appointment.getPatient().getMedicalHistoryDirectory().getMh());
                 }
-            }
             }
         });
 
         tblPastMedicalRecords.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-            int row = tblPastMedicalRecords.getSelectedRow(); // 获取所点选行的索引
-            DefaultTableModel model = (DefaultTableModel) tblPastMedicalRecords.getModel(); //Have the access to the table;
+                int row = tblPastMedicalRecords.getSelectedRow(); // 获取所点选行的索引
+                DefaultTableModel model = (DefaultTableModel) tblPastMedicalRecords.getModel(); //Have the access to the table;
 
-            if(row != -1) { // 如果行已被选择
-//                populatePrescription( selectedAppointment.getPrescription().getDrugList());
-            }
+                if(row != -1) { // 如果行已被选择
+    //                populatePrescription( selectedAppointment.getPrescription().getDrugList());
+                }
             }
         });
 
@@ -117,7 +111,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
         for (Appointment appointment : doctor.getAppointmentList()) {
             Object[] row = new Object[4];
-            row[0] = appointment.getId();
+            row[0] = appointment;
             row[1] = appointment.getPatient().getName();
             row[2] = appointment.getPatient().getId();
             row[3] = appointment.getPatient().getInsurance();
@@ -134,7 +128,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
         medicalHistoryList.forEach(medicalHistory -> {
             Object[] row1 = new Object[4];
-            row1[0] = medicalHistory.getId();
+            row1[0] = medicalHistory;
             row1[1] = medicalHistory.getSymptom();
             row1[2] = medicalHistory.getInstruction();
             row1[3] = medicalHistory.getDoctor().getDepartment();

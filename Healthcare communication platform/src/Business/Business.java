@@ -187,7 +187,7 @@ public class Business {
         BioSupplier bs1_ = new BioSupplier("Mike", "", "BioSupplier 1");
         bs1_.addRequest(request);
 
-        BioSupplier bs2_ = new BioSupplier("Jackson", "", "BioSupplier 1");
+        BioSupplier bs2_ = new BioSupplier("Jackson", "", "BioSupplier 2");
         
         //set inventory
         b1.getHi().setMedicineDirectory(medicineDirectory);

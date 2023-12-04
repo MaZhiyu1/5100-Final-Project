@@ -19,7 +19,7 @@ public class RearServices {
     String id;
     String pwd;
     Hospital hospital;
-    ArrayList<Request> request;
+//    ArrayList<Request> request;
     ArrayList<Order> orders;
     int enabled;
 
@@ -29,7 +29,7 @@ public class RearServices {
         this.pwd = pwd;
         this.hospital = hospital;
         this.enabled = 0;
-        request = new ArrayList<>();
+//        request = new ArrayList<>();
         orders = new ArrayList<>();
     }
 
@@ -74,11 +74,7 @@ public class RearServices {
     }
 
     public ArrayList<Request> getRequest() {
-        return request;
-    }
-
-    public void setRequest(ArrayList<Request> request) {
-        this.request = request;
+        return this.hospital.getRequestList();
     }
 
     public ArrayList<Order> getOrders() {
