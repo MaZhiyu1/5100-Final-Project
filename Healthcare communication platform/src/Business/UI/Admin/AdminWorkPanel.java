@@ -4,6 +4,10 @@
  */
 package Business.UI.Admin;
 
+import Business.Business;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author 15469
@@ -13,8 +17,12 @@ public class AdminWorkPanel extends javax.swing.JPanel {
     /**
      * Creates new form AdminWorkPanel
      */
-    public AdminWorkPanel() {
+    Business bz;
+    JPanel rightPanel;
+    public AdminWorkPanel(Business bz,JPanel rightPanel) {
         initComponents();
+        this.bz=bz;
+        this.rightPanel=rightPanel;
     }
 
     /**
@@ -32,12 +40,17 @@ public class AdminWorkPanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
 
         jButton1.setText("Manage Hospital");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Manage Biotech");
 
         jButton3.setText("Manage Medical Supplier");
 
-        jButton4.setText("Manage Medical Analysis");
+        jButton4.setText("Manage Delivery");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -45,16 +58,14 @@ public class AdminWorkPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(30, 30, 30)
-                        .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton4))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,6 +81,14 @@ public class AdminWorkPanel extends javax.swing.JPanel {
                 .addContainerGap(166, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ManageHospitalPanel mh = new ManageHospitalPanel(bz,rightPanel);
+        rightPanel.add("LoginScreen",mh);
+        CardLayout layout = (CardLayout) rightPanel.getLayout();
+        layout.next(rightPanel);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
