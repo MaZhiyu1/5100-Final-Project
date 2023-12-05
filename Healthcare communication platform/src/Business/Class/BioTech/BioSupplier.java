@@ -18,7 +18,7 @@ public class BioSupplier {
     String id;
     ArrayList<Request> request;
     ArrayList<Order> orders;
-
+    int enable=0;
     public BioSupplier(String name, String pwd, String id) {
         this.name = name;
         this.pwd = pwd;
@@ -27,6 +27,17 @@ public class BioSupplier {
         orders= new ArrayList<>();
     }
 
+    public int getEnable() {
+        return enable;
+    }
+
+    public void setEnable(int enable) {
+        this.enable = enable;
+    }
+
+    
+    
+    
     public String getName() {
         return name;
     }

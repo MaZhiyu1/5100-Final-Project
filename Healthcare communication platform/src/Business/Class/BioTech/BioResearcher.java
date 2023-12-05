@@ -18,7 +18,9 @@ public class BioResearcher {
     private String pwd;
     private String id;
     private String BioTech;
-
+    int enable=0;
+    
+    
     public BioResearcher(Person person, String pwd, String id, String BioTech) {
         this.master = person;
         this.pwd = pwd;
@@ -31,6 +33,16 @@ public class BioResearcher {
         labs.add(lab);
     }
 
+    public int getEnable() {
+        return enable;
+    }
+
+    public void setEnable(int enable) {
+        this.enable = enable;
+    }
+
+    
+    
     @Override
     public String toString() {
         return id ;
