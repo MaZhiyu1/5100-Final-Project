@@ -147,6 +147,27 @@ public class Business {
         medicalSuppliers.add(ms);
     }
     
+        public void MedicalSupplier2(){
+        ms = new  MedicalSupplier("HealGear Manufacturing");
+        Equipment e1 = new Equipment("Anti-Heart Disease", "For Use", "Internal Medicine");
+        
+        Equipment equipment = new Equipment("EB-A1",  "Pediatrics", "For Child");
+ 
+        Equipment equipment1 = new Equipment("EB-B1",  "Internal Medicine","For Internal" );
+
+        Equipment equipment2 = new Equipment("EB-C1", "Surgery", "Surgery");
+
+
+        BioSupplier bs = new BioSupplier( "Lucy","", "MedTech Supplier");
+        ms.addBioSupplier(bs);
+        ms.addEquipment(e1);
+        ms.addEquipment(equipment);
+        ms.addEquipment(equipment1);
+        ms.addEquipment(equipment2);
+        
+        medicalSuppliers.add(ms);
+    }
+    
 
     public void BioTechCom1(){
         Medicine new_m = new Medicine("New Medicine", "Heart Disease", "Internal Medicine");
