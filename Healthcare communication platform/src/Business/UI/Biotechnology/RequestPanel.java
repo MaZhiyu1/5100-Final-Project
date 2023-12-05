@@ -108,10 +108,11 @@ public class RequestPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         if(selected.getMedicines()==null) return;
  
-            Object row1[] = new Object[3];
+            Object row1[] = new Object[4];
             row1[0] = selected.getMedicines();
             row1[1] = selected.getMedicines().getType();
-            row1[2] = selected.getMedicines().getQuantity();
+            row1[2] = selected.getMedicines().getName();
+            row1[3] = selected.getMedicines().getQuantity();
            // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
             model.addRow(row1);
         
@@ -122,10 +123,11 @@ public class RequestPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         if(selected.getType()==null) return;
 
-            Object row1[] = new Object[3];
+            Object row1[] = new Object[4];
             row1[0] = selected.getVaccines();
             row1[1] = selected.getVaccines().getType();
-            row1[2] = selected.getVaccines().getQuantity();
+            row1[2] = selected.getVaccines().getName();
+            row1[3] = selected.getVaccines().getQuantity();
            // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
             model.addRow(row1);
         
@@ -229,13 +231,13 @@ public class RequestPanel extends javax.swing.JPanel {
 
         tblMedicine.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Type", "Quantity"
+                "ID", "Type", "Name", "Quantity"
             }
         ));
         tblMedicine.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -247,13 +249,13 @@ public class RequestPanel extends javax.swing.JPanel {
 
         tblVaccine.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Type", "Quantity"
+                "ID", "Type", "Name", "Quantity"
             }
         ));
         tblVaccine.addMouseListener(new java.awt.event.MouseAdapter() {
