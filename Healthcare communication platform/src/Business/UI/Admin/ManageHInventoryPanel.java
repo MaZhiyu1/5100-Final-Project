@@ -263,7 +263,7 @@ public class ManageHInventoryPanel extends javax.swing.JPanel {
                 h1=h;
             }
         }
-        medicines=h1.getHi().getMedicineDirectory().getDrugs();
+        medicines=h1.getHi().getMedicineDirectory().getMedicines();
         vaccines=h1.getHi().getVaccineDirectory().getVaccines();
     }//GEN-LAST:event_hoComboxActionPerformed
 

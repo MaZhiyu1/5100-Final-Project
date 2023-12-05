@@ -176,6 +176,11 @@ public class Report {
 //        System.out.println("The Lab number of hospital:"+ labNum2);
 //        System.out.println("The Lab Completion of hospital:"+ completed2);
 //             
+
+        System.out.println("The most welcome hospital for patient:");
+        System.out.println("As a patient, you should choose hospital:");
+        System.out.println("As a doctor, you have more chance working in lab in:");
+        System.out.println("The hospital is more welcome to Bio-Tech Company because it has most lab completed:");
     }
     
     
@@ -265,7 +270,10 @@ public class Report {
 //        System.out.println("Lab Number "+ labNum1);
 //        System.out.println("Lab Completion "+ labCom1);
         
-        
+        System.out.println("The most populate because it has most labs:");
+        System.out.println("The Bio-Tech Company is more welcome to Bio-Tech Company because it has the most orders:");
+
+
     }
     
     
@@ -320,6 +328,10 @@ public class Report {
             System.out.println("Order number "+orderNum1);
             System.out.println("Order Completetion number "+orderCompleted1);
             System.out.println("Order Cancelled number "+orderCancelled1);
+            
+            
+        System.out.println("The Company is bad because it has the most cancelled order:" );
+        System.out.println("The Company is popular because it has the most order:");
 
         }
         
