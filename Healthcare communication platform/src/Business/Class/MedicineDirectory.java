@@ -18,15 +18,15 @@ public class MedicineDirectory {
         this.medicines = new ArrayList<>();
     }
 
-    public ArrayList<Medicine> getDrugs() {
+    public ArrayList<Medicine> getMedicines() {
         return medicines;
     }
 
-    public void setDrugs(ArrayList<Medicine> medicines) {
+    public void setMedicines(ArrayList<Medicine> medicines) {
         this.medicines = medicines;
     }
     
-    public void addDrugs(Medicine e){
+    public void addMedicine(Medicine e){
         medicines.add(e);
     }
     

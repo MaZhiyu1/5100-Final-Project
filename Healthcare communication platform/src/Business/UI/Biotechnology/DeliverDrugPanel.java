@@ -45,7 +45,7 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
         for(BioTechCom bt : bz.getBioTech()){
             if(bt.getName().equals(bioTech)){
                 btc = bt;
-                if(bt.getHi().getMedicineDirectory().getDrugs()!=null) medicines=bt.getHi().getMedicineDirectory().getDrugs();
+                if(bt.getHi().getMedicineDirectory().getMedicines()!=null) medicines=bt.getHi().getMedicineDirectory().getMedicines();
                 
                 if(bt.getHi().getVaccineDirectory().getVaccines()!=null) vaccines=bt.getHi().getVaccineDirectory().getVaccines();
             }

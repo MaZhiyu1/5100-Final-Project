@@ -18,8 +18,13 @@ public class Medicine extends Drug{
         setType("Medicine");
     }
 
-    public Medicine(String name, String id, String description, String category) {
-        super(id, name, description, category);
+    public Medicine(String name, String description, String category) {
+        super(name, description, category);
         setType("Medicine");
+    }
+
+    @Override
+    public String toString() {
+        return getId();
     }
 }

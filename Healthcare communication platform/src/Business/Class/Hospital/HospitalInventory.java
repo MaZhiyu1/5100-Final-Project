@@ -56,14 +56,14 @@ public class HospitalInventory {
         vaccineDirectory.addVaccine(e);
     }
     
-    public void addMedicine(Medicine e){
-        for(Medicine m : medicineDirectory.getDrugs()){
-            if(m.getId().equals(e.getId()) && m.getType().equals(e.getType())){
-                m.setQuantity(m.getQuantity() + e.getQuantity());
+    public void addMedicine(Medicine medicine){
+        for(Medicine m : medicineDirectory.getMedicines()){
+            if(m.getId().equals(medicine.getId()) && m.getType().equals(medicine.getType())){
+                m.setQuantity(m.getQuantity() + medicine.getQuantity());
                 return;
             }
         }
-        medicineDirectory.addDrugs(e);
+        medicineDirectory.addMedicine(medicine);
     }
     
     public void addEquipment(Equipment e){
@@ -89,7 +89,7 @@ public class HospitalInventory {
     }
     
     public int deleteMedicine(Medicine e){
-        for(Medicine m : medicineDirectory.getDrugs()){
+        for(Medicine m : medicineDirectory.getMedicines()){
             if(m.getId()==e.getId()&&m.getType().equals(e.getType())){
                  if(m.getQuantity()-e.getQuantity()<0) return -1;
                 m.setQuantity(m.getQuantity()-e.getQuantity());
@@ -104,7 +104,7 @@ public class HospitalInventory {
     }
 
     public void setMedicineDirectory(ArrayList<Medicine> medicines) {
-        medicineDirectory.setDrugs(medicines);
+        medicineDirectory.setMedicines(medicines);
     }
     
 

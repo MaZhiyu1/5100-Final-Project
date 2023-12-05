@@ -38,7 +38,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         this.doctor = doctor;
         this.RightPanel=RightPanel;
         vaccineList = doctor.getHospital().getHi().getVaccineDirectory().getVaccines();
-        drugList = doctor.getHospital().getHi().getMedicineDirectory().getDrugs();
+        drugList = doctor.getHospital().getHi().getMedicineDirectory().getMedicines();
 
         tblPrescription.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -253,8 +253,8 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         String  type = (String)cmbSelectGenre.getSelectedItem();
         String name = txtSearchGenre.getText();
 
-        if(type.equals("Medicine")){
-            ArrayList<Medicine> allList = doctor.getHospital().getHospitalInventory().getMedicineDirectory().getDrugs();
+        if("Medicine".equals(type)){
+            ArrayList<Medicine> allList = doctor.getHospital().getHospitalInventory().getMedicineDirectory().getMedicines();
 
             ArrayList<Medicine> medicineArrayList = new ArrayList<>();
 
@@ -271,7 +271,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
 
             populatePrescription(medicineArrayList);
         }
-        else if(type.equals("Vaccine")){
+        else if("Vaccine".equals(type)){
             ArrayList<Vaccine> allList = doctor.getHospital().getHospitalInventory().getVaccineDirectory().getVaccines();
 
             ArrayList<Vaccine> vaccineList = new ArrayList<>();
@@ -288,7 +288,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
             }
             populatePrescription(vaccineList);
         }
-        else if(type.equals("Equipment")){
+        else if("Equipment".equals(type)){
             ArrayList<Equipment> allList = doctor.getHospital().getHospitalInventory().getEquipmentDirectory().getEquipments();
 
             ArrayList<Equipment> equipmentList = new ArrayList<>();
@@ -306,7 +306,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
 
             populatePrescription(equipmentList);
         }
-        else if(type.equals("Operation")){
+        else if("Operation".equals(type)){
             ArrayList<Operation> allList = doctor.getHospital().getHospitalInventory().getOperationDirectory().getOperations();
             ArrayList<Operation> operationArrayList = new ArrayList<>();
 
@@ -323,7 +323,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
 
             populatePrescription(operationArrayList);
         }
-        else if(type.equals("Transfer")){
+        else if("Transfer".equals(type)){
             ArrayList<Transfer> allList = doctor.getHospital().getHospitalInventory().getTransferDirectory().getTransfers();
             ArrayList<Transfer> transferArrayList = new ArrayList<>();
 

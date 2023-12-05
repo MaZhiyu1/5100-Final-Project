@@ -31,8 +31,8 @@ public class Drug {
         this.quantity = quantity;
     }
 
-    public Drug(String id, String name,String description,String category) {
-        this.id = id;
+    public Drug(String name,String description,String category) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.description = description;
         this.category = category;

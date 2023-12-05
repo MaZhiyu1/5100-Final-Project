@@ -101,14 +101,8 @@ public class Validation {
         }
         System.out.print("It is null!");
         return null;
-    
-    
     }
-    
-    
-    
-    
-    
+
     public Object IsValidationHospital(String hospitalName,String username,String pwd,String type){
         if(type.equals("Patient")){
             for(Patient p : bz.getPatients()){
@@ -150,11 +144,5 @@ public class Validation {
         System.out.print("It is null!");
         return null;
     }
-    
-    
-    
-    
-    
-    
-    
+
 }

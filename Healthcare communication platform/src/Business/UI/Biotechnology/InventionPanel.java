@@ -56,7 +56,6 @@ public class InventionPanel extends javax.swing.JPanel {
         }
         if(h1==null) return;
         refreshTable(h1);
-        
     }
 
     
@@ -66,7 +65,7 @@ public class InventionPanel extends javax.swing.JPanel {
 
         if(br.getLabs()==null) return;
         for(Lab s : br.getLabs()) {
-            Object row[] = new Object[8];
+            Object[] row = new Object[8];
             row[0] = s;
             row[1] = s.getProjectName();
             row[2] = s.getType();
@@ -453,12 +452,12 @@ public class InventionPanel extends javax.swing.JPanel {
         }
         
         Lab lab2 = new Lab(br.getMaster(), department, project,type,instruction);
-        if(type.equals("Medicine")){
-            Medicine me = new Medicine(project,project+"-invention" ,  instruction,department);
+        if("Medicine".equals(type)){
+            Medicine me = new Medicine(project, project+"-invention" ,  instruction);
             lab2.setMedicine(me);
         }
-        if(type.equals("Vaccine")){
-            Vaccine va = new Vaccine(project,project+"-invention" ,  instruction,department);
+        if("Vaccine".equals(type)){
+            Vaccine va = new Vaccine(project, project+"-invention" ,  instruction);
             lab2.setVaccine(va);
         }
         lab2.setCompany(bs1);
