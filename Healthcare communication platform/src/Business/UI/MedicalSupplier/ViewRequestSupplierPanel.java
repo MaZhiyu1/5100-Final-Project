@@ -92,6 +92,19 @@ public class ViewRequestSupplierPanel extends javax.swing.JPanel {
         }
     }
     
+    public void refreshTable2(Equipment e) {
+        DefaultTableModel model = (DefaultTableModel)tblEquipment.getModel();
+        model.setRowCount(0);
+        if(e==null) return;
+
+            Object row[] = new Object[3];
+            row[0] = e;
+            row[1] = e.getType();
+            row[2] = e.getName();
+           // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
+            model.addRow(row);
+
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -136,6 +149,11 @@ public class ViewRequestSupplierPanel extends javax.swing.JPanel {
                 "ID", "Type", "Description", "Status"
             }
         ));
+        tblRequest.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblRequestMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblRequest);
 
         jLabel1.setText("Description");
@@ -310,6 +328,19 @@ public class ViewRequestSupplierPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) RightPanel.getLayout();
         layout.previous(RightPanel);
     }//GEN-LAST:event_btnBack2ActionPerformed
+
+    private void tblRequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRequestMouseClicked
+        // TODO add your handling code here:
+        int row = tblRequest.getSelectedRow();
+        if(row<0){
+            JOptionPane.showMessageDialog(null,"Please select a row from the table first", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        Request selected = (Request) tblRequest.getValueAt(row, 0);
+        refreshTable2(selected.getEquipments());
+        DescriptionTextArea.setText(selected.getTips());
+        
+    }//GEN-LAST:event_tblRequestMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
