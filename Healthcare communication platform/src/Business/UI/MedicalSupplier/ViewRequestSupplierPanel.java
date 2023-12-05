@@ -9,6 +9,7 @@ import Business.Class.BioTech.BioSupplier;
 import Business.Class.Delivery.Order;
 import Business.Class.Equipment;
 import Business.Class.Hospital.Request;
+import Business.Class.MedicalSupplier.MedicalSupplier;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -29,12 +30,18 @@ public class ViewRequestSupplierPanel extends javax.swing.JPanel {
     Business b;
     BioSupplier bs;
     String company;
+    MedicalSupplier ms=null;
     public ViewRequestSupplierPanel(JPanel RightPanel,Business b,BioSupplier bs,String company) {
         initComponents();
         this.RightPanel=  RightPanel;
         this.b=b;
         this.bs = bs;
         this.company=company;
+        for(MedicalSupplier m : b.getMedicalSupplier()){
+            if(m.getName().equals(company)){
+                ms=m;
+            }
+        }
         refreshTable();
         refreshTable1();
         DefaultTableModel model = (DefaultTableModel)tblEquipment.getModel();
@@ -44,8 +51,8 @@ public class ViewRequestSupplierPanel extends javax.swing.JPanel {
     public void refreshTable() {
         DefaultTableModel model = (DefaultTableModel)tblRequest.getModel();
         model.setRowCount(0);
-        if(bs.getRequest()==null) return;
-        for(Request s : bs.getRequest()) {
+        if(ms.getRequest()==null) return;
+        for(Request s : ms.getRequest()) {
             Object row[] = new Object[4];
             row[0] = s;
             row[1] = s.getType();
