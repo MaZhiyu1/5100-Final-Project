@@ -51,12 +51,15 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
                 DefaultTableModel model = (DefaultTableModel) tblPrescription.getModel(); //Have the access to the table;
 
                 if(row != -1) { // 如果行已被选择
+                    if(model.getValueAt(row, 0) instanceof String){
                     String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
 
                     selectedDrug = drugList.stream().filter(drug -> drug.getId().equals(id)).findFirst().get();
 
                     txtName.setText(selectedDrug.getName());
                     txtQuantity.setText("1");
+                    }
+
                 }
             }
         });
