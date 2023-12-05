@@ -54,6 +54,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         initTblAppointment();
         medicines = doctor.getHospital().getHi().getMedicineDirectory().getMedicines();
         vaccines = doctor.getHospital().getHi().getVaccineDirectory().getVaccines();
+        equipments = doctor.getHospital().getHi().getEquipmentDirectory().getEquipments();
         tblAppointment.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 int row = tblAppointment.getSelectedRow(); // 获取所点选行的索引
@@ -309,10 +310,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
         tblResult.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID:", "Name", "Type", "Instruction", "quantity"
@@ -529,7 +527,10 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         if (!validateAddAction()){
             return;
         }
-        selectedDrug.setQuantity(selectedDrug.getQuantity() - Integer.parseInt(txtMedicalQuantity.getText()));
+        if(!"Equipment".equals(selectedDrug.getType())){
+            selectedDrug.setQuantity(selectedDrug.getQuantity() - Integer.parseInt(txtMedicalQuantity.getText()));
+        }
+
         DefaultTableModel model1 = (DefaultTableModel)tblResult.getModel();
         Object[] row1 = new Object[5];
 
@@ -568,6 +569,23 @@ public class OutpatientJPanel extends javax.swing.JPanel {
             selectedDrugList.add(vaccine);
 
             populatePrescription(vaccines);
+        }else if(Objects.equals(cmbSelectGenre.getSelectedItem(), "Equipment")){
+
+            Drug equipment = new Equipment(selectedDrug.getName(), selectedDrug.getDescription(), selectedDrug.getCategory());
+            equipment.setInstruction(selectedDrug.getInstruction());
+            equipment.setQuantity(Integer.parseInt(txtMedicalQuantity.getText()));
+            equipment.setType(selectedDrug.getType());
+            equipment.setStatus(selectedDrug.getStatus());
+
+            row1[0] = equipment;
+            row1[1] = equipment.getName();
+            row1[2] = equipment.getType();
+            row1[3] = equipment.getInstruction();
+            row1[4] = equipment.getQuantity();
+            model1.addRow(row1);
+            selectedDrugList.add(equipment);
+
+            populatePrescription(equipments);
         }
 
     }//GEN-LAST:event_btnAddActionPerformed
@@ -655,7 +673,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
             populatePrescription(equipments);
         }
 
-    }//GEN-LAST:event_btnSearchGenreActionPerformed
+    }                                              
 
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
@@ -735,6 +753,8 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         }
         else if("Vaccine".equals(type)){
             populatePrescription(vaccines);
+        }else if("Equipment".equals(type)){
+            populatePrescription(equipments);
         }
     }//GEN-LAST:event_cmbSelectGenreActionPerformed
 
