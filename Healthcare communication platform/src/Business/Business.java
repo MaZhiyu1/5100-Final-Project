@@ -63,6 +63,8 @@ public class Business {
         BioTechCom1();
         MedicalSupplier1();
         Delivery1();
+        Hospital2();
+        Hospital3();
         
     }
 
@@ -127,9 +129,20 @@ public class Business {
     public void MedicalSupplier1(){
         ms = new  MedicalSupplier("MedTech Innovators");
         Equipment e1 = new Equipment("Anti-Heart Disease", "For Use", "Internal Medicine");
+        
+        Equipment equipment = new Equipment("E-A1",  "Pediatrics", "For Child");
+ 
+        Equipment equipment1 = new Equipment("E-B1",  "Internal Medicine","For Internal" );
+
+        Equipment equipment2 = new Equipment("E-C1", "Surgery", "Surgery");
+
+
         BioSupplier bs = new BioSupplier( "Finka","", "MedTech Supplier");
         ms.addBioSupplier(bs);
         ms.addEquipment(e1);
+        ms.addEquipment(equipment);
+        ms.addEquipment(equipment1);
+        ms.addEquipment(equipment2);
         
         medicalSuppliers.add(ms);
     }
@@ -261,6 +274,185 @@ public class Business {
         mh1.setDoctor(doctor1);
         mh2.setDoctor(doctor2);
         
+        MedicalHistory mh3 = new MedicalHistory("Jam‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
+        MedicalHistory mh4 = new MedicalHistory("Jam‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
+        mh3.setRecoverDays(50);
+        mh4.setRecoverDays(3);
+
+
+        MedicalHistoryDirectory mhl2 = new MedicalHistoryDirectory(2,"Jam");
+        mhl2.addHistory(mh4);
+        mhl2.addHistory(mh3);
+        mh3.setDoctor(doctor3);
+        mh4.setDoctor(doctor2);
+        
+        
+        
+        Patient patient1 = new Patient(1, "Oliver", "Aa12345678");
+        patient1.setMedicalHistoryDirectory(mhl1);
+        patient1.setEnabled(1);
+        patient1.setAge(12);
+        patient1.setAllergy("No");
+        patient1.setInsurance("Blue Cross");
+
+        Patient patient2 = new Patient(2, "Jam", "Aa12345678");
+        patient2.setMedicalHistoryDirectory(mhl2);
+        patient2.setEnabled(1);
+        patient2.setAge(22);
+        
+        Patient patient3 = new Patient(3, "Lex", "Aa12345678");
+        patient3.setEnabled(1);
+        patient3.setAge(42);
+        
+        Patient patient4 = new Patient(4, "Noah", "Aa12345678");
+        patient4.setEnabled(1);
+        patient4.setAge(42);
+        
+        Patient patient5 = new Patient(5, "Nancy", "Aa12345678");
+        patient5.setEnabled(1);
+        patient5.setAge(42);
+        
+        Patient patient6 = new Patient(6, "Peter", "Aa12345678");
+        patient6.setEnabled(1);
+        patient6.setAge(42);
+        
+        
+        Appointment a = new Appointment(patient1,doctor1);
+        Appointment a1 = new Appointment(patient2,doctor2);
+        Appointment a2 = new Appointment(patient3,doctor3);
+        ArrayList<Appointment> APPO = new ArrayList<>();
+        APPO.add(a);
+        APPO.add(a1);
+        APPO.add(a2);
+
+        Medicine medicine = new Medicine("M-A1", "For Child", "Pediatrics");
+        medicine.setQuantity(10);
+        medicine.setInstruction("Take 2 pills per day");
+        Medicine medicine1 = new Medicine("M-B1",  "For Internal", "Internal Medicine");
+        medicine1.setQuantity(10);
+        medicine1.setInstruction("Take 3 pills per day");
+        Medicine medicine2 = new Medicine("M-C1",  "Surgery", "Surgery");
+        medicine2.setQuantity(10);
+        medicine2.setInstruction("Take 1 pill per day");
+        ArrayList<Medicine> medicineDirectory = new ArrayList<>();
+
+        medicineDirectory.add(medicine);
+        medicineDirectory.add(medicine1);
+        medicineDirectory.add(medicine2);
+        
+        Vaccine vaccine = new Vaccine("V-A1",  "For Child", "Pediatrics");
+        vaccine.setQuantity(10);
+        vaccine.setInstruction("only for child");
+        Vaccine vaccine1 = new Vaccine("V-B1",  "For Internal", "Internal Medicine");
+        vaccine1.setQuantity(10);
+        vaccine1.setInstruction("For Internal");
+        Vaccine vaccine2 = new Vaccine("V-C1", "Surgery", "Surgery");
+        vaccine2.setQuantity(10);
+        vaccine2.setInstruction("For Surgery");
+        ArrayList<Vaccine> vaccineDirectory = new ArrayList<>();
+
+        vaccineDirectory.add(vaccine);
+        vaccineDirectory.add(vaccine1);
+        vaccineDirectory.add(vaccine2);
+        
+        Equipment equipment = new Equipment("E-A1",  "Pediatrics", "For Child");
+        equipment.setQuantity(10);
+        Equipment equipment1 = new Equipment("E-B1",  "Internal Medicine","For Internal" );
+        equipment1.setQuantity(10);
+        Equipment equipment2 = new Equipment("E-C1", "Surgery", "Surgery");
+        equipment2.setQuantity(10);
+        ArrayList<Equipment> equipmentDirectory = new ArrayList<>();
+
+        equipmentDirectory.add(equipment);
+        equipmentDirectory.add(equipment1);
+        equipmentDirectory.add(equipment2);
+
+        Prescription prescription = new Prescription("prescription for server fever",Arrays.asList(medicine, vaccine, equipment));
+        mh1.setPrescription(prescription);
+
+        Prescription prescription1 = new Prescription("prescription for server headache",Arrays.asList(medicine1, vaccine1, equipment1));
+        mh2.setPrescription(prescription1);
+        
+        Prescription prescription2 = new Prescription("prescription for server fever",Arrays.asList(medicine, vaccine, equipment));
+        mh3.setPrescription(prescription2);
+
+        Prescription prescription3 = new Prescription("prescription for server headache",Arrays.asList(medicine1, vaccine1, equipment1));
+        mh4.setPrescription(prescription3);
+
+        h1.addRearService(rs);
+        
+        h1.addDoctor(doctor1);
+        h1.addDoctor(doctor2);
+        h1.addDoctor(doctor3);
+        
+        h1.addPatient(patient1);
+        h1.addPatient(patient2);
+        h1.addPatient(patient3);
+        
+        h1.getHa().setAppointments(APPO);
+        h1.getHospitalInventory().setMedicineDirectory(medicineDirectory);
+        h1.getHospitalInventory().setVaccineDirectory(vaccineDirectory);
+        h1.getHospitalInventory().setEd(equipmentDirectory);
+        
+        patients.add(patient1);
+        patients.add(patient2);
+        patients.add(patient3);
+        hospitals.add(h1);
+    }
+    
+    
+    //"", "" }));
+
+// Code adding the component to the parent container - not shown here
+
+    public void Hospital2() {
+        h1 = new Hospital("Future Medical Institute","");
+        
+        RearServices rs = new RearServices("Jing", "BioGen 1", "Aa12345678", h1 );
+        //后勤
+        
+        Doctor doctor1 = new Doctor(1,"Jimy","Aa12345678", "male", h1);
+        doctor1.setEnabled(1);
+        doctor1.setSpecialty("Surgery");
+        doctor1.setType("Surgery");
+        doctor1.setAvail(5);
+        doctor1.setAge(30);
+        doctor1.setEductionBackground("doctor");
+        doctor1.setContact("6666666");
+        doctor1.setDepartment("Surgery");
+        
+        Doctor doctor2 = new Doctor(2,"Alexy","Aa12345678", "female", h1);
+        doctor2.setEnabled(1);
+        doctor2.setSpecialty("Pediatrics");
+        doctor2.setType("Pediatrics");
+        doctor2.setAvail(12);
+        doctor2.setAge(33);
+        doctor2.setEductionBackground("master");
+        doctor2.setContact("7777777");
+        doctor2.setDepartment("Pediatrics");
+        
+        Doctor doctor3 = new Doctor(3,"Franky","Aa12345678", "male",h1);
+        doctor3.setEnabled(1);
+        doctor3.setSpecialty("Internal Medicine");
+        doctor3.setType("Internal Medicine");
+        doctor3.setAvail(10);
+        doctor3.setAge(50);
+        doctor3.setEductionBackground("tutor");
+        doctor3.setContact("8888888");
+        doctor3.setDepartment("Internal Medicine");
+        
+        MedicalHistory mh1 = new MedicalHistory("Oliver‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
+        MedicalHistory mh2 = new MedicalHistory("Oliver‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
+        mh1.setRecoverDays(5);
+        mh2.setRecoverDays(3);
+
+
+        MedicalHistoryDirectory mhl1 = new MedicalHistoryDirectory(1,"Oliver");
+        mhl1.addHistory(mh2);
+        mhl1.addHistory(mh1);
+        mh1.setDoctor(doctor1);
+        mh2.setDoctor(doctor2);
+        
         Patient patient1 = new Patient(1, "Oliver", "Aa12345678");
         patient1.setMedicalHistoryDirectory(mhl1);
         patient1.setEnabled(1);
@@ -352,6 +544,142 @@ public class Business {
         hospitals.add(h1);
     }
     
-    
-    
+    public void Hospital3() {
+        h1 = new Hospital("Verdant Health Hospital","");
+        
+        RearServices rs = new RearServices("Ji", "BioGen 1", "Aa12345678", h1 );
+        //后勤
+        
+        Doctor doctor1 = new Doctor(1,"Ji","Aa12345678", "male", h1);
+        doctor1.setEnabled(1);
+        doctor1.setSpecialty("Surgery");
+        doctor1.setType("Surgery");
+        doctor1.setAvail(5);
+        doctor1.setAge(30);
+        doctor1.setEductionBackground("doctor");
+        doctor1.setContact("6666666");
+        doctor1.setDepartment("Surgery");
+        
+        Doctor doctor2 = new Doctor(2,"Ale","Aa12345678", "female", h1);
+        doctor2.setEnabled(1);
+        doctor2.setSpecialty("Pediatrics");
+        doctor2.setType("Pediatrics");
+        doctor2.setAvail(12);
+        doctor2.setAge(33);
+        doctor2.setEductionBackground("master");
+        doctor2.setContact("7777777");
+        doctor2.setDepartment("Pediatrics");
+        
+        Doctor doctor3 = new Doctor(3,"Fran","Aa12345678", "male",h1);
+        doctor3.setEnabled(1);
+        doctor3.setSpecialty("Internal Medicine");
+        doctor3.setType("Internal Medicine");
+        doctor3.setAvail(10);
+        doctor3.setAge(50);
+        doctor3.setEductionBackground("tutor");
+        doctor3.setContact("8888888");
+        doctor3.setDepartment("Internal Medicine");
+        
+        MedicalHistory mh1 = new MedicalHistory("Oliver‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
+        MedicalHistory mh2 = new MedicalHistory("Oliver‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
+        mh1.setRecoverDays(5);
+        mh2.setRecoverDays(3);
+
+
+        MedicalHistoryDirectory mhl1 = new MedicalHistoryDirectory(1,"Oliver");
+        mhl1.addHistory(mh2);
+        mhl1.addHistory(mh1);
+        mh1.setDoctor(doctor1);
+        mh2.setDoctor(doctor2);
+        
+        Patient patient1 = new Patient(1, "Oliver", "Aa12345678");
+        patient1.setMedicalHistoryDirectory(mhl1);
+        patient1.setEnabled(1);
+        patient1.setAge(12);
+
+        Patient patient2 = new Patient(2, "Jam", "Aa12345678");
+        patient2.setEnabled(1);
+        patient2.setAge(22);
+        
+        Patient patient3 = new Patient(3, "Lex", "Aa12345678");
+        patient3.setEnabled(1);
+        patient3.setAge(42);
+        
+        
+        Appointment a = new Appointment(patient1,doctor1);
+        Appointment a1 = new Appointment(patient2,doctor2);
+        Appointment a2 = new Appointment(patient3,doctor3);
+        ArrayList<Appointment> APPO = new ArrayList<>();
+        APPO.add(a);
+        APPO.add(a1);
+        APPO.add(a2);
+
+        Medicine medicine = new Medicine("M-A1", "For Child", "Pediatrics");
+        medicine.setQuantity(10);
+        medicine.setInstruction("Take 2 pills per day");
+        Medicine medicine1 = new Medicine("M-B1",  "For Internal", "Internal Medicine");
+        medicine1.setQuantity(10);
+        medicine1.setInstruction("Take 3 pills per day");
+        Medicine medicine2 = new Medicine("M-C1",  "Surgery", "Surgery");
+        medicine2.setQuantity(10);
+        medicine2.setInstruction("Take 1 pill per day");
+        ArrayList<Medicine> medicineDirectory = new ArrayList<>();
+
+        medicineDirectory.add(medicine);
+        medicineDirectory.add(medicine1);
+        medicineDirectory.add(medicine2);
+        
+        Vaccine vaccine = new Vaccine("V-A1",  "For Child", "Pediatrics");
+        vaccine.setQuantity(10);
+        vaccine.setInstruction("only for child");
+        Vaccine vaccine1 = new Vaccine("V-B1",  "For Internal", "Internal Medicine");
+        vaccine1.setQuantity(10);
+        vaccine1.setInstruction("For Internal");
+        Vaccine vaccine2 = new Vaccine("V-C1", "Surgery", "Surgery");
+        vaccine2.setQuantity(10);
+        vaccine2.setInstruction("For Surgery");
+        ArrayList<Vaccine> vaccineDirectory = new ArrayList<>();
+
+        vaccineDirectory.add(vaccine);
+        vaccineDirectory.add(vaccine1);
+        vaccineDirectory.add(vaccine2);
+        
+        Equipment equipment = new Equipment("E-A1",  "Pediatrics", "For Child");
+        equipment.setQuantity(10);
+        Equipment equipment1 = new Equipment("E-B1",  "Internal Medicine","For Internal" );
+        equipment1.setQuantity(10);
+        Equipment equipment2 = new Equipment("E-C1", "Surgery", "Surgery");
+        equipment2.setQuantity(10);
+        ArrayList<Equipment> equipmentDirectory = new ArrayList<>();
+
+        equipmentDirectory.add(equipment);
+        equipmentDirectory.add(equipment1);
+        equipmentDirectory.add(equipment2);
+
+        Prescription prescription = new Prescription("prescription for server fever",Arrays.asList(medicine, vaccine, equipment));
+        mh1.setPrescription(prescription);
+
+        Prescription prescription1 = new Prescription("prescription for server headache",Arrays.asList(medicine1, vaccine1, equipment1));
+        mh2.setPrescription(prescription1);
+
+        h1.addRearService(rs);
+        
+        h1.addDoctor(doctor1);
+        h1.addDoctor(doctor2);
+        h1.addDoctor(doctor3);
+        
+        h1.addPatient(patient1);
+        h1.addPatient(patient2);
+        h1.addPatient(patient3);
+        
+        h1.getHa().setAppointments(APPO);
+        h1.getHospitalInventory().setMedicineDirectory(medicineDirectory);
+        h1.getHospitalInventory().setVaccineDirectory(vaccineDirectory);
+        h1.getHospitalInventory().setEd(equipmentDirectory);
+        
+        patients.add(patient1);
+        patients.add(patient2);
+        patients.add(patient3);
+        hospitals.add(h1);
+    }
 }
