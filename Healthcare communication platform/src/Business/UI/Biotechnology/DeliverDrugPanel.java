@@ -123,6 +123,7 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
         txtQuantity = new javax.swing.JTextField();
         cmbSelectGenre = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        btnBack1 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setLayout(null);
@@ -131,7 +132,7 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Delivery");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(6, 38, 694, 24);
+        jLabel3.setBounds(6, 38, 694, 22);
 
         cmbDeliveryCompany.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "UPS", "USPS"}));
         jPanel1.add(cmbDeliveryCompany);
@@ -139,7 +140,7 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Delivery Company");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(115, 91, 105, 17);
+        jLabel1.setBounds(115, 91, 107, 17);
 
         tblMedical.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -163,7 +164,7 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Type:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(470, 120, 31, 17);
+        jLabel2.setBounds(470, 120, 33, 17);
 
         tblCart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -210,7 +211,7 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Quantity");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(382, 303, 48, 17);
+        jLabel4.setBounds(382, 303, 49, 17);
 
         txtQuantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,6 +233,15 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
         jLabel5.setText("Hospital");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(380, 90, 48, 17);
+
+        btnBack1.setText("Back");
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBack1);
+        btnBack1.setBounds(10, 10, 72, 23);
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -401,9 +411,17 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnSubmitActionPerformed
 
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        // TODO add your handling code here:
+        RightPanel.remove(this);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.previous(RightPanel);
+    }//GEN-LAST:event_btnBack1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnBack1;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox<String> cmbDeliveryCompany;

@@ -11,6 +11,7 @@ import Business.Class.Delivery.Order;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -181,6 +182,9 @@ public class ProcessingCargoPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        RightPanel.remove(this);
+        CardLayout layout = (CardLayout) RightPanel.getLayout();
+        layout.previous(RightPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnDeliveryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeliveryActionPerformed
