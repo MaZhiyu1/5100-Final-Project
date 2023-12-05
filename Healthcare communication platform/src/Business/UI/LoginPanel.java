@@ -7,7 +7,7 @@ package Business.UI;
 import Business.Business;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-
+import Business.Report;
 /**
  *
  * @author 15469
@@ -40,6 +40,7 @@ public class LoginPanel extends javax.swing.JPanel {
         TypeComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         TypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hospital", "BioTech", "Medical Analysis", "Medical Supplier","Admin","Delivery" }));
         TypeComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -59,6 +60,13 @@ public class LoginPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setText("Report");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -67,13 +75,15 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(jButton1)
-                .addContainerGap(172, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -85,7 +95,9 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addComponent(TypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(jButton1)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jButton2)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -135,10 +147,16 @@ public class LoginPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_TypeComboBoxActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Report r = new Report(bz);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> TypeComboBox;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
