@@ -17,9 +17,13 @@ public class Vaccine extends Drug{
         setType("Vaccine");
     }
 
-    public Vaccine(String name, String id, String description, String category) {
-        super(id, name, description, category);
+    public Vaccine(String name, String description, String category) {
+        super(name, description, category);
         setType("Vaccine");
     }
 
+    @Override
+    public String toString() {
+        return getId();
+    }
 }

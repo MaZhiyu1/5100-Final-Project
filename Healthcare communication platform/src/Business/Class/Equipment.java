@@ -15,9 +15,14 @@ public class Equipment  extends Drug{
         setType("Equipment");
     }
 
-    public Equipment(String name, String id, String description, String category) {
-        super(id, name, description, category);
+    public Equipment(String name, String description, String category) {
+        super(name, description, category);
         setType("Equipment");
+    }
+
+    @Override
+    public String toString() {
+        return getId();
     }
 
 }

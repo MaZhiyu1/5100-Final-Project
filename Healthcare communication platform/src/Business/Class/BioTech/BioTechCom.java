@@ -44,7 +44,7 @@ public class BioTechCom {
 
         for (Medicine v1 : v) {
             int k=0;
-            for (Medicine vs : hi.getMedicineDirectory().getDrugs()) {
+            for (Medicine vs : hi.getMedicineDirectory().getMedicines()) {
                 if (vs.getName().equals(v1.getName())&&vs.getId().equals(v1.getId())) {
                     vs.setQuantity(v1.getQuantity() + vs.getQuantity());
                     k=1;
@@ -57,7 +57,7 @@ public class BioTechCom {
         }
         // Add new medicines after the iteration is complete
         for(Medicine m : medicinesToAdd){
-             hi.getMedicineDirectory().addDrugs(m );
+             hi.getMedicineDirectory().addMedicine(m );
         }
     }
 

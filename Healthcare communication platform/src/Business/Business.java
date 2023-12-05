@@ -20,7 +20,6 @@ import Business.Class.Vaccine;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -127,7 +126,7 @@ public class Business {
     
     public void MedicalSupplier1(){
         ms = new  MedicalSupplier("MedTech Innovators");
-        Equipment e1 = new Equipment("Anti-Heart Disease", "MedTech 1", "For Use", "Internal Medicine");
+        Equipment e1 = new Equipment("Anti-Heart Disease", "For Use", "Internal Medicine");
         BioSupplier bs = new BioSupplier( "Finka","", "MedTech Supplier");
         ms.addBioSupplier(bs);
         ms.addEquipment(e1);
@@ -137,9 +136,9 @@ public class Business {
     
 
     public void BioTechCom1(){
-        Medicine new_m = new Medicine("New Medicine", "Bio", "Heart Disease", "Internal Medicine");
+        Medicine new_m = new Medicine("New Medicine", "Heart Disease", "Internal Medicine");
 
-        Vaccine vxx = new Vaccine("Vxx A1", "1", "For Child", "Pediatrics");
+        Vaccine vxx = new Vaccine("Vxx A1", "For Child", "Pediatrics");
         
         b1 = new BioTechCom("BioGenesis Therapeutics");
 
@@ -170,11 +169,11 @@ public class Business {
         }
         b1.addLab(lab1);
 
-        Medicine medicine = new Medicine("A1", "1", "For Child", "Pediatrics");
+        Medicine medicine = new Medicine("A1",  "For Child", "Pediatrics");
         medicine.setQuantity(10);
-        Medicine medicine1 = new Medicine("B1", "2", "For Internal", "Internal Medicine");
+        Medicine medicine1 = new Medicine("B1","For Internal", "Internal Medicine");
         medicine1.setQuantity(10);
-        Medicine medicine2 = new Medicine("C1", "3", "Surgery", "Surgery");
+        Medicine medicine2 = new Medicine("C1",  "Surgery", "Surgery");
         medicine2.setQuantity(10);
         ArrayList<Medicine> medicineDirectory = new ArrayList<>();
 
@@ -182,11 +181,11 @@ public class Business {
         medicineDirectory.add(medicine1);
         medicineDirectory.add(medicine2);
         
-        Vaccine v = new Vaccine("V A1", "1", "For Child", "Pediatrics");
+        Vaccine v = new Vaccine("V A1","For Child", "Pediatrics");
         v.setQuantity(10);
-        Vaccine v1 = new Vaccine("V B1", "2", "For Internal", "Internal Medicine");
+        Vaccine v1 = new Vaccine("V B1",  "For Internal", "Internal Medicine");
         v1.setQuantity(10);
-        Vaccine v2 = new Vaccine("V C1", "3", "Surgery", "Surgery");
+        Vaccine v2 = new Vaccine("V C1", "Surgery", "Surgery");
         v2.setQuantity(10);
         ArrayList<Vaccine> V = new ArrayList<>();
         
@@ -284,13 +283,13 @@ public class Business {
         APPO.add(a1);
         APPO.add(a2);
 
-        Medicine medicine = new Medicine("M-A1", "1", "For Child", "Pediatrics");
+        Medicine medicine = new Medicine("M-A1", "For Child", "Pediatrics");
         medicine.setQuantity(10);
         medicine.setInstruction("Take 2 pills per day");
-        Medicine medicine1 = new Medicine("M-B1", "2", "For Internal", "Internal Medicine");
+        Medicine medicine1 = new Medicine("M-B1",  "For Internal", "Internal Medicine");
         medicine1.setQuantity(10);
         medicine1.setInstruction("Take 3 pills per day");
-        Medicine medicine2 = new Medicine("M-C1", "3", "Surgery", "Surgery");
+        Medicine medicine2 = new Medicine("M-C1",  "Surgery", "Surgery");
         medicine2.setQuantity(10);
         medicine2.setInstruction("Take 1 pill per day");
         ArrayList<Medicine> medicineDirectory = new ArrayList<>();
@@ -299,13 +298,13 @@ public class Business {
         medicineDirectory.add(medicine1);
         medicineDirectory.add(medicine2);
         
-        Vaccine vaccine = new Vaccine("V-A1", "4", "For Child", "Pediatrics");
+        Vaccine vaccine = new Vaccine("V-A1",  "For Child", "Pediatrics");
         vaccine.setQuantity(10);
         vaccine.setInstruction("only for child");
-        Vaccine vaccine1 = new Vaccine("V-B1", "5", "For Internal", "Internal Medicine");
+        Vaccine vaccine1 = new Vaccine("V-B1",  "For Internal", "Internal Medicine");
         vaccine1.setQuantity(10);
         vaccine1.setInstruction("For Internal");
-        Vaccine vaccine2 = new Vaccine("V-C1", "6", "Surgery", "Surgery");
+        Vaccine vaccine2 = new Vaccine("V-C1", "Surgery", "Surgery");
         vaccine2.setQuantity(10);
         vaccine2.setInstruction("For Surgery");
         ArrayList<Vaccine> vaccineDirectory = new ArrayList<>();
@@ -314,11 +313,11 @@ public class Business {
         vaccineDirectory.add(vaccine1);
         vaccineDirectory.add(vaccine2);
         
-        Equipment equipment = new Equipment("E-A1", "7", "Pediatrics", "For Child");
+        Equipment equipment = new Equipment("E-A1",  "Pediatrics", "For Child");
         equipment.setQuantity(10);
-        Equipment equipment1 = new Equipment("E-B1", "9", "Internal Medicine","For Internal" );
+        Equipment equipment1 = new Equipment("E-B1",  "Internal Medicine","For Internal" );
         equipment1.setQuantity(10);
-        Equipment equipment2 = new Equipment("E-C1", "10", "Surgery", "Surgery");
+        Equipment equipment2 = new Equipment("E-C1", "Surgery", "Surgery");
         equipment2.setQuantity(10);
         ArrayList<Equipment> equipmentDirectory = new ArrayList<>();
 

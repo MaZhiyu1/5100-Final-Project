@@ -8,8 +8,8 @@ public class Operation extends Drug {
         setType("Operation");
     }
 
-    public Operation(String name, String id, String description, String category) {
-        super(id, name, description, category);
+    public Operation(String name, String description, String category) {
+        super( name, description, category);
         setType("Operation");
     }
 }

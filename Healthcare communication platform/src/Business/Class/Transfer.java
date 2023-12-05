@@ -7,8 +7,8 @@ public class Transfer extends Drug{
         setType("Transfer");
     }
 
-    public Transfer(String name, String id, String description, String category) {
-        super(id, name, description, category);
+    public Transfer(String name,String description, String category) {
+        super(name, description, category);
         setType("Transfer");
     }
 

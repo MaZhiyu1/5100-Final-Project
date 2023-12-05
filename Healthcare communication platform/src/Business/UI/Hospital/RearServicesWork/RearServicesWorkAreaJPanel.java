@@ -87,7 +87,7 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
         String name = txtSearchGenre.getText();
 
         if(type.equals("Medicine")){
-            ArrayList<Medicine> allList = rearServices.getHospital().getHospitalInventory().getMedicineDirectory().getDrugs();
+            ArrayList<Medicine> allList = rearServices.getHospital().getHospitalInventory().getMedicineDirectory().getMedicines();
 
             ArrayList<Medicine> medicineArrayList = new ArrayList<>();
 
