@@ -103,7 +103,7 @@ public class EquipmentDeliveryPanel extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Delivery");
+        jLabel3.setText("Maintenance");
 
         jLabel2.setText("Hospital");
 
