@@ -101,86 +101,129 @@ public class Report {
         System.out.println("The Lab Completion of hospital:"+ completed);
         
         
-//        int recoverDay1=0;
-//        int num1=0;
-//        if(h2.getPatients()!=null){
-//        for(Patient p : h2.getPatients()){
-//            for(MedicalHistory mh : p.getMedicalHistoryDirectory().getMh()){
-//                if(mh.getDoctor().getHospital().getName().equals("Future Medical Institute")){
-//                    if(mh.getRecoverDays()!=0){
-//                        num1++;
-//                        recoverDay1+=mh.getRecoverDays();
-//                    }
-//                }
-//            }
-//        }
-//        }
-//
-//        
-//        int labNum1=0;
-//        int completed1=0;
-//        for(Doctor d : h2.getDoctorList()){
-//            if(d.getLabs()!=null){
-//            labNum1+=d.getLabs().size();
-//            for(Lab lab : d.getLabs()){
-//                if(lab.getStatus().equals("Completed")){
-//                    completed1++;
-//                }
-//            }
-//            }
-//
-//        }
-//        
-//        System.out.println("Future Medical Institute");
-//        System.out.println("The patient number of hospital:"+ num1);
-//        System.out.println("The Average Recovery day of hospital:"+ recoverDay1/num1);
-//        System.out.println("The Lab Completion of hospital:"+ completed1);
-//        System.out.println("The Lab number of hospital:"+ labNum1);
-//        System.out.println("The Lab Completion of hospital:"+ completed1);
-//        
-//        
-//        
-//        
-//        int recoverDay2=0;
-//        int num2=0;
-//        if(h3.getPatients()!=null){
-//        for(Patient p : h3.getPatients()){
-//            for(MedicalHistory mh : p.getMedicalHistoryDirectory().getMh()){
-//                if(mh.getDoctor().getHospital().getName().equals("Verdant Health Hospital")){
-//                    if(mh.getRecoverDays()!=0){
-//                        num2++;
-//                        recoverDay2+=mh.getRecoverDays();
-//                    }
-//                }
-//            }
-//        }
-//        }
-//
-//        
-//        int labNum2=0;
-//        int completed2=0;
-//        
-//        for(Doctor d : h3.getDoctorList()){
-//            labNum2+=d.getLabs().size();
-//            for(Lab lab : d.getLabs()){
-//                if(lab.getStatus().equals("Completed")){
-//                    completed2++;
-//                }
-//            }
-//        }
-//        
-//        System.out.println("Verdant Health Hospital");
-//        System.out.println("The patient number of hospital:"+ num2);
-//        System.out.println("The Average Recovery day of hospital:"+ recoverDay2/num2);
-//        System.out.println("The Lab Completion of hospital:"+ completed2);
-//        System.out.println("The Lab number of hospital:"+ labNum2);
-//        System.out.println("The Lab Completion of hospital:"+ completed2);
-//             
+        int recoverDay1=0;
+        int num1=0;
+        if(h2.getPatients()!=null){
+        for(Patient p : h2.getPatients()){
+            for(MedicalHistory mh : p.getMedicalHistoryDirectory().getMh()){
+                if(mh.getDoctor().getHospital().getName().equals("Future Medical Institute")){
+                    if(mh.getRecoverDays()!=0){
+                        num1++;
+                        recoverDay1+=mh.getRecoverDays();
+                    }
+                }
+            }
+        }
+        }
 
-        System.out.println("The most welcome hospital for patient:");
-        System.out.println("As a patient, you should choose hospital:");
-        System.out.println("As a doctor, you have more chance working in lab in:");
-        System.out.println("The hospital is more welcome to Bio-Tech Company because it has most lab completed:");
+        
+        int labNum1=0;
+        int completed1=0;
+        for(Doctor d : h2.getDoctorList()){
+            if(d.getLabs()!=null){
+            labNum1+=d.getLabs().size();
+            for(Lab lab : d.getLabs()){
+                if(lab.getStatus().equals("Completed")){
+                    completed1++;
+                }
+            }
+            }
+
+        }
+        
+        System.out.println("Future Medical Institute");
+        System.out.println("The patient number of hospital:"+ num1);
+        System.out.println("The Average Recovery day of hospital:"+ recoverDay1/num1);
+        System.out.println("The Lab Completion of hospital:"+ completed1);
+        System.out.println("The Lab number of hospital:"+ labNum1);
+        System.out.println("The Lab Completion of hospital:"+ completed1);
+        
+        
+        
+        
+        int recoverDay2=0;
+        int num2=0;
+        if(h3.getPatients()!=null){
+        for(Patient p : h3.getPatients()){
+            for(MedicalHistory mh : p.getMedicalHistoryDirectory().getMh()){
+                if(mh.getDoctor().getHospital().getName().equals("Verdant Health Hospital")){
+                    if(mh.getRecoverDays()!=0){
+                        num2++;
+                        recoverDay2+=mh.getRecoverDays();
+                    }
+                }
+            }
+        }
+        }
+
+        
+        int labNum2=0;
+        int completed2=0;
+        
+        for(Doctor d : h3.getDoctorList()){
+            labNum2+=d.getLabs().size();
+            for(Lab lab : d.getLabs()){
+                if(lab.getStatus().equals("Completed")){
+                    completed2++;
+                }
+            }
+        }
+        
+        System.out.println("Verdant Health Hospital");
+        System.out.println("The patient number of hospital:"+ num2);
+        System.out.println("The Average Recovery day of hospital:"+ recoverDay2/num2);
+        System.out.println("The Lab Completion of hospital:"+ completed2);
+        System.out.println("The Lab number of hospital:"+ labNum2);
+        System.out.println("The Lab Completion of hospital:"+ completed2);
+             
+        int maxValue = num;
+        if (num1 > maxValue) {
+            maxValue = num1;
+        }
+        if (num2 > maxValue) {
+            maxValue = num2;
+        }
+        
+        if(maxValue==num){
+            System.out.println("The most welcome hospital for patient:"+h1.getName());
+        }else if(maxValue==num1){
+            System.out.println("The most welcome hospital for patient:"+h2.getName());
+        }else{
+            System.out.println("The most welcome hospital for patient:"+h3.getName());
+        }
+        
+        maxValue = recoverDay/num;
+        if (recoverDay1/num1 > maxValue) {
+            maxValue = recoverDay1/num1;
+        }
+        if (recoverDay2/num2 > maxValue) {
+            maxValue = recoverDay2/num2;
+        }
+        
+        if(maxValue==recoverDay/num){
+            System.out.println("As a patient, you should choose hospital:"+h1.getName());
+        }else if(maxValue==recoverDay1/num1){
+            System.out.println("As a patient, you should choose hospital:"+h2.getName());
+        }else{
+            System.out.println("As a patient, you should choose hospital:"+h3.getName());
+        }
+        
+        maxValue = labNum;
+        if (labNum1 > maxValue) {
+            maxValue = labNum1;
+        }
+        if (labNum2 > maxValue) {
+            maxValue = labNum2;
+        }
+        
+        if(maxValue==labNum){
+            System.out.println("As a doctor, you have more chance working in lab in:"+h1.getName());
+        }else if(maxValue==labNum1){
+            System.out.println("As a doctor, you have more chance working in lab in:"+h2.getName());
+        }else{
+            System.out.println("As a doctor, you have more chance working in lab in:"+h3.getName());
+        }
+        
     }
     
     
@@ -234,45 +277,55 @@ public class Report {
         System.out.println("Lab Completion "+ labCom);
         
         
-//        int orderNum1=b2.getOrders().size();
-//        int orderCompleted1=0;
-//        int requestNum1=b2.getRequest().size();
-//        int requestCompleted1=0;
-//        int labNum1=0;
-//        int labCom1=0;
-//        if(b2.getLabs()!=null){
-//            for(Lab l : b2.getLabs()){
-//            if(l.getStatus().equals("Completed")){
-//                labCom1++;
-//            }
-//        }
-//        }
-//        if(b2.getOrders()!=null){
-//        for(Order o : b2.getOrders()){
-//            if(o.getStatus().equals("Completed")){
-//                orderCompleted1++;
-//            }
-//        }
-//        }
-//        if(b2.getRequest()!=null){
-//        for(Request r : b2.getRequest()){
-//            if(r.getStatus().equals("Completed")){
-//                requestCompleted1++;
-//            }
-//        }
-//        }
-//
-//        System.out.println("VitalEdge Biomedicals");
-//        System.out.println("Total order"+orderNum1);
-//        System.out.println("Order Compeletion  "+ orderCompleted1);
-//        System.out.println("Total request"+ requestNum1);
-//        System.out.println("Request Compeletion "+ requestCompleted1);
-//        System.out.println("Lab Number "+ labNum1);
-//        System.out.println("Lab Completion "+ labCom1);
-        
-        System.out.println("The most populate because it has most labs:");
-        System.out.println("The Bio-Tech Company is more welcome to Bio-Tech Company because it has the most orders:");
+        int orderNum1=b2.getOrders().size();
+        int orderCompleted1=0;
+        int requestNum1=b2.getRequest().size();
+        int requestCompleted1=0;
+        int labNum1=0;
+        int labCom1=0;
+        if(b2.getLabs()!=null){
+            for(Lab l : b2.getLabs()){
+            if(l.getStatus().equals("Completed")){
+                labCom1++;
+            }
+        }
+        }
+        if(b2.getOrders()!=null){
+        for(Order o : b2.getOrders()){
+            if(o.getStatus().equals("Completed")){
+                orderCompleted1++;
+            }
+        }
+        }
+        if(b2.getRequest()!=null){
+        for(Request r : b2.getRequest()){
+            if(r.getStatus().equals("Completed")){
+                requestCompleted1++;
+            }
+        }
+        }
 
+        System.out.println("VitalEdge Biomedicals");
+        System.out.println("Total order"+orderNum1);
+        System.out.println("Order Compeletion  "+ orderCompleted1);
+        System.out.println("Total request"+ requestNum1);
+        System.out.println("Request Compeletion "+ requestCompleted1);
+        System.out.println("Lab Number "+ labNum1);
+        System.out.println("Lab Completion "+ labCom1);
+        
+
+
+        if (labNum1 > labNum) {
+            System.out.println("The most populate because it has most labs:"+b2.getName());
+        }else{
+            System.out.println("The most populate because it has most labs:"+b1.getName());
+        }
+        
+        if(orderNum1>orderNum){
+            System.out.println("The Bio-Tech Company is more welcome to Bio-Tech Company because it has the most orders:"+b2.getName());
+        }else{
+            System.out.println("The most populate because it has most labs:"+b1.getName());
+        }
 
     }
     
@@ -324,14 +377,25 @@ public class Report {
             }
             }
 
-            System.out.println("UPS");
+            System.out.println("USPS");
             System.out.println("Order number "+orderNum1);
             System.out.println("Order Completetion number "+orderCompleted1);
             System.out.println("Order Cancelled number "+orderCancelled1);
             
+        
+        if(orderCancelled1<orderCancelled){
+            System.out.println("The Company is bad because it has the most cancelled order:"+ d2.getCompany());
+        }else{
+            System.out.println("The Company is bad because it has the most cancelled order:"+ d1.getCompany());
+        }
             
-        System.out.println("The Company is bad because it has the most cancelled order:" );
-        System.out.println("The Company is popular because it has the most order:");
+        if(orderNum1<orderNum){
+            System.out.println("The Company is popular because it has the most order:"+d1.getCompany());
+        }else{
+            System.out.println("The Company is popular because it has the most order:"+d2.getCompany());
+
+        }
+        
 
         }
         
