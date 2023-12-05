@@ -441,28 +441,28 @@ public class Business {
         doctor3.setContact("8888888");
         doctor3.setDepartment("Internal Medicine");
         
-        MedicalHistory mh1 = new MedicalHistory("Oliver‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
-        MedicalHistory mh2 = new MedicalHistory("Oliver‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
+        MedicalHistory mh1 = new MedicalHistory("Python‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
+        MedicalHistory mh2 = new MedicalHistory("Python‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
         mh1.setRecoverDays(5);
         mh2.setRecoverDays(3);
 
 
-        MedicalHistoryDirectory mhl1 = new MedicalHistoryDirectory(1,"Oliver");
+        MedicalHistoryDirectory mhl1 = new MedicalHistoryDirectory(1,"Python");
         mhl1.addHistory(mh2);
         mhl1.addHistory(mh1);
         mh1.setDoctor(doctor1);
         mh2.setDoctor(doctor2);
         
-        Patient patient1 = new Patient(1, "Oliver", "Aa12345678");
+        Patient patient1 = new Patient(1, "Python", "Aa12345678");
         patient1.setMedicalHistoryDirectory(mhl1);
         patient1.setEnabled(1);
-        patient1.setAge(12);
+        patient1.setAge(52);
 
-        Patient patient2 = new Patient(2, "Jam", "Aa12345678");
+        Patient patient2 = new Patient(2, "James", "Aa12345678");
         patient2.setEnabled(1);
-        patient2.setAge(22);
+        patient2.setAge(23);
         
-        Patient patient3 = new Patient(3, "Lex", "Aa12345678");
+        Patient patient3 = new Patient(3, "Lexy", "Aa12345678");
         patient3.setEnabled(1);
         patient3.setAge(42);
         
@@ -580,28 +580,28 @@ public class Business {
         doctor3.setContact("8888888");
         doctor3.setDepartment("Internal Medicine");
         
-        MedicalHistory mh1 = new MedicalHistory("Oliver‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
-        MedicalHistory mh2 = new MedicalHistory("Oliver‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
+        MedicalHistory mh1 = new MedicalHistory("Magic‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
+        MedicalHistory mh2 = new MedicalHistory("Magic‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
         mh1.setRecoverDays(5);
         mh2.setRecoverDays(3);
 
 
-        MedicalHistoryDirectory mhl1 = new MedicalHistoryDirectory(1,"Oliver");
+        MedicalHistoryDirectory mhl1 = new MedicalHistoryDirectory(1,"Magic");
         mhl1.addHistory(mh2);
         mhl1.addHistory(mh1);
         mh1.setDoctor(doctor1);
         mh2.setDoctor(doctor2);
         
-        Patient patient1 = new Patient(1, "Oliver", "Aa12345678");
+        Patient patient1 = new Patient(1, "Magic", "Aa12345678");
         patient1.setMedicalHistoryDirectory(mhl1);
         patient1.setEnabled(1);
         patient1.setAge(12);
 
-        Patient patient2 = new Patient(2, "Jam", "Aa12345678");
+        Patient patient2 = new Patient(2, "Johnson", "Aa12345678");
         patient2.setEnabled(1);
         patient2.setAge(22);
         
-        Patient patient3 = new Patient(3, "Lex", "Aa12345678");
+        Patient patient3 = new Patient(3, "JP", "Aa12345678");
         patient3.setEnabled(1);
         patient3.setAge(42);
         
