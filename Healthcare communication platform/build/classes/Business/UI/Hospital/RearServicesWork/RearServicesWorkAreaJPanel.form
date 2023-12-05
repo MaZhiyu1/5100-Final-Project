@@ -185,7 +185,7 @@
                         <Column editable="true" title="Name" type="java.lang.Object"/>
                         <Column editable="true" title="Type" type="java.lang.Object"/>
                         <Column editable="true" title="Quantity" type="java.lang.Object"/>
-                        <Column editable="true" title="Status" type="java.lang.Object"/>
+                        <Column editable="true" title="Tips" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -345,11 +345,12 @@
             <Component class="javax.swing.JComboBox" name="cmbSelectGenre">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
+                  <StringArray count="5">
                     <StringItem index="0" value="Medicine"/>
                     <StringItem index="1" value="Vaccine"/>
-                    <StringItem index="2" value="Operation"/>
-                    <StringItem index="3" value="Transfer"/>
+                    <StringItem index="2" value="Equipment"/>
+                    <StringItem index="3" value="Operation"/>
+                    <StringItem index="4" value="Transfer"/>
                   </StringArray>
                 </Property>
               </Properties>

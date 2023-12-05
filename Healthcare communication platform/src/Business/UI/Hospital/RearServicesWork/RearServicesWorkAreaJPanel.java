@@ -11,6 +11,7 @@ import Business.Class.Delivery.Order;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.RearServices.RearServices;
 import Business.Class.Hospital.Request;
+import Business.Class.MedicalSupplier.MedicalSupplier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,8 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
     ArrayList<Vaccine> vaccines= new ArrayList<>();
 
     private List<Drug> drugList;
+    
+    ArrayList<Equipment> equipments= new ArrayList<>();
 
     Business bz;
     Request selectedRequest;
@@ -204,7 +207,7 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
             row[1] = request.getName();
             row[2] = request.getType();
             row[3] = request.getQuantity();
-            row[4] = request.getStatus();
+            row[4] = request.getTips();
             ((javax.swing.table.DefaultTableModel) tblRequest.getModel()).addRow(row);
         });
     }
@@ -290,7 +293,7 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Type", "Quantity", "Status"
+                "ID", "Name", "Type", "Quantity", "Tips"
             }
         ));
         jScrollPane7.setViewportView(tblRequest);
@@ -333,7 +336,7 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel8.setText("Stock");
 
-        cmbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine", "Vaccine", "Operation", "Transfer" }));
+        cmbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine", "Vaccine", "Equipment", "Operation", "Transfer" }));
         cmbSelectGenre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbSelectGenreActionPerformed(evt);
@@ -473,6 +476,17 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnSearchGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchGenreActionPerformed
         // TODO add your handling code here:
+        String  type = (String)cmbSelectGenre.getSelectedItem();
+
+        if("Medicine".equals(type)){
+            populatePrescription(medicines);
+        }
+        else if("Vaccine".equals(type)){
+            populatePrescription(vaccines);
+        }
+        else if("Equipment".equals(type)){
+            populatePrescription(equipments);
+        }
     }//GEN-LAST:event_btnSearchGenreActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
@@ -486,6 +500,12 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
 
 //        Optional<BioTechCom> bioTechCom = bz.getBioTech().stream().filter(com -> techCom.equals(com.getName())).findFirst();
         for(BioTechCom b : bz.getBioTech()){
+            if(b.getName().equals(techCom)){
+                b.getRequest().add(selectedRequest);
+            }
+        }
+        
+        for(MedicalSupplier b : bz.getMedicalSupplier()){
             if(b.getName().equals(techCom)){
                 b.getRequest().add(selectedRequest);
             }

@@ -30,6 +30,10 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
     private List<Vaccine> vaccineList;
 
     private Vaccine selectedVaccine;
+    
+    private List<Equipment> equipmentList;
+
+    private Equipment selectedEquipment;
     /**
      * Creates new form DoctorRequestJPanel
      */
@@ -39,6 +43,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         this.RightPanel=RightPanel;
         vaccineList = doctor.getHospital().getHi().getVaccineDirectory().getVaccines();
         drugList = doctor.getHospital().getHi().getMedicineDirectory().getMedicines();
+        equipmentList = doctor.getHospital().getHi().getEquipmentDirectory().getEquipments();
 
         tblPrescription.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -392,6 +397,19 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         }
         }
         
+        if(k==2){
+        if(equipmentList==null) return;
+        for(Equipment s : equipmentList) {
+            Object row[] = new Object[5];
+            row[0] = s;
+            row[1] = s.getName();
+            row[2] = s.getType();
+            row[3] = s.getQuantity();
+            row[4] = s.getStatus();
+            model.addRow(row);
+        }
+        }
+        
         
     }
     
@@ -434,6 +452,16 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
             tipsTextArea.setText("");
             JOptionPane.showMessageDialog(null, "Request added successfully!");
         }
+        if(((String)cmbSelectGenre.getSelectedItem()).equals("Equipment")){
+            Equipment selected = (Equipment) tblPrescription.getValueAt(row, 0);
+            selected.setQuantity(number);
+            Request request = new Request(selected.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
+            request.setTips(tipsTextArea.getText());
+            request.setEquipments(selected);
+            doctor.getHospital().addRequest(request);
+            tipsTextArea.setText("");
+            JOptionPane.showMessageDialog(null, "Request added successfully!");
+        }
         
         
         
@@ -457,6 +485,8 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         }
         else if(type.equals("Vaccine")){
             refreshTable(1);
+        }if(type.equals("Equipment")){
+            refreshTable(2);
         }
     }//GEN-LAST:event_cmbSelectGenreActionPerformed
 

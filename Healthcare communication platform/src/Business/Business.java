@@ -232,6 +232,7 @@ public class Business {
         RearServices rs = new RearServices("Jin", "BioGen 1", "Aa12345678", h1 );
         //后勤
         
+        //医生
         Doctor doctor1 = new Doctor(1,"Jim","Aa12345678", "male", h1);
         doctor1.setEnabled(1);
         doctor1.setSpecialty("Surgery");
@@ -262,10 +263,13 @@ public class Business {
         doctor3.setContact("8888888");
         doctor3.setDepartment("Internal Medicine");
         
+        //病历
         MedicalHistory mh1 = new MedicalHistory("Oliver‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
         MedicalHistory mh2 = new MedicalHistory("Oliver‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
         mh1.setRecoverDays(5);
+        mh1.setFeedbackRate(8);
         mh2.setRecoverDays(3);
+        mh2.setFeedbackRate(9);
 
 
         MedicalHistoryDirectory mhl1 = new MedicalHistoryDirectory(1,"Oliver");
@@ -276,8 +280,10 @@ public class Business {
         
         MedicalHistory mh3 = new MedicalHistory("Jam‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
         MedicalHistory mh4 = new MedicalHistory("Jam‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
-        mh3.setRecoverDays(50);
+        mh3.setRecoverDays(30);
+        mh1.setFeedbackRate(4);
         mh4.setRecoverDays(3);
+        mh1.setFeedbackRate(8);
 
 
         MedicalHistoryDirectory mhl2 = new MedicalHistoryDirectory(2,"Jam");
@@ -287,7 +293,7 @@ public class Business {
         mh4.setDoctor(doctor2);
         
         
-        
+        //患者
         Patient patient1 = new Patient(1, "Oliver", "Aa12345678");
         patient1.setMedicalHistoryDirectory(mhl1);
         patient1.setEnabled(1);
@@ -388,6 +394,8 @@ public class Business {
         h1.addPatient(patient1);
         h1.addPatient(patient2);
         h1.addPatient(patient3);
+        h1.addPatient(patient4);
+        h1.addPatient(patient5);
         
         h1.getHa().setAppointments(APPO);
         h1.getHospitalInventory().setMedicineDirectory(medicineDirectory);
@@ -397,6 +405,8 @@ public class Business {
         patients.add(patient1);
         patients.add(patient2);
         patients.add(patient3);
+        patients.add(patient4);
+        patients.add(patient5);
         hospitals.add(h1);
     }
     

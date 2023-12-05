@@ -6,6 +6,7 @@ package Business.Class.MedicalSupplier;
 
 import Business.Class.BioTech.BioSupplier;
 import Business.Class.Equipment;
+import Business.Class.Hospital.Request;
 import java.util.ArrayList;
 
 /**
@@ -16,11 +17,13 @@ public class MedicalSupplier {
     String name;
     private ArrayList<Equipment> equipments;
     ArrayList<BioSupplier> bs;
+    ArrayList<Request> request;
 
     public MedicalSupplier(String name) {
         this.name = name;
         equipments = new ArrayList<>();
         bs = new ArrayList<>();
+        request = new ArrayList<>();
     }
 
     public String getName() {
@@ -54,5 +57,15 @@ public class MedicalSupplier {
     public void addBioSupplier(BioSupplier e){
         bs.add(e);
     }
+
+    public ArrayList<Request> getRequest() {
+        return request;
+    }
+
+    public void setRequest(ArrayList<Request> request) {
+        this.request = request;
+    }
+    
+    
     
 }
