@@ -597,11 +597,11 @@ public class Business {
         patient1.setEnabled(1);
         patient1.setAge(12);
 
-        Patient patient2 = new Patient(2, "Jam", "Aa12345678");
+        Patient patient2 = new Patient(2, "Johnson", "Aa12345678");
         patient2.setEnabled(1);
         patient2.setAge(22);
         
-        Patient patient3 = new Patient(3, "Lex", "Aa12345678");
+        Patient patient3 = new Patient(3, "JP", "Aa12345678");
         patient3.setEnabled(1);
         patient3.setAge(42);
         
