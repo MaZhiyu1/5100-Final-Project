@@ -19,7 +19,7 @@ public class Patient extends Person{
     MedicalHistoryDirectory medicalHistoryDirectory;
     ArrayList<Appointment> appointmentList;
     int enabled;
-
+    
     private String insurance;
     private String allergy;
 
@@ -35,6 +35,11 @@ public class Patient extends Person{
     public Appointment makeAppoinment(Doctor doctor){
         Appointment ap = new Appointment(this, doctor);
         return ap;
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(id);
     }
 
     public ImageIcon getLogoImage() {

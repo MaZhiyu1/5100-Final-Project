@@ -35,6 +35,11 @@ public class BioSupplier {
         this.enable = enable;
     }
 
+    @Override
+    public String toString() {
+        return id;
+    }
+
     
     
     
