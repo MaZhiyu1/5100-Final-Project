@@ -5,6 +5,7 @@
 package Business.UI;
 
 import Business.Business;
+import Business.UI.Report.ReportJPanel1;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -89,6 +90,11 @@ public class MedicalAnalysisLoginPanel extends javax.swing.JPanel {
         });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DataWise Analytics", "InsightCore Solutions"}));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Analysis Company");
 
@@ -177,7 +183,24 @@ public class MedicalAnalysisLoginPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String name = (String) jComboBox1.getSelectedItem();
+        if(txtuser.getText().equals("Max")&&txtpwd.getText().equals("Aa12345678")&&name.equals("DataWise Analytics")){
+            ReportJPanel1 rj = new  ReportJPanel1( bz);
+            RightPanel.add(rj);
+            CardLayout layout = (CardLayout) RightPanel.getLayout();
+            layout.next(RightPanel);
+        }
+        if(txtuser.getText().equals("Amix")&&txtpwd.getText().equals("Aa12345678")&&name.equals("InsightCore Solutions")){
+            ReportJPanel1 rj = new  ReportJPanel1( bz);
+            RightPanel.add(rj);
+            CardLayout layout = (CardLayout) RightPanel.getLayout();
+            layout.next(RightPanel);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

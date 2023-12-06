@@ -8,6 +8,7 @@ import Business.Business;
 import Business.Class.BioTech.BioSupplier;
 import Business.Class.BioTech.BioTechCom;
 import java.awt.CardLayout;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -46,6 +47,18 @@ public class ManageBioSupplierPanel extends javax.swing.JPanel {
             row[3] = s.getEnable();
             model.addRow(row);
         }
+    }
+    
+    
+     private static boolean isValidName(String name) {
+        String regex = "^(?=.*[A-Z])(?=.*[a-z]).+$";
+        return Pattern.matches(regex, name);
+    }
+
+
+    private static boolean isValidPassword(String password) {
+        String regex = "^(?=.*[a-z])(?=.*[A-Z]).{8,}$";
+        return Pattern.matches(regex, password);
     }
     
     
@@ -265,6 +278,12 @@ public class ManageBioSupplierPanel extends javax.swing.JPanel {
         int id = 0;
         String name = nametxt.getText();
         String pwd = pwdtxt.getText();
+        
+        if(isValidName(name)==false||isValidPassword(pwd)==false){
+            JOptionPane.showMessageDialog(null,"Please input strong name and password", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         int enable = 0;
         try{
             id=Integer.parseInt(IDtxt.getText());
@@ -326,6 +345,11 @@ public class ManageBioSupplierPanel extends javax.swing.JPanel {
         int id = 0;
         String name = nametxt.getText();
         String pwd = pwdtxt.getText();
+        if(isValidName(name)==false||isValidPassword(pwd)==false){
+            JOptionPane.showMessageDialog(null,"Please input strong name and password", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         int enable = 0;
         try{
             id=Integer.parseInt(IDtxt.getText());

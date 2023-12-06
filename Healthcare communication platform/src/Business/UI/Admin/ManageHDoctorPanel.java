@@ -10,6 +10,7 @@ import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.Doctor;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -48,7 +49,16 @@ public class ManageHDoctorPanel extends javax.swing.JPanel {
         }
     }
     
-    
+     private static boolean isValidName(String name) {
+        String regex = "^(?=.*[A-Z])(?=.*[a-z]).+$";
+        return Pattern.matches(regex, name);
+    }
+
+
+    private static boolean isValidPassword(String password) {
+        String regex = "^(?=.*[a-z])(?=.*[A-Z]).{8,}$";
+        return Pattern.matches(regex, password);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -315,6 +325,12 @@ public class ManageHDoctorPanel extends javax.swing.JPanel {
         int id = 0;
         String name = nametxt.getText();
         String pwd = pwdtxt.getText();
+        
+        if(isValidName(name)==false||isValidPassword(pwd)==false){
+            JOptionPane.showMessageDialog(null,"Please input strong name and password", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         String gender = gendertxt.getText();
         int enable = 0;
         try{
@@ -364,6 +380,12 @@ public class ManageHDoctorPanel extends javax.swing.JPanel {
         int id = 0;
         String name = nametxt.getText();
         String pwd = pwdtxt.getText();
+        
+        if(isValidName(name)==false||isValidPassword(pwd)==false){
+            JOptionPane.showMessageDialog(null,"Please input strong name and password", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         String gender = gendertxt.getText();
         int enable = 0;
         Hospital h1 = selected.getHospital();
