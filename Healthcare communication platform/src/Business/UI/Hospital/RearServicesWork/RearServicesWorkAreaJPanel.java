@@ -76,11 +76,8 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
            // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
             model.addRow(row);
         }
-        
+
     }
-    
-    
-    
 
     private void initTblStock(RearServices rearServices) {
         // search medicine

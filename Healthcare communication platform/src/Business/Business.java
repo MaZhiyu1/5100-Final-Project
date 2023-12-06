@@ -61,6 +61,7 @@ public class Business {
 //        medicalSuppliers = new ArrayList<>();
         Hospital1();
         BioTechCom_BioGenesis_Therapeutics();
+        BioTechCom_VitalEdge_Biomedicals();
         MedicalSupplier1();
         Delivery1();
         Hospital2();
@@ -283,7 +284,7 @@ public class Business {
                 }
             }
         }
-        b1.addLab(lab1);
+        VitalEdge_Biomedicals.addLab(lab1);
 
         Medicine medicine = new Medicine("AAAA1",  "For Child", "Pediatrics");
         medicine.setQuantity(177345);
@@ -312,18 +313,18 @@ public class Business {
         Request request = new Request("medicine 1","medicine","For heart disease");
         request.setMedicine(medicine);
 
-        BioSupplier bs1_ = new BioSupplier("Mike", "", "BioSupplier 1");
+        BioSupplier bs1_ = new BioSupplier("Lily", "", "BioSupplier 1");
         bs1_.addRequest(request);
 
-        BioSupplier bs2_ = new BioSupplier("Jackson", "", "BioSupplier 2");
+        BioSupplier bs2_ = new BioSupplier("David ", "", "BioSupplier 2");
 
         //set inventory
-        b1.getHi().setMedicineDirectory(medicineDirectory);
-        b1.getHi().setVaccineDirectory(vaccineArrayList);
+        VitalEdge_Biomedicals.getHi().setMedicineDirectory(medicineDirectory);
+        VitalEdge_Biomedicals.getHi().setVaccineDirectory(vaccineArrayList);
 
         //set supplier
-        b1.addSupplier(bs1_);
-        b1.addSupplier(bs2_);
+        VitalEdge_Biomedicals.addSupplier(bs1_);
+        VitalEdge_Biomedicals.addSupplier(bs2_);
         bioTechList.add(VitalEdge_Biomedicals);
     }
     
@@ -394,8 +395,7 @@ public class Business {
         mhl2.addHistory(mh3);
         mh3.setDoctor(doctor3);
         mh4.setDoctor(doctor2);
-        
-        
+
         //患者
         Patient patient1 = new Patient(1, "Oliver", "Aa12345678");
         patient1.setMedicalHistoryDirectory(mhl1);

@@ -9,6 +9,7 @@ import Business.Class.BioTech.BioSupplier;
 import Business.Class.BioTech.BioTechCom;
 import Business.Class.Delivery.Delivery;
 import Business.Class.Delivery.Order;
+import Business.Class.Drug;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
@@ -37,11 +38,11 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
     JPanel RightPanel;
     public DeliverDrugPanel(JPanel RightPanel,Business bz,String bioTech,BioSupplier bs) {
         initComponents();
-        this.bz=bz;
-        this.bioTech=bioTech;
-        this.bs=bs;
-        this.RightPanel=RightPanel;
-        number=0;
+        this.bz = bz;
+        this.bioTech = bioTech;
+        this.bs = bs;
+        this.RightPanel = RightPanel;
+        number = 0;
         for(BioTechCom bt : bz.getBioTech()){
             if(bt.getName().equals(bioTech)){
                 btc = bt;
@@ -87,14 +88,8 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
         }
-        
-        
     }
-    
-    
-    
-    
-    
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -324,10 +319,7 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
             model1.addRow(row1);
             refreshTable(1);
         }
-        
-        
-        
-        
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -370,30 +362,39 @@ public class DeliverDrugPanel extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-    DefaultTableModel model1 = (DefaultTableModel)tblCart.getModel();
-    int s=1;
-    String ho = (String)cmbHospital.getSelectedItem();
-    if(bs.getOrders()!=null){
-        s = bs.getOrders().size()+1;
-    }
-    if(model1.getRowCount()<0){
-        JOptionPane.showMessageDialog(null,"Please enter to cart", "Warning",JOptionPane.WARNING_MESSAGE);
-            return;
-    }
-    Order order1 = new Order(String.valueOf(s),(String)cmbDeliveryCompany.getSelectedItem(),bioTech,(String)cmbHospital.getSelectedItem(),"Processing");
+        DefaultTableModel model1 = (DefaultTableModel)tblCart.getModel();
+        int s=1;
+        String ho = (String)cmbHospital.getSelectedItem();
+        if(bs.getOrders()!=null){
+            s = bs.getOrders().size()+1;
+        }
+        if(model1.getRowCount()<0){
+            JOptionPane.showMessageDialog(null,"Please enter to cart", "Warning",JOptionPane.WARNING_MESSAGE);
+                return;
+        }
+        Order order1 = new Order(String.valueOf(s),(String)cmbDeliveryCompany.getSelectedItem(),bioTech,(String)cmbHospital.getSelectedItem(),"Processing");
+
         for (int count = 0; count < model1.getRowCount(); count++){
-        if(model1.getValueAt(count, 0) instanceof Vaccine){
-            Vaccine v = (Vaccine)model1.getValueAt(count, 0);
-            v.setQuantity((int)model1.getValueAt(count, 3));
-            order1.addVaccine(v);
+
+            Drug drug = (Drug) model1.getValueAt(count, 0);
+
+            if(drug instanceof Vaccine){
+
+                Vaccine v_send = new Vaccine(drug.getName(), drug.getDescription(), drug.getCategory());
+                v_send.setQuantity((int)model1.getValueAt(count, 3));
+
+                order1.addVaccine(v_send);
+            }
+            else if(drug instanceof Medicine){
+
+                Medicine m_send = new Medicine(drug.getName(), drug.getDescription(), drug.getCategory());
+                m_send.setQuantity((int)model1.getValueAt(count, 3));
+
+                order1.addMedicine(m_send);
+            }
         }
-        else if(model1.getValueAt(count, 0) instanceof Medicine){
-            Medicine v = (Medicine)model1.getValueAt(count, 0);
-            v.setQuantity((int)model1.getValueAt(count, 3));
-            order1.addMedicine(v);
-        }
-    }
         bs.getOrders().add(order1);
+
         for(Hospital h : bz.getHospitals()){
             if(h.getName().equals(ho)){
                 h.getOrders().add(order1);
