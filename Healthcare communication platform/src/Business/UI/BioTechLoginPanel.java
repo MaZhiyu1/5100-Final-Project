@@ -49,7 +49,6 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtuser = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jRadioButton4 = new javax.swing.JRadioButton();
@@ -75,8 +74,6 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jButton2.setText("Register");
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("Reasearch");
@@ -156,10 +153,8 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
                                     .addGap(26, 26, 26)
                                     .addComponent(txtpwd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(174, 174, 174)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton2))))
+                            .addGap(175, 175, 175)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(138, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -189,9 +184,7 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
                         .addComponent(jLabel2))
                     .addGap(94, 94, 94)
                     .addComponent(jButton1)
-                    .addGap(35, 35, 35)
-                    .addComponent(jButton2)
-                    .addContainerGap(94, Short.MAX_VALUE)))
+                    .addContainerGap(152, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -265,7 +258,6 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> hoCombox;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

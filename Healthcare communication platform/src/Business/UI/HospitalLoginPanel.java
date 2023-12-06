@@ -61,7 +61,6 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
         txtuser = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButtonSubmit = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jRadioPatient = new javax.swing.JRadioButton();
         jRadioDocker = new javax.swing.JRadioButton();
         jRadioAnalysis = new javax.swing.JRadioButton();
@@ -96,8 +95,6 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
                 jButtonSubmitActionPerformed(evt);
             }
         });
-
-        jButton2.setText("Register");
 
         buttonGroup1.add(jRadioPatient);
         jRadioPatient.setText("Patient");
@@ -163,10 +160,8 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
                                         .addGap(26, 26, 26)
                                         .addComponent(txtpwd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(159, 159, 159)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton2)))
+                                .addGap(160, 160, 160)
+                                .addComponent(jButtonSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(42, 42, 42)
                                 .addComponent(jRadioPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,9 +208,7 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
                     .addComponent(jRadioSupplier))
                 .addGap(41, 41, 41)
                 .addComponent(jButtonSubmit)
-                .addGap(35, 35, 35)
-                .addComponent(jButton2)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -313,7 +306,6 @@ public class HospitalLoginPanel extends javax.swing.JPanel {
     private javax.swing.JButton Back;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> hoCombox;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonSubmit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

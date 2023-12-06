@@ -50,7 +50,6 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtuser = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtpwd = new javax.swing.JTextField();
@@ -74,8 +73,6 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jButton2.setText("Register");
 
         jLabel1.setText("Username:");
 
@@ -130,10 +127,8 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
                                     .addGap(26, 26, 26)
                                     .addComponent(txtpwd, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(174, 174, 174)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton2))))
+                            .addGap(175, 175, 175)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addContainerGap(138, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -160,9 +155,7 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
                         .addComponent(jLabel2))
                     .addGap(94, 94, 94)
                     .addComponent(jButton1)
-                    .addGap(35, 35, 35)
-                    .addComponent(jButton2)
-                    .addContainerGap(94, Short.MAX_VALUE)))
+                    .addContainerGap(152, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -209,7 +202,6 @@ public class MedicalSupplierLoginPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Back;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
