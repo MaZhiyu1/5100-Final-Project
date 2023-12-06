@@ -98,7 +98,6 @@ public class DoctorLabJPanel extends javax.swing.JPanel {
         instructionTextArea = new javax.swing.JTextArea();
         btnSave = new javax.swing.JButton();
         btnBack1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
 
         jPanel1.setBackground(java.awt.SystemColor.textHighlight);
 
@@ -172,17 +171,14 @@ public class DoctorLabJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7)
                                     .addComponent(txtProcess, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(28, 28, 28)
+                                .addGap(98, 98, 98)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtProjectName)
                                         .addComponent(txtProjectId)
                                         .addComponent(txtProjectType)
                                         .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jProgressBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(jLabel2)))
@@ -214,8 +210,7 @@ public class DoctorLabJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtProcess, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnResearch)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnResearch))
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -301,7 +296,6 @@ public class DoctorLabJPanel extends javax.swing.JPanel {
         selectedLab.setInstruction(instructionTextArea.getText());
         selectedLab.setProjectName(txtProjectName.getText());
         selectedLab.setType(txtProjectType.getText());
-        selectedLab.setProgress(Integer.parseInt(txtProcess.getText()));
 
         JOptionPane.showMessageDialog(null, "Save successfully!");
 
@@ -332,7 +326,6 @@ public class DoctorLabJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblLab;
     private javax.swing.JTextField txtProcess;
     private javax.swing.JTextField txtProjectId;

@@ -126,7 +126,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "ID:", "Name", "Type", "Instruction"
+                "ID:", "Name", "Type", "Quantity"
             }
         ));
         jScrollPane5.setViewportView(tblRequest);
@@ -282,7 +282,15 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
             row1[0] = drug;
             row1[1] = drug.getName();
             row1[2] = drug.getType();
-            row1[3] = drug.getQuantity();
+            if(drug instanceof Equipment){
+                if(drug.getQuantity()!=10){
+                    row1[3] = "fixed";
+                }else{
+                    row1[3] = "need fixed";
+                }
+            }else{
+                row1[3] = drug.getQuantity();
+            }
             row1[4] = drug.getInstruction();
             ((DefaultTableModel) tblRequest.getModel()).addRow(row1);
         });
@@ -295,7 +303,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
             return;
         }
         if(!"Equipment".equals(selectedDrug.getType())){
-            selectedDrug.setQuantity(selectedDrug.getQuantity() - Integer.parseInt(txtQuantity.getText()));
+          
         }
 
         if(Objects.equals(cmbSelectGenre.getSelectedItem(), "Medicine")){

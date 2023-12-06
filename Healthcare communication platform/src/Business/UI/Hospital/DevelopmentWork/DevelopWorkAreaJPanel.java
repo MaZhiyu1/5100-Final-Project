@@ -5,6 +5,7 @@
 package Business.UI.Hospital.DevelopmentWork;
 
 import Business.Business;
+import Business.Class.BioTech.Lab;
 
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -37,6 +38,9 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
                 instructionTextArea.setText(tblLab.getValueAt(tblLab.getSelectedRow(), 4).toString());
                 txtStatus.setText(tblLab.getValueAt(tblLab.getSelectedRow(), 5).toString());
                 txtDepartment.setText(tblLab.getValueAt(tblLab.getSelectedRow(), 6).toString());
+                int row = tblLab.getSelectedRow();
+                Lab b = (Lab) tblLab.getValueAt(row, 0);
+                ProgressBar.setValue(b.getProgress());
             }
         });
     }
@@ -48,7 +52,7 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
 
         bz.getHospitals().stream().flatMap(vo -> vo.getDoctorList().stream().flatMap(doctor -> doctor.getLabs().stream())).forEach(vo -> {
             Object row[] = new Object[7];
-            row[0] = vo.getId();
+            row[0] = vo;
             row[1] = vo.getProjectName();
             row[2] = vo.getCompany();
             row[3] = vo.getType();
@@ -79,7 +83,7 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblLab = new javax.swing.JTable();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        ProgressBar = new javax.swing.JProgressBar();
         jLabel3 = new javax.swing.JLabel();
         txtProjectName = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -170,7 +174,7 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))))
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(ProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(433, 433, 433))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
@@ -187,7 +191,7 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -235,6 +239,7 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar ProgressBar;
     private javax.swing.JTextArea instructionTextArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -246,7 +251,6 @@ public class DevelopWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

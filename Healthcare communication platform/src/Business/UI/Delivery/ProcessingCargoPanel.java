@@ -8,6 +8,7 @@ import Business.Business;
 import Business.Class.BioTech.BioTechCom;
 import Business.Class.Delivery.Delivery;
 import Business.Class.Delivery.Order;
+import Business.Class.Equipment;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
@@ -195,6 +196,9 @@ public class ProcessingCargoPanel extends javax.swing.JPanel {
             return;
         }
         Order selected = (Order) btnCargo.getValueAt(row, 0);
+                            for(Equipment e : selected.getEquipments()){
+                                System.out.print(e.getName());
+                            }
         for(Hospital h : b.getHospitals()){
             if(h.getName().equals(selected.getAddress())){
                 System.out.print("Yes!!!");
@@ -203,6 +207,18 @@ public class ProcessingCargoPanel extends javax.swing.JPanel {
                 }
                 if(selected.getVaccines()!=null){
                     h.DeliveryAddVaccine(selected.getVaccines());
+                }
+                if(selected.getEquipments()!=null){
+                    selected.getEquipments();
+                    for(Equipment e : selected.getEquipments()){
+                        for(Equipment f : h.getHi().getEquipmentDirectory().getEquipments()){
+                            System.out.print(f.getName());
+                            if(f.getName().equals(e.getName())){
+                                f.setQuantity(9);
+                                
+                            }
+                        }
+                    }
                 }
             }
         

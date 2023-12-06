@@ -465,7 +465,7 @@ public class Business {
         vaccineDirectory.add(vaccine2);
         
         Equipment equipment = new Equipment("E-A1",  "Pediatrics", "For Child");
-        equipment.setQuantity(10);
+        equipment.setQuantity(1);
         Equipment equipment1 = new Equipment("E-B1",  "Internal Medicine","For Internal" );
         equipment1.setQuantity(10);
         Equipment equipment2 = new Equipment("E-C1", "Surgery", "Surgery");

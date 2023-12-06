@@ -10,6 +10,7 @@ import Business.Class.BioTech.BioTechCom;
 import Business.Class.Delivery.Delivery;
 import Business.Class.Delivery.Order;
 import Business.Class.Equipment;
+import Business.Class.Hospital.Hospital;
 import Business.Class.MedicalSupplier.MedicalSupplier;
 import Business.Class.Medicine;
 import Business.Class.Vaccine;
@@ -299,9 +300,16 @@ public class EquipmentDeliveryPanel extends javax.swing.JPanel {
             order1.addEquipment(e);
         }
         bs.getOrders().add(order1);
+        
         for(Delivery d : bz.getDeliveries()){
             if(d.getCompany().equals(order1.getDelivery())){
                 d.addOrder(order1);
+            }
+        }
+        String ho = (String)cmbHospital.getSelectedItem();
+        for(Hospital h : bz.getHospitals()){
+            if(h.getName().equals(ho)){
+                h.getOrders().add(order1);
             }
         }
         JOptionPane.showMessageDialog(null,"Successfully submit!");

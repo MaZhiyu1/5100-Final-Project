@@ -187,7 +187,16 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
             row1[0] = drug.getId();
             row1[1] = drug.getName();
             row1[2] = drug.getType();
-            row1[3] = drug.getQuantity();
+            if(drug instanceof Equipment){
+                if(drug.getQuantity()!=10){
+                    row1[3] = "fixed";
+                }else{
+                    row1[3] = "need fixed";
+                }
+            }else{
+                row1[3] = drug.getQuantity();
+            }
+            
 //            row1[4] = drug.getInstruction();
             ((DefaultTableModel) tblStock.getModel()).addRow(row1);
         });
@@ -332,7 +341,7 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel8.setText("Stock");
 
-        cmbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine", "Vaccine", "Equipment", "Operation", "Transfer" }));
+        cmbSelectGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicine", "Vaccine", "Equipment", " " }));
         cmbSelectGenre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbSelectGenreActionPerformed(evt);
