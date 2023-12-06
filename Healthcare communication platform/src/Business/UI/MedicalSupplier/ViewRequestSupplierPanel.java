@@ -337,7 +337,7 @@ public class ViewRequestSupplierPanel extends javax.swing.JPanel {
             return;
         }
         Request selected = (Request) tblRequest.getValueAt(row, 0);
-        refreshTable2(selected.getEquipments());
+        refreshTable2(selected.getEquipment());
         DescriptionTextArea.setText(selected.getTips());
         
     }//GEN-LAST:event_tblRequestMouseClicked

@@ -7,6 +7,7 @@ package Business.Class.BioTech;
 import Business.Class.Hospital.Medical.Person;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  *
@@ -17,15 +18,23 @@ public class BioResearcher {
     private Person master;
     private String pwd;
     private String id;
-    private String BioTech;
+    private BioTechCom bioTech;
     int enable=0;
     
     
-    public BioResearcher(Person person, String pwd, String id, String BioTech) {
+    public BioResearcher(Person person, String pwd, String id, BioTechCom BioTech) {
         this.master = person;
         this.pwd = pwd;
         this.id = id;
-        this.BioTech = BioTech;
+        this.bioTech = BioTech;
+        labs = new ArrayList<>();
+    }
+
+    public BioResearcher(Person person, String pwd, BioTechCom bioTech) {
+        this.master = person;
+        this.pwd = pwd;
+        this.id = UUID.randomUUID().toString();
+        this.bioTech = bioTech;
         labs = new ArrayList<>();
     }
 
@@ -84,14 +93,12 @@ public class BioResearcher {
         this.id = id;
     }
 
-    public String getBioTech() {
-        return BioTech;
+
+    public BioTechCom getBioTech() {
+        return bioTech;
     }
 
-    public void setBioTech(String BioTech) {
-        this.BioTech = BioTech;
+    public void setBioTech(BioTechCom bioTech) {
+        this.bioTech = bioTech;
     }
-    
-    
-    
 }

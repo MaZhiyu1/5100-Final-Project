@@ -32,7 +32,7 @@ public class Business {
     private Hospital h3;
 
     private BioTechCom b1;
-    private BioTechCom b2;
+    private BioTechCom VitalEdge_Biomedicals;
     
     private BioSupplier bs1;
     private BioSupplier bs2;
@@ -60,7 +60,7 @@ public class Business {
 //        medicineList = new ArrayList<>();
 //        medicalSuppliers = new ArrayList<>();
         Hospital1();
-        BioTechCom1();
+        BioTechCom_BioGenesis_Therapeutics();
         MedicalSupplier1();
         Delivery1();
         Hospital2();
@@ -147,8 +147,10 @@ public class Business {
         medicalSuppliers.add(ms);
     }
     
-        public void MedicalSupplier2(){
+    public void MedicalSupplier2(){
+
         ms = new  MedicalSupplier("HealGear Manufacturing");
+
         Equipment e1 = new Equipment("Anti-Heart Disease", "For Use", "Internal Medicine");
         
         Equipment equipment = new Equipment("EB-A1",  "Pediatrics", "For Child");
@@ -156,7 +158,6 @@ public class Business {
         Equipment equipment1 = new Equipment("EB-B1",  "Internal Medicine","For Internal" );
 
         Equipment equipment2 = new Equipment("EB-C1", "Surgery", "Surgery");
-
 
         BioSupplier bs = new BioSupplier( "Lucy","", "MedTech Supplier");
         ms.addBioSupplier(bs);
@@ -169,16 +170,16 @@ public class Business {
     }
     
 
-    public void BioTechCom1(){
+    public void BioTechCom_BioGenesis_Therapeutics(){
         Medicine new_m = new Medicine("New Medicine", "Heart Disease", "Internal Medicine");
 
         Vaccine vxx = new Vaccine("Vxx A1", "For Child", "Pediatrics");
-        
+
         b1 = new BioTechCom("BioGenesis Therapeutics");
 
         Person jack = new Person(1006, "Jack","male",53);
         
-        BioResearcher br = new BioResearcher(jack, "", "1", "BioGenesis Therapeutics");
+        BioResearcher br = new BioResearcher(jack, "", "1", b1);
         b1.addBioResaecher(br);
         Lab lab1 = new Lab(jack, "Internal Medicine", "VICC Project", new_m, vxx);
         lab1.setType("Internal Medicine");
@@ -228,7 +229,7 @@ public class Business {
         V.add(v2);
         
         Request request = new Request("medicine 1","medicine","For heart disease");
-        request.setMedicines(medicine);
+        request.setMedicine(medicine);
         
         BioSupplier bs1_ = new BioSupplier("Mike", "", "BioSupplier 1");
         bs1_.addRequest(request);
@@ -243,6 +244,87 @@ public class Business {
         b1.addSupplier(bs1_);
         b1.addSupplier(bs2_);
         bioTechList.add(b1);
+    }
+
+
+    public void BioTechCom_VitalEdge_Biomedicals(){
+
+        VitalEdge_Biomedicals = new BioTechCom("VitalEdge Biomedicals");
+
+        Medicine medicine_loratadine = new Medicine("Loratadine", "Loratadine is an antihistamine medication used to relieve allergy symptoms", "non-sedating antihistamines");
+
+        Vaccine vaccine_polio = new Vaccine("Polio vaccine", "The Polio vaccine is a vaccine used to prevent poliomyelitis, commonly known as polio", "Oral Polio Vaccine");
+
+        Person Emily = new Person(10021, "Emily","female",45);
+
+        BioResearcher br = new BioResearcher(Emily, "", VitalEdge_Biomedicals);
+
+        VitalEdge_Biomedicals.addBioResaecher(br);
+
+
+        Lab lab1 = new Lab(Emily, "External Medicine", "Antihistamine Project", medicine_loratadine, vaccine_polio);
+        lab1.setType("External Medicine");
+        lab1.setInstruction("on-sedating antihistamines");
+        lab1.setProgress(22);
+
+        Optional<Doctor> first = h1.getDoctorList().stream().filter(doctor -> "Alex".equals(doctor.getName())).toList().stream().findFirst();
+
+        Lab lab2 = new Lab(first.get(), "Group 1", "VICC Project","Internal Medicine","it is for Internal Medicine");
+
+        br.addLab(lab2);
+        for(Hospital h : hospitals){
+            if(h.getName().equals("Boston Rehabilitation Center")){
+                for(Doctor d : h.getDoctorList()){
+                    if(d.getName().equals("Alex")){
+                        lab1.setDoctor(d);
+                        d.getLabs().add(lab1);
+                        break;
+                    }
+                }
+            }
+        }
+        b1.addLab(lab1);
+
+        Medicine medicine = new Medicine("AAAA1",  "For Child", "Pediatrics");
+        medicine.setQuantity(177345);
+        Medicine medicine1 = new Medicine("BBBB1","For Internal", "Internal Medicine");
+        medicine1.setQuantity(14565);
+        Medicine medicine2 = new Medicine("CCCC1",  "Surgery", "Surgery");
+        medicine2.setQuantity(63456);
+        ArrayList<Medicine> medicineDirectory = new ArrayList<>();
+
+        medicineDirectory.add(medicine);
+        medicineDirectory.add(medicine1);
+        medicineDirectory.add(medicine2);
+
+        Vaccine v = new Vaccine("VVV A1","For Child", "Pediatrics");
+        v.setQuantity(10);
+        Vaccine v1 = new Vaccine("VVV B1",  "For Internal", "Internal Medicine");
+        v1.setQuantity(10);
+        Vaccine v2 = new Vaccine("VVV C1", "Surgery", "Surgery");
+        v2.setQuantity(10);
+        ArrayList<Vaccine> vaccineArrayList = new ArrayList<>();
+
+        vaccineArrayList.add(v);
+        vaccineArrayList.add(v1);
+        vaccineArrayList.add(v2);
+
+        Request request = new Request("medicine 1","medicine","For heart disease");
+        request.setMedicine(medicine);
+
+        BioSupplier bs1_ = new BioSupplier("Mike", "", "BioSupplier 1");
+        bs1_.addRequest(request);
+
+        BioSupplier bs2_ = new BioSupplier("Jackson", "", "BioSupplier 2");
+
+        //set inventory
+        b1.getHi().setMedicineDirectory(medicineDirectory);
+        b1.getHi().setVaccineDirectory(vaccineArrayList);
+
+        //set supplier
+        b1.addSupplier(bs1_);
+        b1.addSupplier(bs2_);
+        bioTechList.add(VitalEdge_Biomedicals);
     }
     
     

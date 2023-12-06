@@ -11,6 +11,7 @@ import Business.Class.Hospital.Request;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -23,15 +24,16 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
     JPanel RightPanel;
     private Doctor doctor;
 
-    private List<Medicine> drugList;
+    private List<Medicine> medicineList;
 
-    private Medicine selectedDrug;
+    private Drug selectedDrug;
     
     private List<Vaccine> vaccineList;
 
     private Vaccine selectedVaccine;
     
     private List<Equipment> equipmentList;
+
 
     private Equipment selectedEquipment;
     /**
@@ -42,24 +44,23 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         this.doctor = doctor;
         this.RightPanel=RightPanel;
         vaccineList = doctor.getHospital().getHi().getVaccineDirectory().getVaccines();
-        drugList = doctor.getHospital().getHi().getMedicineDirectory().getMedicines();
+        medicineList = doctor.getHospital().getHi().getMedicineDirectory().getMedicines();
         equipmentList = doctor.getHospital().getHi().getEquipmentDirectory().getEquipments();
 
-        tblPrescription.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSearchGenreActionPerformed(null);
+
+        tblRequest.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                int row = tblPrescription.getSelectedRow(); // 获取所点选行的索引
-                DefaultTableModel model = (DefaultTableModel) tblPrescription.getModel(); //Have the access to the table;
+                int row = tblRequest.getSelectedRow(); // 获取所点选行的索引
+                DefaultTableModel model = (DefaultTableModel) tblRequest.getModel(); //Have the access to the table;
 
                 if(row != -1) { // 如果行已被选择
-                    if(model.getValueAt(row, 0) instanceof String){
-                    String id = (String) model.getValueAt(row, 0); // 获取所选行的第1列值
 
-                    selectedDrug = drugList.stream().filter(drug -> drug.getId().equals(id)).findFirst().get();
+                    selectedDrug = (Drug) model.getValueAt(row, 0);
 
+                    //init
                     txtName.setText(selectedDrug.getName());
                     txtQuantity.setText("1");
-                    }
-
                 }
             }
         });
@@ -82,7 +83,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
         txtSearchGenre = new javax.swing.JTextField();
         btnSearchGenre = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tblPrescription = new javax.swing.JTable();
+        tblRequest = new javax.swing.JTable();
         txtName = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
@@ -117,7 +118,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        tblPrescription.setModel(new javax.swing.table.DefaultTableModel(
+        tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -128,7 +129,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
                 "ID:", "Name", "Type", "Instruction"
             }
         ));
-        jScrollPane5.setViewportView(tblPrescription);
+        jScrollPane5.setViewportView(tblRequest);
 
         jLabel12.setText("Name:");
 
@@ -257,221 +258,131 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
 
     private void btnSearchGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchGenreActionPerformed
 
-        // search medicine
         String  type = (String)cmbSelectGenre.getSelectedItem();
-        String name = txtSearchGenre.getText();
 
         if("Medicine".equals(type)){
-            ArrayList<Medicine> allList = doctor.getHospital().getHospitalInventory().getMedicineDirectory().getMedicines();
-
-            ArrayList<Medicine> medicineArrayList = new ArrayList<>();
-
-            if(name == null || name.isEmpty()){
-                medicineArrayList = allList;
-            }
-            else{
-                for(Medicine drug : allList){
-                    if(drug.getName().contains(name)){
-                        medicineArrayList.add(drug);
-                    }
-                }
-            }
-
-            populatePrescription(medicineArrayList);
+            populateTblRequest(medicineList);
         }
         else if("Vaccine".equals(type)){
-            ArrayList<Vaccine> allList = doctor.getHospital().getHospitalInventory().getVaccineDirectory().getVaccines();
-
-            ArrayList<Vaccine> vaccineList = new ArrayList<>();
-
-            if(name == null || name.isEmpty()){
-                vaccineList = allList;
-            }
-            else{
-                for(Vaccine drug : allList){
-                    if(drug.getName().contains(name)){
-                        vaccineList.add(drug);
-                    }
-                }
-            }
-            populatePrescription(vaccineList);
+            populateTblRequest(vaccineList);
         }
         else if("Equipment".equals(type)){
-            ArrayList<Equipment> allList = doctor.getHospital().getHospitalInventory().getEquipmentDirectory().getEquipments();
-
-            ArrayList<Equipment> equipmentList = new ArrayList<>();
-
-            if(name == null || name.isEmpty()){
-                equipmentList = allList;
-            }
-            else{
-                for(Equipment drug : allList){
-                    if(drug.getName().contains(name)){
-                        equipmentList.add(drug);
-                    }
-                }
-            }
-
-            populatePrescription(equipmentList);
-        }
-        else if("Operation".equals(type)){
-            ArrayList<Operation> allList = doctor.getHospital().getHospitalInventory().getOperationDirectory().getOperations();
-            ArrayList<Operation> operationArrayList = new ArrayList<>();
-
-            if(name == null || name.isEmpty()){
-                operationArrayList = allList;
-            }
-            else{
-                for(Operation operation : allList){
-                    if(operation.getName().contains(name)){
-                        operationArrayList.add(operation);
-                    }
-                }
-            }
-
-            populatePrescription(operationArrayList);
-        }
-        else if("Transfer".equals(type)){
-            ArrayList<Transfer> allList = doctor.getHospital().getHospitalInventory().getTransferDirectory().getTransfers();
-            ArrayList<Transfer> transferArrayList = new ArrayList<>();
-
-            if(name == null || name.isEmpty()){
-                transferArrayList = allList;
-            }
-            else{
-                for(Transfer drug : allList){
-                    if(drug.getName().contains(name)){
-                        transferArrayList.add(drug);
-                    }
-                }
-            }
-            populatePrescription(transferArrayList);
+            populateTblRequest(equipmentList);
         }
     }//GEN-LAST:event_btnSearchGenreActionPerformed
 
+    private <T extends Drug> void populateTblRequest(List<T> drugList) {
 
-    /**
-     * populate the prescription table
-     * */
-    private <T extends Drug> void populatePrescription(List<T> drugList) {
+        ((DefaultTableModel) tblRequest.getModel()).setRowCount(0);
 
-        this.drugList = (List<Medicine>) drugList;
+        String name = txtSearchGenre.getText();
 
-        ((DefaultTableModel) tblPrescription.getModel()).setRowCount(0);
-        drugList.forEach(drug -> {
+        drugList.stream().filter((s) -> (s.getName().contains(name))).forEach(drug -> {
             Object[] row1 = new Object[5];
-            row1[0] = drug.getId();
+            row1[0] = drug;
             row1[1] = drug.getName();
             row1[2] = drug.getType();
             row1[3] = drug.getQuantity();
             row1[4] = drug.getInstruction();
-            ((DefaultTableModel) tblPrescription.getModel()).addRow(row1);
+            ((DefaultTableModel) tblRequest.getModel()).addRow(row1);
         });
     }
 
-    public void refreshTable(int k) {
-        
-        DefaultTableModel model = (DefaultTableModel)tblPrescription.getModel();
-        model.setRowCount(0);
-        if(k==0){
-        if(drugList==null) return;
-        for(Medicine s : drugList) {
-            Object row[] = new Object[5];
-            row[0] = s;
-            row[1] = s.getName();
-            row[2] = s.getType();
-            row[3] = s.getQuantity();
-            row[4] = s.getStatus();
-            model.addRow(row);
-        }
-        }
-        
-
-        if(k==1){
-        if(vaccineList==null) return;
-        for(Vaccine s : vaccineList) {
-            Object row[] = new Object[5];
-            row[0] = s;
-            row[1] = s.getName();
-            row[2] = s.getType();
-            row[3] = s.getQuantity();
-            row[4] = s.getStatus();
-            model.addRow(row);
-        }
-        }
-        
-        if(k==2){
-        if(equipmentList==null) return;
-        for(Equipment s : equipmentList) {
-            Object row[] = new Object[5];
-            row[0] = s;
-            row[1] = s.getName();
-            row[2] = s.getType();
-            row[3] = s.getQuantity();
-            row[4] = s.getStatus();
-            model.addRow(row);
-        }
-        }
-        
-        
-    }
-    
-
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if(txtQuantity.getText()==null){
-            JOptionPane.showMessageDialog(null, "Please input number!");
+
+        if (!validateAddAction()){
             return;
         }
-        int number=0;
+        if(!"Equipment".equals(selectedDrug.getType())){
+            selectedDrug.setQuantity(selectedDrug.getQuantity() - Integer.parseInt(txtQuantity.getText()));
+        }
+
+        if(Objects.equals(cmbSelectGenre.getSelectedItem(), "Medicine")){
+
+            Medicine medicine = new Medicine(selectedDrug.getName(), selectedDrug.getDescription(), selectedDrug.getCategory());
+            medicine.setInstruction(selectedDrug.getInstruction());
+            medicine.setQuantity(Integer.parseInt(txtQuantity.getText()));
+            medicine.setType(selectedDrug.getType());
+            medicine.setStatus(selectedDrug.getStatus());
+
+            Request request = new Request(selectedDrug.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
+            request.setTips(tipsTextArea.getText());
+            request.setMedicine(medicine);
+            request.setInstruction(selectedDrug.getInstruction());
+            doctor.getHospital().addRequest(request);
+            tipsTextArea.setText("");
+
+            populateTblRequest(medicineList);
+            JOptionPane.showMessageDialog(null, "Request added successfully!");
+        } else if(Objects.equals(cmbSelectGenre.getSelectedItem(), "Vaccine")){
+
+            Vaccine vaccine = new Vaccine(selectedDrug.getName(), selectedDrug.getDescription(), selectedDrug.getCategory());
+            vaccine.setInstruction(selectedDrug.getInstruction());
+            vaccine.setQuantity(Integer.parseInt(txtQuantity.getText()));
+            vaccine.setType(selectedDrug.getType());
+            vaccine.setStatus(selectedDrug.getStatus());
+
+            Request request = new Request(selectedDrug.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
+            request.setTips(tipsTextArea.getText());
+            request.setVaccines(vaccine);
+            request.setInstruction(selectedDrug.getInstruction());
+            doctor.getHospital().addRequest(request);
+            tipsTextArea.setText("");
+
+            populateTblRequest(vaccineList);
+            JOptionPane.showMessageDialog(null, "Request added successfully!");
+        }else if(Objects.equals(cmbSelectGenre.getSelectedItem(), "Equipment")){
+
+            Equipment equipment = new Equipment(selectedDrug.getName(), selectedDrug.getDescription(), selectedDrug.getCategory());
+            equipment.setInstruction(selectedDrug.getInstruction());
+            equipment.setQuantity(Integer.parseInt(txtQuantity.getText()));
+            equipment.setType(selectedDrug.getType());
+            equipment.setStatus(selectedDrug.getStatus());
+
+            Request request = new Request(selectedDrug.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
+            request.setTips(tipsTextArea.getText());
+            request.setEquipment(equipment);
+            request.setInstruction(selectedDrug.getInstruction());
+            doctor.getHospital().addRequest(request);
+            tipsTextArea.setText("");
+
+            populateTblRequest(equipmentList);
+            JOptionPane.showMessageDialog(null, "Request added successfully!");
+        }
+
+    }//GEN-LAST:event_btnAddActionPerformed
+
+
+    private boolean validateAddAction() {
+
+        if(txtQuantity.getText()==null){
+            JOptionPane.showMessageDialog(null, "Please input number!");
+            return false;
+        }
+        int number = 0;
         try{
             number = Integer.parseInt(txtQuantity.getText());
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Please input number!");
-            return;
+            return false;
         }
-        int row = tblPrescription.getSelectedRow();
+        int row = tblRequest.getSelectedRow();
+
         if(row<0){
             JOptionPane.showMessageDialog(null,"Please select a row from the table first", "Warning",JOptionPane.WARNING_MESSAGE);
-            return;
+            return false;
         }
-        if(((String)cmbSelectGenre.getSelectedItem()).equals("Medicine")){
-            Medicine selected = (Medicine) tblPrescription.getValueAt(row, 0);
-            selected.setQuantity(number);
-            Request request = new Request(selected.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
-            request.setTips(tipsTextArea.getText());
-            request.setMedicines(selected);
-            doctor.getHospital().addRequest(request);
-            tipsTextArea.setText("");
-            JOptionPane.showMessageDialog(null, "Request added successfully!");
-        }
-        if(((String)cmbSelectGenre.getSelectedItem()).equals("Vaccine")){
-            Vaccine selected = (Vaccine) tblPrescription.getValueAt(row, 0);
-            selected.setQuantity(number);
-            Request request = new Request(selected.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
-            request.setTips(tipsTextArea.getText());
-            request.setVaccines(selected);
-            doctor.getHospital().addRequest(request);
-            tipsTextArea.setText("");
-            JOptionPane.showMessageDialog(null, "Request added successfully!");
-        }
-        if(((String)cmbSelectGenre.getSelectedItem()).equals("Equipment")){
-            Equipment selected = (Equipment) tblPrescription.getValueAt(row, 0);
-            selected.setQuantity(number);
-            Request request = new Request(selected.getType(),tipsTextArea.getText(), Integer.parseInt(txtQuantity.getText()));
-            request.setTips(tipsTextArea.getText());
-            request.setEquipments(selected);
-            doctor.getHospital().addRequest(request);
-            tipsTextArea.setText("");
-            JOptionPane.showMessageDialog(null, "Request added successfully!");
-        }
-        
-        
-        
-        
 
-                                  
-    }//GEN-LAST:event_btnAddActionPerformed
+        Drug selectedDrug = (Drug) tblRequest.getValueAt(row, 0);
+
+        if((selectedDrug.getQuantity()-number<0)||number<=0){
+            JOptionPane.showMessageDialog(null,"Please input a vaild value");
+            return false;
+        }
+
+        return true;
+    }
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
         // TODO add your handling code here:
@@ -482,14 +393,16 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
 
     private void cmbSelectGenreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSelectGenreActionPerformed
         // TODO add your handling code here:
+
         String type = (String)cmbSelectGenre.getSelectedItem();
-        if(type.equals("Medicine")){
-            refreshTable(0);
+        if("Medicine".equals(type)){
+            populateTblRequest(medicineList);
         }
-        else if(type.equals("Vaccine")){
-            refreshTable(1);
-        }if(type.equals("Equipment")){
-            refreshTable(2);
+        else if("Vaccine".equals(type)){
+            populateTblRequest(vaccineList);
+        }
+        else if("Equipment".equals(type)){
+            populateTblRequest(equipmentList);
         }
     }//GEN-LAST:event_cmbSelectGenreActionPerformed
 
@@ -510,7 +423,7 @@ public class DoctorRequestJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTable tblPrescription;
+    private javax.swing.JTable tblRequest;
     private javax.swing.JTextArea tipsTextArea;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtQuantity;

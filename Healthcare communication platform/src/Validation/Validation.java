@@ -66,6 +66,7 @@ public class Validation {
     
     public Object IsValidationBioTech(String BioTechName,String username,String pwd,String type){
         for(BioTechCom bt : bz.getBioTech()){
+            //遍历比对公司的名字
             if(bt.getName().equals(BioTechName)){
                 if(type.equals("Research")){
                     for(BioResearcher br :  bt.getBr()){
@@ -75,19 +76,17 @@ public class Validation {
                             }
                         }
                     }
-                
-                }
 
-                if(type.equals("Research")){
-                    for(Lab lab1 : bt.getLabs()){
-                        if(lab1.getMaster().getName().equals(username)){
-                            return lab1;
-//                            if(lab1.getPwd().equals(pwd)){
-//                                return lab1;
-//                            }
-                        }
-                    }
-                }   //Supplier
+//                    for(Lab lab1 : bt.getLabs()){
+//                        if(lab1.getMaster().getName().equals(username)){
+//                            return lab1;
+////                            if(lab1.getPwd().equals(pwd)){
+////                                return lab1;
+////                            }
+//                        }
+//                    }
+                
+                }  //Supplier
                 else if(type.equals("Supplier")){
                     for(BioSupplier bs : bt.getBioSupplier()){
                         if(bs.getName().equals(username)){

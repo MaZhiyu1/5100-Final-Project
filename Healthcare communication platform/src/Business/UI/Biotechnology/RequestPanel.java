@@ -106,13 +106,13 @@ public class RequestPanel extends javax.swing.JPanel {
     public void refreshTable2(Request selected) {
         DefaultTableModel model = (DefaultTableModel)tblMedicine.getModel();
         model.setRowCount(0);
-        if(selected.getMedicines()==null) return;
+        if(selected.getMedicine()==null) return;
  
             Object row1[] = new Object[4];
-            row1[0] = selected.getMedicines();
-            row1[1] = selected.getMedicines().getType();
-            row1[2] = selected.getMedicines().getName();
-            row1[3] = selected.getMedicines().getQuantity();
+            row1[0] = selected.getMedicine();
+            row1[1] = selected.getMedicine().getType();
+            row1[2] = selected.getMedicine().getName();
+            row1[3] = selected.getMedicine().getQuantity();
            // row[1] = s.getProductCatalog().getProductCount() == 0 ? "None" : s.getProductCatalog().getProductCount();
             model.addRow(row1);
         

@@ -18,10 +18,10 @@ public class Request {
     String id;
     String name;
 
-//    String instruction;
+    String instruction;
     String status;
-    Medicine medicines;
-    Equipment equipments;
+    Medicine medicine;
+    Equipment equipment;
     Vaccine vaccines;
     String type;
 
@@ -68,13 +68,13 @@ public class Request {
         this.id = id;
     }
 
-//    public String getInstruction() {
-//        return instruction;
-//    }
-//
-//    public void setInstruction(String instruction) {
-//        this.instruction = instruction;
-//    }
+    public String getInstruction() {
+        return instruction;
+    }
+
+    public void setInstruction(String instruction) {
+        this.instruction = instruction;
+    }
 
     public String getStatus() {
         return status;
@@ -84,20 +84,20 @@ public class Request {
         this.status = status;
     }
 
-    public Medicine getMedicines() {
-        return medicines;
+    public Medicine getMedicine() {
+        return medicine;
     }
 
-    public void setMedicines(Medicine medicines) {
-        this.medicines = medicines;
+    public void setMedicine(Medicine medicines) {
+        this.medicine = medicines;
     }
 
-    public Equipment getEquipments() {
-        return equipments;
+    public Equipment getEquipment() {
+        return equipment;
     }
 
-    public void setEquipments(Equipment equipments) {
-        this.equipments = equipments;
+    public void setEquipment(Equipment equipments) {
+        this.equipment = equipments;
     }
 
     public Vaccine getVaccines() {

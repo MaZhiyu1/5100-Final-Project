@@ -24,11 +24,10 @@ public class MainJFrame extends javax.swing.JFrame {
     
     private void setLoginScreen() {
         Business business = new Business();
-        LoginPanel ls = new LoginPanel(leftPanel,rightPanel,business);
-        leftPanel.add("LoginScreen",ls);
-       CardLayout layout = (CardLayout) leftPanel.getLayout();
-       layout.next(leftPanel);
-
+        LoginPanel ls = new LoginPanel(leftPanel, rightPanel, business);
+        leftPanel.add("LoginScreen", ls);
+        CardLayout layout = (CardLayout) leftPanel.getLayout();
+        layout.next(leftPanel);
     }
     
     

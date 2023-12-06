@@ -26,10 +26,7 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
     JPanel leftPanel;
     JPanel RightPanel;
     Business bz;
-    
-    String name;
-    String pwd;
-    String bioTech;
+
     String type;
     
     public BioTechLoginPanel(JPanel leftPanel,JPanel RightPanel,Business bz) {
@@ -219,17 +216,17 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        name = txtuser.getText();
-        pwd = txtpwd.getText();
-        bioTech = (String) hoCombox.getSelectedItem();
+        String userName = txtuser.getText();
+        String pwd = txtpwd.getText();
+        String bioTechName = (String) hoCombox.getSelectedItem();
         Validation v1 = new Validation(bz);
-        Object o=v1.IsValidationBioTech(bioTech, name, pwd, type);
+        Object o=v1.IsValidationBioTech(bioTechName, userName, pwd, type);
         if(o==null){
             JOptionPane.showMessageDialog(null, "Please input correct account and password!");
             return;
         }
         if(o instanceof BioResearcher){
-            CreativeDepartmentPanel dw = new CreativeDepartmentPanel(RightPanel,bz,bioTech,(BioResearcher)o);
+            CreativeDepartmentPanel dw = new CreativeDepartmentPanel(RightPanel,bz,bioTechName,(BioResearcher)o);
             RightPanel.add("LoginScreen",dw);
             LogoutPanel lo = new LogoutPanel( leftPanel, RightPanel, bz);
             leftPanel.add("logout",lo);
@@ -239,8 +236,8 @@ public class BioTechLoginPanel extends javax.swing.JPanel {
             layout.next(RightPanel);
         }
         else if(o instanceof BioSupplier){
-            BioSupplierJPanel pw = new BioSupplierJPanel(RightPanel,bz,bioTech,(BioSupplier)o);
-            RightPanel.add("LoginScreen",pw);
+            BioSupplierJPanel pw = new BioSupplierJPanel(RightPanel,bz,bioTechName,(BioSupplier)o);
+            RightPanel.add("LoginScreen", pw);
             LogoutPanel lo = new LogoutPanel( leftPanel, RightPanel, bz);
             leftPanel.add("logout",lo);
             CardLayout layout1 = (CardLayout) leftPanel.getLayout();

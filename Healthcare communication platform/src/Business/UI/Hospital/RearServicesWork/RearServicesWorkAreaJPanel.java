@@ -8,14 +8,12 @@ import Business.Business;
 import Business.Class.*;
 import Business.Class.BioTech.BioTechCom;
 import Business.Class.Delivery.Order;
-import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.RearServices.RearServices;
 import Business.Class.Hospital.Request;
 import Business.Class.MedicalSupplier.MedicalSupplier;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -207,7 +205,8 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
             row[1] = request.getName();
             row[2] = request.getType();
             row[3] = request.getQuantity();
-            row[4] = request.getTips();
+            row[4] = request.getInstruction();
+            tipsTextArea.setText(request.getTips());
             ((javax.swing.table.DefaultTableModel) tblRequest.getModel()).addRow(row);
         });
     }
@@ -293,7 +292,7 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Type", "Quantity", "Tips"
+                "ID", "Name", "Type", "Quantity", "Instruction"
             }
         ));
         jScrollPane7.setViewportView(tblRequest);
@@ -497,6 +496,8 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
         if(selectedRequest == null || techCom == null){
             return;
         }
+
+        tipsTextArea.setText("");
 
 //        Optional<BioTechCom> bioTechCom = bz.getBioTech().stream().filter(com -> techCom.equals(com.getName())).findFirst();
         for(BioTechCom b : bz.getBioTech()){

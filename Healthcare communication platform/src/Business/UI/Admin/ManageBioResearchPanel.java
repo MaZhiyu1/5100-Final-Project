@@ -273,7 +273,7 @@ public class ManageBioResearchPanel extends javax.swing.JPanel {
             return;
         }
         Person p = new Person(id,name,"",0);
-        BioResearcher b = new BioResearcher(p,pwd,String.valueOf(id),ho);
+        BioResearcher b = new BioResearcher(p,pwd,String.valueOf(id),h1);
         b.setEnable(enable);
         h1.addBioResaecher(b);
         refreshTable1( h1);

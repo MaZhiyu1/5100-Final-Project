@@ -38,7 +38,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
     private List<Drug> drugList;
     
     ArrayList<Medicine> medicines = new ArrayList<>();
-    int number;
+
     ArrayList<Vaccine> vaccines= new ArrayList<>();
     ArrayList<Equipment> equipments = new ArrayList<>();
 
@@ -84,15 +84,15 @@ public class OutpatientJPanel extends javax.swing.JPanel {
 
         tblPrescription.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                int row = tblPrescription.getSelectedRow(); // 获取所点选行的索引
-                DefaultTableModel model = (DefaultTableModel) tblPrescription.getModel(); //Have the access to the table;
+            int row = tblPrescription.getSelectedRow(); // 获取所点选行的索引
+            DefaultTableModel model = (DefaultTableModel) tblPrescription.getModel(); //Have the access to the table;
 
-                if(row != -1) { // 如果行已被选择
-                    Drug drug = (Drug) model.getValueAt(row, 0); // 获取所选行的第1列值
-                    selectedDrug = drug;
-                    txtMedicalId.setText(drug.getId());
-                    txtMedicalQuantity.setText("1");
-                }
+            if(row != -1) { // 如果行已被选择
+                Drug drug = (Drug) model.getValueAt(row, 0); // 获取所选行的第1列值
+                selectedDrug = drug;
+                txtMedicalId.setText(drug.getId());
+                txtMedicalQuantity.setText("1");
+            }
             }
         });
     }
@@ -596,7 +596,7 @@ public class OutpatientJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please input number!");
             return false;
         }
-        number=0;
+        int number = 0;
         try{
             number = Integer.parseInt(txtMedicalQuantity.getText());
         }catch(Exception e){
@@ -613,12 +613,14 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         Drug selectedDrug = (Drug) tblPrescription.getValueAt(row, 0);
 
         if((selectedDrug.getQuantity()-number<0)||number<=0){
-            JOptionPane.showMessageDialog(null,"Please input a vaild value");
+            JOptionPane.showMessageDialog(null,"Please input a valid value");
             return false;
         }
 
         return true;
     }
+
+
 
     /**
      * populate the prescription table
@@ -672,7 +674,6 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         else if("Equipment".equals(type)){
             populatePrescription(equipments);
         }
-
     }                                              
 
 
@@ -680,6 +681,13 @@ public class OutpatientJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int row = tblResult.getSelectedRow(); // 获取所点选行的索引
         DefaultTableModel model = (DefaultTableModel) tblResult.getModel(); //Have the access to the table;
+
+
+        if(row == -1) { // 如果行已被选择
+            JOptionPane.showMessageDialog(null,"Please select a row!", "Warning",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         Drug drug = (Drug) model.getValueAt(row, 0); // 获取所选行的第1列值
         model.removeRow(row);
 
