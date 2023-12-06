@@ -18,7 +18,7 @@ public class BioSupplier {
     String id;
     ArrayList<Request> request;
     ArrayList<Order> orders;
-    int enable=0;
+    int enable=1;
     public BioSupplier(String name, String pwd, String id) {
         this.name = name;
         this.pwd = pwd;

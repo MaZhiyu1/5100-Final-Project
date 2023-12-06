@@ -19,7 +19,7 @@ public class BioResearcher {
     private String pwd;
     private String id;
     private BioTechCom bioTech;
-    int enable=0;
+    int enable=1;
     
     
     public BioResearcher(Person person, String pwd, String id, BioTechCom BioTech) {

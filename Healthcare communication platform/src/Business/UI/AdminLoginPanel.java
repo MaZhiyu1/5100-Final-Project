@@ -151,6 +151,10 @@ public class AdminLoginPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(txtuser.getText().equals("")&&txtpwd.getText().equals("")){
             AdminWorkPanel aw = new AdminWorkPanel( bz, RightPanel);
+            LogoutPanel lg = new LogoutPanel( leftPanel, RightPanel, bz);
+            leftPanel.add(lg);
+            CardLayout layout1 = (CardLayout) leftPanel.getLayout();
+            layout1.next(leftPanel);
             RightPanel.add("LoginScreen",aw);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
