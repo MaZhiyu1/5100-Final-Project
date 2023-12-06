@@ -38,6 +38,19 @@ public class BioTechCom {
         return hi;
     }
 
+    @Override
+    public String toString() {
+        return  name ;
+    }
+
+    
+    public void addRequest(Request e){
+        request.add(e);
+    }
+    
+    public void addOrder(Order e){
+        orders.add(e);
+    }
     
     public void DeliveryAddMedicine(ArrayList<Medicine> v) {
         ArrayList<Medicine> medicinesToAdd = new ArrayList<>();

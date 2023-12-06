@@ -9,6 +9,7 @@ import Business.Class.BioTech.BioSupplier;
 import Business.Class.BioTech.BioTechCom;
 import Business.Class.BioTech.Lab;
 import Business.Class.Delivery.Delivery;
+import Business.Class.Delivery.Order;
 import Business.Class.Equipment;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.*;
@@ -187,11 +188,18 @@ public class Business {
         lab1.setInstruction("it is for VICC Project");
         lab1.setProgress(69);
 
+        //解释:
         Optional<Doctor> first = h1.getDoctorList().stream().filter(doctor -> "Jim".equals(doctor.getName())).toList().stream().findFirst();
+        Optional<Doctor> second = h1.getDoctorList().stream().filter(doctor -> "Alex".equals(doctor.getName())).toList().stream().findFirst();
 
         Lab lab2 = new Lab(first.get(), "Group 1", "VICC Project","Internal Medicine","it is for Internal Medicine");
-
+        Lab lab3 = new Lab(second.get(), "Group 1", "VICC Project","Internal Medicine","it is for Internal Medicine");
+        //lab add 4 5 6
+        
         br.addLab(lab2);
+        br.addLab(lab3);
+        lab3.setProgress(23);
+        
         for(Hospital h : hospitals){
             if(h.getName().equals("Boston Rehabilitation Center")){
                 for(Doctor d : h.getDoctorList()){
@@ -204,6 +212,21 @@ public class Business {
             }
         }
         b1.addLab(lab1);
+        
+        for(Hospital h : hospitals){
+            if(h.getName().equals("Boston Rehabilitation Center")){
+                for(Doctor d : h.getDoctorList()){
+                    if(d.getName().equals("Alex")){
+                        lab3.setDoctor(d);
+                        d.getLabs().add(lab3);
+                        break;
+                    }
+                }
+            }
+        }
+        b1.addLab(lab3);
+        b1.addLab(lab1);
+        
 
         Medicine medicine = new Medicine("A1",  "For Child", "Pediatrics");
         medicine.setQuantity(10);
@@ -234,7 +257,10 @@ public class Business {
         
         BioSupplier bs1_ = new BioSupplier("Mike", "", "BioSupplier 1");
         bs1_.addRequest(request);
+        b1.addRequest(request);
+        //request 1、2、3..
 
+        
         BioSupplier bs2_ = new BioSupplier("Jackson", "", "BioSupplier 2");
         
         //set inventory
