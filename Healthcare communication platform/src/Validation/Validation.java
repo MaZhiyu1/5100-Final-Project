@@ -72,6 +72,7 @@ public class Validation {
                     for(BioResearcher br :  bt.getBr()){
                         if(br.getMaster().getName().equals(username)){
                             if(br.getPwd().equals(pwd)){
+                                if(br.getEnable()==0) return null;
                                 return br;
                             }
                         }
@@ -91,6 +92,7 @@ public class Validation {
                     for(BioSupplier bs : bt.getBioSupplier()){
                         if(bs.getName().equals(username)){
                             if(bs.getPwd().equals(pwd)){
+                                if(bs.getEnable()==0) return null;
                                 return bs;
                             }
                         }
@@ -118,7 +120,7 @@ public class Validation {
                     for(Doctor p : hospital.getDoctorList()){
                         System.out.println(p.getName());
                         if(p.getName().equals(username)  && p.getPwd().equals(pwd)){
-
+                            if(p.getEnabled()==0) return null;
                             return p;
                         }
                     }
@@ -126,7 +128,6 @@ public class Validation {
                 else if(type.equals("Supplier")){
                     RearServices rs = hospital.getRearServices();
                         if(rs.getName().equals(username) && rs.getPwd().equals(pwd)){
-
                             return hospital.getRearServices();
                         }
 

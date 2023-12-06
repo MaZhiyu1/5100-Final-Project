@@ -104,7 +104,7 @@ public class ManageBioJPanel extends javax.swing.JPanel {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        ManageBioResearchPanel mh= new ManageBioResearchPanel(bz,rightPanel);
+        ManageBioSupplierPanel mh= new ManageBioSupplierPanel(bz,rightPanel);
         rightPanel.add("LoginScreen",mh);
         CardLayout layout = (CardLayout) rightPanel.getLayout();
         layout.next(rightPanel);
