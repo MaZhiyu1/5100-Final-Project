@@ -84,7 +84,7 @@ public class ManageHospitalPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ManageBioSupplierPanel mh= new ManageBioSupplierPanel(bz);
+        ManageHPatientPanel mh= new ManageHPatientPanel(bz);
         rightPanel.add("LoginScreen",mh);
         CardLayout layout = (CardLayout) rightPanel.getLayout();
         layout.next(rightPanel);

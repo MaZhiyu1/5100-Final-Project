@@ -261,7 +261,8 @@ public class ManageHPatientPanel extends javax.swing.JPanel {
             return;
         }
         Patient selected = (Patient) Patienttbl.getValueAt(row, 0);
-        selected.setEnabled(1);
+        selected.setEnabled(0);
+        refreshTable1();
         
         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -299,6 +300,7 @@ public class ManageHPatientPanel extends javax.swing.JPanel {
     private void PatienttblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PatienttblMouseClicked
         // TODO add your handling code here:
         int row = Patienttbl.getSelectedRow();
+        if(row<0) return;
         Patient selected = (Patient) Patienttbl.getValueAt(row, 0);
         IDtxt.setText(String.valueOf(selected.getId()));
         enabletxt.setText(String.valueOf(selected.getEnabled()));

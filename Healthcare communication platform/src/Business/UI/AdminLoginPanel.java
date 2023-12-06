@@ -5,7 +5,9 @@
 package Business.UI;
 
 import Business.Business;
+import Business.UI.Admin.AdminWorkPanel;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -147,6 +149,15 @@ public class AdminLoginPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if(txtuser.getText().equals("")&&txtpwd.getText().equals("")){
+            AdminWorkPanel aw = new AdminWorkPanel( bz, RightPanel);
+            RightPanel.add("LoginScreen",aw);
+            CardLayout layout = (CardLayout) RightPanel.getLayout();
+            layout.next(RightPanel);
+        }else{
+            JOptionPane.showMessageDialog(null,"Please enter correct account and password", "Warning",JOptionPane.WARNING_MESSAGE);
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
