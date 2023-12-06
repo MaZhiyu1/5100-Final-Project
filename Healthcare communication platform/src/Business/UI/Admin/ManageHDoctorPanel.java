@@ -34,11 +34,12 @@ public class ManageHDoctorPanel extends javax.swing.JPanel {
 
         if(h==null) return;
         for(Doctor s : h.getDoctorList()) {
-            Object row[] = new Object[4];
+            Object row[] = new Object[5];
             row[0] = s;
             row[1] = s.getName();
             row[2] = s.getPwd();
-            row[3] = s.getEnabled();
+            row[3] = s.getGender();
+            row[4] = s.getEnabled();
             model.addRow(row);
         }
     }
@@ -326,7 +327,15 @@ public class ManageHDoctorPanel extends javax.swing.JPanel {
             return;
         }
         Doctor selected = (Doctor) HospitalTable.getValueAt(row, 0);
-        selected.setEnabled(1);
+        selected.setEnabled(0);
+        String ho = (String)hoCombox.getSelectedItem();
+        Hospital h1=null;
+        for(Hospital h : bz.getHospitals()){
+            if(h.getName().equals(ho)){
+                h1=h;
+            }
+        }
+        refreshTable1( h1);
     }//GEN-LAST:event_DisableActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -367,6 +376,9 @@ public class ManageHDoctorPanel extends javax.swing.JPanel {
     private void HospitalTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HospitalTableMouseClicked
         // TODO add your handling code here:
         int row = HospitalTable.getSelectedRow();
+        if(row<0){
+            return;
+        }
         Doctor selected = (Doctor) HospitalTable.getValueAt(row, 0);
         IDtxt.setText(String.valueOf(selected.getId()));
         enabletxt.setText(String.valueOf(selected.getEnabled()));

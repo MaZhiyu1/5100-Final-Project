@@ -25,6 +25,8 @@ public class ManageBioSupplierPanel extends javax.swing.JPanel {
         initComponents();
         this.bz=bz;
         h1=null;
+        DefaultTableModel model = (DefaultTableModel)HospitalTable.getModel();
+        model.setRowCount(0);
     }
 
     public void refreshTable1(BioTechCom h){
