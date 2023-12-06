@@ -37,6 +37,10 @@ public class AdminWorkPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setBackground(java.awt.Color.lightGray);
+
+        jButton1.setBackground(java.awt.Color.orange);
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
         jButton1.setText("Manage Hospital");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,6 +48,8 @@ public class AdminWorkPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setBackground(java.awt.Color.orange);
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 3, 18)); // NOI18N
         jButton2.setText("Manage Biotech");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,20 +62,20 @@ public class AdminWorkPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(99, 99, 99)
                 .addComponent(jButton1)
-                .addGap(38, 38, 38)
+                .addGap(49, 49, 49)
                 .addComponent(jButton2)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jButton1)
-                .addGap(51, 51, 51)
-                .addComponent(jButton2)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addGap(179, 179, 179)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(261, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
