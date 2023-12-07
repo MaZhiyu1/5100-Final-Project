@@ -501,9 +501,9 @@ public class Business {
         MedicalHistory mh3 = new MedicalHistory("Jam‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
         MedicalHistory mh4 = new MedicalHistory("Jam‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
         mh3.setRecoverDays(30);
-        mh1.setFeedbackRate(4);
+        mh3.setFeedbackRate(4);
         mh4.setRecoverDays(3);
-        mh1.setFeedbackRate(8);
+        mh4.setFeedbackRate(8);
 
 
         MedicalHistoryDirectory mhl2 = new MedicalHistoryDirectory(2,"Jam");
@@ -511,6 +511,71 @@ public class Business {
         mhl2.addHistory(mh3);
         mh3.setDoctor(doctor_Frank);
         mh4.setDoctor(doctor_Alex);
+        
+        MedicalHistory mh5 = new MedicalHistory("Noah‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
+        MedicalHistory mh6 = new MedicalHistory("Noah‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
+        mh5.setRecoverDays(30);
+        mh5.setFeedbackRate(4);
+        mh6.setRecoverDays(3);
+        mh6.setFeedbackRate(8);
+
+
+        MedicalHistoryDirectory mhl3 = new MedicalHistoryDirectory(3,"Noah");
+        mhl3.addHistory(mh5);
+        mhl3.addHistory(mh6);
+        mh5.setDoctor(doctor_Frank);
+        mh6.setDoctor(doctor_Alex);
+        
+        // 在Hospital1方法内添加以下代码
+
+// Oliver的新病历
+        MedicalHistory mh13 = new MedicalHistory("Oliver‘s Medical History", "Bronchitis", "Rest, hydrate and use prescribed inhalers");
+        mh13.setRecoverDays(14);
+        mh13.setFeedbackRate(7);
+        mh13.setDoctor(doctor_Jim);
+        mhl1.addHistory(mh13); // 添加到Oliver的病历目录
+
+        // Jam的新病历
+        MedicalHistory mh14 = new MedicalHistory("Jam‘s Medical History", "Tonsillitis", "Antibiotics and rest");
+        mh14.setRecoverDays(10);
+        mh14.setFeedbackRate(8);
+        mh14.setDoctor(doctor_Alex);
+        mhl2.addHistory(mh14); // 添加到Jam的病历目录
+
+        // Lex的新病历
+        MedicalHistory mh15 = new MedicalHistory("Lex‘s Medical History", "Hypertension", "Medication and lifestyle changes");
+        mh15.setRecoverDays(30);
+        mh15.setFeedbackRate(7);
+        mh15.setDoctor(doctor_Frank);
+        MedicalHistoryDirectory mhl10 = new MedicalHistoryDirectory(10, "Lex");
+        mhl10.addHistory(mh15);
+        // 设置Lex的病历目录
+
+        // Noah的新病历
+        MedicalHistory mh16 = new MedicalHistory("Noah‘s Medical History", "Diabetes management", "Insulin therapy and dietary adjustments");
+        mh16.setRecoverDays(30);
+        mh16.setFeedbackRate(9);
+        mh16.setDoctor(doctor_Matthew);
+        mhl3.addHistory(mh16); // 添加到Noah的病历目录
+
+        // Nancy的新病历
+        MedicalHistory mh17 = new MedicalHistory("Nancy‘s Medical History", "Arthritis", "Pain management and physical therapy");
+        mh17.setRecoverDays(20);
+        mh17.setFeedbackRate(8);
+        mh17.setDoctor(doctor_Sophia);
+        MedicalHistoryDirectory mhl11 = new MedicalHistoryDirectory(11, "Nancy");
+        mhl11.addHistory(mh17);
+
+
+        // Peter的新病历
+        MedicalHistory mh18 = new MedicalHistory("Peter‘s Medical History", "Gastritis", "Medication and dietary modifications");
+        mh18.setRecoverDays(15);
+        mh18.setFeedbackRate(7);
+        mh18.setDoctor(doctor_James);
+        MedicalHistoryDirectory mhl12 = new MedicalHistoryDirectory(12, "Peter");
+        mhl12.addHistory(mh18);
+
+
 
         //患者
         Patient patient1 = new Patient(1, "Oliver", "Aa12345678");
@@ -528,27 +593,33 @@ public class Business {
         Patient patient3 = new Patient(3, "Lex", "Aa12345678");
         patient3.setEnabled(1);
         patient3.setAge(42);
+        patient3.setMedicalHistoryDirectory(mhl10); 
         
         Patient patient4 = new Patient(4, "Noah", "Aa12345678");
         patient4.setEnabled(1);
         patient4.setAge(42);
+        patient4.setMedicalHistoryDirectory(mhl3);
         
         Patient patient5 = new Patient(5, "Nancy", "Aa12345678");
         patient5.setEnabled(1);
         patient5.setAge(42);
+        patient5.setMedicalHistoryDirectory(mhl11); // 设置Nancy的病历目录
         
         Patient patient6 = new Patient(6, "Peter", "Aa12345678");
         patient6.setEnabled(1);
         patient6.setAge(42);
+        patient6.setMedicalHistoryDirectory(mhl12); // 设置Peter的病历目录
         
         
         Appointment a = new Appointment(patient1,doctor_Jim);
         Appointment a1 = new Appointment(patient2,doctor_Alex);
         Appointment a2 = new Appointment(patient3,doctor_Frank);
+        Appointment a3 = new Appointment(patient4,doctor_Alex);
         ArrayList<Appointment> APPO = new ArrayList<>();
         APPO.add(a);
         APPO.add(a1);
         APPO.add(a2);
+        APPO.add(a3);
 
         Medicine medicine = new Medicine("M-A1", "For Child", "Pediatrics");
         medicine.setQuantity(10);
@@ -603,6 +674,9 @@ public class Business {
 
         Prescription prescription3 = new Prescription("prescription for server headache",Arrays.asList(medicine1, vaccine1, equipment1));
         mh4.setPrescription(prescription3);
+        
+        //lab
+        
 
         h1.addRearService(rs);
         h1.addRearService(rs2);
@@ -619,6 +693,7 @@ public class Business {
         h1.addPatient(patient3);
         h1.addPatient(patient4);
         h1.addPatient(patient5);
+        h1.addPatient(patient6);
         
         h1.getHa().setAppointments(APPO);
         h1.getHospitalInventory().setMedicineDirectory(medicineDirectory);
@@ -630,6 +705,7 @@ public class Business {
         patients.add(patient3);
         patients.add(patient4);
         patients.add(patient5);
+        patients.add(patient6);
         hospitals.add(h1);
     }
     
@@ -686,18 +762,83 @@ public class Business {
         mh1.setDoctor(doctor_Jim);
         mh2.setDoctor(doctor_Alex);
         
-        Patient patient1 = new Patient(1, "Python", "Aa12345678");
+        // 为Python增加三条病历
+        MedicalHistory mh3 = new MedicalHistory("Python‘s Medical History", "Laceration", "Clean and bandage the wound, tetanus shot if needed");
+        mh3.setRecoverDays(7);
+        mh3.setFeedbackRate(7);
+        mh3.setDoctor(doctor_Jim);
+        mhl1.addHistory(mh3);
+
+        MedicalHistory mh4 = new MedicalHistory("Python‘s Medical History", "Insomnia", "Improve sleep hygiene, consider short-term sleep aids");
+        mh4.setRecoverDays(14);
+        mh4.setFeedbackRate(6);
+        mh4.setDoctor(doctor_Alex);
+        mhl1.addHistory(mh4);
+
+        MedicalHistory mh5 = new MedicalHistory("Python‘s Medical History", "Anxiety", "Counseling, and possibly medication");
+        mh5.setRecoverDays(30);
+        mh5.setFeedbackRate(7);
+        mh5.setDoctor(doctor_Frank);
+        mhl1.addHistory(mh5);
+
+        // 为James增加三条病历
+        MedicalHistory mh6 = new MedicalHistory("James‘s Medical History", "Fractured wrist", "Cast for 6 weeks, pain management");
+        mh6.setRecoverDays(42);
+        mh6.setFeedbackRate(8);
+        mh6.setDoctor(doctor_Jim);
+        MedicalHistoryDirectory mhl2 = new MedicalHistoryDirectory(2, "James");
+        mhl2.addHistory(mh6);
+
+        MedicalHistory mh7 = new MedicalHistory("James‘s Medical History", "Allergic rhinitis", "Antihistamines and avoid allergens");
+        mh7.setRecoverDays(14);
+        mh7.setFeedbackRate(7);
+        mh7.setDoctor(doctor_Alex);
+        mhl2.addHistory(mh7);
+
+        MedicalHistory mh8 = new MedicalHistory("James‘s Medical History", "Acne", "Topical treatments, oral antibiotics if severe");
+        mh8.setRecoverDays(30);
+        mh8.setFeedbackRate(7);
+        mh8.setDoctor(doctor_Frank);
+        mhl2.addHistory(mh8);
+
+
+        // 为Lexy增加三条病历
+        MedicalHistory mh9 = new MedicalHistory("Lexy‘s Medical History", "Migraine", "Pain relief medication, avoid triggers");
+        mh9.setRecoverDays(3);
+        mh9.setFeedbackRate(8);
+        mh9.setDoctor(doctor_Jim);
+        MedicalHistoryDirectory mhl3 = new MedicalHistoryDirectory(3, "Lexy");
+        mhl3.addHistory(mh9);
+
+        MedicalHistory mh10 = new MedicalHistory("Lexy‘s Medical History", "Sprained ankle", "Rest, ice, compression, and elevation");
+        mh10.setRecoverDays(21);
+        mh10.setFeedbackRate(8);
+        mh10.setDoctor(doctor_Alex);
+        mhl3.addHistory(mh10);
+
+        MedicalHistory mh11 = new MedicalHistory("Lexy‘s Medical History", "Gastroenteritis", "Stay hydrated, rest, bland diet");
+        mh11.setRecoverDays(7);
+        mh11.setFeedbackRate(7);
+        mh11.setDoctor(doctor_Frank);
+        mhl3.addHistory(mh11);
+        
+        Patient patient1 = new Patient(7, "Python", "Aa12345678");
         patient1.setMedicalHistoryDirectory(mhl1);
         patient1.setEnabled(1);
         patient1.setAge(52);
+        patient1.setAllergy("No");
+        patient1.setInsurance("Blue Cross");
+        patient1.setMedicalHistoryDirectory(mhl1);
 
-        Patient patient2 = new Patient(2, "James", "Aa12345678");
+        Patient patient2 = new Patient(8, "James", "Aa12345678");
         patient2.setEnabled(1);
         patient2.setAge(23);
+        patient2.setMedicalHistoryDirectory(mhl2);
         
-        Patient patient3 = new Patient(3, "Lexy", "Aa12345678");
+        Patient patient3 = new Patient(9, "Lexy", "Aa12345678");
         patient3.setEnabled(1);
         patient3.setAge(42);
+        patient3.setMedicalHistoryDirectory(mhl3);
         
         
         Appointment a = new Appointment(patient1,doctor_Jim);
@@ -825,19 +966,82 @@ public class Business {
         mh1.setDoctor(doctor_Jim);
         mh2.setDoctor(doctor_Alex);
         
-        Patient patient1 = new Patient(1, "Magic", "Aa12345678");
+        MedicalHistory mh3 = new MedicalHistory("Magic‘s Medical History", "Asthma", "Use inhaler, avoid triggers");
+        mh3.setRecoverDays(10);
+        mh3.setFeedbackRate(8);
+        mh3.setDoctor(doctor_Jim);
+        mhl1.addHistory(mh3);
+
+        MedicalHistory mh4 = new MedicalHistory("Magic‘s Medical History", "Sprained ankle", "Rest, ice, compression, elevation");
+        mh4.setRecoverDays(14);
+        mh4.setFeedbackRate(7);
+        mh4.setDoctor(doctor_Alex);
+        mhl1.addHistory(mh4);
+
+        MedicalHistory mh5 = new MedicalHistory("Magic‘s Medical History", "Chickenpox", "Stay at home, oatmeal baths, antihistamines");
+        mh5.setRecoverDays(21);
+        mh5.setFeedbackRate(7);
+        mh5.setDoctor(doctor_Frank);
+        mhl1.addHistory(mh5);
+
+        // 为Johnson增加三条病历
+        MedicalHistory mh6 = new MedicalHistory("Johnson‘s Medical History", "Flu", "Rest, fluids, antiviral medication if early");
+        mh6.setRecoverDays(7);
+        mh6.setFeedbackRate(7);
+        mh6.setDoctor(doctor_Jim);
+        MedicalHistoryDirectory mhl2 = new MedicalHistoryDirectory(2, "Johnson");
+        mhl2.addHistory(mh6);
+
+        MedicalHistory mh7 = new MedicalHistory("Johnson‘s Medical History", "Migraine", "Pain relief medication, avoid triggers");
+        mh7.setRecoverDays(3);
+        mh7.setFeedbackRate(8);
+        mh7.setDoctor(doctor_Alex);
+        mhl2.addHistory(mh7);
+
+        MedicalHistory mh8 = new MedicalHistory("Johnson‘s Medical History", "Dehydration", "Increase fluid intake, oral rehydration solutions");
+        mh8.setRecoverDays(2);
+        mh8.setFeedbackRate(7);
+        mh8.setDoctor(doctor_Frank);
+        mhl2.addHistory(mh8);
+
+
+        // 为JP增加三条病历
+        MedicalHistory mh9 = new MedicalHistory("JP‘s Medical History", "Back pain", "Pain medication, physical therapy");
+        mh9.setRecoverDays(30);
+        mh9.setFeedbackRate(7);
+        mh9.setDoctor(doctor_Jim);
+        MedicalHistoryDirectory mhl3 = new MedicalHistoryDirectory(3, "JP");
+        mhl3.addHistory(mh9);
+
+        MedicalHistory mh10 = new MedicalHistory("JP‘s Medical History", "Eczema", "Moisturizers, corticosteroid creams");
+        mh10.setRecoverDays(14);
+        mh10.setFeedbackRate(7);
+        mh10.setDoctor(doctor_Alex);
+        mhl3.addHistory(mh10);
+
+        MedicalHistory mh11 = new MedicalHistory("JP‘s Medical History", "Sinusitis", "Steam inhalation, nasal sprays, antibiotics if bacterial");
+        mh11.setRecoverDays(14);
+        mh11.setFeedbackRate(8);
+        mh11.setDoctor(doctor_Frank);
+        mhl3.addHistory(mh11);
+
+        
+        Patient patient1 = new Patient(10, "Magic", "Aa12345678");
         patient1.setMedicalHistoryDirectory(mhl1);
         patient1.setEnabled(1);
         patient1.setAge(12);
+        patient1.setAllergy("No");
+        patient1.setInsurance("Blue Cross");
 
-        Patient patient2 = new Patient(2, "Johnson", "Aa12345678");
+        Patient patient2 = new Patient(11, "Johnson", "Aa12345678");
         patient2.setEnabled(1);
         patient2.setAge(22);
+        patient2.setMedicalHistoryDirectory(mhl2);
         
-        Patient patient3 = new Patient(3, "JP", "Aa12345678");
+        Patient patient3 = new Patient(12, "JP", "Aa12345678");
         patient3.setEnabled(1);
         patient3.setAge(42);
-        
+        patient3.setMedicalHistoryDirectory(mhl3);
         
         Appointment a = new Appointment(patient1,doctor_Jim);
         Appointment a1 = new Appointment(patient2,doctor_Alex);

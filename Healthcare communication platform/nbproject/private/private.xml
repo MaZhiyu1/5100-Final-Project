@@ -3,35 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Admin/ManageHPatientPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/Hospital/Development/HospitalResearch.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/HospitalLoginPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Hospital/DevelopmentWork/DevelopWorkAreaJPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/BioTech/BioResearcher.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Report.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Admin/ManageBioResearchPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Admin/ManageBioJPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/EquipmentDirectory.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Report/ReportJPanel1.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/BioTech/BioSupplier.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Validation/Validation.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/Hospital/Medical/AppointmentDirectory.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Admin/ManageHospitalPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/Hospital/Medical/Appointment.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Report/ReportJPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/Equipment.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/Hospital/HospitalInventory.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Admin/AdminWorkPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/LogoutPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/Hospital/Request.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/Hospital/Hospital.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/MedicalAnalysisLoginPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/Hospital/Medical/Patient.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/Hospital/HospitalAppoinment.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Class/MedicalSupplier/MedicalSupplier.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/Admin/ManageBioSupplierPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/UI/LoginPanel.java</file>
-            <file>file:/C:/Users/15469/Desktop/NEU/NEU_Course/Semester_1/Application%20Engineer%20&amp;%20Dev/final%20Project/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Business.java</file>
+            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Business.java</file>
+            <file>file:/Users/zhangjinming/Documents/GitHub/5100-Final-Project/Healthcare%20communication%20platform/src/Business/Report.java</file>
         </group>
     </open-files>
 </project-private>
