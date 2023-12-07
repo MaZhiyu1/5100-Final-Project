@@ -9,6 +9,7 @@ import Business.Class.BioTech.BioSupplier;
 import Business.Class.BioTech.BioTechCom;
 import Business.Class.BioTech.Lab;
 import Business.Class.Delivery.Delivery;
+import Business.Class.Delivery.Order;
 import Business.Class.Equipment;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.*;
@@ -64,6 +65,7 @@ public class Business {
         BioTechCom_VitalEdge_Biomedicals();
         MedicalSupplier1();
         Delivery1();
+        Delivery2();
         Hospital2();
         Hospital3();
         
@@ -125,6 +127,35 @@ public class Business {
         deliveries.add(d);
         deliveries.add(d1);
     }
+    
+    public void Delivery2(){
+    // 找到UPS和USPS的Delivery对象
+        Delivery ups = null;
+        Delivery usps = null;
+        for (Delivery delivery : deliveries) {
+            if (delivery.getCompany().equals("UPS")) {
+                ups = delivery;
+            } else if (delivery.getCompany().equals("USPS")) {
+                usps = delivery;
+            }
+        }
+
+        // 创建并添加订单到UPS
+        if (ups != null) {
+            ups.addOrder(new Order("3", "Delivery for Medicine C1", "Location C", "Address C", "Completed"));
+            ups.addOrder(new Order("4", "Delivery for Equipment E1", "Location D", "Address D", "In Progress"));
+            // 可以继续添加更多订单...
+        }
+
+        // 创建并添加订单到USPS
+        if (usps != null) {
+            usps.addOrder(new Order("5", "Delivery for Vaccine V1", "Location E", "Address E", "Cancelled"));
+            usps.addOrder(new Order("6", "Delivery for Medicine A2", "Location F", "Address F", "Completed"));
+            // 可以继续添加更多订单...
+        }
+    }
+
+
     
     
     public void MedicalSupplier1(){
@@ -245,6 +276,23 @@ public class Business {
         b1.addLab(lab1);
         b1.addLab(lab3);
         b1.addLab(lab7);
+        
+        Lab lab8 = new Lab(Jim.get(), "Group 8", "Heart Disease Research","Cardiology","Focused on heart disease research");
+        lab8.setProgress(100);
+        lab8.setStatus("Completed");
+
+        Lab lab9 = new Lab(Alex.get(), "Group 9", "Neurological Studies","Neurology","Research on brain functions");
+        lab9.setProgress(60);
+        lab9.setStatus("In Progress");
+
+        Lab lab10 = new Lab(Sophia.get(), "Group 10", "Cancer Research","Oncology","Cancer treatment and research");
+        lab10.setProgress(80);
+        lab10.setStatus("In Progress");
+
+        // 添加实验室到BioTech公司
+        b1.addLab(lab8);
+        b1.addLab(lab9);
+        b1.addLab(lab10);
 
 
         Medicine medicine = new Medicine("A1",  "For Child", "Pediatrics");
@@ -294,6 +342,33 @@ public class Business {
         Request request6 = new Request("medicine 6","medicine","For heart disease");
         Medicine medicine_A6 = new Medicine("A6",  "For Child", "Pediatrics");
         request3.setMedicine(medicine_A6);
+
+        
+        //➕+++
+        // 添加额外的实验室数据
+        Lab lab12 = new Lab(Jim.get(), "Cardiovascular Research", "Heart Disease Research", new_m, vxx);
+        lab12.setProgress(90);
+        lab12.setStatus("Completed");
+
+        Lab lab13 = new Lab(Alex.get(), "Neurological Research", "Brain Function Study", new_m, vxx);
+        lab13.setProgress(80);
+        lab13.setStatus("In Progress");
+
+        // 添加实验室到 BioGenesis Therapeutics
+        b1.addLab(lab12);
+        b1.addLab(lab13);
+
+        // 添加额外的订单和请求
+        Order order1 = new Order("1", "Delivery for Medicine A1", "Location A", "Address A", "Completed");
+        Order order2 = new Order("2", "Delivery for Medicine B1", "Location B", "Address B", "In Progress");
+
+        b1.addOrder(order1);
+        b1.addOrder(order2);
+
+        Request request7 = new Request("Request for Medicine C1", "medicine", "For diabetes treatment");
+        Request request8 = new Request("Request for Medicine D1", "medicine", "For allergy treatment");
+        b1.addRequest(request7);
+        b1.addRequest(request8);
 
 
         BioSupplier bs1_ = new BioSupplier("Mike", "", "BioSupplier 1");
@@ -371,6 +446,35 @@ public class Business {
 //        }
         VitalEdge_Biomedicals.addLab(lab1);
 
+        
+        //add lab
+        Lab lab11 = new Lab(Emily, "Immunology Research", "Immunotherapy", medicine_loratadine, vaccine_polio);
+        lab11.setType("Immunology");
+        lab11.setInstruction("Research on immune system enhancements");
+        lab11.setProgress(50);
+        lab11.setStatus("In Progress");
+
+        VitalEdge_Biomedicals.addLab(lab11);
+        
+        // 添加额外的实验室数据
+        Lab lab14 = new Lab(Emily, "Immunotherapy Research", "New Vaccine Development", medicine_loratadine, vaccine_polio);
+        lab14.setProgress(70);
+        lab14.setStatus("Completed");
+
+        // 添加实验室到 VitalEdge Biomedicals
+        VitalEdge_Biomedicals.addLab(lab14);
+
+        // 添加额外的订单和请求
+        Order order3 = new Order("1", "Delivery for Medicine A1", "Location A", "Address A", "Completed");
+        Order order4 = new Order("2", "Delivery for Medicine B1", "Location B", "Address B", "In Progress");
+        VitalEdge_Biomedicals.addOrder(order3);
+        VitalEdge_Biomedicals.addOrder(order4);
+
+        Request request9 = new Request("Request for Equipment E1", "equipment", "For lab research");
+        Request request10 = new Request("Request for Equipment E2", "equipment", "For field studies");
+        VitalEdge_Biomedicals.addRequest(request9);
+        VitalEdge_Biomedicals.addRequest(request10);
+        
         Medicine medicine = new Medicine("AAAA1",  "For Child", "Pediatrics");
         medicine.setQuantity(177345);
         Medicine medicine1 = new Medicine("BBBB1","For Internal", "Internal Medicine");
@@ -709,10 +813,8 @@ public class Business {
         hospitals.add(h1);
     }
     
-    
-    //"", "" }));
 
-// Code adding the component to the parent container - not shown here
+
 
     public void Hospital2() {
         h1 = new Hospital("Future Medical Institute","");

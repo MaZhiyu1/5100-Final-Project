@@ -64,7 +64,7 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
           row[2] = mh.getSymptom();
           row[3] = mh.getInstruction();
           row[4] = mh.getStatus();
-          row[5] = mh.getPrescription().toString();
+          row[5] = (mh.getPrescription() != null) ? mh.getPrescription().toString() : "No Prescription";
           ((javax.swing.table.DefaultTableModel) tblPastMedicalRecords.getModel()).addRow(row);
         });
 
