@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1518e086-6dbe-437c-a119-7f1868f4aacc" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/Business.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/Business.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Business/Business.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Business.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/UI/Biotechnology/DeliverDrugPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/UI/Biotechnology/DeliverDrugPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/UI/Hospital/RearServicesWork/RearServicesWorkAreaJPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Business/Class/BioTech/Lab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Business/Class/BioTech/Lab.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,16 +41,19 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.MainJFrame.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
     "last_opened_file_path": "E:/下载内容/exProject/integration",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2678161",
@@ -89,6 +86,13 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-3183f394aec4-8f899f12" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -115,6 +119,8 @@
       <workItem from="1701623195868" duration="49914000" />
       <workItem from="1701788042543" duration="8594000" />
       <workItem from="1701840229880" duration="31691000" />
+      <workItem from="1701924935598" duration="2324000" />
+      <workItem from="1701927783181" duration="12479000" />
     </task>
     <servers />
   </component>

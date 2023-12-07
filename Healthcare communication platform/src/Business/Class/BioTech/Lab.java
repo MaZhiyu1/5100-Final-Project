@@ -46,9 +46,11 @@ public class Lab {
      }
     
     
-    public Lab(Person name, String group, String projectName,String type,String instruction) {
+    public Lab(Person person, String group, String projectName,String type,String instruction) {
         this.id = UUID.randomUUID().toString();
-        this.master = name;
+        this.master = person;
+        this.doctor = (Doctor) person;
+        this.doctor.addLab(this);
 //        this.pwd = pwd;
         this.department = group;
         this.projectName = projectName;

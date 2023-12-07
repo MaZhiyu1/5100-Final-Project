@@ -9,7 +9,6 @@ import Business.Class.BioTech.BioSupplier;
 import Business.Class.BioTech.BioTechCom;
 import Business.Class.BioTech.Lab;
 import Business.Class.Delivery.Delivery;
-import Business.Class.Delivery.Order;
 import Business.Class.Equipment;
 import Business.Class.Hospital.Hospital;
 import Business.Class.Hospital.Medical.*;
@@ -188,45 +187,65 @@ public class Business {
         lab1.setInstruction("it is for VICC Project");
         lab1.setProgress(69);
 
-        //解释:
-        Optional<Doctor> first = h1.getDoctorList().stream().filter(doctor -> "Jim".equals(doctor.getName())).toList().stream().findFirst();
-        Optional<Doctor> second = h1.getDoctorList().stream().filter(doctor -> "Alex".equals(doctor.getName())).toList().stream().findFirst();
+        //解释:找出名字叫Jim的医生
+        Optional<Doctor> Jim = h1.getDoctorList().stream().filter(doctor -> "Jim".equals(doctor.getName())).toList().stream().findFirst();
+        //解释:找出名字叫Alex的医生
+        Optional<Doctor> Alex = h1.getDoctorList().stream().filter(doctor -> "Alex".equals(doctor.getName())).toList().stream().findFirst();
 
-        Lab lab2 = new Lab(first.get(), "Group 1", "VICC Project","Internal Medicine","it is for Internal Medicine");
-        Lab lab3 = new Lab(second.get(), "Group 1", "VICC Project","Internal Medicine","it is for Internal Medicine");
+        Optional<Doctor> Frank = h1.getDoctorList().stream().filter(doctor -> "Frank".equals(doctor.getName())).toList().stream().findFirst();
+
+        Optional<Doctor> Sophia = h1.getDoctorList().stream().filter(doctor -> "Sophia".equals(doctor.getName())).toList().stream().findFirst();
+
+        Optional<Doctor> Matthew = h1.getDoctorList().stream().filter(doctor -> "Matthew".equals(doctor.getName())).toList().stream().findFirst();
+
+        Optional<Doctor> James = h1.getDoctorList().stream().filter(doctor -> "James".equals(doctor.getName())).toList().stream().findFirst();
+
+        Lab lab2 = new Lab(Jim.get(), "Group 2", "VICC Project","Internal Medicine","it is for Internal Medicine");
+        Lab lab3 = new Lab(Alex.get(), "Group 3", "VICC Project","Internal Medicine","it is for Internal Medicine");
+        Lab lab4 = new Lab(Frank.get(), "Group 4", "VICC Project","Internal Medicine","it is for Internal Medicine");
+        Lab lab5 = new Lab(Sophia.get(), "Group 5", "VICC Project","Internal Medicine","it is for Internal Medicine");
+        Lab lab6 = new Lab(Matthew.get(), "Group 6", "VICC Project","Internal Medicine","it is for Internal Medicine");
+        Lab lab7 = new Lab(James.get(), "Group 7", "VICC Project","Internal Medicine","it is for Internal Medicine");
         //lab add 4 5 6
-        
-        br.addLab(lab2);
-        br.addLab(lab3);
         lab3.setProgress(23);
+        lab4.setProgress(88);
+        lab5.setProgress(47);
+        lab6.setProgress(100);
+        lab7.setProgress(84);
+
+
+        br.addLab(lab2);
+        br.addLab(lab4);
+        br.addLab(lab5);
+        br.addLab(lab6);
+
+//        for(Hospital h : hospitals){
+//            if(h.getName().equals("Boston Rehabilitation Center")){
+//                for(Doctor d : h.getDoctorList()){
+//                    if(d.getName().equals("Jim")){
+//                        lab1.setDoctor(d);
+//                        d.getLabs().add(lab1);
+//                        break;
+//                    }
+//                }
+//            }
+//        }
         
-        for(Hospital h : hospitals){
-            if(h.getName().equals("Boston Rehabilitation Center")){
-                for(Doctor d : h.getDoctorList()){
-                    if(d.getName().equals("Jim")){
-                        lab1.setDoctor(d);
-                        d.getLabs().add(lab1);
-                        break;
-                    }
-                }
-            }
-        }
+//        for(Hospital h : hospitals){
+//            if(h.getName().equals("Boston Rehabilitation Center")){
+//                for(Doctor d : h.getDoctorList()){
+//                    if(d.getName().equals("Alex")){
+//                        lab3.setDoctor(d);
+//                        d.getLabs().add(lab3);
+//                        break;
+//                    }
+//                }
+//            }
+//        }
         b1.addLab(lab1);
-        
-        for(Hospital h : hospitals){
-            if(h.getName().equals("Boston Rehabilitation Center")){
-                for(Doctor d : h.getDoctorList()){
-                    if(d.getName().equals("Alex")){
-                        lab3.setDoctor(d);
-                        d.getLabs().add(lab3);
-                        break;
-                    }
-                }
-            }
-        }
         b1.addLab(lab3);
-        b1.addLab(lab1);
-        
+        b1.addLab(lab7);
+
 
         Medicine medicine = new Medicine("A1",  "For Child", "Pediatrics");
         medicine.setQuantity(10);
@@ -251,18 +270,58 @@ public class Business {
         V.add(v);
         V.add(v1);
         V.add(v2);
-        
-        Request request = new Request("medicine 1","medicine","For heart disease");
-        request.setMedicine(medicine);
-        
+
+        Request request1 = new Request("medicine 1","medicine","For heart disease");
+        Medicine medicine_A1 = new Medicine("A1",  "For Child", "Pediatrics");
+        request1.setMedicine(medicine_A1);
+
+        Request request2 = new Request("medicine 2","medicine","For heart disease");
+        Medicine medicine_A2 = new Medicine("A2",  "For Child", "Pediatrics");
+        request2.setMedicine(medicine_A2);
+
+        Request request3 = new Request("medicine 3","medicine","For heart disease");
+        Medicine medicine_A3 = new Medicine("A3",  "For Child", "Pediatrics");
+        request3.setMedicine(medicine_A3);
+
+        Request request4 = new Request("medicine 4","medicine","For heart disease");
+        Medicine medicine_A4 = new Medicine("A4",  "For Child", "Pediatrics");
+        request3.setMedicine(medicine_A4);
+
+        Request request5 = new Request("medicine 5","medicine","For heart disease");
+        Medicine medicine_A5 = new Medicine("A5",  "For Child", "Pediatrics");
+        request3.setMedicine(medicine_A5);
+
+        Request request6 = new Request("medicine 6","medicine","For heart disease");
+        Medicine medicine_A6 = new Medicine("A6",  "For Child", "Pediatrics");
+        request3.setMedicine(medicine_A6);
+
+
         BioSupplier bs1_ = new BioSupplier("Mike", "", "BioSupplier 1");
-        bs1_.addRequest(request);
-        b1.addRequest(request);
+        bs1_.addRequest(request1);
+        b1.addRequest(request1);
+
+        bs1_.addRequest(request2);
+        b1.addRequest(request2);
+
+        h1.addRequest(request1);
+        h1.addRequest(request2);
+        h1.addRequest(request3);
+
         //request 1、2、3..
 
-        
         BioSupplier bs2_ = new BioSupplier("Jackson", "", "BioSupplier 2");
-        
+        bs2_.addRequest(request3);
+        b1.addRequest(request3);
+
+        bs2_.addRequest(request4);
+        b1.addRequest(request4);
+
+        bs2_.addRequest(request5);
+        b1.addRequest(request5);
+
+        bs2_.addRequest(request6);
+        b1.addRequest(request6);
+
         //set inventory
         b1.getHi().setMedicineDirectory(medicineDirectory);
         b1.getHi().setVaccineDirectory(V);
@@ -299,17 +358,17 @@ public class Business {
         Lab lab2 = new Lab(first.get(), "Group 1", "VICC Project","Internal Medicine","it is for Internal Medicine");
 
         br.addLab(lab2);
-        for(Hospital h : hospitals){
-            if(h.getName().equals("Boston Rehabilitation Center")){
-                for(Doctor d : h.getDoctorList()){
-                    if(d.getName().equals("Alex")){
-                        lab1.setDoctor(d);
-                        d.getLabs().add(lab1);
-                        break;
-                    }
-                }
-            }
-        }
+//        for(Hospital h : hospitals){
+//            if(h.getName().equals("Boston Rehabilitation Center")){
+//                for(Doctor d : h.getDoctorList()){
+//                    if(d.getName().equals("Alex")){
+//                        lab1.setDoctor(d);
+//                        d.getLabs().add(lab1);
+//                        break;
+//                    }
+//                }
+//            }
+//        }
         VitalEdge_Biomedicals.addLab(lab1);
 
         Medicine medicine = new Medicine("AAAA1",  "For Child", "Pediatrics");
@@ -361,52 +420,83 @@ public class Business {
         
         RearServices rs = new RearServices("Jin", "BioGen 1", "Aa12345678", h1 );
         //后勤
+        RearServices rs2 = new RearServices("Ava", "BioGen 2", "Aa12345678", h1 );
         
         //医生
-        Doctor doctor1 = new Doctor(1,"Jim","Aa12345678", "male", h1);
-        doctor1.setEnabled(1);
-        doctor1.setSpecialty("Surgery");
-        doctor1.setType("Surgery");
-        doctor1.setAvail(5);
-        doctor1.setAge(30);
-        doctor1.setEductionBackground("doctor");
-        doctor1.setContact("6666666");
-        doctor1.setDepartment("Surgery");
+        Doctor doctor_Jim = new Doctor(1,"Jim","Aa12345678", "male", h1);
+        doctor_Jim.setEnabled(1);
+        doctor_Jim.setSpecialty("Surgery");
+        doctor_Jim.setType("Surgery");
+        doctor_Jim.setAvail(5);
+        doctor_Jim.setAge(30);
+        doctor_Jim.setEductionBackground("doctor");
+        doctor_Jim.setContact("6666666");
+        doctor_Jim.setDepartment("Surgery");
         
-        Doctor doctor2 = new Doctor(2,"Alex","Aa12345678", "female", h1);
-        doctor2.setEnabled(1);
-        doctor2.setSpecialty("Pediatrics");
-        doctor2.setType("Pediatrics");
-        doctor2.setAvail(12);
-        doctor2.setAge(33);
-        doctor2.setEductionBackground("master");
-        doctor2.setContact("7777777");
-        doctor2.setDepartment("Pediatrics");
+        Doctor doctor_Alex = new Doctor(2,"Alex","Aa12345678", "female", h1);
+        doctor_Alex.setEnabled(1);
+        doctor_Alex.setSpecialty("Pediatrics");
+        doctor_Alex.setType("Pediatrics");
+        doctor_Alex.setAvail(12);
+        doctor_Alex.setAge(33);
+        doctor_Alex.setEductionBackground("master");
+        doctor_Alex.setContact("7777777");
+        doctor_Alex.setDepartment("Pediatrics");
         
-        Doctor doctor3 = new Doctor(3,"Frank","Aa12345678", "male",h1);
-        doctor3.setEnabled(1);
-        doctor3.setSpecialty("Internal Medicine");
-        doctor3.setType("Internal Medicine");
-        doctor3.setAvail(10);
-        doctor3.setAge(50);
-        doctor3.setEductionBackground("tutor");
-        doctor3.setContact("8888888");
-        doctor3.setDepartment("Internal Medicine");
+        Doctor doctor_Frank= new Doctor(3,"Frank","Aa12345678", "male",h1);
+        doctor_Frank.setEnabled(1);
+        doctor_Frank.setSpecialty("Internal Medicine");
+        doctor_Frank.setType("Internal Medicine");
+        doctor_Frank.setAvail(10);
+        doctor_Frank.setAge(50);
+        doctor_Frank.setEductionBackground("tutor");
+        doctor_Frank.setContact("8888888");
+        doctor_Frank.setDepartment("Internal Medicine");
+
+        Doctor doctor_Sophia = new Doctor(3,"Sophia","Aa12345678", "female",h1);
+        doctor_Sophia.setEnabled(1);
+        doctor_Sophia.setSpecialty("Internal Otolaryngology");
+        doctor_Sophia.setType("Otolaryngology");
+        doctor_Sophia.setAvail(10);
+        doctor_Sophia.setAge(50);
+        doctor_Sophia.setEductionBackground("tutor");
+        doctor_Sophia.setContact("8888888");
+        doctor_Sophia.setDepartment("Otolaryngology Department");
+
+
+        Doctor doctor_Matthew = new Doctor(3,"Matthew","Aa12345678", "male",h1);
+        doctor_Matthew.setEnabled(1);
+        doctor_Matthew.setSpecialty("Internal Neurology");
+        doctor_Matthew.setType("Neurology");
+        doctor_Matthew.setAvail(10);
+        doctor_Matthew.setAge(50);
+        doctor_Matthew.setEductionBackground("tutor");
+        doctor_Matthew.setContact("8888888");
+        doctor_Matthew.setDepartment("Neurology Department");
+
+        Doctor doctor_James = new Doctor(3,"James","Aa12345678", "male",h1);
+        doctor_James.setEnabled(1);
+        doctor_James.setSpecialty("Hepatology ");
+        doctor_James.setType("Hepatology");
+        doctor_James.setAvail(10);
+        doctor_James.setAge(50);
+        doctor_James.setEductionBackground("tutor");
+        doctor_James.setContact("8888888");
+        doctor_James.setDepartment("Hepatology Department");
         
         //病历
         MedicalHistory mh1 = new MedicalHistory("Oliver‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
         MedicalHistory mh2 = new MedicalHistory("Oliver‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
         mh1.setRecoverDays(5);
         mh1.setFeedbackRate(8);
+        mh1.setDoctor(doctor_Jim);
         mh2.setRecoverDays(3);
         mh2.setFeedbackRate(9);
-
+        mh2.setDoctor(doctor_Alex);
 
         MedicalHistoryDirectory mhl1 = new MedicalHistoryDirectory(1,"Oliver");
-        mhl1.addHistory(mh2);
         mhl1.addHistory(mh1);
-        mh1.setDoctor(doctor1);
-        mh2.setDoctor(doctor2);
+        mhl1.addHistory(mh2);
         
         MedicalHistory mh3 = new MedicalHistory("Jam‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
         MedicalHistory mh4 = new MedicalHistory("Jam‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
@@ -419,8 +509,8 @@ public class Business {
         MedicalHistoryDirectory mhl2 = new MedicalHistoryDirectory(2,"Jam");
         mhl2.addHistory(mh4);
         mhl2.addHistory(mh3);
-        mh3.setDoctor(doctor3);
-        mh4.setDoctor(doctor2);
+        mh3.setDoctor(doctor_Frank);
+        mh4.setDoctor(doctor_Alex);
 
         //患者
         Patient patient1 = new Patient(1, "Oliver", "Aa12345678");
@@ -452,9 +542,9 @@ public class Business {
         patient6.setAge(42);
         
         
-        Appointment a = new Appointment(patient1,doctor1);
-        Appointment a1 = new Appointment(patient2,doctor2);
-        Appointment a2 = new Appointment(patient3,doctor3);
+        Appointment a = new Appointment(patient1,doctor_Jim);
+        Appointment a1 = new Appointment(patient2,doctor_Alex);
+        Appointment a2 = new Appointment(patient3,doctor_Frank);
         ArrayList<Appointment> APPO = new ArrayList<>();
         APPO.add(a);
         APPO.add(a1);
@@ -515,11 +605,15 @@ public class Business {
         mh4.setPrescription(prescription3);
 
         h1.addRearService(rs);
-        
-        h1.addDoctor(doctor1);
-        h1.addDoctor(doctor2);
-        h1.addDoctor(doctor3);
-        
+        h1.addRearService(rs2);
+
+        h1.addDoctor(doctor_Jim);
+        h1.addDoctor(doctor_Alex);
+        h1.addDoctor(doctor_Frank);
+        h1.addDoctor(doctor_Sophia);
+        h1.addDoctor(doctor_Matthew);
+        h1.addDoctor(doctor_James);
+
         h1.addPatient(patient1);
         h1.addPatient(patient2);
         h1.addPatient(patient3);
@@ -550,35 +644,35 @@ public class Business {
         RearServices rs = new RearServices("Jing", "BioGen 1", "Aa12345678", h1 );
         //后勤
         
-        Doctor doctor1 = new Doctor(1,"Jimy","Aa12345678", "male", h1);
-        doctor1.setEnabled(1);
-        doctor1.setSpecialty("Surgery");
-        doctor1.setType("Surgery");
-        doctor1.setAvail(5);
-        doctor1.setAge(30);
-        doctor1.setEductionBackground("doctor");
-        doctor1.setContact("6666666");
-        doctor1.setDepartment("Surgery");
+        Doctor doctor_Jim = new Doctor(1,"Jimy","Aa12345678", "male", h1);
+        doctor_Jim.setEnabled(1);
+        doctor_Jim.setSpecialty("Surgery");
+        doctor_Jim.setType("Surgery");
+        doctor_Jim.setAvail(5);
+        doctor_Jim.setAge(30);
+        doctor_Jim.setEductionBackground("doctor");
+        doctor_Jim.setContact("6666666");
+        doctor_Jim.setDepartment("Surgery");
         
-        Doctor doctor2 = new Doctor(2,"Alexy","Aa12345678", "female", h1);
-        doctor2.setEnabled(1);
-        doctor2.setSpecialty("Pediatrics");
-        doctor2.setType("Pediatrics");
-        doctor2.setAvail(12);
-        doctor2.setAge(33);
-        doctor2.setEductionBackground("master");
-        doctor2.setContact("7777777");
-        doctor2.setDepartment("Pediatrics");
+        Doctor doctor_Alex = new Doctor(2,"Alexy","Aa12345678", "female", h1);
+        doctor_Alex.setEnabled(1);
+        doctor_Alex.setSpecialty("Pediatrics");
+        doctor_Alex.setType("Pediatrics");
+        doctor_Alex.setAvail(12);
+        doctor_Alex.setAge(33);
+        doctor_Alex.setEductionBackground("master");
+        doctor_Alex.setContact("7777777");
+        doctor_Alex.setDepartment("Pediatrics");
         
-        Doctor doctor3 = new Doctor(3,"Franky","Aa12345678", "male",h1);
-        doctor3.setEnabled(1);
-        doctor3.setSpecialty("Internal Medicine");
-        doctor3.setType("Internal Medicine");
-        doctor3.setAvail(10);
-        doctor3.setAge(50);
-        doctor3.setEductionBackground("tutor");
-        doctor3.setContact("8888888");
-        doctor3.setDepartment("Internal Medicine");
+        Doctor doctor_Frank = new Doctor(3,"Franky","Aa12345678", "male",h1);
+        doctor_Frank.setEnabled(1);
+        doctor_Frank.setSpecialty("Internal Medicine");
+        doctor_Frank.setType("Internal Medicine");
+        doctor_Frank.setAvail(10);
+        doctor_Frank.setAge(50);
+        doctor_Frank.setEductionBackground("tutor");
+        doctor_Frank.setContact("8888888");
+        doctor_Frank.setDepartment("Internal Medicine");
         
         MedicalHistory mh1 = new MedicalHistory("Python‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
         MedicalHistory mh2 = new MedicalHistory("Python‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
@@ -589,8 +683,8 @@ public class Business {
         MedicalHistoryDirectory mhl1 = new MedicalHistoryDirectory(1,"Python");
         mhl1.addHistory(mh2);
         mhl1.addHistory(mh1);
-        mh1.setDoctor(doctor1);
-        mh2.setDoctor(doctor2);
+        mh1.setDoctor(doctor_Jim);
+        mh2.setDoctor(doctor_Alex);
         
         Patient patient1 = new Patient(1, "Python", "Aa12345678");
         patient1.setMedicalHistoryDirectory(mhl1);
@@ -606,9 +700,9 @@ public class Business {
         patient3.setAge(42);
         
         
-        Appointment a = new Appointment(patient1,doctor1);
-        Appointment a1 = new Appointment(patient2,doctor2);
-        Appointment a2 = new Appointment(patient3,doctor3);
+        Appointment a = new Appointment(patient1,doctor_Jim);
+        Appointment a1 = new Appointment(patient2,doctor_Alex);
+        Appointment a2 = new Appointment(patient3,doctor_Frank);
         ArrayList<Appointment> APPO = new ArrayList<>();
         APPO.add(a);
         APPO.add(a1);
@@ -664,9 +758,9 @@ public class Business {
 
         h1.addRearService(rs);
         
-        h1.addDoctor(doctor1);
-        h1.addDoctor(doctor2);
-        h1.addDoctor(doctor3);
+        h1.addDoctor(doctor_Jim);
+        h1.addDoctor(doctor_Alex);
+        h1.addDoctor(doctor_Frank);
         
         h1.addPatient(patient1);
         h1.addPatient(patient2);
@@ -689,35 +783,35 @@ public class Business {
         RearServices rs = new RearServices("Ji", "BioGen 1", "Aa12345678", h1 );
         //后勤
         
-        Doctor doctor1 = new Doctor(1,"Ji","Aa12345678", "male", h1);
-        doctor1.setEnabled(1);
-        doctor1.setSpecialty("Surgery");
-        doctor1.setType("Surgery");
-        doctor1.setAvail(5);
-        doctor1.setAge(30);
-        doctor1.setEductionBackground("doctor");
-        doctor1.setContact("6666666");
-        doctor1.setDepartment("Surgery");
+        Doctor doctor_Jim = new Doctor(1,"Ji","Aa12345678", "male", h1);
+        doctor_Jim.setEnabled(1);
+        doctor_Jim.setSpecialty("Surgery");
+        doctor_Jim.setType("Surgery");
+        doctor_Jim.setAvail(5);
+        doctor_Jim.setAge(30);
+        doctor_Jim.setEductionBackground("doctor");
+        doctor_Jim.setContact("6666666");
+        doctor_Jim.setDepartment("Surgery");
         
-        Doctor doctor2 = new Doctor(2,"Ale","Aa12345678", "female", h1);
-        doctor2.setEnabled(1);
-        doctor2.setSpecialty("Pediatrics");
-        doctor2.setType("Pediatrics");
-        doctor2.setAvail(12);
-        doctor2.setAge(33);
-        doctor2.setEductionBackground("master");
-        doctor2.setContact("7777777");
-        doctor2.setDepartment("Pediatrics");
+        Doctor doctor_Alex = new Doctor(2,"Ale","Aa12345678", "female", h1);
+        doctor_Alex.setEnabled(1);
+        doctor_Alex.setSpecialty("Pediatrics");
+        doctor_Alex.setType("Pediatrics");
+        doctor_Alex.setAvail(12);
+        doctor_Alex.setAge(33);
+        doctor_Alex.setEductionBackground("master");
+        doctor_Alex.setContact("7777777");
+        doctor_Alex.setDepartment("Pediatrics");
         
-        Doctor doctor3 = new Doctor(3,"Fran","Aa12345678", "male",h1);
-        doctor3.setEnabled(1);
-        doctor3.setSpecialty("Internal Medicine");
-        doctor3.setType("Internal Medicine");
-        doctor3.setAvail(10);
-        doctor3.setAge(50);
-        doctor3.setEductionBackground("tutor");
-        doctor3.setContact("8888888");
-        doctor3.setDepartment("Internal Medicine");
+        Doctor doctor_Frank = new Doctor(3,"Fran","Aa12345678", "male",h1);
+        doctor_Frank.setEnabled(1);
+        doctor_Frank.setSpecialty("Internal Medicine");
+        doctor_Frank.setType("Internal Medicine");
+        doctor_Frank.setAvail(10);
+        doctor_Frank.setAge(50);
+        doctor_Frank.setEductionBackground("tutor");
+        doctor_Frank.setContact("8888888");
+        doctor_Frank.setDepartment("Internal Medicine");
         
         MedicalHistory mh1 = new MedicalHistory("Magic‘s Medical History","Had server fever","keep warm. Don't eat spicy food");
         MedicalHistory mh2 = new MedicalHistory("Magic‘s Medical History","Had server headache","keep warm. Don't eat spicy food");
@@ -728,8 +822,8 @@ public class Business {
         MedicalHistoryDirectory mhl1 = new MedicalHistoryDirectory(1,"Magic");
         mhl1.addHistory(mh2);
         mhl1.addHistory(mh1);
-        mh1.setDoctor(doctor1);
-        mh2.setDoctor(doctor2);
+        mh1.setDoctor(doctor_Jim);
+        mh2.setDoctor(doctor_Alex);
         
         Patient patient1 = new Patient(1, "Magic", "Aa12345678");
         patient1.setMedicalHistoryDirectory(mhl1);
@@ -745,9 +839,9 @@ public class Business {
         patient3.setAge(42);
         
         
-        Appointment a = new Appointment(patient1,doctor1);
-        Appointment a1 = new Appointment(patient2,doctor2);
-        Appointment a2 = new Appointment(patient3,doctor3);
+        Appointment a = new Appointment(patient1,doctor_Jim);
+        Appointment a1 = new Appointment(patient2,doctor_Alex);
+        Appointment a2 = new Appointment(patient3,doctor_Frank);
         ArrayList<Appointment> APPO = new ArrayList<>();
         APPO.add(a);
         APPO.add(a1);
@@ -803,10 +897,10 @@ public class Business {
 
         h1.addRearService(rs);
         
-        h1.addDoctor(doctor1);
-        h1.addDoctor(doctor2);
-        h1.addDoctor(doctor3);
-        
+        h1.addDoctor(doctor_Jim);
+        h1.addDoctor(doctor_Alex);
+        h1.addDoctor(doctor_Frank);
+
         h1.addPatient(patient1);
         h1.addPatient(patient2);
         h1.addPatient(patient3);
