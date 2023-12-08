@@ -60,14 +60,14 @@ public class Business {
         medicalSuppliers = new ArrayList<>();
 //        medicineList = new ArrayList<>();
 //        medicalSuppliers = new ArrayList<>();
+        Delivery1();
+        Delivery2();
         Hospital1();
+        Hospital2();
+        Hospital3();
         BioTechCom_BioGenesis_Therapeutics();
         BioTechCom_VitalEdge_Biomedicals();
         MedicalSupplier1();
-        Delivery1();
-        Delivery2();
-        Hospital2();
-        Hospital3();
         
     }
 
@@ -122,8 +122,8 @@ public class Business {
     }
     
     public void Delivery1(){
-        Delivery d = new Delivery("USPS", "Hibanna", "");
-        Delivery d1 = new Delivery("UPS", "Hibanna", "");
+        Delivery d = new Delivery("USPS", "Hibanna", "Aa12345678");
+        Delivery d1 = new Delivery("UPS", "Hibanna", "Aa12345678");
         deliveries.add(d);
         deliveries.add(d1);
     }
@@ -143,7 +143,7 @@ public class Business {
         // 创建并添加订单到UPS
         if (ups != null) {
             ups.addOrder(new Order("3", "Delivery for Medicine C1", "Location C", "Address C", "Completed"));
-            ups.addOrder(new Order("4", "Delivery for Equipment E1", "Location D", "Address D", "In Progress"));
+            ups.addOrder(new Order("4", "Delivery for Equipment E1", "Location D", "Address D", "Processing"));
             // 可以继续添加更多订单...
         }
 
@@ -169,7 +169,7 @@ public class Business {
         Equipment equipment2 = new Equipment("E-C1", "Surgery", "Surgery");
 
 
-        BioSupplier bs = new BioSupplier( "Finka","", "MedTech Supplier");
+        BioSupplier bs = new BioSupplier( "Finka","Aa12345678", "MedTech Supplier");
         ms.addBioSupplier(bs);
         ms.addEquipment(e1);
         ms.addEquipment(equipment);
@@ -191,7 +191,7 @@ public class Business {
 
         Equipment equipment2 = new Equipment("EB-C1", "Surgery", "Surgery");
 
-        BioSupplier bs = new BioSupplier( "Lucy","", "MedTech Supplier");
+        BioSupplier bs = new BioSupplier( "Lucy","Aa12345678", "MedTech Supplier");
         ms.addBioSupplier(bs);
         ms.addEquipment(e1);
         ms.addEquipment(equipment);
@@ -211,7 +211,7 @@ public class Business {
 
         Person jack = new Person(1006, "Jack","male",53);
         
-        BioResearcher br = new BioResearcher(jack, "", "1", b1);
+        BioResearcher br = new BioResearcher(jack, "Aa12345678", "1", b1);
         b1.addBioResaecher(br);
         Lab lab1 = new Lab(jack, "Internal Medicine", "VICC Project", new_m, vxx);
         lab1.setType("Internal Medicine");
@@ -283,11 +283,11 @@ public class Business {
 
         Lab lab9 = new Lab(Alex.get(), "Group 9", "Neurological Studies","Neurology","Research on brain functions");
         lab9.setProgress(60);
-        lab9.setStatus("In Progress");
+        lab9.setStatus("Processing");
 
         Lab lab10 = new Lab(Sophia.get(), "Group 10", "Cancer Research","Oncology","Cancer treatment and research");
         lab10.setProgress(80);
-        lab10.setStatus("In Progress");
+        lab10.setStatus("Processing");
 
         // 添加实验室到BioTech公司
         b1.addLab(lab8);
@@ -352,7 +352,7 @@ public class Business {
 
         Lab lab13 = new Lab(Alex.get(), "Neurological Research", "Brain Function Study", new_m, vxx);
         lab13.setProgress(80);
-        lab13.setStatus("In Progress");
+        lab13.setStatus("Processing");
 
         // 添加实验室到 BioGenesis Therapeutics
         b1.addLab(lab12);
@@ -360,7 +360,7 @@ public class Business {
 
         // 添加额外的订单和请求
         Order order1 = new Order("1", "Delivery for Medicine A1", "Location A", "Address A", "Completed");
-        Order order2 = new Order("2", "Delivery for Medicine B1", "Location B", "Address B", "In Progress");
+        Order order2 = new Order("2", "Delivery for Medicine B1", "Location B", "Address B", "Processing");
 
         b1.addOrder(order1);
         b1.addOrder(order2);
@@ -371,7 +371,7 @@ public class Business {
         b1.addRequest(request8);
 
 
-        BioSupplier bs1_ = new BioSupplier("Mike", "", "BioSupplier 1");
+        BioSupplier bs1_ = new BioSupplier("Mike", "Aa12345678", "BioSupplier 1");
         bs1_.addRequest(request1);
         b1.addRequest(request1);
 
@@ -384,7 +384,7 @@ public class Business {
 
         //request 1、2、3..
 
-        BioSupplier bs2_ = new BioSupplier("Jackson", "", "BioSupplier 2");
+        BioSupplier bs2_ = new BioSupplier("Jackson", "Aa12345678", "BioSupplier 2");
         bs2_.addRequest(request3);
         b1.addRequest(request3);
 
@@ -418,12 +418,28 @@ public class Business {
 
         Person Emily = new Person(10021, "Emily","female",45);
 
-        BioResearcher br = new BioResearcher(Emily, "", VitalEdge_Biomedicals);
+        BioResearcher br = new BioResearcher(Emily, "Aa12345678","1", VitalEdge_Biomedicals);
 
         VitalEdge_Biomedicals.addBioResaecher(br);
 
+        Optional<Doctor> Alexy = h2.getDoctorList().stream().filter(doctor -> "Alexy".equals(doctor.getName())).toList().stream().findFirst();
 
+        Lab lab12 = new Lab(Alexy.get(), "Cardiovascular Research", "Heart Disease Research", medicine_loratadine, vaccine_polio);
+        lab12.setProgress(100);
+        lab12.setStatus("Completed");
+        br.addLab(lab12);
+        Alexy.get().addLab(lab12);
         Lab lab1 = new Lab(Emily, "External Medicine", "Antihistamine Project", medicine_loratadine, vaccine_polio);
+
+        Optional<Doctor> Fran = h3.getDoctorList().stream().filter(doctor -> "Fran".equals(doctor.getName())).toList().stream().findFirst();
+
+        Lab lab13 = new Lab(Fran.get(), "Cardiovascular Research", "Heart Disease Research", medicine_loratadine, vaccine_polio);
+        lab12.setProgress(20);
+        lab12.setStatus("Processing");
+        br.addLab(lab13);
+        Fran.get().addLab(lab13);
+        
+        
         lab1.setType("External Medicine");
         lab1.setInstruction("on-sedating antihistamines");
         lab1.setProgress(22);
@@ -431,7 +447,7 @@ public class Business {
         Optional<Doctor> first = h1.getDoctorList().stream().filter(doctor -> "Alex".equals(doctor.getName())).toList().stream().findFirst();
 
         Lab lab2 = new Lab(first.get(), "Group 1", "VICC Project","Internal Medicine","it is for Internal Medicine");
-
+        
         br.addLab(lab2);
 //        for(Hospital h : hospitals){
 //            if(h.getName().equals("Boston Rehabilitation Center")){
@@ -452,7 +468,7 @@ public class Business {
         lab11.setType("Immunology");
         lab11.setInstruction("Research on immune system enhancements");
         lab11.setProgress(50);
-        lab11.setStatus("In Progress");
+        lab11.setStatus("Processing");
 
         VitalEdge_Biomedicals.addLab(lab11);
         
@@ -466,7 +482,7 @@ public class Business {
 
         // 添加额外的订单和请求
         Order order3 = new Order("1", "Delivery for Medicine A1", "Location A", "Address A", "Completed");
-        Order order4 = new Order("2", "Delivery for Medicine B1", "Location B", "Address B", "In Progress");
+        Order order4 = new Order("2", "Delivery for Medicine B1", "Location B", "Address B", "Processing");
         VitalEdge_Biomedicals.addOrder(order3);
         VitalEdge_Biomedicals.addOrder(order4);
 
@@ -502,10 +518,10 @@ public class Business {
         Request request = new Request("medicine 1","medicine","For heart disease");
         request.setMedicine(medicine);
 
-        BioSupplier bs1_ = new BioSupplier("Lily", "", "BioSupplier 1");
+        BioSupplier bs1_ = new BioSupplier("Lily", "Aa12345678", "BioSupplier 1");
         bs1_.addRequest(request);
 
-        BioSupplier bs2_ = new BioSupplier("David ", "", "BioSupplier 2");
+        BioSupplier bs2_ = new BioSupplier("David ", "Aa12345678", "BioSupplier 2");
 
         //set inventory
         VitalEdge_Biomedicals.getHi().setMedicineDirectory(medicineDirectory);
@@ -817,12 +833,12 @@ public class Business {
 
 
     public void Hospital2() {
-        h1 = new Hospital("Future Medical Institute","");
+        h2 = new Hospital("Future Medical Institute","");
         
-        RearServices rs = new RearServices("Jing", "BioGen 1", "Aa12345678", h1 );
+        RearServices rs = new RearServices("Jing", "BioGen 1", "Aa12345678", h2 );
         //后勤
         
-        Doctor doctor_Jim = new Doctor(1,"Jimy","Aa12345678", "male", h1);
+        Doctor doctor_Jim = new Doctor(1,"Jimy","Aa12345678", "male", h2);
         doctor_Jim.setEnabled(1);
         doctor_Jim.setSpecialty("Surgery");
         doctor_Jim.setType("Surgery");
@@ -832,7 +848,7 @@ public class Business {
         doctor_Jim.setContact("6666666");
         doctor_Jim.setDepartment("Surgery");
         
-        Doctor doctor_Alex = new Doctor(2,"Alexy","Aa12345678", "female", h1);
+        Doctor doctor_Alex = new Doctor(2,"Alexy","Aa12345678", "female", h2);
         doctor_Alex.setEnabled(1);
         doctor_Alex.setSpecialty("Pediatrics");
         doctor_Alex.setType("Pediatrics");
@@ -842,7 +858,7 @@ public class Business {
         doctor_Alex.setContact("7777777");
         doctor_Alex.setDepartment("Pediatrics");
         
-        Doctor doctor_Frank = new Doctor(3,"Franky","Aa12345678", "male",h1);
+        Doctor doctor_Frank = new Doctor(3,"Franky","Aa12345678", "male",h2);
         doctor_Frank.setEnabled(1);
         doctor_Frank.setSpecialty("Internal Medicine");
         doctor_Frank.setType("Internal Medicine");
@@ -999,34 +1015,34 @@ public class Business {
         Prescription prescription1 = new Prescription("prescription for server headache",Arrays.asList(medicine1, vaccine1, equipment1));
         mh2.setPrescription(prescription1);
 
-        h1.addRearService(rs);
+        h2.addRearService(rs);
         
-        h1.addDoctor(doctor_Jim);
-        h1.addDoctor(doctor_Alex);
-        h1.addDoctor(doctor_Frank);
+        h2.addDoctor(doctor_Jim);
+        h2.addDoctor(doctor_Alex);
+        h2.addDoctor(doctor_Frank);
         
-        h1.addPatient(patient1);
-        h1.addPatient(patient2);
-        h1.addPatient(patient3);
+        h2.addPatient(patient1);
+        h2.addPatient(patient2);
+        h2.addPatient(patient3);
         
-        h1.getHa().setAppointments(APPO);
-        h1.getHospitalInventory().setMedicineDirectory(medicineDirectory);
-        h1.getHospitalInventory().setVaccineDirectory(vaccineDirectory);
-        h1.getHospitalInventory().setEd(equipmentDirectory);
+        h2.getHa().setAppointments(APPO);
+        h2.getHospitalInventory().setMedicineDirectory(medicineDirectory);
+        h2.getHospitalInventory().setVaccineDirectory(vaccineDirectory);
+        h2.getHospitalInventory().setEd(equipmentDirectory);
         
         patients.add(patient1);
         patients.add(patient2);
         patients.add(patient3);
-        hospitals.add(h1);
+        hospitals.add(h2);
     }
     
     public void Hospital3() {
-        h1 = new Hospital("Verdant Health Hospital","");
+        h3 = new Hospital("Verdant Health Hospital","");
         
-        RearServices rs = new RearServices("Ji", "BioGen 1", "Aa12345678", h1 );
+        RearServices rs = new RearServices("Ji", "BioGen 1", "Aa12345678", h3 );
         //后勤
         
-        Doctor doctor_Jim = new Doctor(1,"Ji","Aa12345678", "male", h1);
+        Doctor doctor_Jim = new Doctor(1,"Ji","Aa12345678", "male", h3);
         doctor_Jim.setEnabled(1);
         doctor_Jim.setSpecialty("Surgery");
         doctor_Jim.setType("Surgery");
@@ -1036,7 +1052,7 @@ public class Business {
         doctor_Jim.setContact("6666666");
         doctor_Jim.setDepartment("Surgery");
         
-        Doctor doctor_Alex = new Doctor(2,"Ale","Aa12345678", "female", h1);
+        Doctor doctor_Alex = new Doctor(2,"Ale","Aa12345678", "female", h3);
         doctor_Alex.setEnabled(1);
         doctor_Alex.setSpecialty("Pediatrics");
         doctor_Alex.setType("Pediatrics");
@@ -1046,7 +1062,7 @@ public class Business {
         doctor_Alex.setContact("7777777");
         doctor_Alex.setDepartment("Pediatrics");
         
-        Doctor doctor_Frank = new Doctor(3,"Fran","Aa12345678", "male",h1);
+        Doctor doctor_Frank = new Doctor(3,"Fran","Aa12345678", "male",h3);
         doctor_Frank.setEnabled(1);
         doctor_Frank.setSpecialty("Internal Medicine");
         doctor_Frank.setType("Internal Medicine");
@@ -1201,24 +1217,24 @@ public class Business {
         Prescription prescription1 = new Prescription("prescription for server headache",Arrays.asList(medicine1, vaccine1, equipment1));
         mh2.setPrescription(prescription1);
 
-        h1.addRearService(rs);
+        h3.addRearService(rs);
         
-        h1.addDoctor(doctor_Jim);
-        h1.addDoctor(doctor_Alex);
-        h1.addDoctor(doctor_Frank);
+        h3.addDoctor(doctor_Jim);
+        h3.addDoctor(doctor_Alex);
+        h3.addDoctor(doctor_Frank);
 
-        h1.addPatient(patient1);
-        h1.addPatient(patient2);
-        h1.addPatient(patient3);
+        h3.addPatient(patient1);
+        h3.addPatient(patient2);
+        h3.addPatient(patient3);
         
-        h1.getHa().setAppointments(APPO);
-        h1.getHospitalInventory().setMedicineDirectory(medicineDirectory);
-        h1.getHospitalInventory().setVaccineDirectory(vaccineDirectory);
-        h1.getHospitalInventory().setEd(equipmentDirectory);
+        h3.getHa().setAppointments(APPO);
+        h3.getHospitalInventory().setMedicineDirectory(medicineDirectory);
+        h3.getHospitalInventory().setVaccineDirectory(vaccineDirectory);
+        h3.getHospitalInventory().setEd(equipmentDirectory);
         
         patients.add(patient1);
         patients.add(patient2);
         patients.add(patient3);
-        hospitals.add(h1);
+        hospitals.add(h3);
     }
 }

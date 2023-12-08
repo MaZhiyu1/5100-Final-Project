@@ -396,7 +396,7 @@ public class Report {
         int orderCompleted=0;
         int requestNum=b1.getRequest().size();
         int requestCompleted=0;
-        int labNum=0;
+        int labNum=b1.getLabs().size();
         int labCom=0;
         if(b1.getLabs()!=null){
         for(Lab l : b1.getLabs()){
@@ -441,7 +441,7 @@ public class Report {
         int orderCompleted1=0;
         int requestNum1=b2.getRequest().size();
         int requestCompleted1=0;
-        int labNum1=0;
+        int labNum1=b2.getLabs().size();
         int labCom1=0;
         if(b2.getLabs()!=null){
             for(Lab l : b2.getLabs()){
