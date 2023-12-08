@@ -35,6 +35,24 @@ public class Report {
     private BioTechCom b1;
     private BioTechCom b2;
     
+    String str1;
+    String str2;
+    String str3;
+    String str4;
+    String str5;
+    String str6;
+    
+    String str7;
+    String str8;
+    String str9;
+    String str10;
+    String str11;
+    String str12;
+    
+    String str13;
+    String str14;
+    
+    
     public Report(Business bz) {
         hospitals = bz.getHospitals();
         patients = bz.getPatients();
@@ -50,6 +68,123 @@ public class Report {
         DeliverySummary();
     }
 
+    public String getStr13() {
+        return str13;
+    }
+
+    public void setStr13(String str13) {
+        this.str13 = str13;
+    }
+
+    public String getStr14() {
+        return str14;
+    }
+
+    public void setStr14(String str14) {
+        this.str14 = str14;
+    }
+
+    
+    
+    public String getStr1() {
+        return str1;
+    }
+
+    public void setStr1(String str1) {
+        this.str1 = str1;
+    }
+
+    public String getStr2() {
+        return str2;
+    }
+
+    public void setStr2(String str2) {
+        this.str2 = str2;
+    }
+
+    public String getStr3() {
+        return str3;
+    }
+
+    public void setStr3(String str3) {
+        this.str3 = str3;
+    }
+
+    public String getStr4() {
+        return str4;
+    }
+
+    public void setStr4(String str4) {
+        this.str4 = str4;
+    }
+
+    public String getStr5() {
+        return str5;
+    }
+
+    public void setStr5(String str5) {
+        this.str5 = str5;
+    }
+
+    public String getStr6() {
+        return str6;
+    }
+
+    public void setStr6(String str6) {
+        this.str6 = str6;
+    }
+
+    public String getStr7() {
+        return str7;
+    }
+
+    public void setStr7(String str7) {
+        this.str7 = str7;
+    }
+
+    public String getStr8() {
+        return str8;
+    }
+
+    public void setStr8(String str8) {
+        this.str8 = str8;
+    }
+
+    public String getStr9() {
+        return str9;
+    }
+
+    public void setStr9(String str9) {
+        this.str9 = str9;
+    }
+
+    public String getStr10() {
+        return str10;
+    }
+
+    public void setStr10(String str10) {
+        this.str10 = str10;
+    }
+
+    public String getStr11() {
+        return str11;
+    }
+
+    public void setStr11(String str11) {
+        this.str11 = str11;
+    }
+
+    public String getStr12() {
+        return str12;
+    }
+
+    public void setStr12(String str12) {
+        this.str12 = str12;
+    }
+    
+    
+    
+    
     private void HospitalSummary(){
         for(Hospital h : hospitals){
             if(h.getName().equals("Boston Rehabilitation Center")){
@@ -99,7 +234,9 @@ public class Report {
         System.out.println("The Lab Completion of hospital:"+ completed);
         System.out.println("The Lab number of hospital:"+ labNum);
         System.out.println("The Lab Completion of hospital:"+ completed);
-        
+        str1 = "The patient number of hospital:"+ num+"\n"+"The Average Recovery day of hospital:"+ recoverDay/num+"\n"
+                + "The Lab Completion of hospital:"+ completed+"\n"+"The Lab number of hospital:"+ labNum
+                +"The Lab Completion of hospital:"+ completed;
         
         int recoverDay1=0;
         int num1=0;
@@ -138,7 +275,9 @@ public class Report {
         System.out.println("The Lab number of hospital:"+ labNum1);
         System.out.println("The Lab Completion of hospital:"+ completed1);
         
-        
+        str2= "The patient number of hospital:"+ num1+"\n"+"The Average Recovery day of hospital:"+ recoverDay1/num1+"\n"
+                + "The Lab Completion of hospital:"+ completed1+"\n"+"The Lab number of hospital:"+ labNum1
+                +"The Lab Completion of hospital:"+ completed1;
         
         
         int recoverDay2=0;
@@ -176,6 +315,10 @@ public class Report {
         System.out.println("The Lab number of hospital:"+ labNum2);
         System.out.println("The Lab Completion of hospital:"+ completed2);
              
+        str3= "The patient number of hospital:"+ num2+"\n"+"The Average Recovery day of hospital:"+ recoverDay2/num2+"\n"
+                + "The Lab Completion of hospital:"+ completed2+"\n"+"The Lab number of hospital:"+ labNum2
+                +"The Lab Completion of hospital:"+ completed2;
+        
         int maxValue = num;
         if (num1 > maxValue) {
             maxValue = num1;
@@ -186,10 +329,13 @@ public class Report {
         
         if(maxValue==num){
             System.out.println("The most welcome hospital for patient:"+h1.getName());
+            str4 = "The most welcome hospital for patient:"+h1.getName();
         }else if(maxValue==num1){
             System.out.println("The most welcome hospital for patient:"+h2.getName());
+            str4 = "The most welcome hospital for patient:"+h1.getName();
         }else{
             System.out.println("The most welcome hospital for patient:"+h3.getName());
+            str4 = "The most welcome hospital for patient:"+h1.getName();
         }
         
         maxValue = recoverDay/num;
@@ -202,10 +348,13 @@ public class Report {
         
         if(maxValue==recoverDay/num){
             System.out.println("As a patient, you should choose hospital:"+h1.getName());
+            str5 = "As a patient, you should choose hospital:"+h1.getName();
         }else if(maxValue==recoverDay1/num1){
             System.out.println("As a patient, you should choose hospital:"+h2.getName());
+            str5 = "As a patient, you should choose hospital:"+h1.getName();
         }else{
             System.out.println("As a patient, you should choose hospital:"+h3.getName());
+            str5 = "As a patient, you should choose hospital:"+h1.getName();
         }
         
         maxValue = labNum;
@@ -218,10 +367,13 @@ public class Report {
         
         if(maxValue==labNum){
             System.out.println("As a doctor, you have more chance working in lab in:"+h1.getName());
+            str6 = "As a doctor, you have more chance working in lab in:"+h1.getName();
         }else if(maxValue==labNum1){
             System.out.println("As a doctor, you have more chance working in lab in:"+h2.getName());
+            str6 = "As a doctor, you have more chance working in lab in:"+h1.getName();
         }else{
             System.out.println("As a doctor, you have more chance working in lab in:"+h3.getName());
+            str6 = "As a doctor, you have more chance working in lab in:"+h1.getName();
         }
         
     }
@@ -276,6 +428,14 @@ public class Report {
         System.out.println("Lab Number "+ labNum);
         System.out.println("Lab Completion "+ labCom);
         
+        str7="Total order"+orderNum+"\n"+
+                "Order Compeletion  "+ orderCompleted+"\n"+
+                "Total request"+ requestNum+"\n"+
+                "Request Compeletion "+ requestCompleted+"\n"+
+                "Lab Number "+ labNum+"\n"+
+                "Lab Completion "+ labCom;
+        
+        
         
         int orderNum1=b2.getOrders().size();
         int orderCompleted1=0;
@@ -313,18 +473,28 @@ public class Report {
         System.out.println("Lab Number "+ labNum1);
         System.out.println("Lab Completion "+ labCom1);
         
+        str8="Total order"+orderNum1+"\n"+
+                "Order Compeletion  "+ orderCompleted1+"\n"+
+                "Total request"+ requestNum1+"\n"+
+                "Request Compeletion "+ requestCompleted1+"\n"+
+                "Lab Number "+ labNum1+"\n"+
+                "Lab Completion "+ labCom1;
 
-
+        
         if (labNum1 > labNum) {
             System.out.println("The most populate because it has most labs:"+b2.getName());
+            str9="The most populate because it has most labs:"+b2.getName();
         }else{
             System.out.println("The most populate because it has most labs:"+b1.getName());
+            str9="The most populate because it has most labs:"+b2.getName();
         }
         
         if(orderNum1>orderNum){
             System.out.println("The Bio-Tech Company is more welcome to Bio-Tech Company because it has the most orders:"+b2.getName());
+            str10="The Bio-Tech Company is more welcome to Bio-Tech Company because it has the most orders:"+b2.getName();
         }else{
             System.out.println("The most populate because it has most labs:"+b1.getName());
+            str10="The Bio-Tech Company is more welcome to Bio-Tech Company because it has the most orders:"+b2.getName();
         }
 
     }
@@ -362,6 +532,11 @@ public class Report {
             System.out.println("Order Completetion number "+orderCompleted);
             System.out.println("Order Cancelled number "+orderCancelled);
             
+            str11="Order number "+orderNum+"\n"+
+                   "Order Completetion number "+orderCompleted+"\n"+
+                    "Order Cancelled number "+orderCancelled;
+            
+            
             int orderNum1 = 0;
             if(d2.getOrders()!=null) orderNum1 = d2.getOrders().size();
             int orderCompleted1 = 0;
@@ -382,17 +557,25 @@ public class Report {
             System.out.println("Order Completetion number "+orderCompleted1);
             System.out.println("Order Cancelled number "+orderCancelled1);
             
+            str12="Order number "+orderNum1+"\n"+
+                   "Order Completetion number "+orderCompleted1+"\n"+
+                    "Order Cancelled number "+orderCancelled1;
+            
         
         if(orderCancelled1<orderCancelled){
             System.out.println("The Company is bad because it has the most cancelled order:"+ d2.getCompany());
+            str13="The Company is bad because it has the most cancelled order:"+ d2.getCompany();
         }else{
             System.out.println("The Company is bad because it has the most cancelled order:"+ d1.getCompany());
+            str13="The Company is bad because it has the most cancelled order:"+ d2.getCompany();
         }
             
         if(orderNum1<orderNum){
             System.out.println("The Company is popular because it has the most order:"+d1.getCompany());
+            str14="The Company is popular because it has the most order:"+d1.getCompany();
         }else{
             System.out.println("The Company is popular because it has the most order:"+d2.getCompany());
+            str14="The Company is popular because it has the most order:"+d2.getCompany();
 
         }
         

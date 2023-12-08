@@ -6,6 +6,8 @@ package Business.UI;
 
 import Business.Business;
 import Business.UI.Report.ReportJPanel1;
+import Business.UI.Report.ReportJPanel2;
+import Business.UI.Report.ReportJPanel3;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -81,7 +83,7 @@ public class MedicalAnalysisLoginPanel extends javax.swing.JPanel {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DataWise Analytics", "InsightCore Solutions"}));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DataWise Analytics", "InsightCore Solutions","Wild Solve"}));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -177,13 +179,32 @@ public class MedicalAnalysisLoginPanel extends javax.swing.JPanel {
             RightPanel.add(rj);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
+            LogoutPanel lo = new LogoutPanel( leftPanel, RightPanel, bz);
+            leftPanel.add(lo);
+            CardLayout layout1 = (CardLayout) leftPanel.getLayout();
+            layout1.next(leftPanel);
         }
-        if(txtuser.getText().equals("Amix")&&txtpwd.getText().equals("Aa12345678")&&name.equals("InsightCore Solutions")){
-            ReportJPanel1 rj = new  ReportJPanel1( bz);
+        else if(txtuser.getText().equals("Amix")&&txtpwd.getText().equals("Aa12345678")&&name.equals("InsightCore Solutions")){
+            ReportJPanel2 rj = new  ReportJPanel2( bz);
             RightPanel.add(rj);
             CardLayout layout = (CardLayout) RightPanel.getLayout();
             layout.next(RightPanel);
+            LogoutPanel lo = new LogoutPanel( leftPanel, RightPanel, bz);
+            leftPanel.add(lo);
+            CardLayout layout1 = (CardLayout) leftPanel.getLayout();
+            layout1.next(leftPanel);
         }
+        else if(txtuser.getText().equals("Amy")&&txtpwd.getText().equals("Aa12345678")&&name.equals("Wild Solve")){
+            ReportJPanel3 rj = new  ReportJPanel3( bz);
+            RightPanel.add(rj);
+            CardLayout layout = (CardLayout) RightPanel.getLayout();
+            layout.next(RightPanel);
+            LogoutPanel lo = new LogoutPanel( leftPanel, RightPanel, bz);
+            leftPanel.add(lo);
+            CardLayout layout1 = (CardLayout) leftPanel.getLayout();
+            layout1.next(leftPanel);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
