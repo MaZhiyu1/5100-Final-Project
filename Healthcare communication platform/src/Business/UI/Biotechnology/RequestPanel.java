@@ -121,7 +121,7 @@ public class RequestPanel extends javax.swing.JPanel {
     public void refreshTable3(Request selected) {
         DefaultTableModel model = (DefaultTableModel)tblVaccine.getModel();
         model.setRowCount(0);
-        if(selected.getType()==null) return;
+        if(selected.getVaccines() == null) return; // Check if getVaccines() returns null
 
             Object row1[] = new Object[4];
             row1[0] = selected.getVaccines();

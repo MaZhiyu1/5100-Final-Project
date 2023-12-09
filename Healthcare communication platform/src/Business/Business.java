@@ -347,7 +347,7 @@ public class Business {
         //➕+++
         // 添加额外的实验室数据
         Lab lab12 = new Lab(Jim.get(), "Cardiovascular Research", "Heart Disease Research", new_m, vxx);
-        lab12.setProgress(90);
+        lab12.setProgress(100);
         lab12.setStatus("Completed");
 
         Lab lab13 = new Lab(Alex.get(), "Neurological Research", "Brain Function Study", new_m, vxx);
@@ -430,15 +430,36 @@ public class Business {
         br.addLab(lab12);
         Alexy.get().addLab(lab12);
         Lab lab1 = new Lab(Emily, "External Medicine", "Antihistamine Project", medicine_loratadine, vaccine_polio);
+        VitalEdge_Biomedicals.addLab(lab12);
+
+        Optional<Doctor> Jimy = h2.getDoctorList().stream().filter(doctor -> "Jimy".equals(doctor.getName())).toList().stream().findFirst();
+        Lab lab15 = new Lab(Jimy.get(), "Cardiovascular Research", "Heart Disease Research", medicine_loratadine, vaccine_polio);
+        lab15.setProgress(60);
+        lab15.setStatus("Processing");
+        br.addLab(lab15);
+        Jimy.get().addLab(lab15);
+        VitalEdge_Biomedicals.addLab(lab15);
+
+        
 
         Optional<Doctor> Fran = h3.getDoctorList().stream().filter(doctor -> "Fran".equals(doctor.getName())).toList().stream().findFirst();
 
         Lab lab13 = new Lab(Fran.get(), "Cardiovascular Research", "Heart Disease Research", medicine_loratadine, vaccine_polio);
-        lab12.setProgress(20);
-        lab12.setStatus("Processing");
+        lab13.setProgress(20);
+        lab13.setStatus("Processing");
         br.addLab(lab13);
         Fran.get().addLab(lab13);
+        VitalEdge_Biomedicals.addLab(lab13);
+
         
+        Optional<Doctor> Ale = h3.getDoctorList().stream().filter(doctor -> "Ale".equals(doctor.getName())).toList().stream().findFirst();
+        Lab lab16 = new Lab(Ale.get(), "Cardiovascular Research", "Heart Disease Research", medicine_loratadine, vaccine_polio);
+        lab16.setProgress(100);
+        lab16.setStatus("Completed");
+        br.addLab(lab16);
+        Ale.get().addLab(lab16);
+        VitalEdge_Biomedicals.addLab(lab16);
+
         
         lab1.setType("External Medicine");
         lab1.setInstruction("on-sedating antihistamines");
@@ -461,7 +482,7 @@ public class Business {
 //            }
 //        }
         VitalEdge_Biomedicals.addLab(lab1);
-
+        
         
         //add lab
         Lab lab11 = new Lab(Emily, "Immunology Research", "Immunotherapy", medicine_loratadine, vaccine_polio);
@@ -485,9 +506,11 @@ public class Business {
         Order order4 = new Order("2", "Delivery for Medicine B1", "Location B", "Address B", "Processing");
         VitalEdge_Biomedicals.addOrder(order3);
         VitalEdge_Biomedicals.addOrder(order4);
-
+//看看完成的Request咋写
         Request request9 = new Request("Request for Equipment E1", "equipment", "For lab research");
         Request request10 = new Request("Request for Equipment E2", "equipment", "For field studies");
+        request9.setStatus("Compelted");
+        request10.setStatus("Compelted");
         VitalEdge_Biomedicals.addRequest(request9);
         VitalEdge_Biomedicals.addRequest(request10);
         
@@ -573,7 +596,7 @@ public class Business {
         doctor_Frank.setContact("8888888");
         doctor_Frank.setDepartment("Internal Medicine");
 
-        Doctor doctor_Sophia = new Doctor(3,"Sophia","Aa12345678", "female",h1);
+        Doctor doctor_Sophia = new Doctor(4,"Sophia","Aa12345678", "female",h1);
         doctor_Sophia.setEnabled(1);
         doctor_Sophia.setSpecialty("Internal Otolaryngology");
         doctor_Sophia.setType("Otolaryngology");
@@ -584,7 +607,7 @@ public class Business {
         doctor_Sophia.setDepartment("Otolaryngology Department");
 
 
-        Doctor doctor_Matthew = new Doctor(3,"Matthew","Aa12345678", "male",h1);
+        Doctor doctor_Matthew = new Doctor(5,"Matthew","Aa12345678", "male",h1);
         doctor_Matthew.setEnabled(1);
         doctor_Matthew.setSpecialty("Internal Neurology");
         doctor_Matthew.setType("Neurology");
@@ -594,7 +617,7 @@ public class Business {
         doctor_Matthew.setContact("8888888");
         doctor_Matthew.setDepartment("Neurology Department");
 
-        Doctor doctor_James = new Doctor(3,"James","Aa12345678", "male",h1);
+        Doctor doctor_James = new Doctor(6,"James","Aa12345678", "male",h1);
         doctor_James.setEnabled(1);
         doctor_James.setSpecialty("Hepatology ");
         doctor_James.setType("Hepatology");

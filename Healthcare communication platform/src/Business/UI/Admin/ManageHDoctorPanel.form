@@ -74,7 +74,7 @@
                       <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="hoCombox" min="-2" pref="107" max="-2" attributes="0"/>
+                      <Component id="hoCombox" min="-2" pref="182" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="67" max="32767" attributes="0"/>
