@@ -449,9 +449,10 @@ public class InventionPanel extends javax.swing.JPanel {
 
         if(project.equals("")||group.equals("")||type.equals("")||department.equals("")||instruction.equals("")){
             JOptionPane.showMessageDialog(null,"Please enter all information");
+            return;
         }
-        
-        Lab lab2 = new Lab(br.getMaster(), department, project,type,instruction);
+
+        Lab lab2 = new Lab(department, project,type,instruction);
         if("Medicine".equals(type)){
             Medicine me = new Medicine(project, project+"-invention" ,  instruction);
             lab2.setMedicine(me);

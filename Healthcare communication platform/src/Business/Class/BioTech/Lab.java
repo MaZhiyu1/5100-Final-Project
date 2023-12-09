@@ -59,6 +59,21 @@ public class Lab {
         this.instruction = instruction;
         this.status = "Processing";
      }
+    
+    
+    public Lab( String group, String projectName,String type,String instruction) {
+        this.id = UUID.randomUUID().toString();
+//        this.pwd = pwd;
+        this.department = group;
+        this.projectName = projectName;
+        progress=0;
+        this.type = type;
+        this.instruction = instruction;
+        this.status = "Processing";
+     }
+    
+    
+    
 
     @Override
     public String toString() {
