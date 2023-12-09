@@ -142,8 +142,13 @@ public class Business {
 
         // 创建并添加订单到UPS
         if (ups != null) {
-            ups.addOrder(new Order("3", "Delivery for Medicine C1", "Location C", "Address C", "Completed"));
-            ups.addOrder(new Order("4", "Delivery for Equipment E1", "Location D", "Address D", "Processing"));
+            ups.addOrder(new Order("3", "Delivery for Medicine C1", "Location C", "Address C", "Completed"));     
+            ups.addOrder(new Order("4", "Delivery for Equipment E1", "Location D", "Address D", "Processing"));       
+            ups.addOrder(new Order("7", "Delivery for Equipment E1", "Location D", "Address SD", "Cancelled")); 
+            ups.addOrder(new Order("8", "Delivery for Equipment E1", "Location D", "Address D", "Completed"));
+            ups.addOrder(new Order("10", "Delivery for Equipment E1", "Location D", "Address 1", "Completed"));
+            ups.addOrder(new Order("11", "Delivery for Equipment E1", "Location D", "Address 9", "Completed"));
+            
             // 可以继续添加更多订单...
         }
 
@@ -151,6 +156,11 @@ public class Business {
         if (usps != null) {
             usps.addOrder(new Order("5", "Delivery for Vaccine V1", "Location E", "Address E", "Cancelled"));
             usps.addOrder(new Order("6", "Delivery for Medicine A2", "Location F", "Address F", "Completed"));
+            usps.addOrder(new Order("9", "Delivery for Equipment E1", "Location D", "Address D", "Processing"));
+            usps.addOrder(new Order("12", "Delivery for Vaccine V1", "Location E", "Address E", "Cancelled"));
+            usps.addOrder(new Order("13", "Delivery for Medicine A2", "Location F", "Address F", "Completed"));
+            usps.addOrder(new Order("14", "Delivery for Equipment E1", "Location D", "Address D", "Processing"));
+            
             // 可以继续添加更多订单...
         }
     }
