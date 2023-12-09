@@ -58,6 +58,7 @@ public class DeliveryComPanel extends javax.swing.JPanel {
         });
 
         btnSubmitted.setText("Submitted Cargo");
+        btnSubmitted.setEnabled(false);
         btnSubmitted.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmittedActionPerformed(evt);
@@ -65,6 +66,7 @@ public class DeliveryComPanel extends javax.swing.JPanel {
         });
 
         btnCancelled.setText("Cancelled Cargo");
+        btnCancelled.setEnabled(false);
 
         Company.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         Company.setText("UPS");
