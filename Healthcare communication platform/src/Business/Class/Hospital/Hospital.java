@@ -27,7 +27,7 @@ public class Hospital {
     private ArrayList<Doctor> doctorList;
     private ArrayList<Patient> patients;
 
-    private RearServices rearServices;
+    private ArrayList<RearServices> rearServices;
 
     private HospitalResearch hr;
     int k=1;
@@ -47,6 +47,7 @@ public class Hospital {
         ha = new AppointmentDirectory();
         requestList = new ArrayList<>();
         orders = new ArrayList<>();
+        rearServices = new ArrayList<>();
         hr = new HospitalResearch("Researcher","Aa12345678", name, k);
         
     }
@@ -128,20 +129,18 @@ public class Hospital {
         this.address = address;
     }
 
-    public RearServices getRearServices() {
+    public ArrayList<RearServices> getRearServices() {
         return rearServices;
     }
 
-    public void setRearServices(RearServices rearServices) {
-        this.rearServices = rearServices;
-    }
+
 
     public HospitalInventory getHi() {
         return hi;
     }
 
     public void addRearService(RearServices rearServices){
-        this.rearServices = rearServices;
+        this.rearServices.add(rearServices);
         rearServices.setHospital(this);
     }
     

@@ -126,10 +126,11 @@ public class Validation {
                     }
                 }
                 else if(type.equals("Supplier")){
-                    RearServices rs = hospital.getRearServices();
+                    for(RearServices rs : hospital.getRearServices()){
                         if(rs.getName().equals(username) && rs.getPwd().equals(pwd)){
-                            return hospital.getRearServices();
+                            return rs;
                         }
+                    }
 
                 }
                 else if(type.equals("Analysis")){

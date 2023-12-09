@@ -28,7 +28,7 @@ public class RearServices {
         this.id = id;
         this.pwd = pwd;
         this.hospital = hospital;
-        this.enabled = 0;
+        this.enabled = 1;
 //        request = new ArrayList<>();
         orders = new ArrayList<>();
     }
