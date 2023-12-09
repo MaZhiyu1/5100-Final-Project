@@ -328,7 +328,7 @@ public class ManageBioSupplierPanel extends javax.swing.JPanel {
             return;
         }
         BioSupplier selected = (BioSupplier) HospitalTable.getValueAt(row, 0);
-        selected.setEnable(1);
+        selected.setEnable(0);
     }//GEN-LAST:event_DisableActionPerformed
 
     private void nametxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nametxtActionPerformed
