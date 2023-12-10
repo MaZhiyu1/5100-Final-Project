@@ -300,6 +300,7 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
         appointment.setSymptom(textAreaSymptom.getText());
         appointment.setStatus(0);
         selectedDoctor.setAvail(selectedDoctor.getAvail()-1);
+        selectedDoctor.getHospital().addPatient(patient);
         JOptionPane.showMessageDialog(null, "Appointment has been submitted successfully!");
         btnBack1ActionPerformed(evt);
 
@@ -337,7 +338,7 @@ public class PatientAppointmentJPanel extends javax.swing.JPanel {
             Object[] row = new Object[4];
             row[0] = doctor;
             row[1] = doctor.getName();
-            row[2] = doctor.getType();
+            row[2] = doctor.getDepartment();
             row[3] = doctor.getAvail();
 
             dtm.addRow(row);
