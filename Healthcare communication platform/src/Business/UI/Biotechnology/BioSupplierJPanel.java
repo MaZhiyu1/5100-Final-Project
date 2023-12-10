@@ -43,7 +43,6 @@ public class BioSupplierJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         btnDelivery = new javax.swing.JButton();
         btnViewRequest = new javax.swing.JButton();
 
@@ -55,10 +54,7 @@ public class BioSupplierJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Group");
-
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel1.setText("Welcome");
 
         btnDelivery.setFont(new java.awt.Font("Helvetica Neue", 0, 20)); // NOI18N
         btnDelivery.setText("Delivery(Medical)");
@@ -86,8 +82,6 @@ public class BioSupplierJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -103,9 +97,7 @@ public class BioSupplierJPanel extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel3)
                 .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addComponent(jLabel1)
                 .addGap(92, 92, 92)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnViewRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,7 +145,6 @@ public class BioSupplierJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDelivery;
     private javax.swing.JButton btnViewRequest;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

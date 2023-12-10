@@ -328,7 +328,7 @@ public class RearServicesWorkAreaJPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Mail Number", "Request ID", "Description", "Status"
+                "Mail Number", "Delivery", "Description", "Status"
             }
         ));
         jScrollPane9.setViewportView(tblDelivery);

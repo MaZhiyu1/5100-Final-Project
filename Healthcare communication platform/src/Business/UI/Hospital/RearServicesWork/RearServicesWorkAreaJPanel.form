@@ -285,7 +285,7 @@
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="4">
                         <Column editable="true" title="Mail Number" type="java.lang.Object"/>
-                        <Column editable="true" title="Request ID" type="java.lang.Object"/>
+                        <Column editable="true" title="Delivery" type="java.lang.Object"/>
                         <Column editable="true" title="Description" type="java.lang.Object"/>
                         <Column editable="true" title="Status" type="java.lang.Object"/>
                       </Table>

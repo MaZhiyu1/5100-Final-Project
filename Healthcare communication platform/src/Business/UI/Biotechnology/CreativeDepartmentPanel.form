@@ -47,14 +47,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btnDevelopment" min="-2" pref="197" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                                      <Component id="btnViewRequest" min="-2" pref="197" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="lblGroup" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="btnDevelopment" min="-2" pref="197" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                              <Component id="btnViewRequest" min="-2" pref="197" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -68,10 +63,7 @@
                       <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblGroup" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnDevelopment" alignment="3" min="-2" pref="69" max="-2" attributes="0"/>
@@ -100,18 +92,11 @@
                   <Font name="Helvetica Neue" size="20" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="View Request"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewRequestActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblGroup">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Helvetica Neue" size="18" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="jLabel2"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
@@ -119,7 +104,7 @@
                   <Font name="Microsoft YaHei UI" size="18" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Group"/>
+                <Property name="text" type="java.lang.String" value="Welcome"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">

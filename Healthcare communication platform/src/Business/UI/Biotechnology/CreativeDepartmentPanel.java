@@ -45,7 +45,6 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnDevelopment = new javax.swing.JButton();
         btnViewRequest = new javax.swing.JButton();
-        lblGroup = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -61,18 +60,16 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
 
         btnViewRequest.setFont(new java.awt.Font("Helvetica Neue", 0, 20)); // NOI18N
         btnViewRequest.setText("View Request");
+        btnViewRequest.setEnabled(false);
         btnViewRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewRequestActionPerformed(evt);
             }
         });
 
-        lblGroup.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        lblGroup.setText("jLabel2");
-
         jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Group");
+        jLabel5.setText("Welcome");
 
         jLabel6.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 24)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -89,12 +86,9 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(24, 24, 24)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnDevelopment, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(59, 59, 59)
-                                .addComponent(btnViewRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblGroup))
+                        .addComponent(btnDevelopment, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(btnViewRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(14, 14, 14))
         );
@@ -104,9 +98,7 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
                 .addGap(54, 54, 54)
                 .addComponent(jLabel6)
                 .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(lblGroup))
+                .addComponent(jLabel5)
                 .addGap(116, 116, 116)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDevelopment, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,6 +142,5 @@ public class CreativeDepartmentPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblGroup;
     // End of variables declaration//GEN-END:variables
 }
