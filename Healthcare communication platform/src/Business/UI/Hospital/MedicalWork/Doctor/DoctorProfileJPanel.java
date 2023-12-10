@@ -261,7 +261,7 @@ public class DoctorProfileJPanel extends javax.swing.JPanel {
         jPanel1.add(btnSaveAll);
         btnSaveAll.setBounds(600, 740, 72, 23);
 
-        cmbDepartment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "内科 - Internal Medicine", "外科 - Surgery", "儿科 - Pediatrics" }));
+        cmbDepartment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internal Medicine", "Surgery", "Pediatrics" }));
         jPanel1.add(cmbDepartment);
         cmbDepartment.setBounds(315, 261, 260, 23);
 
