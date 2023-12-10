@@ -115,7 +115,7 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "id", "Doctor Name", "Symptom", "Instructions ", "Status", "处方Prescription"
+                "id", "Doctor Name", "Symptom", "Instructions ", "Status", "Prescription"
             }
         ) {
             Class[] types = new Class [] {

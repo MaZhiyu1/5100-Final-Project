@@ -44,7 +44,6 @@ public class MedicalSupplierJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         btnViewRequest = new javax.swing.JButton();
         btnDelivery = new javax.swing.JButton();
 
@@ -56,10 +55,7 @@ public class MedicalSupplierJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Group");
-
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel1.setText("Welcome");
 
         btnViewRequest.setFont(new java.awt.Font("Helvetica Neue", 0, 20)); // NOI18N
         btnViewRequest.setText("View Request");
@@ -88,14 +84,13 @@ public class MedicalSupplierJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(39, 39, 39)
                                 .addComponent(btnViewRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnDelivery)))
+                                .addComponent(btnDelivery))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel1)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(23, 23, 23))
         );
@@ -105,10 +100,8 @@ public class MedicalSupplierJPanel extends javax.swing.JPanel {
                 .addGap(49, 49, 49)
                 .addComponent(jLabel4)
                 .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(92, 92, 92)
+                .addComponent(jLabel1)
+                .addGap(93, 93, 93)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnViewRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDelivery, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -154,7 +147,6 @@ public class MedicalSupplierJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDelivery;
     private javax.swing.JButton btnViewRequest;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
